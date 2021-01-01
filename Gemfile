@@ -38,3 +38,6 @@ gem "kramdown-parser-gfm"
 
 # Use emojis
 gem 'jemoji'
+
+# Use analytics
+gem 'jekyll-analytics'
