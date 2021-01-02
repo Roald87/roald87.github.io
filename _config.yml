@@ -27,12 +27,8 @@ texture:
     linkedIn: in/roaldruiter
     rss: feed
 
-jekyll_analytics:
-  Plausible:
-    domain: 'roald87.github.io'   # The domain configured in plausible
-    source: 'https://plausible.io/js/plausible.js' # The source of the javascript
-
 # Build settings
+whitelist: [jekyll-analytics]
 markdown: kramdown
 remote_theme: thelehhman/texture
 plugins:
@@ -40,3 +36,7 @@ plugins:
   - jemoji
   - jekyll-analytics
 
+jekyll_analytics:
+  Plausible:
+    domain: 'roald87.github.io'   # The domain configured in plausible
+    source: 'https://plausible.io/js/plausible.js' # The source of the javascript
