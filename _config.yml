@@ -29,7 +29,7 @@ texture:
 
 # Build settings
 markdown: kramdown
-remote_theme: thelehhman/texture
+remote_theme: roald87/texture
 plugins:
   - jekyll-feed
   - jemoji
