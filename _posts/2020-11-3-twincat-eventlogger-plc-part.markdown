@@ -7,7 +7,7 @@ category: twincat
 
 Keeping track of all the things which are happening on your machine can be a daunting task. Whether it’s expected events or unexpected warnings and errors of which you want to inform the user. Luckily Beckhoff provides us with a tool which can help with that, namely the EventLogger. In this article I will introduce the PLC part of the EventLogger and show some useful features (code: [PlcPart](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/PlcPart)). A second article will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: [HmiPart](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/HmiPart)). 
 
-Thanks to [Jakob Sagatowski ](https://github.com/sagatowski) for his valuable feedback while writing this article.
+*Thanks to [Jakob Sagatowski ](https://github.com/sagatowski) for his valuable feedback while writing this article.*
 
 Events are created on the PLC and are organized in EventClasses, as shown in the image below. The events themselves can be of two different types. First there is the stateless message type which can only be sent. Second there is the alarm which also has a state. The states of the alarms work as follows. There are two mutually exclusive states: raised and cleared and an optional third state: confirmed which is independent of the first two. The raised and cleared state are used to indicate if an alarm condition is fulfilled (e.g. a temperature is above a certain limit). The optional confirmation state can be used to indicate that the user has seen the alarm and is aware of it. Finally all raised alarms are automatically cleared when the PLC is restarted, but they are not automatically confirmed.
 
@@ -262,3 +262,5 @@ If we then activate our configuration again and raise and clear the alarm with o
 ![event_logger_warning_event_with_custom_source](/assets/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_custom_source.png)
 
 I hope you learned something new today! In a future post I’ll show how to visualize the events in the TwinCAT’s web-based HMI (TE2000).
+
+Discuss: [Reddit](https://www.reddit.com/r/PLC/comments/jq8dbl/twincat_eventlogger_tutorial/).
