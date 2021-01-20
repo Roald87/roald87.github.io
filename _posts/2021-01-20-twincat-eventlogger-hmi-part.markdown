@@ -192,4 +192,4 @@ If you now raise a new warning a pop-up should appear. You might need to rebuild
 
 I hope I gave you a good introduction into the EventLogger, so that you can start experimenting with it yourself. 
 
-Discuss: [Reddit](??).
+Discuss: [Reddit](https://www.reddit.com/r/PLC/comments/l13vgp/tutorial_twincat_eventlogger_hmi_part/).
