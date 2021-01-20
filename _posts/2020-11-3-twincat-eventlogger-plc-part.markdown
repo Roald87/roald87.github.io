@@ -5,7 +5,7 @@ date:   2020-11-03
 category: twincat
 ---
 
-Keeping track of all the things which are happening on your machine can be a daunting task. Whether it’s expected events or unexpected warnings and errors of which you want to inform the user. Luckily Beckhoff provides us with a tool which can help with that, namely the EventLogger. In this article I will introduce the PLC part of the EventLogger and show some useful features (code: [PlcPart](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/PlcPart)). A second article will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: [HmiPart](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/HmiPart)). 
+Keeping track of all the things which are happening on your machine can be a daunting task. Whether it’s expected events or unexpected warnings and errors of which you want to inform the user. Luckily Beckhoff provides us with a tool which can help with that, namely the EventLogger. In this article I will introduce the PLC part of the EventLogger and show some useful features (code: [PlcPart](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/PlcPart)). A [second article](https://roald87.github.io/twincat/2021/01/20/twincat-eventlogger-hmi-part.html) will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: [HmiPart](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/HmiPart)). 
 
 *Thanks to [Jakob Sagatowski ](https://github.com/sagatowski) for his valuable feedback while writing this article.*
 
