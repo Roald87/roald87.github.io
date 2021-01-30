@@ -25,7 +25,12 @@ texture:
   social_links:
     github:  roald87
     linkedIn: in/roaldruiter
-    rss: feed
+    rss: rss
+
+feed:
+  categories:
+    - twincat
+    - cooking
 
 # Build settings
 markdown: kramdown
