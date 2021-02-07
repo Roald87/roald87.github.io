@@ -7,6 +7,8 @@ category: twincat
 
 Recently I was coding up a new function block and passed another function block by reference to it. Somewhere I forgot to check if the reference was valid before using it and 💥 Page Fault! After some thinking I came up with a few solutions how this can be prevented and even how you could catch mistakes like this at compile time instead of during run time. Let me show you what I did.
 
+- [Code](https://github.com/Roald87/TwincatTutorials/tree/main/PreventingPageFaults)
+
 ## What is a reference?
 
 Before diving into the subject it is good to briefly explain what a reference is and why you would want to use it. A [reference](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529458827.html&id=) is a link to an object, where an object can either be a data type (e.g. `LREAL`), a function block (e.g. `R_TRIG`) or a user defined data type (e.g. a `STRUCT`). A reference just passes on a link to the original object, instead of making a copy of it. References are very much like [pointers](https://infosys.beckhoff.com/english.php?content=../content/1033/tcplccontrol/html/tcplcctrl_pointer.htm&id=) in that sense, but references are easier to use.
