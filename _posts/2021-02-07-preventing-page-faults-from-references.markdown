@@ -176,3 +176,6 @@ The advantage of the `FB_init` solution is that in case you forget to pass `foo`
 ### Concluding
 
 Although there are some drawbacks to the `FB_init` method, such as the fact that finding errors in it can be more difficult and the fact that you can still get a Page Fault if you forget to assign the `FB_init` input to a local function block variable as we saw above. I still think it provides some advantage, because you only need to pass a variable once to a function block and not each time you call the function block as with the `VAR_IN_OUT` solution.
+
+Discuss: [Reddit/Plc](https://www.reddit.com/r/PLC/comments/leqbnz/twincat_preventing_page_faults_from_references/), [Reddit/TwinCAT](https://www.reddit.com/r/TwinCat/comments/leqby8/preventing_page_faults_from_references/).
+
