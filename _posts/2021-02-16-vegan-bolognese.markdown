@@ -154,4 +154,4 @@ You could eat the sauce with some pappardelle or use it in a (not so vegan) lasa
 
 11. Serve with pappardelle or use in a lasagna. Enjoy!
 
-Discuss Reddit/Cooking or Reddit/SeriousEats.
+Discuss [Reddit/SeriousEats](https://www.reddit.com/r/seriouseats/comments/ll23js/improved_kenjis_hearty_vegan_mushroom_bolognese/).
