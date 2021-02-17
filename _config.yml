@@ -21,6 +21,8 @@ texture:
       url: "/about"
     - title: Tags
       url: "/tags" 
+    - title: TwinCAT
+      url: "/twincat" 
 
   social_links:
     github:  roald87
