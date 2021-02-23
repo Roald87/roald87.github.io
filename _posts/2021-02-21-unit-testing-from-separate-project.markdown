@@ -5,7 +5,7 @@ date: 2021-02-21
 category: twincat
 ---
 
-The other day [I answered a question on StackOverflow](https://stackoverflow.com/a/60542846/6329629) on how to unit test code from a separate project. To increase its exposure I'll also add it to my blog.
+The other day [I answered a question on StackOverflow](https://stackoverflow.com/a/60542846/6329629) on how to unit test code from a separate project. To increase its exposure I also added it here.
 
 - [Code](https://gist.github.com/Roald87/c68ea920607ec8f32d977d32f3f82712)
 
