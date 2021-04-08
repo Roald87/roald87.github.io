@@ -87,7 +87,7 @@ You could eat the sauce with some pappardelle or use it in a (not so vegan) lasa
 - 5 tablespoons of olive oil
 - 2 large stalks of celery (about 50 gram, 1 cup)
 - 1 medium carrot (about 50 gram, 1 cup)
-- 1 medium union (about 50 gram, 1 cup) 
+- 1 medium onion (about 50 gram, 1 cup) 
 - 5 garlic cloves
 - 1 tablespoon tomato paste 
 - 1 teaspoon oregano
