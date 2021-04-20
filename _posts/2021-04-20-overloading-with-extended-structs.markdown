@@ -87,7 +87,7 @@ When we run this program we can see that it calculated the length for both point
 
 Using this trick you can prevent having to write/test the same function multiple times. I couldn't find any mention of this possibility on InfoSys, so I just tried it out. I was a bit surprised and relieved that it worked! 
 
-
+Discuss: [r/plc](https://www.reddit.com/r/PLC/comments/muwyv6/twincat_overloading_functions_with_extended/) & [r/TwinCAT](https://www.reddit.com/r/TwinCat/)
 
 
 
