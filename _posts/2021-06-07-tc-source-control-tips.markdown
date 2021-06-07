@@ -158,4 +158,6 @@ Summarizing; the above steps ensure that whenever you select your development pl
 
 I've also used the filters to remove random changes to the HMI port in the `.hmiproj` file and an automatic add/removal of development specific [compiler definitions](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2533017227.html?id=8439395065138194985). 
 
-I hope I shared some useful tips. What kind of tricks do you use?​      
+I hope I shared some useful tips. What kind of tricks do you use?​
+
+Discuss: [r/TwinCAT](https://www.reddit.com/r/TwinCat/comments/nu5b3c/source_control_tips_for_twincat/), [r/plc](https://www.reddit.com/r/PLC/comments/nu5ca0/source_control_tips_for_twincat/).
