@@ -5,7 +5,7 @@ date:   2020-11-03
 category: twincat
 ---
 
-Keeping track of all the things which are happening on your machine can be a daunting task. Whether it’s expected events or unexpected warnings and errors of which you want to inform the user. Luckily Beckhoff provides us with a tool which can help with that, namely the EventLogger. In this article I will introduce the PLC part of the EventLogger and show some useful features (code: [PlcPart](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/PlcPart)). A [second article](https://roald87.github.io/twincat/2021/01/20/twincat-eventlogger-hmi-part.html) will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: [HmiPart](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/HmiPart)). 
+Keeping track of all the things which are happening on your machine can be a daunting task. Whether it’s expected events or unexpected warnings and errors of which you want to inform the user. Luckily Beckhoff provides us with a tool which can help with that, namely the EventLogger. In this article I will introduce the PLC part of the EventLogger and show some useful features (code: [PlcPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart)). A [second article](https://roald87.github.io/twincat/2021/01/20/twincat-eventlogger-hmi-part.html) will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: [HmiPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart)). 
 
 *Thanks to [Jakob Sagatowski ](https://github.com/sagatowski) for his valuable feedback while writing this article.*
 
@@ -17,7 +17,7 @@ A limited number of past events are cached in a local database file on the hardd
 
 ![cached_events_setting](/assets/2020-11-3-twincat-eventlogger-plc-part/cached_events_setting.PNG)
 
-Now we know a little about the theory behind events, let's look at an example. You can download the example project from the [PlcPart](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/PlcPart) folder. I’ve created a standard TwinCAT XAE project with a standard PLC project. I then added the **Tc3_EventLogger** library under **References** as shown in the image below. This library contains all the function blocks we need for the events.
+Now we know a little about the theory behind events, let's look at an example. You can download the example project from the [PlcPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart) folder. I’ve created a standard TwinCAT XAE project with a standard PLC project. I then added the **Tc3_EventLogger** library under **References** as shown in the image below. This library contains all the function blocks we need for the events.
 
 ![twincat_project_structure](/assets/2020-11-3-twincat-eventlogger-plc-part/twincat_project_structure.PNG)
 
