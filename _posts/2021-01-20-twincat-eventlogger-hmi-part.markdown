@@ -9,10 +9,10 @@ In an [earlier article](https://roald87.github.io/twincat/2020/11/03/twincat-eve
 
 *Thanks to [Jakob Sagatowski](https://github.com/sagatowski) for his valuable feedback while writing this article.*
 
-- Code: [PlcPart](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/PlcPart)
-- Code: [HmiPart](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/HmiPart)
+- Code: [PlcPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart)
+- Code: [HmiPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart)
 
-To follow this tutorial you can either download the completed [HMI project](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/HmiPart) or you can start with the [PLC project](https://github.com/Roald87/TwinCatEventLoggerExample/tree/master/PlcPart) from the [previous article](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html). **I'll assume here that you will start with the PLC project part and work your way towards the HMI project.**
+To follow this tutorial you can either download the completed [HMI project](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart) or you can start with the [PLC project](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart) from the [previous article](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html). **I'll assume here that you will start with the PLC project part and work your way towards the HMI project.**
 
 ## Adding a new HMI project
 
