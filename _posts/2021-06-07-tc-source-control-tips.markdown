@@ -7,6 +7,8 @@ category: twincat
 
 Source control is essential when you're developing software. However, there is little information online on how to do it properly for TwinCAT projects. In this post I'll share some tips and tricks I picked up along the way. The main focus will be git, but many points apply to other source control systems as well.
 
+*Last updated 12 August 2021*
+
 ## What is source control?
 
 If you're not yet familiar with source control then it is something which you should absolutely learn as a software developer. [Source control](https://en.wikipedia.org/wiki/Version_control) (or version control) allows you to incrementally save your code in a kind of database. All your changes are saved and it is very easy to go back to a previous state of your code. This reverting can be very convenient if you discover that a single feature you implemented, is not quite panning out as you planned. In this case it is usually very easy to either reset your code to the state before the change, or even just undo the single feature. Finally it can also be used to [prevent versioning in filenames](http://phdcomics.com/comics/archive.php?comicid=1531).
@@ -88,6 +90,8 @@ Once you determined which files should be source controlled, it is important to 
    > breakpoint handling, for example, and ensure that the code lines can be assigned to machine code instructions
 
    There are no adverse effect from saving them in a separate file, so I'm not sure why this is not the default. Especially since these LineIDs often change, even if no code changes were made. Once this option is enabled (under **Tools > Options >TwinCAT > PLC Environment > Write options**) the LineIDs are saved in the `LineIDs.dbg` file. So if you enable this option, make sure this file is then added to the `.gitignore` file, or else all will be for nothing.
+
+   If you have an existing project where LineIDs were saved in the `.TcPOU` file, you can easily remove them with the bash command: `find . -type f -wholename "*.TcPOU" -exec sed -i "/LineId/d" {} \;`. Run this command in the top folder of your project. It will then recursivly search trough all folders, match files with a `.TcPOU` extension and remove all lines containing `LineId`. This command should work, unless you used `LineId` somewhere in your code.
 
 ## 3. Formatting rules
 
