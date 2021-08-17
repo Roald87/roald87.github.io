@@ -199,3 +199,4 @@ After making an instance of `SimOven` in `MAIN` and linking the IOs of the simul
 
 ![](/assets/2021-08-17-tc-simulation/heating_oven.gif)
 
+Discuss: [r/plc](https://www.reddit.com/r/PLC/comments/p6asbl/machine_simulation_with_a_digital_twin/), [r/TwinCAT](https://www.reddit.com/r/TwinCat/comments/p6ar7t/machine_simulation_with_a_digital_twin/).
