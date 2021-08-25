@@ -1,7 +1,6 @@
 # TwinCAT
 
 - RowClassProvider 
-- Making sure units are correct
 - Using IF statements when returning a boolean
 - Butterfly effect with REAL to LREAL conversions
 
