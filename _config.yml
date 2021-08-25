@@ -1,15 +1,15 @@
 show_excerpts: true
-title: Roald Ruiter
+title: Cook & Code
 description: >- # this means to ignore newlines until "baseurl:"
-  Personal projects and thoughts.
+  Personal projects and ideas.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  roald87
 linkedin_username: roaldruiter
 
 texture:
-  title: Roald Ruiter
-  tagline: Personal projects and thoughts.
+  title: Cook & Code
+  tagline: Personal projects and ideas.
   date_format: "%b %-d, %Y"
   style: black
   
