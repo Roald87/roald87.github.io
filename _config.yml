@@ -19,8 +19,8 @@ texture:
       url: "/"
     - title: About
       url: "/about"
-    - title: Tags
-      url: "/tags" 
+    - title: Archive
+      url: "/archive" 
     - title: TwinCAT
       url: "/twincat" 
     - title: Cooking
