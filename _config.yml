@@ -7,6 +7,9 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  roald87
 linkedin_username: roaldruiter
 
+sass:
+  sass_dir: _sass
+
 texture:
   title: Cook & Code
   tagline: Personal projects and ideas.
@@ -38,7 +41,8 @@ feed:
 
 # Build settings
 markdown: kramdown
-remote_theme: roald87/texture
+theme: texture
 plugins:
+  - jekyll-seo-tag
   - jekyll-feed
   - jemoji
