@@ -41,7 +41,6 @@ feed:
 
 # Build settings
 markdown: kramdown
-theme: texture
 plugins:
   - jekyll-seo-tag
   - jekyll-feed
