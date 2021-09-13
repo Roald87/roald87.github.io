@@ -28,7 +28,8 @@ texture:
       url: "/twincat" 
     - title: Cooking
       url: "/cooking" 
-       
+
+  disqus_shortname: cookncode-com
   social_links:
     github:  roald87
     linkedIn: in/roaldruiter
