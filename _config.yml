@@ -26,6 +26,8 @@ texture:
       url: "/archive" 
     - title: TwinCAT
       url: "/twincat" 
+    - title: TwinCAT links
+      url: "/tclinks" 
     - title: Cooking
       url: "/cooking" 
 
