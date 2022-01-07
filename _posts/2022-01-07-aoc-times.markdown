@@ -1,0 +1,40 @@
+---
+layout: post
+title: "A visual journey of Advent of Code times"
+date: 2022-01-07
+category: python
+---
+
+Since a few years it is a tradition under programmers and puzzle enthusiasts to take part in [Advent of Code](https://adventofcode.com/). Puzzles are posted each day from the 1st of December until the 25th of December. The people of the internet try to solve them as quick as possible and their times are published. In this post I compare the time it took the top 100 to solve the puzzles over the years.
+
+- [Code](https://github.com/Roald87/AocTimes)
+
+Every puzzle consists of two parts which have to be solved sequentially. Below I show for each day a separate distribution for the part one in purple and part two in green. 
+
+During the first year the distributions were relatively wide, because not that many people participated. Also most days seemed to be of an equal level, with a few exceptions on day 19 part two and day 22 part one and two.
+
+![](https://raw.githubusercontent.com/Roald87/AocTimes/main/2015.png)
+
+The year after advent of code gained some popularity, since the distributions are a bit narrower than in 2015. Most days were of an equal level, with a notable exception of day 11, where part one and two were very difficult. Only nearing the end, from day 19 onwards, things got challenging. The last day is a traditional easier one.
+
+![](https://raw.githubusercontent.com/Roald87/AocTimes/main/2016.png)
+
+Since 2017 advent of code really took off, as shown by the very narrow distributions. It is funny to see how there were a lot of days where part one was relatively easy, but part two took considerably more time. For example on days three, seven and ten. However, this year there was no really tough puzzle.
+
+![](https://raw.githubusercontent.com/Roald87/AocTimes/main/2017.png)
+
+2018 started off relatively normal, and the difficulty slowly increased over time. However, from the third week things got extremely difficult. Day 15 was the most difficult for most. Luckily day 25 was a relatively easy one, so people could spend Christmas with their families.
+
+![](https://raw.githubusercontent.com/Roald87/AocTimes/main/2018.png)
+
+2019 looked similar as the previous one. Difficulty increasing slowly, and with some very challenging ones during the second half. This year there was no mercy on Christmas day!
+
+![](https://raw.githubusercontent.com/Roald87/AocTimes/main/2019.png)
+
+This year seemed to be very easy, with one exception on day 20 part two. Or is Advent of Code getting so popular that it attracted a lot of speedy puzzlers? 
+
+![](https://raw.githubusercontent.com/Roald87/AocTimes/main/2020.png)
+
+The puzzles of 2021 suggest that there are probably a lot of fast solvers, because the puzzles are solved extremely fast. However, 2021 did have some very tricky ones during the second half. S0 2020 was indeed relatively easy. 
+
+![](https://raw.githubusercontent.com/Roald87/AocTimes/main/2021.png)
