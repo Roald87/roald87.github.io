@@ -33,4 +33,6 @@ permalink: /tclinks/
 - [TcLibraryVersions](https://github.com/RumstiBumsti/TcLibraryVersions): Unofficial tracker for TwinCAT library versions.
 - [Beckhoff USA GitHub](https://github.com/Beckhoff-USA-Community): A collection of TwinCAT and TcHMI example projects.
 - [Beckhoff HQ GitHub](https://github.com/Beckhoff): Mainly TFxxxx sample projects.
+- [TcMatrix](https://github.com/BurksEngineering/TcMatrix): Library for matrix and vector operations for some of your linear algebra needs.
+- [TcTransform](https://github.com/BurksEngineering/TcTransform): Library for 3D coordinate system transformations.
 - [Awesome open source](https://awesomeopensource.com/projects/industrial-automation?): List of open source GitHub repo's.
