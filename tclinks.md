@@ -15,11 +15,12 @@ permalink: /tclinks/
 - [Kassym Dorsel](https://kassymdorsel.com/blog): Various articles and a series on TwinCAT Vision.
 - [WJB Automation Blog](http://dronefactory.co.uk/): Combining TwinCAT with Unity, a 3D graphics development platform.
 
-## YouTube
+## YouTube/Videos
 
 - [Jakob Sagatowski](https://www.youtube.com/c/JakobSagatowski): An excellent, extensive and free introduction into TwinCAT and more.
 - [Oleg Mueller](https://www.youtube.com/channel/UCHvABpkd825kAtaDxnhE-tg): Tons of videos about TcHMI from the TcHMI Guru.
 - [Beckhoff official](https://www.youtube.com/user/BeckhoffAutomation): Beckhoff's own channel with many videos on the latest or upcoming products.
+- [Coding Bytes](https://codingbytes.teachable.com/p/codingbytes_twincat3): Team members from Beckhoff Australia share videos which are primarily based on replies to support questions. 
 
 ## Tools
 
