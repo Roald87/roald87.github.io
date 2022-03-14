@@ -21,25 +21,18 @@
       <div style="margin-bottom:25px">
         Found a mistake or a typo? <a href="https://github.com/Roald87/roald87.github.io/edit/main/{{ page.path }}">Suggest a change!</a>
       </div>
-          
-        <!-- Configure Disqus -->
-      {%- if site.texture.disqus_shortname -%}
-        <div id="disqus_thread" style="margin-top:25px"></div>
-        <script>
-          var disqus_config = function () {
-            this.page.url = '{{ page.url | absolute_url }}';
-            this.page.identifier = '{{ page.url | absolute_url }}';
-          };
-          (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://{{ site.texture.disqus_shortname }}.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-      {%- endif -%}
-    </div>
+
+  <div id="disqus_thread" style="margin-top:25px">
+    <script src="https://utteranc.es/client.js"
+        repo="Roald87/roald87.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="boxy-light"
+        crossorigin="anonymous"
+        async>
+    </script>
+  </div>
+
   </main>
   {%- include footer.html -%}
 </body>
