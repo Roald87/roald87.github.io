@@ -1,0 +1,6 @@
+[project]
+name = "check-https"
+version = "0.1.0"
+description = "pre-commit hook to replace http with https"
+authors = [{"name = Roald Ruiter, email = "roaldruiter at gmail dot com"}]
+license = "MIT"
