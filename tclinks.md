@@ -10,10 +10,10 @@ permalink: /tclinks/
 - [AllTwinCAT](https://alltwincat.com/): Regularly updated with various in-depth articles about everything related to TwinCAT development. 
 - [Stefan Henneken](https://stefanhenneken.wordpress.com/): A lot of information on different object oriented design patterns in both German and English.
 - [Hemelix](https://www.hemelix.com/scada-hmi/beckhoff-hmi/): A nice collection of tips and tricks for TcHMI, sometimes also with [video](https://www.youtube.com/channel/UCrVpKbWVAvhSbjA2nVjgLqg/videos).
-- [Contact and Coil](http://www.contactandcoil.com/twincat-3-tutorial/): An excellent beginners tutorial for newcomers.
+- [Contact and Coil](https://www.contactandcoil.com/twincat-3-tutorial/): An excellent beginners tutorial for newcomers.
 - [Red Rock Controls](https://www.redrockcontrols.co.uk/?tag=twincat): A few posts on design patterns in TwinCAT.
 - [Kassym Dorsel](https://kassymdorsel.com/blog): Various articles and a series on TwinCAT Vision.
-- [WJB Automation Blog](http://dronefactory.co.uk/): Combining TwinCAT with Unity, a 3D graphics development platform.
+- [WJB Automation Blog](https://dronefactory.co.uk/): Combining TwinCAT with Unity, a 3D graphics development platform.
 
 ## YouTube/Videos
 

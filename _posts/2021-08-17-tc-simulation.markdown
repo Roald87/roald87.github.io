@@ -25,7 +25,7 @@ On the bottom of the pyramid are the unit tests. With unit tests you test indivi
 
 After testing the individual units, you want to make sure that once you glue several units together they work as intended. This is called [integration testing](https://en.wikipedia.org/wiki/Integration_testing). For this there aren't that many well developed options that I know of. 
 
-One option is that you create an actual 3D model of your machine and connect that to your PLC as shown on the [WJB Automation Blog](http://dronefactory.co.uk/). By using the 3D model you can easily check if parts are moving as intended and that there are no collisions. However, if you have a machine with less or no moving parts, this method is not an option. Furthermore it is harder to automate these tests further down the line.
+One option is that you create an actual 3D model of your machine and connect that to your PLC as shown on the [WJB Automation Blog](https://dronefactory.co.uk/). By using the 3D model you can easily check if parts are moving as intended and that there are no collisions. However, if you have a machine with less or no moving parts, this method is not an option. Furthermore it is harder to automate these tests further down the line.
 
 The second option is to manually force different in/outputs in your program and verify that everything works as intended. This option is, of course, vey time consuming and not automated. And if you're like me, than you didn't become a software engineer to do things manually 😁.
 
