@@ -11,9 +11,9 @@ Source control is essential when you're developing software. However, there is l
 
 ## What is source control?
 
-If you're not yet familiar with source control then it is something which you should absolutely learn as a software developer. [Source control](https://en.wikipedia.org/wiki/Version_control) (or version control) allows you to incrementally save your code in a kind of database. All your changes are saved and it is very easy to go back to a previous state of your code. This reverting can be very convenient if you discover that a single feature you implemented, is not quite panning out as you planned. In this case it is usually very easy to either reset your code to the state before the change, or even just undo the single feature. Finally it can also be used to [prevent versioning in filenames](http://phdcomics.com/comics/archive.php?comicid=1531).
+If you're not yet familiar with source control then it is something which you should absolutely learn as a software developer. [Source control](https://en.wikipedia.org/wiki/Version_control) (or version control) allows you to incrementally save your code in a kind of database. All your changes are saved and it is very easy to go back to a previous state of your code. This reverting can be very convenient if you discover that a single feature you implemented, is not quite panning out as you planned. In this case it is usually very easy to either reset your code to the state before the change, or even just undo the single feature. Finally it can also be used to [prevent versioning in filenames](https://phdcomics.com/comics/archive.php?comicid=1531).
 
-![PhD comics "final.doc"](http://phdcomics.com/comics/archive/phd101212s.gif)
+![PhD comics "final.doc"](https://phdcomics.com/comics/archive/phd101212s.gif)
 
 ## Git
 

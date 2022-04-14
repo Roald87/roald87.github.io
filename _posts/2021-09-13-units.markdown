@@ -11,7 +11,7 @@ Units of values are very important, but also easy to screw up. The F# programmin
 
 Back when I had my first science classes, the teachers would always emphasize the importance of units. If I forgot them, points were usually subtracted from my final mark. At the time I always found this a bit unreasonable. I was calculating a speed, of course the units would be in km/h!
 
-Over the years I got wiser and started to get the importance of what units are used. I learned that things can go horribly wrong when this is not done. For example, the [Mars Climate Orbiter](https://en.wikipedia.org/wiki/Mars_Climate_Orbiter) failed to go into orbit around the red planet, because of a [mix-up between metric and imperial units](http://edition.cnn.com/TECH/space/9909/30/mars.metric.02/index.html).
+Over the years I got wiser and started to get the importance of what units are used. I learned that things can go horribly wrong when this is not done. For example, the [Mars Climate Orbiter](https://en.wikipedia.org/wiki/Mars_Climate_Orbiter) failed to go into orbit around the red planet, because of a [mix-up between metric and imperial units](https://edition.cnn.com/TECH/space/9909/30/mars.metric.02/index.html).
 
 Now, most of us are not working with hundred million dollar machines which try to orbit a distant planet. But also for less expensive machines on earth it would be nice to not make these mistakes. Below I'll show the different options I thought of how to prevent unit mix-ups. They are ranked from worst to best, according to my opinion. 
 
