@@ -1,7 +1,0 @@
-- id: check-https
-  name: Replace http by https
-  description: Replace http by https
-  entry: check-https
-  language: python
-  types: [markdown]
-  
