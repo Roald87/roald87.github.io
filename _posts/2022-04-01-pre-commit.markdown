@@ -1,15 +1,14 @@
 ---
 layout: post
-title: "Up your git game with pre-commits for TwinCAT"
-date: 2022-01-31
+title: "Reduce formatting fights with pre-commits for TwinCAT"
 category: twincat
 ---
 
-[Previously](https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html) I talked about how you can do version control of your TwinCAT code with git. In this post I want to go into a very neat feature of git which I didn't mention last time: pre-commits. Pre-commits can for example be used to ensure consistent  formatting before the code is committed. Unfortunately there aren't many tools for structured text files, but we can also use it for markdown, html or javascript files. Let's dive in!
+[Previously](https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html) I talked about how you can do version control of your TwinCAT code with git. In this post I want to go into a very neat feature of git which I didn't mention last time: pre-commits. Pre-commits can be used to perform linting and static code analyses before the code is committed. Unfortunately there is currently just one pre-commit specifically for structured text files. However, we can also use it for markdown, html or javascript files. Let's dive in!
 
 ## What are pre-commits?
 
-Pre-commits are part of a class of so called [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks). These hooks allow you to run a script at some point during a git command. Most hooks are of the pre- kind, which means it does something before a commit, merge or rebase. They can be very useful to ensure a consistent code formatting style or that the code complies with a static code analyzer. 
+Pre-commits are part of a class of so called [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks). These hooks allow you to run a script at some point during a git command. Most hooks are of the pre- kind, which means it does something before a commit, merge or rebase. They can be very useful to for example, ensure a consistent code formatting style or that a file is a valid json or xml format.
 
 You can see some examples of git hooks if you have a project which uses git. Navigate to the `.git/hooks` folder and you should see a list of example hooks there. If you can't see the `.git` folder, make sure you have enabled "Hidden items" under the View tab in your Windows Explorer. 
 
@@ -17,7 +16,7 @@ You can see some examples of git hooks if you have a project which uses git. Nav
 
 If you open one of the files you will see some bash scripts. It is not necessary to use bash, you can use any programming or scripting language which is available on your system. 
 
-You can write your own hooks from scratch, but for pre-commits there is already [a large variety available](https://pre-commit.com/hooks.html). Let's see how we can use these for our TwinCAT projects.
+You can write your own hooks from scratch, but for many file there is already [a large variety available](https://pre-commit.com/hooks.html). Let's see how we can use these and a structured text hook for our TwinCAT projects.
 
 ## Setup pre-commit
 
@@ -44,7 +43,7 @@ A popular framework to manage pre-commits is called [pre-commit](https://pre-com
 
 ## Adding TwinCAT relevant pre-commits
 
-As you might have noticed, there is not a lot of open source software for TwinCAT. Luckily there are actually some pre-commits specifically for TwinCAT! The kind people of the Photon Controls and Data Systems at SLAC have open sourced their TwinCAT pre-commit files!
+As you might have noticed, there is not a lot of open source software for TwinCAT. Luckily there is a pre-commit specifically for TwinCAT! The kind people of the Photon Controls and Data Systems at SLAC have open sourced their TwinCAT pre-commits.
 
 In order to use the SLAC pre-commits, add the following lines to your `.pre-commit-config.yaml` file:
 
@@ -52,9 +51,13 @@ In order to use the SLAC pre-commits, add the following lines to your `.pre-comm
 -   repo: https://github.com/pcdshub/pre-commit-hooks
     rev: v1.1.0
     hooks:
-    -   id: twincat-leading-tabs-remover # Replaces all leading tabs with spaces
-    -   id: twincat-lineids-remover # Removes line ids. See point 4 of the link for why you don't need them https://cookncode.com/twincat/2021/06/07/tc-source-control-tips#2-creating-independent-files
-    -   id: twincat-xml-format # Formats .tmc and .tpy files
+    # Replaces all leading tabs with spaces
+    -   id: twincat-leading-tabs-remover
+    # Removes line ids. See point 4 of the link for why you don't need them 
+    # https://cookncode.com/twincat/2021/06/07/tc-source-control-tips#2-creating-independent-files 
+    -   id: twincat-lineids-remover
+    # Formats .tmc and .tpy files 
+    -   id: twincat-xml-format 
 ```
 
 For completeness, I'll also add the following standard pre-commits. Let's first run the pre-commits, later [I will go into detail what they do and why they are useful](#hooks-what-and-why).
@@ -64,10 +67,13 @@ repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
     hooks:
-    -   id: trailing-whitespace # Removes trailing white spaces
-    -   id: check-yaml # checks yaml files for parseable syntax.  
-    -   id: check-added-large-files # prevents giant files from being committed.     
-````
+    # Removes trailing white spaces
+    -   id: trailing-whitespace 
+    # checks yaml files for parseable syntax
+    -   id: check-yaml 
+    # prevents giant files from being committed
+    -   id: check-added-large-files 
+```
 
 Now install the pre-commit hooks with `pre-commit install`. **You only need to do this once per git repo.** After that you can run `pre-commit run --all-files`, to let the pre-commits do their magic. Note: you only run this command if you added new pre-commits. Normally all the pre-commits are automatically executed. The automatic execution will then only check files which you've changed. 
 
@@ -103,13 +109,13 @@ Why: They are are only useful locally. When uploaded to source control they only
 
 What: Formats the `.tmc` and `.tcp` files with newlines and indentation. 
 
-Why: Makes these files readable for humans. Normally TwinCAT doesn't put any newlines or indentation in these files. Useful if you would like to have these files in source control.
+Why: Makes these files readable for humans. Normally TwinCAT doesn't put any newlines or indentation in these files. Useful if you would like to have these files in source control and clearly see the differences.
 
 `trailing-whitespace`
 
 What: Removes spaces and tabs at the end of lines. 
 
-Why: Whitespace at the end of a line have no influence on code execution. You can add or remove as many as you'd like. But they can show up as useless changes if someone  adds some or removes them. 
+Why: Whitespace at the end of a line have no influence on code execution. You can add or remove as many as you'd like. But they can show up as useless changes if someone adds some or removes them. 
 
 `check-yaml`
 
@@ -117,53 +123,121 @@ What: Checks that your yaml file (e.g. the `.pre-commit-config.yaml`) can actual
 
 Why: Ensures that your yaml files do not break.
 
-` check-added-large-files`: 
+`check-added-large-files`: 
 
 What: prevents large files from being added to your git tree. 
 
 Why: To prevent your git tree from becoming huge. Saves time for new users when they download the repo for the first time. Large, non-text files, such as images or binary files usually contain no useful diffs. You want to commit these files using [Git LFS](https://git-lfs.github.com/).
 
-------
-Add prettier
+## Developing your own hooks
+
+If you would like to develop your own hooks there are two options: local and remote repo based hooks. Local hooks are quite easy to setup, but can only be used in the repo where they are saved. On the other hand the remote based hooks can be shared across multiple projects. [The TwinCAT hooks](https://github.com/pcdshub/pre-commit-hooks) we used earlier are an example of a remote hook. 
+
+### Remote hooks
+
+You can [use many languages](https://pre-commit.com/#supported-languages) to develop your own remote hooks. Most languages require a working installation of that specific language on the system where the hooks are executed. The exceptions are node, python and ruby. For these languages no existing installation is needed. Hooks developed in these languages setup their own (node, python, ruby) environment when first executed. On subsequent runs the environment will be reused. 
+
+Remote hooks also need to be a valid git repo. That is because pre-commit will try to do a `git clone ...` of the repo url you supplied in the `.pre-commit.yaml` file when it is used.
+
+### Local hooks with example
+
+Developing your own local hook is quite straight forward. I'll explain how to do it by making a hook which checks if all links in this blog start with `https`. If they don't, `http` will be replaced by `https`.
+
+First add a file called `.pre-commit-config.yaml` **LINK** with the following content. See the comments for their meaning.
+
+```yaml
+repos:
+    - repo: local
+      hooks:
+        # Name of the hook
+        - id: check-https
+          # Hook name shown during hook execution
+          name: check if all links are https
+          # Where pre-commit can find the script it should call and how it should call it
+          entry: python _hooks/check_https.py 
+          # The language to use, in this case we're using a language present on the system. 
+          # Using python as an argument would work as well
+          language: system 
+          # A valid regex pattern to define which files should be passed to `check_https.py`
+          files: '.*\.(md|markdown)'
+```
+
+When pre-commit runs this hook, it will first search for files which conform to the regex pattern mentioned in the last row. Then it will call the command mentioned under `entry` with each filename. For example it will find the files `README.md` and `about.md`. Then it will call `check_https.py` with `python _hooks/check_https.py README.md about.md`.
+
+Next create a new file called `_hooks/check_https.py` **LINK** with the following content. See comments for the meaning.
+
+```python
+#!/usr/bin/env python
+
+import argparse
+
+def fix_file(filename):
+    # Open the file
+    with open(filename, 'r') as fd:
+        original_lines = fd.readlines()
+    new_lines = []
+    changed = False
+    # For each line in the file check if a https:// is found. 
+    # If so, replace it with https://
+    for line in original_lines:
+        if "https://" in line:
+            line = line.replace("https://", "https://")
+            changed = True
+        new_lines.append(line)
+
+    # If a line was changed, print a message in the console and overwrite the 
+    # original file with the fixed one.
+    if changed:
+        print(f'Fixing {filename}')
+        with open(filename, 'w') as fd:
+            fd.write(''.join(new_lines))
 
 
-Might need to add node executable to terminal 
+def main(args=None):
+    # Parse the filename arguments:
+    # e.g. Namespace(filenames=['README.md', 'about.md'])
+    if args is None:
+        parser = argparse.ArgumentParser()
+        parser.add_argument('filenames', nargs='*')
+        args = parser.parse_args()
+    # For each filename execute the file fixer on it
+    try:
+        for filename in args.filenames:
+            fix_file(filename)
+        # Return 0, which means the hook executed successfully and pre-commit is happy
+        return 0
+    except Exception as exc:
+        print(exc)
+        # If something went wrong return an error code other than 0 and pre-commit
+        # then knows something went wrong
+        return 1
 
-`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\Microsoft\VisualStudio\`
 
-### Error
+if __name__ == "__main__":
+    exit(main())
+``` 
+
+If you now run `pre-commit run --all-files` you should see all the files it changed.
 
 ```
-An unexpected error has occurred: CalledProcessError: command: ('C:\\Users\\roald\\.cache\\pre-commit\\repo4ljaca3f\\node_env-default\\Scripts\\npm.CMD', 'install', '--dev', '--prod', '--ignore-prepublish', '--no-progress', '--no-save')
-return code: 1
-expected return code: 0
-stdout:
+> pre-commit run --all-files
+check if all links are https.................................................Failed
+- hook id: check-https
+- files were modified by this hook
 
-    up to date, audited 74 packages in 2s
-
-    4 packages are looking for funding
-      run `npm fund` for details
-
-    7 moderate severity vulnerabilities
-
-    To address all issues (including breaking changes), run:
-      npm audit fix --force
-
-    Run `npm audit` for details.
-
-stderr:
-    npm WARN install Usage of the `--dev` option is deprecated. Use `--include=dev` instead.
+Fixing _posts/2021-09-13-units.markdown
+Fixing _posts/2021-06-07-tc-source-control-tips.markdown
+Fixing _posts/2021-08-17-tc-simulation.markdown
+Fixing tclinks.md
 ```
 
-x `git config --system core.longpaths true`
-x `pip install virtualenv==20.0.33`
-- upgrade npm from ? to latest 
-- upgrade node from 10.6.0 to latest?
+## Further ideas
 
+Other ideas could be to use [Prettier](https://prettier.io/) to format JavaScript, HTML or CSS files from HMI projects. Unfortunately the HMI pages are saved as `.content` and `.view` files, so they are not recognized as HTML files by prettier. You could probably make it work though by temporarily renaming these files to `.html` and then running prettier.
 
-### Warning
-```
-[WARNING] The 'rev' field of repo 'https://github.com/prettier/pre-commit' appears to be a mutable reference (moving tag / branch).  Mutable references are never updated after first install and are not supported.  See https://pre-commit.com/#using-the-latest-version-for-a-repository for more details.  Hint: `pre-commit autoupdate` often fixes this.
-```
- --> solved with  `pre-commit autoupdate`
+Pre-commits are automatically executed locally whenever you commit something. But you can also add pre-commit to you CI workflow. For example use [prettier.ci](https://pre-commit.ci/) to [automatically format markdown files of a pull request](https://github.com/Roald87/TwinCatChangelog/pull/23).
 
+![pre-commit integration in github actions](/assets/2022-pre-commit/precommit_ci.png)
+![changes made by pre-commit.ci](/assets/2022-pre-commit/precommit_ci_changes.png)
+
+Have you already used pre-commits for your TwinCAT projects? Or do you have other ideas? Let me know in the comments below!
