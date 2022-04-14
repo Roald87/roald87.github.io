@@ -215,7 +215,7 @@ if __name__ == "__main__":
     exit(main())
 ``` 
 
-If you now run `pre-commit run --all-files` you should see all the files it changed.
+If you now run `pre-commit run --all-files` you should see [all the files](https://github.com/Roald87/roald87.github.io/commit/85cf128b4a82f1807d8fbbcb74fa57825408c9aa) it changed.
 
 ```
 > pre-commit run --all-files
