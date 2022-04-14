@@ -3,5 +3,5 @@
   description: Replace http by https
   entry: check-https
   language: python
-  types_or: [markdown, md]
+  types: [markdown]
   

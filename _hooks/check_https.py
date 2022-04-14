@@ -2,7 +2,8 @@
 
 import argparse
 
-def fix_file(filename)
+def fix_file(filename):
+    print(f"Opening {filename}")
     with open(filename, 'r') as fd:
         original_lines = fd.readlines()
     new_lines = []
