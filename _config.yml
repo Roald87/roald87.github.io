@@ -9,6 +9,7 @@ linkedin_username: roaldruiter
 
 sass:
   sass_dir: _sass
+  style: compressed
 
 texture:
   title: Cook & Code
