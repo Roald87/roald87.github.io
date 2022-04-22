@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Unit testing code from a separate project"
-date: 2021-02-21
 category: twincat
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: post
-title:  "Stand-alone PLC projects"
-date:   2020-01-29
+title: "Stand-alone PLC projects"
 category: twincat
 ---
 

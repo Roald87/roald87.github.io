@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Corona effect on weather"
-date: 2020-4-12
 category: python
 ---
 

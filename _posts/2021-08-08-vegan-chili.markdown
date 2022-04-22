@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "The Best Vegan Chili"
-date: 2021-08-08
 category: cooking
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Source control tips for TwinCAT"
-date: 2021-06-07
 category: twincat
 ---
 

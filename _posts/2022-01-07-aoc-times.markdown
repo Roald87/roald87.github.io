@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "A visual journey of Advent of Code times"
-date: 2022-01-07
 category: python
 ---
 

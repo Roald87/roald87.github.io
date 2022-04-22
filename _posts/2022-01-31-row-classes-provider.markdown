@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "How to work with the RowClassesProvider?"
-date: 2022-01-31
 category: twincat
 ---
 

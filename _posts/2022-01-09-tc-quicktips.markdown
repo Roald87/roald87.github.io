@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Quick tips for TwinCAT"
-date: 2022-01-09
 category: twincat
 ---
 

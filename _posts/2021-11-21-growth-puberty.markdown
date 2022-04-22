@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "My teenage growth spurt"
-date: 2021-11-27
 category: miscellaneous
 ---
 

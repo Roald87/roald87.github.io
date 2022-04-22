@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Vegan 'bolognese' sauce"
-date: 2021-02-15
 category: cooking
 ---
 

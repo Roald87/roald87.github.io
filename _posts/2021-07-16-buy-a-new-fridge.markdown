@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Want to save some money? Buy a new fridge!"
-date: '2021-07-16' 
 category: miscellaneous
 ---
 

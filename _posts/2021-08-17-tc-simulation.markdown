@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Machine simulation with a digital twin"
-date: 2021-08-17
 category: twincat
 ---
 

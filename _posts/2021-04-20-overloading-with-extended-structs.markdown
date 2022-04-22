@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "'Overloading' functions with extended structs"
-date: 2021-04-20
 category: twincat
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Easy wok sauce"
-date: '2021-03-15' 
 category: cooking
 ---
 

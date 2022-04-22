@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "How not to screw up your units"
-date: 2021-09-13
 category: twincat
 ---
 

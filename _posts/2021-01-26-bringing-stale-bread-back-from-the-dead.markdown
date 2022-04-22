@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Bringing stale bread back from the dead"
-date: 2021-01-26
 category: cooking
 ---
 

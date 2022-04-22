@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "TwinCAT EventLogger: PLC part"
-date:   2020-11-03
 category: twincat
 ---
 

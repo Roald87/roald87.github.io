@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Forecasting the market share of battery electrical vehicles"
-date: 2019-4-7
 category: python
 ---
 

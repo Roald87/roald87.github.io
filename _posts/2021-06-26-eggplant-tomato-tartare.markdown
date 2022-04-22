@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Caramelized eggplant and tomato tartare"
-date: '2021-06-26' 
 category: cooking
 ---
 

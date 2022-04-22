@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Preventing page faults from references"
-date: 2021-02-07
 category: twincat
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "TwinCAT EventLogger: HMI part"
-date: 2021-01-20
 category: twincat
 ---
 
