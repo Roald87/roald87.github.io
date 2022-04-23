@@ -26,6 +26,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         target_branch: 'gh-pages'
         pre_build_commands: |
+          git config --global --add safe.directory /github/workspace
           apk --update add imagemagick
           apk --update add vips
           apk --update add libwebp
