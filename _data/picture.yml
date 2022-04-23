@@ -1,0 +1,10 @@
+presets:
+  default:
+    # Must be an array: which image sizes (width in pixels) to generate (unless
+    # directed otherwise below). If not specified, will use sensible default
+    # values.
+    widths: [300, 500, 720]
+
+    link_source: true # wrap images in a link to the original source image.
+    dimension_attributes: true # Page reflow begone!
+    

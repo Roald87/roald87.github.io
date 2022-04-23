@@ -12,7 +12,8 @@ Pre-commits are part of a class of so called [git hooks](https://git-scm.com/boo
 
 You can see some examples of git hooks if you have a project which uses git. Navigate to the `.git/hooks` folder and you should see a list of example hooks there. If you can't see the `.git` folder, make sure you have enabled "Hidden items" under the View tab in your Windows Explorer. 
 
-![git hook examples](/assets/2022-pre-commit/hook-examples.png)
+{% picture /2022-pre-commit/hook-examples.png --alt git hook examples %}
+<!-- ![git hook examples](/assets/2022-pre-commit/hook-examples.png) -->
 
 If you open one of the files you will see some bash scripts. It is not necessary to use bash. In fact, you can use any programming or scripting language which is available on your system. 
 
