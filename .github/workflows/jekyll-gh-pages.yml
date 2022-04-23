@@ -27,5 +27,4 @@ jobs:
         target_branch: 'gh-pages'
         pre_build_commands: |
           apk --update add imagemagick
-          apk --update add libvips42
           apk --update add libwebp
