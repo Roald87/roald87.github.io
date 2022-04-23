@@ -12,8 +12,7 @@ Pre-commits are part of a class of so called [git hooks](https://git-scm.com/boo
 
 You can see some examples of git hooks if you have a project which uses git. Navigate to the `.git/hooks` folder and you should see a list of example hooks there. If you can't see the `.git` folder, make sure you have enabled "Hidden items" under the View tab in your Windows Explorer. 
 
-{% picture /2022-pre-commit/hook-examples.png --alt git hook examples %}
-<!-- ![git hook examples](/assets/2022-pre-commit/hook-examples.png) -->
+{% picture 2022-pre-commit/hook-examples.png --alt git hook examples as found in the ./git/hooks folder %}
 
 If you open one of the files you will see some bash scripts. It is not necessary to use bash. In fact, you can use any programming or scripting language which is available on your system. 
 
@@ -80,13 +79,13 @@ Now install the pre-commit hooks with `pre-commit install`. **You only need to d
 
 Depending on the project you will see no, some or a lot of files being changed. For example, when I ran it on my [TwinCAT Tutorial repo](https://github.com/Roald87/TwincatTutorials) I saw the following:
 
-![pre-commit changes to the twincat tutorial repo](/assets/2022-pre-commit/changes-twincat-tutorial.png)
+{% picture 2022-pre-commit/changes-twincat-tutorial.png --alt pre-commit changes to the twincat tutorial repo %}
     
 For each git hook you will see if it had files to check. If that was the case, you see if it changed any files and what files were changed.
 
 Below I show an example where two hooks were triggered. Here both the leading tabs remover failed (as shown in the screen shot), but also the trailing white space one failed (not shown). Below are the differences I saw afterwards in SourceTree:
 
-![git hook examples](/assets/2022-pre-commit/after-running-sample-pre-commit.png)
+{% picture 2022-pre-commit/after-running-sample-pre-commit.png --alt git diff after running the sample pre-commit. Here trailing white spaces have been removed and tabs are replaced by spaces. %}
 
 You see that it removed a trailing whitespace after the `CASE _state OF`. Additionally the file had a mix of tabs and spaces. The tabs were replaced by spaces. These changes were made by the `trailing-whitespace` and `twincat-leading-tabs-remover` respectively. For a full list of all the changes you can see the differences of [this commit](https://github.com/Roald87/TwincatTutorials/pull/2/commits/91041e5f94d44095ce070381645609bf82ce52d8).
 
@@ -236,7 +235,7 @@ Other ideas could be to use [Prettier](https://prettier.io/) to format JavaScrip
 
 Pre-commits are automatically executed locally whenever you commit something. But you can also add pre-commit to your CI workflow. For example, use [prettier.ci](https://pre-commit.ci/) to [automatically format markdown files of a pull request](https://github.com/Roald87/TwinCatChangelog/pull/23).
 
-![pre-commit integration in github actions](/assets/2022-pre-commit/precommit_ci.png)
-![changes made by pre-commit.ci](/assets/2022-pre-commit/precommit_ci_changes.png)
+{% picture 2022-pre-commit/precommit_ci.png --alt pre-commit integration in github actions %}
+{% picture 2022-pre-commit/precommit_ci_changes.png --alt changes made by pre-commit.ci %}
 
 Have you already used pre-commits for your (TwinCAT) projects? Or do you have other ideas? Let me know in the comments below!
