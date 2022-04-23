@@ -28,5 +28,5 @@ jobs:
         pre_build_commands: |
           git config --global --add safe.directory /github/workspace
           apk --update add imagemagick
-          apk --update add vips
+          apk --update add vips vips-tools
           apk --update add libwebp
