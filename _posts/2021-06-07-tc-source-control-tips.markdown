@@ -6,7 +6,9 @@ category: twincat
 
 Source control is essential when you're developing software. However, there is little information online on how to do it properly for TwinCAT projects. In this post I'll share some tips and tricks I picked up along the way. The main focus will be git, but many points apply to other source control systems as well.
 
-*Last updated 12 August 2021*
+*Last updated 28 April 2022*
+
+*You might also like my [new post on pre-commits](https://cookncode.com/twincat/2022/04/14/pre-commit.html)!*
 
 ## What is source control?
 
