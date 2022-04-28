@@ -93,7 +93,7 @@ The pros and cons of this method are:
 
 ❌ Need to hover over it to see the unit.
 
-![showing the unit from the comment with a mouse hoover](/assets/2021-09-13-units/mouse_hover_unit.png)
+{% picture 2021-09-13-units/mouse_hover_unit.png --alt showing the unit from the comment with a mouse hoover %}
 
 ❌ No automatic checks to ensure the right unit is used.
 
@@ -103,7 +103,7 @@ The pros and cons of this method are:
 
 An alias can be created by right clicking on the PLC project and choose **Add > DUT**. Then in the following screen select Alias and give it a name (e.g. mbar) and a datatype (e.g. `REAL`).
 
-![how to create an alias data type](/assets/2021-09-13-units/create_alias.png)
+{% picture 2021-09-13-units/create_alias.png --alt how to create an alias data type %}
 
 Then it can be used as follows.
 
@@ -172,7 +172,7 @@ pressure2_Torr := TorrToMbarWithUnits(pressure_Torr:=pressure1_mbar);
 
 We're making progress, but the compiler is not helping us yet. In order for the compiler to help us, STRUCTs can be used. You can add a STRUCT by right clicking on your PLC project and selecting **Add > DUT**.
 
-![how to create a struct](/assets/2021-09-13-units/create_struct.png)
+{% picture 2021-09-13-units/create_struct.png --alt how to create a struct %}
 
 And then define the STRUCTs as follows.
 
@@ -217,7 +217,7 @@ pressure_us := PoundsPerSquareInchToPascal(pressure:=pressure_eu);
 
 the compiler will complain. 🙌
 
-![compiler error from using the wrong struct](/assets/2021-09-13-units/convert_type_error.png)
+{% picture 2021-09-13-units/convert_type_error.png --alt compiler error from using the wrong struct %}
 
 ✔️ There is a unit.
 
@@ -240,7 +240,7 @@ END_STRUCT
 END_TYPE
 ```
 
-![a struct with a unit as a string](/assets/2021-09-13-units/struct_with_string_unit.png)
+{% picture 2021-09-13-units/struct_with_string_unit.png --alt a struct with a unit as a string %}
 
 ### Adding IO signal status
 

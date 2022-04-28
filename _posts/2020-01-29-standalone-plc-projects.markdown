@@ -16,19 +16,19 @@ That’s why it is a good idea to separate the projects. Creating a separate PLC
 
 It is also possible to separate an existing TwinCAT 3 project which includes the PLC project. In order to do that you first create a stand-alone project, much like above. You go to File > New Project > TwinCAT PLC Project and select an appropriate name for your project and save location and click OK.
 
-![](/assets/2020-01-29-standalone-plc-projects/Create_new_project.PNG)
+{% picture 2020-01-29-standalone-plc-projects/Create_new_project.PNG %}
 
 Then select “Empty PLC project” in the following screen. The name doesn’t really matter, because this project will be replaced by an existing one in the next step. Click OK.
 
-![](/assets/2020-01-29-standalone-plc-projects/empty_plc_project.png)
+{% picture 2020-01-29-standalone-plc-projects/empty_plc_project.png %}
 
 Then right click on the PLC project and select “Change Project...”. Select the .plcproj file of the PLC project which you want to import.
 
-![](/assets/2020-01-29-standalone-plc-projects/change_project.PNG)
+{% picture 2020-01-29-standalone-plc-projects/change_project.PNG %}
 
 Then select the appropriate option what to do with the PLC project files. After clicking on OK, all the files of the selected PLC project should show up in your stand-alone project.
 
-![](/assets/2020-01-29-standalone-plc-projects/move_plc_files.PNG)
+{% picture 2020-01-29-standalone-plc-projects/move_plc_files.PNG %}
 
 There is one thing which is not copied and those are custom events. Custom events in a combined project are stored in the .tsproj file and can be found under SYSTEM > Type System > tab Event Classes. I’m not sure what the appropriate way is to get them in the new stand-alone project, but it can be done by copying the events from the combined project’s .tsproj file into the .tsproj file of the stand-alone PLC project.
 

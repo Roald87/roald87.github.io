@@ -16,14 +16,14 @@ During the first Corona wave in March-April 2020 I noticed that was very little 
 
 I analyzed data from the Netherlands and didn't really find a large effect for the temperature differences as they did in the article. However, I did find that it was awfully sunny! Look at the peak in end of March. It was never as sunny before.
 
-![](/assets/2020-04-12-corona-weather/sunhours_nl.png)
+{% picture 2020-04-12-corona-weather/sunhours_nl.png %}
 Source: [KNMI](https://www.knmi.nl/kennis-en-datacentrum/achtergrond/data-ophalen-vanuit-een-script).
 
 ## Switzerland
 
 I also analyzed the data for Switzerland. Here I didn't find such a large peak above normal, although you can see it was quite sunny in early April!
 
-![](/assets/2020-04-12-corona-weather/sunhours_ch.png)
+{% picture 2020-04-12-corona-weather/sunhours_ch.png %}
 Sources: [Meteo Schweiz historical data](https://data.geo.admin.ch/ch.meteoschweiz.klima/nbcn-tageswerte/nbcn-tageswerte-1864-2018.zip), [2020 data](https://data.geo.admin.ch/ch.meteoschweiz.klima/nbcn-tageswerte/VQEA34.csv)
 
 ## Analyses details

@@ -47,7 +47,7 @@ We left out the home made chili paste, because these chili's are hard to find in
  
 	- 2 tablespoons of chipotle chilis to the bowl.
 
-	![](/assets/cooking-kenji-vegan-chili/IMG_0298.JPEG)
+{% picture cooking-kenji-vegan-chili/IMG_0298.JPEG %}
 
 2. Dice the 
 
@@ -65,17 +65,17 @@ We left out the home made chili paste, because these chili's are hard to find in
    - 1 tbsp soy sauce, 
    - 1 tsp marmite.
 
-    ![](/assets/cooking-kenji-vegan-chili/IMG_0305.JPEG)
+{% picture cooking-kenji-vegan-chili/IMG_0305.JPEG %}
 
 3. In a big pot, heat vegetable oil and cook the onion about 4 minutes, until softened but not brown. Add bowl with garlic and spices and cook stirringly until fragrant about 1 minute.
 
-    ![](/assets/cooking-kenji-vegan-chili/IMG_0308.JPEG)
+{% picture cooking-kenji-vegan-chili/IMG_0308.JPEG %}
 
 4. Add chickpea/tomato/bean mixture and add chickpea/bean liquid as required to get the right consistency. Simmer for at least 30 minutes, ideally 1.5 hrs, the longer the better! Stir every now and then so the bottom doesn’t burn. Season to taste with salt if needed.
 
-    ![](/assets/cooking-kenji-vegan-chili/IMG_0312.JPEG)
+{% picture cooking-kenji-vegan-chili/IMG_0312.JPEG %}
 
 5. Serve with favorite base and toppings! Refrigerate for up to a week and reheat to serve (at least one night makes it taste even better).
 
-    ![](/assets/cooking-kenji-vegan-chili/chili-at-softball-foodstand.png)
+{% picture cooking-kenji-vegan-chili/chili-at-softball-foodstand.png %}
 

@@ -82,7 +82,7 @@ length2 := Length(point2);
 
 When we run this program we can see that it calculated the length for both points.
 
-![](/assets/2021-04-20-overloading-with-structs/result.png)
+{% picture 2021-04-20-overloading-with-structs/result.png %}
 
 Using this trick you can prevent having to write/test the same function multiple times. I couldn't find any mention of this possibility on InfoSys, so I just tried it out. I was a bit surprised and relieved that it worked! 
 

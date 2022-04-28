@@ -12,7 +12,7 @@ Er waren een hoop reacties op mijn [originele reddit post](https://www.reddit.co
 
 De meest populaire benamingen, volgens dit niet geheel wetenschappelijk correcte onderzoek, zijn:
 
-![](/assets/2020-12-26-ooghoek-spul/ooghoek_spul.png)
+{% picture 2020-12-26-ooghoek-spul/ooghoek_spul.png %}
 
 Afhankelijk van hoe ik alles tel, kom ik op ruim 80 (!) verschillende benamingen voor dit ochtend fenomeen.
 

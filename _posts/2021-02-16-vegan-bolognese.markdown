@@ -13,73 +13,73 @@ Quick links:
 
 This recipe is based on a [Hearty Vegan Mushroom Bolognese](https://www.seriouseats.com/2014/02/vegan-pasta-with-rich-and-hearty-mushroom-bol.html) from Kenji. There are a few steps which I skipped or changed. My version is slightly less work and I also prefer it over his version 😁. First the final result.
 
-![](/assets/2021-02-16-vegan-bolognese/final_sauce.JPEG)
+{% picture 2021-02-16-vegan-bolognese/final_sauce.JPEG %}
 
 ## Extended step-by-step
 
 Start by preparing the [soffritto/mirepoix](https://en.wikipedia.org/wiki/Mirepoix_(cuisine)). This is a mix of equal parts celery, onion and carrot. You can chop it by hand, but that can be quite tedious. I like to do it in a food processor, because it is easier to get the pieces nice and small. I think the size also helps with thickening the eventual sauce.
 
-![](/assets/2021-02-16-vegan-bolognese/mirepoix.jpeg)
+{% picture 2021-02-16-vegan-bolognese/mirepoix.jpeg %}
 
 Preheat a pan on medium heat. When it is hot add some olive oil and the mirepoix. Cook for about 10 minutes until is gets nice and soft. 
 
-![](/assets/2021-02-16-vegan-bolognese/mirepoix_cooking.JPEG)
+{% picture 2021-02-16-vegan-bolognese/mirepoix_cooking.JPEG %}
 
 In the mean time prepare a mix of the taste makers. I opted for a mix of garlic, tomato paste, oregano, chili flakes, soy sauce and marmite. Garlic, oregano and chili flakes are always a good base for a tomato sauce. The tomato paste adds some extra savoriness and thickness the sauce a little. Finally the soy sauce and marmite combo add some of the umami which is normally added by the meat. Kenji also uses these umami bombs for his excellent [vegan chili](https://www.seriouseats.com/recipes/2012/01/best-vegetarian-bean-chile-recipe.html).
 
 By combining all the ingredients in a bowl you can add them simultaneously. This method prevents wildly varying cooking times and stress 👍.
 
-![](/assets/2021-02-16-vegan-bolognese/taste_makers.jpeg)
+{% picture 2021-02-16-vegan-bolognese/taste_makers.jpeg %}
 
 Once the veggie mix is nice and soft, add the bowl of taste makers.
 
-![](/assets/2021-02-16-vegan-bolognese/taste_makers_added.JPEG)
+{% picture 2021-02-16-vegan-bolognese/taste_makers_added.JPEG %}
 
 Stir it into the mirepoix and let it cook for a minute.
 
-![](/assets/2021-02-16-vegan-bolognese/taste_makers_mixed.JPEG)
+{% picture 2021-02-16-vegan-bolognese/taste_makers_mixed.JPEG %}
 
 Then add some red wine.
 
-![](/assets/2021-02-16-vegan-bolognese/wine_added.JPEG)
+{% picture 2021-02-16-vegan-bolognese/wine_added.JPEG %}
 
 Let the wine reduce until a thick sauce remains. Thick means, if you scrape along the bottom, the sauce should slowly fill in the gap.
 
-![](/assets/2021-02-16-vegan-bolognese/wine_reduced.JPEG)
+{% picture 2021-02-16-vegan-bolognese/wine_reduced.JPEG %}
 
 Then it is time to add the tomatoes. I use a potato masher to crush the tomatoes and get them into small chucks.
 
-![](/assets/2021-02-16-vegan-bolognese/tomatoes.JPEG)
+{% picture 2021-02-16-vegan-bolognese/tomatoes.JPEG %}
 
 Add a few bay leafs and it is almost ready to simmer.
 
-![](/assets/2021-02-16-vegan-bolognese/bay_leafs.JPEG)
+{% picture 2021-02-16-vegan-bolognese/bay_leafs.JPEG %}
 
 There is only one important ingredient missing: the mushrooms. The mushrooms provide some of the meaty texture and contribute to a slightly meaty taste.
 
 When I have a lot of mushrooms to clean, I usually wash them in a salad spinner after a tip from Kenji. After cleaning, I use the salad spinner to drain most of the water from the mushrooms.
 
-![](/assets/2021-02-16-vegan-bolognese/mushrooms_cleaning.JPEG)
+{% picture 2021-02-16-vegan-bolognese/mushrooms_cleaning.JPEG %}
 
 Then use a food processor to cut the mushrooms, or cut them by hand. If your using a food processor make sure not to fill it to the brim, or else only the bottom mushrooms will get chopped. Pulse, or cut, until the largest pieces are just a few millimeter. 
 
-![](/assets/2021-02-16-vegan-bolognese/mushrooms_cut.JPEG)
+{% picture 2021-02-16-vegan-bolognese/mushrooms_cut.JPEG %}
 
 Preheat a pan on medium-high. When it is hot, add some olive oil and the chopped mushrooms. Fry them until the moisture is gone and they are nice and brown.
 
-![](/assets/2021-02-16-vegan-bolognese/frying_mushrooms.jpeg)
+{% picture 2021-02-16-vegan-bolognese/frying_mushrooms.jpeg %}
 
 Then add the mushrooms to the sauce, stir it and let it simmer for an hour or so. 
 
-![](/assets/2021-02-16-vegan-bolognese/mushrooms_added_to_sauce.JPEG)
+{% picture 2021-02-16-vegan-bolognese/mushrooms_added_to_sauce.JPEG %}
 
 Finally you should end up with a delicious sauce. Kenji also uses eggplant to thicken his sauce a little. For this recipe I didn't find it necessary. On the contrary, it was actually quite dry and I added a bit of water when I used it for a lasagna.
 
-![](/assets/2021-02-16-vegan-bolognese/final_sauce.JPEG)
+{% picture 2021-02-16-vegan-bolognese/final_sauce.JPEG %}
 
 You could eat the sauce with some pappardelle or use it in a (not so vegan) lasagna as I did. You can also make the sauce in advance and store it in the refrigerator for up to a few days. It will only get better with time!
 
-![](/assets/2021-02-16-vegan-bolognese/lasagna.JPEG)
+{% picture 2021-02-16-vegan-bolognese/lasagna.JPEG %}
 
 ## Ingredients
 

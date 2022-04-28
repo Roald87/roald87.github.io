@@ -53,11 +53,11 @@ usesFoo();
 
 If we run this code, we'll get a Page fault.
 
-![](/assets/2021-02-07-preventing-page-faults-from-references/page_fault.png)
+{% picture 2021-02-07-preventing-page-faults-from-references/page_fault.png %}
 
 And if we log into the PLC, we see that, surprise surprise, it all went tits up when it tried to call `foo()`:
 
-![](/assets/2021-02-07-preventing-page-faults-from-references/page_fault_location.png)
+{% picture 2021-02-07-preventing-page-faults-from-references/page_fault_location.png %}
 
 ## Option 1: Using `__ISVALIDREF`
 
@@ -71,7 +71,7 @@ END_IF
 
 If we now run the new code, we will see that it no longer crashes. However, when we login we see that the `foo.Counter` doesn't increment. It just shows that there is no valid pointer. This makes sense of course, because `foo` is not assigned.
 
-![](/assets/2021-02-07-preventing-page-faults-from-references/is_valid_ref.png)
+{% picture 2021-02-07-preventing-page-faults-from-references/is_valid_ref.png %}
 
 ### Concluding
 
@@ -92,7 +92,7 @@ foo();
 
 Now when we build the code with `foo` unassigned, the compiler will start to complain.
 
-![](/assets/2021-02-07-preventing-page-faults-from-references/var_int_out_error.png)
+{% picture 2021-02-07-preventing-page-faults-from-references/var_int_out_error.png %}
 
 In order for the program to compile, we have to initialize an instance of `Foo` in our `Runner2` program and pass the `foo` instance to `usesFoo`:
 
@@ -131,11 +131,11 @@ _foo();
 
 At this point the code will also generate a Page Fault when we run it, since `_foo` doesn't reference to anything yet. In order to assign something to `_foo` , we add a `FB_init` method to our function block. To do so, first add a new method.
 
-![](/assets/2021-02-07-preventing-page-faults-from-references/add_method.png)
+{% picture 2021-02-07-preventing-page-faults-from-references/add_method.png %}
 
 Then from the drop-down menu select `FB_init`. The other methods in the list are outside the scope of this article, but you can always have a look at InfoSys for more info on [`FB_reinit`](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/5094414603.html&id=) and [`FB_exit`](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/5094414603.html&id=).
 
-![](/assets/2021-02-07-preventing-page-faults-from-references/add_fb_init.png)
+{% picture 2021-02-07-preventing-page-faults-from-references/add_fb_init.png %}
 
 The `FB_init` already comes with some standard code. This code affects the behavior of `FB_init` depending on the operating case: warm or cold starts and an online change. There is no need to explicitly assign these variables; they are implicitly assigned depending on the operating case, as explained [here](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/6415331211.html&id=).
 
@@ -166,11 +166,11 @@ usesFoo();
 
 Now when we activate the code and log in, we'll see that the counter is increasing.
 
-![](/assets/2021-02-07-preventing-page-faults-from-references/fb_init_online.png)
+{% picture 2021-02-07-preventing-page-faults-from-references/fb_init_online.png %}
 
 The advantage of the `FB_init` solution is that in case you forget to pass `foo` to `UsesFoo3`, the compiler will raise an error, so any mistakes are caught early on.
 
-![](/assets/2021-02-07-preventing-page-faults-from-references/fb_init_error.png)
+{% picture 2021-02-07-preventing-page-faults-from-references/fb_init_error.png %}
 
 ### Concluding
 

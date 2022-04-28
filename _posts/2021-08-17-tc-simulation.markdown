@@ -12,7 +12,7 @@ When you're developing PLC code it can be difficult to test the behavior of the 
 
 There are different levels at which you can test your code, as shown in the image below. In this article I will focus on how you can do integration tests without the need for a real machine.
 
-![alltwincat.com pyramid of tests](/assets/2021-08-17-tc-simulation/ThePyramidOfTests.png)
+{% picture 2021-08-17-tc-simulation/ThePyramidOfTests.png --alt alltwincat.com pyramid of tests %}
 
 *Image courtesy of AllTwinCAT.com*
 
@@ -38,13 +38,13 @@ When my colleague tested this, he didn't quite get it to work for our machine. T
 
 What is a digital twin and why would you want one? Lets start with the why first. When you have your PLC project it has numerous in and outputs as visualized below.
 
-![PLC project IO connected to the void](/assets/2021-08-17-tc-simulation/plc_IO.png)
+{% picture 2021-08-17-tc-simulation/plc_IO.png --alt PLC project IO connected to the void %}
 
 If you would like to do integration tests, or test your HMI, then it is often very difficult because the IOs are not connected. For example, you want to test some conveyer belt functionality, but you can't turn it on because some safety latch is not closed.
 
 That is where a [digital twin](https://en.wikipedia.org/wiki/Digital_twin) comes in. A digital twin (or a TwinTwinCAT project? 😬) is a digital or virtual representation of your real machine. By making a digital twin we can mirror our IO's and connect them to the original PLC project as shown here.
 
-![PLC project IO connected to a digital twin](/assets/2021-08-17-tc-simulation/plc_IO_with_twin.png)
+{% picture 2021-08-17-tc-simulation/plc_IO_with_twin.png --alt PLC project IO connected to a digital twin %}
 
 The twin can be made as detailed as desired. Components can be simulated just enough such that things can turn things on and off. Or individual terminals can be simulated, such that the failure of a single IO can be tested.
 
@@ -56,7 +56,7 @@ Now I will guide you through how to build the digital twin project. I will only 
 
 Below you see a schematic representation of the PLC project. The main part is the `Oven` function block. It takes a command from the HMI which can change its state. It also sends a command and receives a state from the `Relay` which will turn on the power of the heater inside oven. The oven sets the heater current based on the set temperature. Finally it receives feedback from the thermocouple about the measured temperature.
 
-![](/assets/2021-08-17-tc-simulation/plc_schematic.png)
+{% picture 2021-08-17-tc-simulation/plc_schematic.png %}
 
 ### Creating a stand-alone PLC & HMI project
 
@@ -83,11 +83,11 @@ The advantage if you add the `.plcproj` file, is that you can directly edit the 
 
 If you select the `.tmc` file, make sure to select the "Auto Reload TMI/TMC" option. This option can be found under **PLC Instance > Object**.  This will make sure that whenever the `.tmc` file of the stand-alone project changes, it will automatically be reloaded into the digital twin project. I used the `.tmc` file for this tutorial.
 
-![image-20210813081517593](/assets/2021-08-17-tc-simulation/auto_reload_tmc.png)
+{% picture 2021-08-17-tc-simulation/auto_reload_tmc.png --alt image-20210813081517593 %}
 
 If you've selected the `.plcproj` file, then make sure to select "Use original project location". With this option you can directly edit the PLC project from the digital twin project.
 
-![image-20210813071116565](/assets/2021-08-17-tc-simulation/add_existing_project.png)
+{% picture 2021-08-17-tc-simulation/add_existing_project.png --alt image-20210813071116565 %}
 
 Next, add a new PLC project which will become our digital twin PLC project. Right click on **PLC > Add New Item...** and choose **PLC template > Standard PLC project**. Give it a name, e.g. SimulationPlc.
 
@@ -95,21 +95,21 @@ In the SimulationPlc project, rename the PlcTask to SimulationTask. This is to m
 
 Then make a new task and call it SimTask.
 
-![image-20210813073830232](/assets/2021-08-17-tc-simulation/add_sim_task.png)
+{% picture 2021-08-17-tc-simulation/add_sim_task.png --alt image-20210813073830232 %}
 
 Next right click on SimulationTask and select **Assign to task**
 
-![image-20210813074059107](/assets/2021-08-17-tc-simulation/assign_to_task.png)
+{% picture 2021-08-17-tc-simulation/assign_to_task.png --alt image-20210813074059107 %}
 
 Then select the **SimTask** as the new task where SimulationTask will be assigned to.
 
-![image-20210813074201087](/assets/2021-08-17-tc-simulation/assign_to_simtask.png)
+{% picture 2021-08-17-tc-simulation/assign_to_simtask.png --alt image-20210813074201087 %}
 
 ### Adding digital twin objects
 
 In this section I will show you how you can create the digital twins of the `Relay` and `Oven` function blocks.
 
-![](/assets/2021-08-17-tc-simulation/plc_and_sim_schematic.png)
+{% picture 2021-08-17-tc-simulation/plc_and_sim_schematic.png %}
 
 #### Mirroring the relay
 
@@ -164,11 +164,11 @@ simRelay();
 
 Now we can link the instance of `Relay` in the PLC project with `SimRelay` of the simulation project. To do so, double click on SimulationTask Inputs and right click on `MAIN.simRelay.turnOnRelay` and select **Change Link...**.
 
-![image-20210813143930619](/assets/2021-08-17-tc-simulation/change_link.png)
+{% picture 2021-08-17-tc-simulation/change_link.png --alt image-20210813143930619 %}
 
 Then select the relay output from the PLC project.
 
-![image-20210813144202680](/assets/2021-08-17-tc-simulation/relay-turnOnRelay.png)
+{% picture 2021-08-17-tc-simulation/relay-turnOnRelay.png --alt image-20210813144202680 %}
 
 Do the same with the SimulationTask Outputs, where you can link the `MAIN.SimRelay.relayOnFeedback` to `MAIN.Relay.relayOnFeedback`. Then you reactivate the configuration and you should see the oven go from on to off via the turning on and off states.
 

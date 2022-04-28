@@ -20,7 +20,7 @@ The model used in the article[^1] works as follows: the quickest way to go from 
 ## Results
 For the exponential growth phase I used data from the [Global EV Outlook 2017](https://webstore.iea.org/global-ev-outlook-2017)[^2]  and for the linear phase I assumed a vehicle lifetime of 20 years. Based on these assumptions the following result is obtained.
 
-![](/assets/2019-ev-forecast/ev_stock_world.png)
+{% picture 2019-ev-forecast/ev_stock_world.png %}
 
 The earliest at which all vehicles in the world can be replaced by electrical ones is **2043**. That is assuming all vehicles which were in the world at 2014 will be replaced by electric vehicles. 
 

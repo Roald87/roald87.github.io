@@ -52,23 +52,23 @@ Once you determined which files should be source controlled, it is important to 
 
 3. Events from the [TwinCAT EventLogger](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html) are normally stored in the `.tsproj` file. But they can also be stored in an independent file. If you created a new project, you can immediately save them in a separate file. In case you want to transfer existing events to a tmc file, the steps are nearly the same. For both you first right click on **Type System** and select **Add New Item...**. Choose a name and location to save your new event class. 
 
-   ![image-20210605125836430](/assets/2021-07-06-tc-source-control/create_tmc_event.png)
+{% picture 2021-07-06-tc-source-control/create_tmc_event.png --alt image-20210605125836430 %}
 
    Then if you want to save _existing events_ into the new file, simply select the event classes you want to save in this new file.
 
-   ![existing-events](/assets/2021-07-06-tc-source-control/existing_events.png)
+{% picture 2021-07-06-tc-source-control/existing_events.png --alt existing-events %}
 
    If you want to save _new events_ into the file, right click on the empty area and select **New**. 
 
-   ![new-events](/assets/2021-07-06-tc-source-control/new_events.png)
+{% picture 2021-07-06-tc-source-control/new_events.png --alt new-events %}
 
    Then simply add events to this newly created event class.
 
-   ![new-event-class](/assets/2021-07-06-tc-source-control/new_event_class.png)
+{% picture 2021-07-06-tc-source-control/new_event_class.png --alt new-event-class %}
 
    When you select type system the newly added event classes will also show up among all other available event classes.
 
-   ![all-event-classes](/assets/2021-07-06-tc-source-control/all_event_classes.png)
+{% picture 2021-07-06-tc-source-control/all_event_classes.png --alt all-event-classes %}
 
    Once the events are in separate tmc files, make sure:
 
@@ -76,11 +76,11 @@ Once you determined which files should be source controlled, it is important to 
 
    - Uncheck "Persistent (even if unused)"
 
-     ![image-20210806223400979](/assets/2021-07-06-tc-source-control/uncheck-persistent.png)
+{% picture 2021-07-06-tc-source-control/uncheck-persistent.png --alt image-20210806223400979 %}
 
      Otherwise the events will be [added to the project file again](https://stackoverflow.com/q/68677733/6329629):
 
-     ![remove-persistent](/assets/2021-07-06-tc-source-control/remove_persistent.png)
+{% picture 2021-07-06-tc-source-control/remove_persistent.png --alt remove-persistent %}
 
    - If you're using 4022.x the event tmc files are [not formatted properly](https://stackoverflow.com/q/68678539/6329629). All the events will be on a single line. Proper formatting was introduced in 4024. If you're stuck with 4022.x, you have to format the tmc files yourself. For example with the Sublime plugin [Indent XML](https://github.com/alek-sys/sublimetext_indentxml).
 
