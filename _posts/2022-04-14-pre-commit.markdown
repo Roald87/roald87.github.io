@@ -4,7 +4,7 @@ title: "Reduce formatting fights with pre-commits for TwinCAT"
 category: twincat
 ---
 
-[Previously](https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html) I talked about how you can do version control of your TwinCAT code with git. In this post I want show a very neat feature of git which I didn't mention last time: pre-commits. Pre-commits can be used to for example format, lint or do static code analyses before the code is committed. Unfortunately there is currently just one pre-commit specifically for structured text files. However, we can also use pre-commits for markdown, html or javascript files. Let's dive in!
+[Earlier](https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html) I talked about how you can do version control of your TwinCAT code with git. In this post I want show a very neat feature of git which I didn't mention last time: pre-commits. You can use pre-commits to format, lint or do static code analyses before you commit your code. Unfortunately there is currently only one pre-commit for structured text files. But, we can also use pre-commits for markdown, html or javascript files. Let's dive in!
 
 ## What are pre-commits?
 
