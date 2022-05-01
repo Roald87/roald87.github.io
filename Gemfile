@@ -24,6 +24,7 @@ group :jekyll_plugins do
   # Use emojis
   gem 'jemoji'
   gem 'jekyll_picture_tag', "~> 2.0"
+  gem 'jekyll-sitemap'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

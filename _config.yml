@@ -3,7 +3,7 @@ title: Cook & Code
 description: >- # this means to ignore newlines until "baseurl:"
   Personal projects and ideas.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://cookncode.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  roald87
 linkedin_username: roaldruiter
 
@@ -46,6 +46,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-feed
   - jemoji
+  - jekyll-sitemap
 
 picture:
   source: "assets"
