@@ -50,3 +50,4 @@ plugins:
 
 picture:
   source: "assets"
+  suppress_warnings: true
