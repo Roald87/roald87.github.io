@@ -2,7 +2,7 @@
 <div class="container">
 	<h1>{{ page.title }}</h1>
 	<div class="post-date" style="margin-top:20px">
-		Published on {{ page.date | date: date_format }}
+		Published on {{ page.date | date: date_format }}. Last updated on {{ page.last_modified_at | date: date_format}}.
 	</div>
 	<ul class="post-tags">
 		{%- for tag in page.categories -%}

@@ -6,7 +6,6 @@ category: cooking
 
 Let's be real, tofu on its own is the not most exciting thing. Recently however, we made a recipe where the tofu was really good! Let me share it with you.
 
-*Last updated: 14 February 2021*
 
 The recipe we made was a [Sweet and Sour Tofu Stir Fry](https://www.pickuplimes.com/single-post/sweet-and-sour-tofu-stir-fry). I wasn't a big fan of the recipe itself. Partially because I'm not a big fan of sweet dishes and partially because we might have made it a bit too sour. 
 
