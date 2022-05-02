@@ -6,7 +6,6 @@ category: cooking
 
 Easy, tasty, vegan, cheap, leftovers. A simplified and *Europeanized* version of [The Best Vegetarian Chili](https://www.seriouseats.com/best-vegetarian-bean-chili) from [The Food Lab](https://www.goodreads.com/book/show/24861842-the-food-lab) by J. Kenji López-Alt.
 
-
 We left out the home made chili paste, because these chili's are hard to find in Europe. If you can find them, go ahead and use them, but the taste is already great with the marmite/soysause + chipotle chilis!
 
 ## Ingredients

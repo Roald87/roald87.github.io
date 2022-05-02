@@ -8,8 +8,6 @@ Recently I came across an article where the authors used a relatively simple mod
 
 - [Code](https://github.com/Roald87/ev_forecast)
 
-✨ *Updated for blog on 23 December 2020* ✨
-
 ## Model
 
 The model used in the article[^1] works as follows: the quickest way to go from point A (no electric cars) to B (all vehicles are electric) is a straight line. Since you can not suddenly produce a number of electrical vehicles equal to the entire demand of new vehicles, a supply chain for the electric vehicle market has to be build up. Therefore three phases are identified in the model:

@@ -10,8 +10,6 @@ During the first Corona wave in March-April 2020 I noticed that was very little 
 - [Colab weather analyses 🇳🇱](https://colab.research.google.com/github/Roald87/CoronaWeather/blob/master/CoronaWeather_NL.ipynb#)
 - [Colab weather analyses 🇨🇭](https://colab.research.google.com/github/Roald87/CoronaWeather/blob/master/CoronaWeather_CH.ipynb#)
 
-✨ *Updated 23 December 2020* ✨
-
 ## Netherlands
 
 I analyzed data from the Netherlands and didn't really find a large effect for the temperature differences as they did in the article. However, I did find that it was awfully sunny! Look at the peak in end of March. It was never as sunny before.
