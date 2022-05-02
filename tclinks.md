@@ -7,7 +7,7 @@ permalink: /tclinks/
 ## Blogs
 
 - [PlcCoder](https://www.plccoder.com/): Regularly updated with concise tips and tricks and some object oriented programming basics.
-- [AllTwinCAT](https://alltwincat.com/): Regularly updated with various in-depth articles about everything related to TwinCAT development. 
+- [AllTwinCAT](https://alltwincat.com/): Regularly updated with various in-depth articles about everything related to TwinCAT development.
 - [Stefan Henneken](https://stefanhenneken.wordpress.com/): A lot of information on different object oriented design patterns in both German and English.
 - [Hemelix](https://www.hemelix.com/scada-hmi/beckhoff-hmi/): A nice collection of tips and tricks for TcHMI, sometimes also with [video](https://www.youtube.com/channel/UCrVpKbWVAvhSbjA2nVjgLqg/videos).
 - [Contact and Coil](https://www.contactandcoil.com/twincat-3-tutorial/): An excellent beginners tutorial for newcomers.
@@ -20,7 +20,7 @@ permalink: /tclinks/
 - [Jakob Sagatowski](https://www.youtube.com/c/JakobSagatowski): An excellent, extensive and free introduction into TwinCAT and more.
 - [Oleg Mueller](https://www.youtube.com/channel/UCHvABpkd825kAtaDxnhE-tg): Tons of videos about TcHMI from the TcHMI Guru.
 - [Beckhoff official](https://www.youtube.com/user/BeckhoffAutomation): Beckhoff's own channel with many videos on the latest or upcoming products.
-- [Coding Bytes](https://codingbytes.teachable.com/p/codingbytes_twincat3): Team members from Beckhoff Australia share videos which are primarily based on replies to support questions. 
+- [Coding Bytes](https://codingbytes.teachable.com/p/codingbytes_twincat3): Team members from Beckhoff Australia share videos which are primarily based on replies to support questions.
 
 ## Tools
 

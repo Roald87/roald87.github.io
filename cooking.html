@@ -3,28 +3,35 @@ layout: page
 title: Cooking
 ---
 
-<h1 class="title">Cooking <a href="https://roald87.github.io/feed/cooking.xml"><i class="icon-rss-squared"></i></a></h2>
+<h1 class="title">
+  Cooking
+  <a href="https://roald87.github.io/feed/cooking.xml">
+    <i class="icon-rss-squared"></i>
+  </a>
+</h1>
 
 {%- if site.posts.size > 0 -%}
-{% assign tag = "cooking" %}
-<ul class="posts">
-	{%- for post in site.posts -%}
-	{% if post.category contains tag %}
-	<li>
-		{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-		<div class="post-meta">
-			<a class="post-link" href="{{ post.url | relative_url }}">
-				<h2 class="post-title">{{ post.title | escape }}</h2>
-			</a>
-			<div class="post-date"><i class="icon-calendar"></i>{{ post.date | date: date_format }}</div>
-		</div>
-		<div class="post">
-			{%- if site.show_excerpts -%}
-			{{ post.excerpt }}
-			{%- endif -%}
-		</div>
-	</li>
-	{%- endif -%}
-	{%- endfor -%}
-</ul>
+  {% assign tag = "cooking" %}
+  <ul class="posts">
+    {%- for post in site.posts -%} 
+      {% if post.category contains tag %}
+      <li>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <div class="post-meta">
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            <h2 class="post-title">{{ post.title | escape }}</h2>
+          </a>
+          <div class="post-date">
+            <i class="icon-calendar"></i>{{ post.date | date: date_format }}
+          </div>
+        </div>
+        <div class="post">
+          {%- if site.show_excerpts -%} 
+            {{ post.excerpt }} 
+          {%- endif -%}
+        </div>
+      </li>
+      {%- endif -%} 
+    {%- endfor -%}
+  </ul>
 {%- endif -%}

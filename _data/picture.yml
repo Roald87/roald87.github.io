@@ -7,4 +7,3 @@ presets:
     widths: [300, 500, 720]
     link_source: true # wrap images in a link to the original source image.
     dimension_attributes: true # Page reflow begone!
-    

@@ -4,7 +4,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Personal projects and ideas.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://cookncode.com" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  roald87
+github_username: roald87
 linkedin_username: roaldruiter
 
 sass:
@@ -16,7 +16,7 @@ texture:
   tagline: Personal projects and ideas.
   date_format: "%b %-d, %Y"
   style: black
-  
+
   showNav: true
   navigation:
     - title: Home
@@ -24,11 +24,11 @@ texture:
     - title: About
       url: "/about"
     - title: Archive
-      url: "/archive" 
+      url: "/archive"
     - title: TwinCAT
-      url: "/twincat" 
+      url: "/twincat"
     - title: Cooking
-      url: "/cooking" 
+      url: "/cooking"
 
   social_links:
     github: roald87
