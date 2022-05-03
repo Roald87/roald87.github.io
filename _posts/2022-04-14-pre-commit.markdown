@@ -8,7 +8,7 @@ category: twincat
 
 ## What are pre-commits?
 
-Pre-commits are part of a class of so called [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks). These hooks allow you to run a script at some point during a git command. Most hooks are of the pre- kind, which means it does something before a commit, merge or rebase. They can be very useful to, for example, ensure a consistent code formatting style or that a file is a valid json or xml format.
+Pre-commits are part of a class of so called [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks). These hooks allow you to run a script at some point during a git command. Most hooks are of the pre- kind, which means it does something before a commit, merge or rebase. They can be very useful. For example, to ensure a consistent code formatting style or that a file is a valid json or xml format.
 
 You can see some examples of git hooks if you have a project which uses git. Navigate to the `.git/hooks` folder and you should see a list of example hooks there. If you can't see the `.git` folder, make sure you have enabled "Hidden items" under the View tab in your Windows Explorer. 
 
@@ -20,9 +20,9 @@ You can write your own hooks from scratch, but for many files there is already [
 
 ## Setup pre-commit
 
-A popular framework to manage pre-commits is called [pre-commit](https://pre-commit.com/). It is written in Python. Therefore you first need to install Python, if you do not already have it installed.
+A popular framework to manage pre-commits is called [pre-commit](https://pre-commit.com/). It is written in Python. Thus you first need to install Python, if you do not already have it installed.
 
-1. (In case you do not have Python) Download and install conda via one of the methods below. Miniconda is a very minimal installation which comes only with the strictly necessary to get started. Miniconda should be enough for this tutorial. If you would like to have a bit more tools/modules installed (mainly for data analyses), choose Anaconda.
+1. (In case you do not have Python) Download and install conda via one of the methods below. You can either install Miniconda which is a very minimal installation. It comes only with the bare necessary to get started. Miniconda should be enough for this tutorial. Or, if you would like to have a bit more tools/modules installed (mainly for data analyses), choose Anaconda.
     - Manually download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/products/individual#Downloads).
     - Or run `winget install -e --id Anaconda.Miniconda3` or `winget install -e --id Anaconda.Anaconda3` from the terminal. 
 
@@ -30,7 +30,7 @@ A popular framework to manage pre-commits is called [pre-commit](https://pre-com
     - `pip install pre-commit`
     - or `conda install -c conda-forge pre-commit`
 
-1. Check if installation went OK by running the following command in the terminal. If you see a version number, pre-commit was installed successfully.
+1. Check if installation went OK by running the command below in the terminal. If you see a version number, you installed pre-commit successfully.
  
   ```
       $ pre-commit --version
@@ -38,14 +38,14 @@ A popular framework to manage pre-commits is called [pre-commit](https://pre-com
   ```
 
 {:start="4"}
-1. Now make a new file called `.pre-commit-config.yaml` in the git project folder (same folder as where your `.git` folder resides) where you want to start using pre-commits. Now you're all set up to start using pre-commits! Now let's add some useful ones.
+1. Next, create a new file called `.pre-commit-config.yaml` in the git project folder (same folder as where your `.git` folder resides) where you want to start using pre-commits. Now you're all set up to start using pre-commits! Now let's add some useful ones.
 
 
 ## TwinCAT relevant pre-commits
 
 As you might have noticed, there is not a lot of open source software for TwinCAT. Luckily there is a pre-commit specifically for TwinCAT! The kind people of the Photon Controls and Data Systems at SLAC have open sourced their TwinCAT pre-commits.
 
-In order to use the SLAC pre-commits, add the following lines to your `.pre-commit-config.yaml` file:
+To use the SLAC pre-commits, add the following lines to your `.pre-commit-config.yaml` file:
 
 ```yaml
 -   repo: https://github.com/pcdshub/pre-commit-hooks
@@ -71,17 +71,17 @@ repos:
     -   id: trailing-whitespace 
     # Checks yaml files for parseable syntax
     -   id: check-yaml 
-    # Prevents giant files from being committed
+    # Prevents git from committing large files 
     -   id: check-added-large-files 
 ```
 
-Now install the pre-commit hooks with `pre-commit install`. **You only need to do this step once per git repo.** After that you can run `pre-commit run --all-files`, to let the pre-commits do their magic. Note: you only run this command if you added new pre-commits. Normally all the pre-commits are automatically executed if you do `git commit ...`. In this case the automatic execution will only check files which were changed. 
+Now install the pre-commit hooks with `pre-commit install`. **You only need to do this step once per git repo.** After that you can run `pre-commit run --all-files` and let the pre-commits do their magic. Note: you only run this command if you added new pre-commits. Normally all the pre-commits are automatically executed if you do `git commit ...`. In this case the automatic execution will only check files which were changed. 
 
 Depending on the project you will see no, some or a lot of files being changed. For example, when I ran it on my [TwinCAT Tutorial repo](https://github.com/Roald87/TwincatTutorials) I saw the following:
 
 {% picture 2022-pre-commit/changes-twincat-tutorial.png --alt pre-commit changes to the twincat tutorial repo %}
     
-For each git hook you will see if it had files to check. If that was the case, you see if it changed any files and what files were changed.
+For each git hook you will see if it had files to check. If that was the case, you see if any files were changed.
 
 Below I show an example where two hooks were triggered. Here both the leading tabs remover failed (as shown in the screen shot), but also the trailing white space one failed (not shown). Below are the differences I saw afterwards in SourceTree:
 
@@ -109,37 +109,37 @@ Why: They are are only useful locally. When uploaded to source control they only
 
 What: Formats the `.tmc` and `.tcp` files with newlines and indentation. 
 
-Why: Makes these files readable for humans. Normally TwinCAT doesn't put any newlines or indentation in these files. Useful if you would like to have these files in source control and clearly see the differences.
+Why: Makes these files readable for humans. Normally TwinCAT doesn't put any newlines or indentation in these files. Useful if you would like to have these files in source control and see clear differences.
 
 `trailing-whitespace`
 
 What: Removes spaces and tabs at the end of lines. 
 
-Why: Whitespace at the end of a line have no influence on code execution; you can add or remove as many as you'd like. However, they show up as (useless) changes if someone adds some or removes them. 
+Why: Whitespace at the end of a line have no influence on code execution; you can add or remove as many as you'd like. But, they show up as (useless) changes if someone adds some or removes them. 
 
 `check-yaml`
 
-What: Checks that your yaml file (e.g. the `.pre-commit-config.yaml`) can actually be read by the programs that use it. 
+What: Checks that programs can read your yaml file. For example,  the `.pre-commit-config.yaml` one.
 
 Why: Ensures that your yaml files do not break.
 
 `check-added-large-files`: 
 
-What: prevents large files from being added to your git tree. 
+What: prevents git from adding large files to its history. 
 
 Why: To prevent your git tree from becoming huge. Saves time for new users when they download the repo for the first time. Large, non-text files, such as images or binary files usually contain no useful diffs. You want to commit these files using [Git LFS](https://git-lfs.github.com/).
 
 ## Developing your own hooks
 
-If you would like to develop your own hooks there are two options: local and remote repo based hooks. Local hooks are quite easy to setup, but can only be used in the repo where they are saved. On the other hand the remote based hooks can be shared across multiple projects. [The TwinCAT hooks](https://github.com/pcdshub/pre-commit-hooks) we used earlier, is an example of a remote hook. 
+If you would like to develop your own hooks there are two options: local and remote repo based hooks. Local hooks are quite easy to setup, but they can only be used in the repo where they are saved. On the other hand the remote based hooks can be shared across many projects. [The TwinCAT hooks](https://github.com/pcdshub/pre-commit-hooks) we used earlier, is an example of a remote hook. 
 
-You can [use many languages](https://pre-commit.com/#supported-languages) to develop your own hooks. Most languages require a working installation of that specific language on the system where the hooks are executed. The exceptions are node, python and ruby. For these languages no existing installation is needed. Hooks developed in these three languages setup their own (node, python, ruby) environment when first executed. On subsequent runs this environment will be reused. 
+You can [use many languages](https://pre-commit.com/#supported-languages) to develop your own hooks. Most languages need a working installation of that specific language on the system where the hooks are executed. The exceptions are node, python and ruby. For these languages no existing installation is needed. Hooks developed in these three languages setup their own (node, python, ruby) environment when first executed. On subsequent runs this environment will be reused. 
 
-Remote hooks also need to be a valid git repo. That is because pre-commit will try to do a `git clone ...` of the repo url you supplied in the `.pre-commit.yaml` file when it is used. To make a remote hook, see the [TwinCAT hooks repo](https://github.com/pcdshub/pre-commit-hooks) as an example.
+Remote hooks also need to be a valid git repo. That is because pre-commit will try to do a `git clone ...` of the repo url you supplied in the `.pre-commit.yaml` file. To make a remote hook, see the [TwinCAT hooks repo](https://github.com/pcdshub/pre-commit-hooks) as an example.
 
 ### Local hook example
 
-Developing your own local hook is quite straight forward. I'll explain how to do it by making a hook which checks if all links on this blog start with `https`. If they don't, `http` will be replaced by `https`.
+Developing your own local hook is quite straight forward. I'll explain how to do it by making a hook which checks if all links on this blog start with `https`. If they don't, it will replace `http` by `https`.
 
 First I added a file called [`.pre-commit-config.yaml`](https://github.com/Roald87/roald87.github.io/blob/main/.pre-commit-config.yaml) with the following content. See the comments for their meaning.
 
