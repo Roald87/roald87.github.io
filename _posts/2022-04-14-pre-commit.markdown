@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Reduce formatting fights with pre-commits for TwinCAT"
+title: "No more formatting fights with pre-commits for TwinCAT"
 category: twincat
 ---
 
