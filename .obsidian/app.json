@@ -1,0 +1,10 @@
+{
+  "spellcheck": true,
+  "spellcheckDictionary": [
+    "TwinCAT",
+    "FreeBSD",
+    "Beckhoff",
+    "VMware",
+    "bootable"
+  ]
+}
