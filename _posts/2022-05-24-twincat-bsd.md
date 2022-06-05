@@ -172,52 +172,6 @@ Then open your browser and type in the IP address you found. So for me it is 	`1
 ##  Installing packages
 As I mentioned earlier, there is not pretty GUI waiting for you. Most things are done from the terminal. One of the things you can do is install packages. Package managers are a very useful feature in UNIX like operating systems. Although Windows is now finally also joining with `winget`.
 
-### Installing `vm-tools`
-
-Let me show you how to install your first package on TcBSD. You might have noticed the notification at the bottom of the VMware window. It asks you to install some tools for some performance with the host system. But if you click **Install tools**, you get an error. 
-
-{% picture 2022-tcbsd/error_install_vm_tools.png %}
-
-To install the `vm-tools`, you:
-1. Update the repository catalogue. You do this with the command `sudo pkg update`. Here `sudo` means the commands which follow are executed with admin privileges. `pkg` is the package manager of FreeBSD and `update` is the command to update the catalogue. To see and overview of all available commands type `pkg help` .
-
-```
-	$ sudo pkg update
-	Password:
-	Updating TCBSD repository catalogue...
-	Fetching meta.conf: 100%	164 B	0.2 kB/s	00:01
-	Fetching packagesite.pkg: 100% 418 KiB 427.6kB/s	00:01
-	Processing entries: 100%
-	TCBSD repository update completed. 1248 packages processed.
-	All repositories are up to date.
-```
-	
-2. Install the `vm-tools` package with the command `sudo pkg install open-vm-tools-no-x11`. Type `y` to start the installation. After a minute it should be done and you installed your first package. It is as easy as that.
-
-```
- $ sudo pkg install open-vm-tools-nox11
-Password:
-Updating TCBSD repository catalogue...
-TCBSD repository is up to date.
-All repositories are up to date.
-Checking integrity... done (0 conflicting)
-The following 12 package(s) will be affected (of 0 checked):
-
-New packages to be INSTALLED:
-		fusefs-libs: 2.9.9_2
-		gettext-runtime: 0.21
-        open-vm-tools-nox11: 11.3.5_3,2
-
-Number of packages to be installed: 1
-
-The process will require 6 MiB more space.
-
-Proceed with this action? [y/N]: y
-```
-
-
-{% picture 2022-tcbsd/install_vm_tools.png %}
-
 ### Install TwinCAT HMI server
 
 A package which you likely need is the HMI server. I don't exactly know what it is called, but I know that there is a search functionality. If you type in `pkg search hmi`, you see two results.
