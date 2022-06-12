@@ -13,13 +13,13 @@ TwinCAT/BSD is an alternative operating system for TwinCAT. It is based on the o
 
 Note that TwinCAT/BSD is just for the TwinCAT runtime. So, the place where your code gets executed or ran. Nothing changes on the code development side: you still write your code on Windows in either Visual Studio or the TwinCAT XAE Shell.  
 
-TwinCAT/BSD is a little different than Windows. So it might take you some time to get used to it. For example, TwinCAT/BSD doesn't come with a desktop environment. So, unlike Windows, there is no desktop with icons, a wallpaper and a start menu. If you start TwinCAT/BSD, you are greeted with a black screen with white text on it: a terminal. 
+TwinCAT/BSD is a little different than Windows. So it might take you some time to get used to it. For example, TwinCAT/BSD doesn't come with a desktop environment. So, unlike Windows, there is no desktop with icons, a wallpaper and a start menu. If you start TwinCAT/BSD, you are greeted by a black screen with white text on it: a terminal. 
 
 Make no mistake, working from a terminal can be quite powerful, but it can take some time to get familiar with. At the end of the tutorial, I show some examples of what you can do with it. You can also find some commands in [the official manual](http://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf).
 
 Some other advantages of using TwinCAT/BSD is that it is free and requires less space. Finally, because Beckhoff has access the the code of the operating system, they do not rely on Microsoft for support. The reliance is causing issues for Windows CE, because its end of life is planned for late 2023.
 
-If you would like to get more details on TwinCAT/BSD, checkout the [official Beckhoff video](https://www.youtube.com/watch?v=az9vSr1GxE4) or read [the manual](http://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf) for in-depth information.
+If you would like to get more details on TwinCAT/BSD, check out the [official Beckhoff video](https://www.youtube.com/watch?v=az9vSr1GxE4) or read [the manual](http://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf) for in-depth information.
 
 
 ## VMware ❤️ Hyper-V
