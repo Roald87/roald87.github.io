@@ -22,6 +22,21 @@ Some other advantages of using TwinCAT/BSD is that it is free and requires less 
 If you would like to get more details on TwinCAT/BSD, check out the [official Beckhoff video](https://www.youtube.com/watch?v=az9vSr1GxE4) or read [the manual](http://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf) for in-depth information.
 
 
+## Virtual box
+https://www.virtualbox.org/wiki/Downloads
+1. Run the script after changing the filename
+2. Virtual box shoudl install. 
+3. Then select Install TcBSD and follow the same stuff as with VMware
+4. Shut down the VM
+5. Set the network port to host only
+6. Ping didn't work to ifconfig found ip. Network adapter settings were not set automatically. Changed that, than ping worked.
+7. Could also activate a configuration
+8. Can't open the device mananger if i enter the ip address. Manybe HMI needs to be installed? Can't install packages, because it is not connected to the internet.
+9. Added on host adapter and then another bridged one. That worked after a few mins with `ping www.beckhoff.com`.
+
+{% picture  2022-tcbsd/firefox_accept_risk.png %}
+
+
 ## VMware ❤️ Hyper-V
 
 The reason why I started to look into TwinCAT/BSD was that I wanted to run some TwinCAT code locally. Earlier this was possible, but at a certain point I installed [Docker](https://www.docker.com/). Docker only works if you enable Hyper-V. Unfortunately, once you enable this and you try to run your TwinCAT code locally, you get an error:
@@ -165,7 +180,7 @@ As I mentioned earlier, there is no pretty GUI waiting for you. Most things are 
 
 {% picture 2022-tcbsd/ifconfig.png %}
 
-Then open your browser and type in the IP address you found. So for me it is 	`192.168.126.128`. From here you can log into the device manager with the username `Administrator` and the password you set earlier. The device manager shows all kinds of information about the state of the hardware and the software. You can also access the web console. The console shows you the same as what you would see if you log into the virtual machine directly. I found the web based console easier to use, because scrolling and copy pasting commands is easier.
+Then open your browser and type in the IP address you found. So for me it is 	`https://192.168.126.128`. Maybe a warning shows up, you need to accept the risk and continue. From here you can log into the device manager with the username `Administrator` and the password you set earlier. The device manager shows all kinds of information about the state of the hardware and the software. You can also access the web console. The console shows you the same as what you would see if you log into the virtual machine directly. I found the web based console easier to use, because scrolling and copy pasting commands is easier.
 
 {% picture 2022-tcbsd/device_manager.png %}
 
