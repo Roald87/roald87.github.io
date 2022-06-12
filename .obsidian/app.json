@@ -5,6 +5,12 @@
     "FreeBSD",
     "Beckhoff",
     "VMware",
-    "bootable"
-  ]
+    "bootable",
+    "Jakob",
+    "Sagatowksi",
+    "reformats",
+    "catalogue"
+  ],
+  "alwaysUpdateLinks": true,
+  "promptDelete": false
 }
