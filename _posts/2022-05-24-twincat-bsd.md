@@ -4,16 +4,15 @@ title: "TwinCAT/BSD installation and tutorial"
 category: twincat
 ---
 
-Jakob Sagatowksi made a video on how to [install TwinCAT BSD on a virtual machine](https://www.youtube.com/watch?v=H-qfWfz37Fg). In this post, I first go over of the same steps as he did, but then in text form. After the installation, I also show a few useful tricks. One very useful thing is that by running TwinCAT in a virtual machine, it allows you to run TwinCAT 'locally', even if you have Hyper-V enabled.
-
+TwinCAT/BSD is a new operating system which encapsulated the TwinCAT runtime. It is an operating system with a small footprint and it's free. Additionally, TwinCAT/BSD allows you to run TwinCAT code locally when you have Hyper-V enabled if you install it in a virtual machine. In this tutorial I go over the installation of TwinCAT/BSD on VMware and Virtual Box and show some basic usages of Tc/BSD.
 
 ## What is TwinCAT/BSD?
 
 TwinCAT/BSD is an alternative operating system for TwinCAT. It is based on the open source operating system FreeBSD. Beckhoff took FreeBSD and integrated the TwinCAT runtime into it. Currently, TwinCAT/BSD is offered as an alternative operating system to Windows CE/7/10. 
 
-Note that TwinCAT/BSD is just for the TwinCAT runtime. So, the place where your code gets executed or ran. Nothing changes on the code development side: you still write your code on Windows in either Visual Studio or the TwinCAT XAE Shell.  
+Note that TwinCAT/BSD is just for the TwinCAT runtime. So, the place where your code gets executed. Nothing changes on the code development side: you still write your code on Windows in either Visual Studio or the TwinCAT XAE Shell.  
 
-TwinCAT/BSD is a little different than Windows. So it might take you some time to get used to it. For example, TwinCAT/BSD doesn't come with a desktop environment. So, unlike Windows, there is no desktop with icons, a wallpaper and a start menu. If you start TwinCAT/BSD, you are greeted by a black screen with white text on it: a terminal. 
+TwinCAT/BSD is a little different than Window and it might take you some time to get used to it. For example, TwinCAT/BSD doesn't come with a desktop environment. So, there is no desktop with icons, a wallpaper and a start menu. If you start TwinCAT/BSD, you are greeted by a black screen with white text on it: a terminal. 
 
 Make no mistake, working from a terminal can be quite powerful, but it can take some time to get familiar with. At the end of the tutorial, I show some examples of what you can do with it. You can also find some commands in [the official manual](http://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf).
 
@@ -21,9 +20,16 @@ Some other advantages of using TwinCAT/BSD is that it is free and requires less 
 
 If you would like to get more details on TwinCAT/BSD, check out the [official Beckhoff video](https://www.youtube.com/watch?v=az9vSr1GxE4) or read [the manual](http://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf) for in-depth information.
 
+## Virtual machines ❤️ Hyper-V
+I started to look into TwinCAT/BSD, because I wanted to run some TwinCAT code locally. Earlier this was possible, but at a certain point I installed [Docker](https://www.docker.com/) which requires Hyper-V. Unfortunately, once you enable this and you try to run your TwinCAT code locally, you get an error:
+
 {% picture 2022-tcbsd/hyperv_error.png %}
 
-## Virtual box
+While researching how to circumvent this restriction, I came across a [Reddit post](https://www.reddit.com/r/PLC/comments/gqzyem/psa_twincat_3_hyperv_wsl_2_working_using_vmware/) which mentioned VMware works with TwinCAT 3 and Hyper-V. 
+This provided me with a nice opportunity to test TwinCAT/BSD, because I didn't wanted to create a huge Windows VM. Also it allowed me to answer a [StackOverflow question](https://stackoverflow.com/questions/71321786/how-can-i-use-a-local-twincat-3-runtime-with-hyper-v-enabled/71333438#71333438) 🥳. Furthermore I found out that it also works with Virtual Box. 
+
+
+## Installing Tc/BSD on Virtual Box
 https://www.virtualbox.org/wiki/Downloads
 1. Run the script after changing the filename
 2. Virtual box shoudl install. 
@@ -38,17 +44,9 @@ https://www.virtualbox.org/wiki/Downloads
 {% picture  2022-tcbsd/firefox_accept_risk.png %}
 
 
-## VMware ❤️ Hyper-V
+## Installing Tc/BSD on VMware
 
-The reason why I started to look into TwinCAT/BSD was that I wanted to run some TwinCAT code locally. Earlier this was possible, but at a certain point I installed [Docker](https://www.docker.com/). Docker only works if you enable Hyper-V. Unfortunately, once you enable this and you try to run your TwinCAT code locally, you get an error:
-
-{% picture 2022-tcbsd/hyperv_error.png %}
-
-After some Googling, I came across this [Reddit post](https://www.reddit.com/r/PLC/comments/gqzyem/psa_twincat_3_hyperv_wsl_2_working_using_vmware/) which mentioned VMware works with TwinCAT 3 and Hyper-V! 
-This provided me with a nice opportunity to test TwinCAT/BSD, because I didn't wanted to create a huge Windows VM. Also it allowed me to answer a [StackOverflow question](https://stackoverflow.com/questions/71321786/how-can-i-use-a-local-twincat-3-runtime-with-hyper-v-enabled/71333438#71333438) 🥳.
-
-
-## Installing TwinCAT/BSD 
+Installing TwinCAT/BSD on VMware is a bit more complicated. If you want 
 
 Here I show you how you can install TwinCAT/BSD on a VMware virtual machine. You can also install it on Virtual Box, but I'm not sure if that allows to run TwinCAT code on a system with Hyper-V enabled. If you want to install TwinCAT/BSD on Virtual Box there is a [convenient script](https://github.com/r9guy/TwinCAT-BSD-VM-creator) to do much of the work for you.
 
