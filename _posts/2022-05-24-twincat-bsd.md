@@ -21,6 +21,7 @@ Some other advantages of using TwinCAT/BSD is that it is free and requires less 
 
 If you would like to get more details on TwinCAT/BSD, check out the [official Beckhoff video](https://www.youtube.com/watch?v=az9vSr1GxE4) or read [the manual](http://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf) for in-depth information.
 
+{% picture 2022-tcbsd/hyperv_error.png %}
 
 ## Virtual box
 https://www.virtualbox.org/wiki/Downloads
