@@ -26,20 +26,31 @@ I started to look into TwinCAT/BSD, because I wanted to run some TwinCAT code lo
 {% picture 2022-tcbsd/hyperv_error.png %}
 
 While researching how to circumvent this restriction, I came across a [Reddit post](https://www.reddit.com/r/PLC/comments/gqzyem/psa_twincat_3_hyperv_wsl_2_working_using_vmware/) which mentioned VMware works with TwinCAT 3 and Hyper-V. 
-This provided me with a nice opportunity to test TwinCAT/BSD, because I didn't wanted to create a huge Windows VM. Also it allowed me to answer a [StackOverflow question](https://stackoverflow.com/questions/71321786/how-can-i-use-a-local-twincat-3-runtime-with-hyper-v-enabled/71333438#71333438) 🥳. Furthermore I found out that it also works with Virtual Box. 
+This provided me with a nice opportunity to test TwinCAT/BSD, because I didn't wanted to create a big Windows VM. Also it allowed me to answer a [StackOverflow question](https://stackoverflow.com/questions/71321786/how-can-i-use-a-local-twincat-3-runtime-with-hyper-v-enabled/71333438#71333438) 🥳. Furthermore, I found out that it also works with Virtual Box. 
 
 
 ## Installing Tc/BSD on Virtual Box
-https://www.virtualbox.org/wiki/Downloads
-1. Run the script after changing the filename
-2. Virtual box shoudl install. 
-3. Then select Install TcBSD and follow the same stuff as with VMware
-4. Shut down the VM
-5. Set the network port to host only
-6. Ping didn't work to ifconfig found ip. Network adapter settings were not set automatically. Changed that, than ping worked.
-7. Could also activate a configuration
-8. Can't open the device mananger if i enter the ip address. Manybe HMI needs to be installed? Can't install packages, because it is not connected to the internet.
-9. Added on host adapter and then another bridged one. That worked after a few mins with `ping www.beckhoff.com`.
+Installing Tc/BSD on Virtual Box is quite straight forward, thanks to [an install script](https://github.com/PTKu/TwinCAT-BSD-VM-creator) from the community. To install Tc/BSD:
+
+1. [Download](https://www.virtualbox.org/wiki/Downloads) and install Virtual Box.
+2. [Download or clone]((https://github.com/PTKu/TwinCAT-BSD-VM-creator) the install script.
+1. Go to the [Beckhoff website](https://www.beckhoff.com/en-us/search-results/?q=bsd) and download the TwinCAT/BSD ISO.
+2. Extract the contents of the installer script and the Tc/BSD ISO and copy the contents of both to a single folder.
+3. Copy the exact filename of the Tc/BSD ISO image and open `Create-TcBsdVM.ps1` or `TwinCAT BSD VM creator.bat`, depending on which you want to use.
+4. Change the ISO filename in one of the installer scripts to the one which match your downloaded ISO file. Here `"TCBSD-x64-13-55702.iso"` is the name of the ISO file I downloaded. Make sure to open the file with a text editor.
+	-  `Create-TcBsdVM.ps1` : line 7 `$tcbsdimagefile="TCBSD-x64-13-55702.iso",`
+	-  `TwinCAT BSD VM creator.bat`: line 2 `SET sourcefilename="TTCBSD-x64-13-55702.iso"`
+5. Save and close the 
+
+5. Run the script after changing the filename
+6. Virtual box shoudl install. 
+7. Then select Install TcBSD and follow the same stuff as with VMware
+8. Shut down the VM
+9. Set the network port to host only
+10. Ping didn't work to ifconfig found ip. Network adapter settings were not set automatically. Changed that, than ping worked.
+11. Could also activate a configuration
+12. Can't open the device mananger if i enter the ip address. Manybe HMI needs to be installed? Can't install packages, because it is not connected to the internet.
+13. Added on host adapter and then another bridged one. That worked after a few mins with `ping www.beckhoff.com`.
 
 {% picture  2022-tcbsd/firefox_accept_risk.png %}
 
@@ -56,7 +67,7 @@ Here I show you how you can install TwinCAT/BSD on a VMware virtual machine. You
 	- Install via the terminal `winget install -e --id Rufus.Rufus`.
 	- Or [download manually](https://rufus.ie/) and install. You can also use the portable version, which doesn't require any installation.
 
-1. Go to the [Beckhoff website](https://www.beckhoff.com/en-us/search-results/?q=bsd) and download the TwinCAT/BSD ISO. I will do that. 
+1. Go to the [Beckhoff website](https://www.beckhoff.com/en-us/search-results/?q=bsd) and download the TwinCAT/BSD ISO.
 
     {% picture 2022-tcbsd/download_tcbsd_iso.png %}
 
