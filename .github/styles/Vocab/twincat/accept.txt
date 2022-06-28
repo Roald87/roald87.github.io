@@ -1,7 +1,12 @@
-VirtualBox
+[Bb]ootable
+[Pp]owershell
+Beckhoff
 Hyper-V
+Jakob
+Sagatowski
 Tc/BSD
 TwinCAT
 TwinCAT/BSD
+VirtualBox
 VMware
 
