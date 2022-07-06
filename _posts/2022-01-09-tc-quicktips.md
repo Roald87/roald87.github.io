@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Quick tips for TwinCAT"
+title: "Tips and tricks for TwinCAT"
 category: twincat
 ---
 
