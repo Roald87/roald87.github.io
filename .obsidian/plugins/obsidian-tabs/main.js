@@ -56,6 +56,17 @@ class TabbedView extends obsidian.Plugin {
                     this.refresh();
                 }
             });
+			this.addCommand({
+                id: 'toggle-horizontal-splits',
+                name: 'Toggle Proper Horizontal Splits',
+                callback: () => {
+                    // switch the disabled setting and save
+                    this.settings.horizontalToVertical = !this.settings.horizontalToVertical;
+                    this.saveData(this.settings);
+                    // disable or enable as necessary
+                    this.refresh();
+                }
+            });
         });
     }
     loadSettings() {
@@ -108,13 +119,15 @@ class TabbedView extends obsidian.Plugin {
         });
     }
     handleOpen() {
-        if (this.app.workspace.activeLeaf) {
+		setTimeout(function(){
+		if (this.app.workspace.activeLeaf) {
             let removeopen = Array.from(this.app.workspace.activeLeaf.containerEl.parentNode.children); //remove class from siblings of active pane, but intentionally not from all
             removeopen.forEach((node) => {
                 node.removeClass("stayopen");
             });
             this.app.workspace.activeLeaf.containerEl.addClass("stayopen");
         }
+		},110);
     }
     handleTabs() {
         function assignStylesToTab(tabparent) {
@@ -135,12 +148,12 @@ class TabbedView extends obsidian.Plugin {
 }
 const DEFAULT_SETTINGS = {
     tabEnabled: true,
-    rowOverflow: true,
+    rowOverflow: false,
     horizontalToVertical: false,
     hideButtons: false,
     smallTitle: false,
     compactTitle: false,
-    tabNumbering: false,
+    tabNumbering: true,
     tabUnderline: false,
     headerHeight: 29,
 };
@@ -223,7 +236,7 @@ class TabSettingTab extends obsidian.PluginSettingTab {
         containerEl.createEl("h4", { text: "Pane Relief Specific Settings" });
         new obsidian.Setting(containerEl)
             .setName("Remove Tab Numbers")
-            .setDesc("By default, tabs are numbered, for ease of use with Pane Relief.")
+            .setDesc("Toggle to remove Tab Numbers. Using Tab Numbers requires Pane Relief.")
             .addToggle((toggle) => toggle.setValue(this.plugin.settings.tabNumbering).onChange((value) => {
             this.plugin.settings.tabNumbering = value;
             this.plugin.saveData(this.plugin.settings);
