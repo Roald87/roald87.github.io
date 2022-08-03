@@ -93,7 +93,7 @@ Installing Tc/BSD on Virtual Box is quite straightforward, thanks to [an install
 	3 packets transmitted, 3 packets received, 0.0% packet loss
 ```
 
-	- In case it is not working, check your network adapter settings. Type **Ethernet settings** into the start menu and open it. Select **Change adapter options** and right-click **VirtualBox Host-Only Network** and click on **Properties**.  Make sure they are set to automatic.
+- In case it is not working, check your network adapter settings. Type **Ethernet settings** into the start menu and open it. Select **Change adapter options** and right-click **VirtualBox Host-Only Network** and click on **Properties**.  Make sure they are set to automatic.
 	{% picture 2022-tcbsd/ipv4_settings.png %}
 
 ## Installing Tc/BSD on VMware
@@ -238,7 +238,7 @@ From here you can log into the device manager with the username `Administrator` 
 ## Web console
 Next to a device manager, the `https://192.168.126.128` page also has a link to a web console. The console shows the same as if you logged into the virtual machine directly, but the web version has a better interface. Mainly because it enables scrolling[^2] and copy-pasting commands is easier.
 
-##  Installing packages
+## Installing packages
 As I mentioned earlier, there is no GUI. You do most actions from the terminal. One of the things you can do is install [packages](https://tcbsd.beckhoff.com/TCBSD/13/stable/packages/All/), with a package manager. Package managers are a useful feature in UNIX-like operating systems. Although Windows is now also joining the party with [`winget`](https://winget.run/).
 
 ### Install TwinCAT HMI server
@@ -288,57 +288,32 @@ After successfully connecting to the PLC, you should be able to activate your co
 
 ### Publishing the HMI
 
-With your PLC code running, it's now time to look at how to publish the HMI. 
+With your PLC code running, it's now time to look at how to publish the HMI. I initially had some issues with publishing the HMI. In the end I made it work by using TcBSD version 13, which has  TcHmiSrv 1.12.756.1. I couldn't make it work with TcBSD v12.2 which has TcHmiSrv v 1.12.746.0. Furthermore you need to make sure that your HMI project has the same version as the server which is 1.12.756.1 for me.
 
-After that little detour, it's time to publish the HMI. 
+Once you have that, you need to add an [exception to the Tc/BSD firewall](https://infosys.beckhoff.com/content/1033/twincat_bsd/6423780747.html?id=6393416005524011539). By default a lot of ports are blocked, including the one needed for the HMI server. To add it, open the firewall configuration file with `doas ee /etc/pf.conf` from the console. Then add the following new line at the end of the file 
 
-- [ ] find HMI server address
+```
+# allow TcHmiSrv outgoing
+pass in quick proto tcp to port 1010 keep state
+```
+
+Exit the `ee` editor with <kbd>Esc</kbd>, select `a) leave editor`, save your changes and restart the virtual machine. 
+
+Meanwhile open the PLC project you want to publish on the virtual machine. Verify that the TF2000 HMI Server license is present in your system manager under **SYSTEM > License**. If it is not present, add it manually via the **Manage Licenses** tab. Then activate your PLC project which serves as the back end for your HMI project. Open the HMI publishing settings, fill in the IP address of the virtual machine and press **Validate connection**. 
+
+{% picture 2022-tcbsd/VM_HMI_publish_settings.png %}
+
+
+
+{% picture  2022-tcbsd/first_hmi_server_connection.png %}
+
+- [x] find HMI server address
 - [x] TcBSD scroll lock
 - [x] html device manager -> open web browser and type in the ip, for example[]() https://192.168.126.132/. There is also a console https://192.168.126.132/console/, much better than the one in VMware.	
 - [x] Admin rights are to access the USB drive
 - [ ] Remove nvram file
 - [x] First need to add the hdd, then the USB stick
 
-### error starting hmi server
-```
-$ doas TcHmiSrv
-Password:
-[II TcHmiSrv] Domain 'TcHmiSrv' initialized
-[II TcHmiSrv] Domain 'TcHmiSqliteLogger' initialized
-[II TcHmiSrv] Domain 'TcHmiUserManagement' initialized
-[II TcHmiSrv] Listening at http://127.0.0.1:1010
-[EE TcHmiSrv[II TcHmiSrv] Domain 'TcHmiLua' initialized
-] Starting webserver failed use_certificate_chain: null parameter
-[II TcHmiSrv] Domain 'ADS' initialized
-[II TcHmiSrv] SSL enabled but no certificate found - creating
-[WW TcHmiSrv] Server license validation failed with error LICENSE_ADS (underlying ADS error: 1,828)
-[VV ADS] Checking for connected TwinCAT license dongles
-[II ADS] Connected to the local TwinCAT System
-[VV ADS] Symbol version change detected for runtime PLC1. Counter changed from null to 1.
-[II TcHmiSrv] Starting server version 1.12.746.0
-[EE TcHmiSrv] Unable to listen to address https://0.0.0.0:1020: Certificate not valid[VV ADS] Runtime PLC1 is connected to project 'PLC' of application 'Port_851' (Compiled at 2022-06-25T14:14:55Z)
-```
-
-Added TF2000 license manually, then it worked.
-
-```
-$ doas TcHmiSrv
-Password:
-[II TcHmiSrv] Domain 'TcHmiSrv' initialized
-[II TcHmiSrv] Domain 'TcHmiSqliteLogger' initialized
-[II TcHmiSrv] Domain 'TcHmiUserManagement' initialized
-[II TcHmiSrv] Listening at http://127.0.0.1:1010
-[EE [II TcHmiSrv] Domain 'TcHmiLua' initialized
-TcHmiSrv] Starting webserver failed use_certificate_chain: null parameter
-[II TcHmiSrv] SSL enabled but no certificate found - creating
-[II TcHmiSrv] Domain 'ADS' initialized
-[II TcHmiSrv] Starting server version 1.12.746.0
-[EE TcHmiSrv] Unable to listen to address https://0.0.0.0:1020: Certificate not valid
-[VV ADS] Checking for connected TwinCAT license dongles
-[II ADS] Connected to the local TwinCAT System
-[VV ADS] Symbol version change detected for runtime PLC1. Counter changed from null to 1.
-[VV ADS] Runtime PLC1 is connected to project 'PLC' of application 'Port_851' (Compiled at 2022-06-25T14:14:55Z)
-```
 
 
 [^1]: The error message:
@@ -357,7 +332,6 @@ TcHmiSrv] Starting webserver failed use_certificate_chain: null parameter
 	root@:/ 
 	```
 	
-	![[Pasted image 20220629200418.png]]
-
+	
 [^2]: While playing with Tc/BSD in the virtual machine I ran into an annoying issue: I couldn't scroll up. For example, when I do `TcHmiSrv --help`, the help text is to long for the console screen. At first I couldn't figure out how to scroll back up, because there is no scroll bar, <kbd>↑</kbd> shows the previous command and <kbd>Page Up</kbd> just shows a `~`.  After consulting Google, I found out that is where the <kbd>Scroll Lock</kbd> key is for. I always wondered what this button did. Note: If you're on a laptop without a Scroll Lock key, you can [remap one of the existing key combo's](https://serverfault.com/a/420341). 
 		![scroll lock enables scrolling in the TcBSD terminal window](/assets/2022-tcbsd/scroll_lock_magic.gif)
