@@ -299,11 +299,11 @@ pass in quick proto tcp to port 1010 keep state
 
 Exit the `ee` editor with <kbd>Esc</kbd>, select `a) leave editor`, save your changes and restart the virtual machine. 
 
-Meanwhile open the PLC project you want to publish on the virtual machine. Verify that the TF2000 HMI Server license is present in your system manager under **SYSTEM > License**. If it is not present, add it manually via the **Manage Licenses** tab. Then activate your PLC project which serves as the back end for your HMI project. Open the HMI publishing settings, fill in the IP address of the virtual machine and press **Validate connection**. 
+Meanwhile open the PLC project you want to publish on the virtual machine. Verify that the TF2000 HMI Server license is present in your system manager under **SYSTEM > License**. If it is not present, add it manually via the **Manage Licenses** tab. Then activate your PLC project which serves as the back end for your HMI project. Open the HMI publishing settings, fill in the IP address of the virtual machine and press **Validate connection**. If the connection was successful, select **Publish**.
 
 {% picture 2022-tcbsd/VM_HMI_publish_settings.png %}
 
-
+If you connect to the HMI server for the first time, it asks you to 
 
 {% picture  2022-tcbsd/first_hmi_server_connection.png %}
 
