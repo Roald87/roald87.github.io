@@ -8,9 +8,9 @@ TwinCAT/BSD is a new operating system for the TwinCAT runtime. It has a small fo
 
 ## What is TwinCAT/BSD?
 
-TwinCAT/BSD, or Tc/BSD for short, is an alternative operating system for TwinCAT. It's based on the open source operating system FreeBSD. Beckhoff took FreeBSD and integrated the TwinCAT runtime into it. It serves as an alternative operating to Windows CE/7/10.
+TwinCAT/BSD, or Tc/BSD for short, is an alternative operating system for TwinCAT. It's based on the open source operating system FreeBSD. Beckhoff took FreeBSD and integrated the TwinCAT runtime into it. It serves as an alternative operating system for the TwinCAT runtime to Windows CE/7/10.
 
-Note that TwinCAT/BSD is for the TwinCAT runtime. Thus the place where your code gets executed. Nothing changes on the code development side: you still write your code on Windows in either Visual Studio or the TwinCAT XAE Shell.  
+Note that TwinCAT/BSD is only for the TwinCAT runtime. Thus the place where your code gets executed. Nothing changes on the code development side: you still write your code on Windows in either Visual Studio or the TwinCAT XAE Shell.  
 
 Tc/BSD is a little different from Windows and it might take you some time to get used to it. For example, Tc/BSD doesn't come with a desktop environment: there is no desktop with icons, wallpaper, and a start menu. If you start Tc/BSD, you see a black screen with white text on it: a terminal. 
 
@@ -25,34 +25,31 @@ I started to look into TwinCAT/BSD, because I wanted to run some TwinCAT code lo
 
 {% picture 2022-tcbsd/hyperv_error.png %}
 
-While researching how to circumvent this restriction, I came across a [Reddit post](https://www.reddit.com/r/PLC/comments/gqzyem/psa_twincat_3_hyperv_wsl_2_working_using_vmware/) which mentioned VMware works with TwinCAT 3 and Hyper-V. 
-This provided me with a nice opportunity to test Tc/BSD because I didn't want to create a big Windows VM. Also it allowed me to answer a [StackOverflow question](https://stackoverflow.com/questions/71321786/how-can-i-use-a-local-twincat-3-runtime-with-hyper-v-enabled/71333438#71333438) 🥳. Furthermore, I found out that it also works with Virtual Box. 
-
+While researching how to circumvent this restriction, I came across a [Reddit post](https://www.reddit.com/r/PLC/comments/gqzyem/psa_twincat_3_hyperv_wsl_2_working_using_vmware/) which mentioned VMware works with TwinCAT 3 and Hyper-V. This provided me with a nice opportunity to test Tc/BSD because I didn't want to create a big Windows VM. Also it allowed me to answer a [StackOverflow question](https://stackoverflow.com/questions/71321786/how-can-i-use-a-local-twincat-3-runtime-with-hyper-v-enabled/71333438#71333438) 🥳. Furthermore, I found out that it also works with Virtual Box. 
 
 ## Installing Tc/BSD on VirtualBox
-Installing Tc/BSD on Virtual Box is quite straightforward, thanks to [an install script](https://github.com/PTKu/TwinCAT-BSD-VM-creator) from the community. To install Tc/BSD:
+Installing Tc/BSD on Virtual Box is quite straightforward, thanks to [an install script](https://github.com/PTKu/TwinCAT-BSD-VM-creator) from the community. There is also a [video by Coding Bytes](https://beckhoff-au.teachable.com/courses/1204788/lectures/37382778) describing installation.
+
+To install Tc/BSD:
 
 1. [Download](https://www.virtualbox.org/wiki/Downloads) and install Virtual Box.
-2. [Download or clone]((https://github.com/PTKu/TwinCAT-BSD-VM-creator) the install script.
-1. Go to the [Beckhoff website](https://www.beckhoff.com/en-us/search-results/?q=bsd) and download the TwinCAT/BSD ISO.
+1. [Download or clone](https://github.com/PTKu/TwinCAT-BSD-VM-creator) the install script.
+3. Go to the [Beckhoff website](https://www.beckhoff.com/en-us/search-results/?q=bsd) and download the TwinCAT/BSD ISO.
 
     {% picture 2022-tcbsd/download_tcbsd_iso.png %}
 	
-2. Extract the contents of the installer script and the Tc/BSD ISO and copy the contents of both to a single folder.
-3. Copy the exact filename of the Tc/BSD ISO image and open `Create-TcBsdVM.ps1` or `TwinCAT BSD VM creator.bat`, depending on which you want to use.
-4. Open the installer script you want to use with a text editor. Change the ISO filename in one of the installer scripts to the one which matches your downloaded ISO file. Here `"TCBSD-x64-13-55702.iso"` is the name of the ISO file I downloaded.
-	-  `Create-TcBsdVM.ps1` : line 7 `$tcbsdimagefile="TCBSD-x64-13-55702.iso",`
-	-  `TwinCAT BSD VM creator.bat`: line 2 `SET sourcefilename="TTCBSD-x64-13-55702.iso"`
-5. Save and close the installer script. 
-6. Then either double click `TwinCAT BSD VM creator.bat` to execute, or from powershell run  `Create-TcBsdVM.ps1 TcBSD-VM`. Here the first argument, `TcBSD-VM`,  is the name of the virtual machine.
-7. You should see a Virtual Box window open and then you wait for the installer to start. This can take a minute. After that, you should see the following screen. Select **TC/BSD Install** and hit enter.
+2. Extract the contents of the installer script and the Tc/BSD ISO. Copy the contents of both to a single folder.
+4. Copy the exact filename of the Tc/BSD ISO image and open `Create-TcBsdVM.ps1` or `TwinCAT BSD VM creator.bat` with a text editor, depending on which you want to use.
+5. Change the ISO filename in one of the installer scripts to the one which matches your downloaded ISO file. Here `"TCBSD-x64-13-55702.iso"` is the name of the ISO file I downloaded.
+	-  `Create-TcBsdVM.ps1` at line 7: `$tcbsdimagefile="TCBSD-x64-13-55702.iso",`
+	-  `TwinCAT BSD VM creator.bat` at line 2: `SET sourcefilename="TCBSD-x64-13-55702.iso"`
+6. Save and close the installer script. 
+7. Then either double click `TwinCAT BSD VM creator.bat` to execute, or from powershell run  `Create-TcBsdVM.ps1 TcBSD-VM`. Here the first argument, `TcBSD-VM`,  is the name of the virtual machine.
+8. You should see a Virtual Box window open and then you wait for the installer to start. This can take a minute. After that, you should see the following screen. Select **TC/BSD Install** and hit enter.
 
 	{% picture 2022-tcbsd/bsd_install.png %}	
 
 1. Then select the 4G hard drive which was automatically created by the script and hit enter.
-
-	{% picture 2022-tcbsd/select_harddrive.png %}	
-
 1. Hit enter again to acknowledge the warning.
 
 	{% picture 2022-tcbsd/warning.png %}	
@@ -241,7 +238,8 @@ Next to a device manager, the `https://192.168.126.128` page also has a link to 
 ## Installing packages
 As I mentioned earlier, there is no GUI. You do most actions from the terminal. One of the things you can do is install [packages](https://tcbsd.beckhoff.com/TCBSD/13/stable/packages/All/), with a package manager. Package managers are a useful feature in UNIX-like operating systems. Although Windows is now also joining the party with [`winget`](https://winget.run/).
 
-### Install TwinCAT HMI server
+### Installing TwinCAT HMI server
+*Note: There is also a [video by Coding Bytes](https://beckhoff-au.teachable.com/courses/coding-bytes-twincat-3/lectures/37473242) which describes this step.*
 
 A package which you likely need is the HMI server. I don't exactly know what it is called, but I know that there is a search feature. If you type in `pkg search hmi`, you see two results.
 
@@ -288,7 +286,7 @@ After successfully connecting to the PLC, you should be able to activate your co
 
 ### Publishing the HMI
 
-With your PLC code running, it's now time to look at how to publish the HMI. I initially had some issues with publishing the HMI. In the end I made it work by using TcBSD version 13, which has  TcHmiSrv 1.12.756.1. I couldn't make it work with TcBSD v12.2 which has TcHmiSrv v 1.12.746.0. Furthermore you need to make sure that your HMI project has the same version as the server which is 1.12.756.1 for me.
+With your PLC code running, it's now time to look at how to publish the HMI. I initially had some issues with publishing the HMI. In the end, I made it work by using TcBSD version 13, which has  TcHmiSrv 1.12.756.1. I couldn't make it work with TcBSD v12.2 which has TcHmiSrv v 1.12.746.0. Furthermore, you need to make sure that your HMI project has the same version as the server which is 1.12.756.1 for me.
 
 Once you have that, you need to add an [exception to the Tc/BSD firewall](https://infosys.beckhoff.com/content/1033/twincat_bsd/6423780747.html?id=6393416005524011539). By default a lot of ports are blocked, including the one needed for the HMI server. To add it, open the firewall configuration file with `doas ee /etc/pf.conf` from the console. Then add the following new line at the end of the file 
 
@@ -299,22 +297,17 @@ pass in quick proto tcp to port 1010 keep state
 
 Exit the `ee` editor with <kbd>Esc</kbd>, select `a) leave editor`, save your changes and restart the virtual machine. 
 
-Meanwhile open the PLC project you want to publish on the virtual machine. Verify that the TF2000 HMI Server license is present in your system manager under **SYSTEM > License**. If it is not present, add it manually via the **Manage Licenses** tab. Then activate your PLC project which serves as the back end for your HMI project. Open the HMI publishing settings, fill in the IP address of the virtual machine and press **Validate connection**. If the connection was successful, select **Publish**.
+Meanwhile, open the PLC project you want to publish on the virtual machine. Verify that the TF2000 HMI Server license is present in your system manager under **SYSTEM > License**. If it is not present, add it manually via the **Manage Licenses** tab. Then activate your PLC project which serves as the back end for your HMI project. Open the HMI publishing settings, fill in the IP address of the virtual machine and press **Validate connection**. If the connection was successful, select **Publish**.
 
 {% picture 2022-tcbsd/VM_HMI_publish_settings.png %}
 
-If you connect to the HMI server for the first time, it asks you to 
+If you connect to the HMI server for the first time, it asks you to set a password for the HMI server. You need this password whenever you want to publish your HMI project or need to log into the HMI server.
 
 {% picture  2022-tcbsd/first_hmi_server_connection.png %}
 
-- [x] find HMI server address
-- [x] TcBSD scroll lock
-- [x] html device manager -> open web browser and type in the ip, for example[]() https://192.168.126.132/. There is also a console https://192.168.126.132/console/, much better than the one in VMware.	
-- [x] Admin rights are to access the USB drive
-- [ ] Remove nvram file
-- [x] First need to add the hdd, then the USB stick
+Once the password is set you can publish your HMI which then should be reachable at the Browser URL as shown in the publishing settings. 
 
-
+---
 
 [^1]: The error message:
 	```
@@ -330,8 +323,6 @@ If you connect to the HMI server for the first time, it asks you to
 	2022-06-04T08:26:05.670175+00:00 - init 1 - - /bin/sh on /etc/rc terminated abnormally, going to single user mode 
 	Enter full pathname of shell or RETURN for /bin/sh: 
 	root@:/ 
-	```
-	
-	
-[^2]: While playing with Tc/BSD in the virtual machine I ran into an annoying issue: I couldn't scroll up. For example, when I do `TcHmiSrv --help`, the help text is to long for the console screen. At first I couldn't figure out how to scroll back up, because there is no scroll bar, <kbd>↑</kbd> shows the previous command and <kbd>Page Up</kbd> just shows a `~`.  After consulting Google, I found out that is where the <kbd>Scroll Lock</kbd> key is for. I always wondered what this button did. Note: If you're on a laptop without a Scroll Lock key, you can [remap one of the existing key combo's](https://serverfault.com/a/420341). 
+	```	
+[^2]: While playing with Tc/BSD in the virtual machine I ran into an annoying issue: I couldn't scroll up. For example, when I do `TcHmiSrv --help`, the help text is to long for the console screen. At first, I couldn't figure out how to scroll back up, because there is no scroll bar, <kbd>↑</kbd> shows the previous command and <kbd>Page Up</kbd> just shows a `~`.  After consulting Google, I found out that is where the <kbd>Scroll Lock</kbd> key is for. I always wondered what this button did. Note: If you're on a laptop without a Scroll Lock key, you can [remap one of the existing key combo's](https://serverfault.com/a/420341). 
 		![scroll lock enables scrolling in the TcBSD terminal window](/assets/2022-tcbsd/scroll_lock_magic.gif)
