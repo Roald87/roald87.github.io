@@ -4,11 +4,11 @@ title:  "TwinCAT EventLogger: PLC part"
 category: twincat
 ---
 
-Keeping track of all the things which are happening on your machine can be a daunting task. Whether it’s expected events or unexpected warnings and errors of which you want to inform the user. Luckily Beckhoff provides us with a tool which can help with that, namely the EventLogger. In this article I will introduce the PLC part of the EventLogger and show some useful features (code: [PlcPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart)). A [second article](https://roald87.github.io/twincat/2021/01/20/twincat-eventlogger-hmi-part.html) will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: [HmiPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart)). 
+Keeping track of all the things which are happening on your machine can be a daunting task. Whether it’s expected events or unexpected warnings and errors of which you want to inform the user. Luckily Beckhoff provides us with a tool that can help with that, namely the EventLogger. In this article, I will introduce the PLC part of the EventLogger and show some useful features (code: [PlcPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart)). A [second article](https://roald87.github.io/twincat/2021/01/20/twincat-eventlogger-hmi-part.html) will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: [HmiPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart)). 
 
 *Thanks to [Jakob Sagatowski ](https://github.com/sagatowski) for his valuable feedback while writing this article.*
 
-Events are created on the PLC and are organized in EventClasses, as shown in the image below. The events themselves can be of two different types. First there is the stateless message type which can only be sent. Second there is the alarm which also has a state. The states of the alarms work as follows. There are two mutually exclusive states: raised and cleared and an optional third state: confirmed which is independent of the first two. The raised and cleared state are used to indicate if an alarm condition is fulfilled (e.g. a temperature is above a certain limit). The optional confirmation state can be used to indicate that the user has seen the alarm and is aware of it. Finally all raised alarms are automatically cleared when the PLC is restarted, but they are not automatically confirmed.
+You can create events on the PLC in EventClasses, as shown in the image below. The events themselves can be of two different types. First, there is the stateless message type which can only be sent. Second, there is the alarm which also has a state. The states of the alarms work as follows. There are two mutually exclusive states: raised and cleared, and an optional third state: confirmed which is independent of the first two. The raised and cleared state are used to indicate if an alarm condition is fulfilled (e.g. a temperature is above a certain limit). The optional confirmation state can be used to indicate that the user has seen the alarm and is aware of it. Finally all raised alarms are automatically cleared when the PLC is restarted, but they are not automatically confirmed.
 
 {% picture 2020-11-3-twincat-eventlogger-plc-part/event_structure.png %}
 
@@ -32,7 +32,7 @@ Then I renamed the first default [event](https://infosys.beckhoff.com/content/10
 
 {% picture 2020-11-3-twincat-eventlogger-plc-part/event_details.PNG --alt event_details %}
 
-We can then start adding to code to send this message. For that we create a program `SendMessage`. In the program declaration we make an instance of [`FB_TcMessage`](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/18014403512523147.html?id=2612337694701808037). This function block will contain all the information regarding our message event. 
+We can then start adding to code to send this message. For that we create a program `SendMessage`. In the program declaration we make an instance of [`FB_TcMessage`](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/18014403512523147.html?id=2612337694701808037). This function block will contain all the information about our message event. 
 
 ```
 PROGRAM SendMessage
@@ -52,7 +52,7 @@ IF NOT bIsInitalized THEN
 END_IF
 ```
 
-Finally in order to send the message we call the [`Send`](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5051076107.html?id=4895394468327295574) method. The send method takes one argument which is the timestamp of the message. If you set it to 0, it takes the current time and if it is larger than 0 it takes the time in 100 nanoseconds since January 1st, 1601 (UTC).
+Finally to send the message we call the [`Send`](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5051076107.html?id=4895394468327295574) method. The send method takes one argument which is the timestamp of the message. If you set it to 0, it takes the current time and if it is larger than 0 it takes the time in 100 nanoseconds since January 1st, 1601 (UTC).
 
 ```
 IF bSendMessage THEN
@@ -82,7 +82,7 @@ IF bSendMessage THEN
 END_IF
 ```
 
-Now we can activate our configuration. In order to see our events we need to activate the [Logged Events window](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/27021602616987915.html?id=2970470299138771131) which can be found under **View > Other Windows > TwinCAT Logged Events**. This logger shows up to 1000 (as set earlier) past events. Now log into the PLC. You should see something which looks like the image below. If you set `bMessage` to `TRUE` a message should be sent to the event logger. In order to see it in the Logged Events window, refresh the logger using the refresh button on the bottom left in the image. The logger nicely shows an overview of the different parameters of the class name the event is part of, info of the event itself and the time it was sent. 
+Now we can activate our configuration. In order to see our events we need to activate the [Logged Events window](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/27021602616987915.html?id=2970470299138771131) which can be found under **View > Other Windows > TwinCAT Logged Events**. This logger shows up to 1000 (as set earlier) past events. Now log into the PLC. You should see something which looks like the image below. If you set `bMessage` to `TRUE` a message should be sent to the event logger. To see it in the Logged Events window, refresh the logger using the refresh button on the bottom left in the image. The logger nicely shows an overview of the different parameters of the class name the event is part of, info of the event itself and the time it was sent. 
 
 {% picture 2020-11-3-twincat-eventlogger-plc-part/first_send_message.png --alt first_send_message %}
 
