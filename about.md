@@ -9,3 +9,7 @@ permalink: /about/
 In my spare time I like to cook, program and keep up with the latest developments in renewable energy, physics and astronomy.
 
 On this blog I'll post about any of the above subjects or whatever keeps my mind busy at the time.
+
+Like my work? Consider a donation! 👇
+
+<a href="https://ko-fi.com/roald87"><img src="/assets/kofi.png" height="100"></a>
