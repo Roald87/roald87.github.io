@@ -28,7 +28,7 @@ I started to look into TwinCAT/BSD, because I wanted to run some TwinCAT code lo
 While researching how to circumvent this restriction, I came across a [Reddit post](https://www.reddit.com/r/PLC/comments/gqzyem/psa_twincat_3_hyperv_wsl_2_working_using_vmware/) which mentioned VMware works with TwinCAT 3 and Hyper-V. This provided me with a nice opportunity to test Tc/BSD because I didn't want to create a big Windows VM. Also it allowed me to answer a [StackOverflow question](https://stackoverflow.com/questions/71321786/how-can-i-use-a-local-twincat-3-runtime-with-hyper-v-enabled/71333438#71333438) 🥳. Furthermore, I found out that it also works with Virtual Box. 
 
 ## Installing Tc/BSD on VirtualBox
-Installing Tc/BSD on Virtual Box is quite straightforward, thanks to [an install script](https://github.com/PTKu/TwinCAT-BSD-VM-creator) from the community. There is also a [video by Coding Bytes](https://beckhoff-au.teachable.com/courses/1204788/lectures/37382778) describing installation.
+Installing Tc/BSD on Virtual Box is quite straightforward, thanks to [an install script](https://github.com/PTKu/TwinCAT-BSD-VM-creator) from the community. Furthermore, there is also a [video by Coding Bytes](https://beckhoff-au.teachable.com/courses/1204788/lectures/37382778) describing installation.
 
 To install Tc/BSD:
 
@@ -90,7 +90,7 @@ To install Tc/BSD:
 	3 packets transmitted, 3 packets received, 0.0% packet loss
 ```
 
-- In case it is not working, check your network adapter settings. Type **Ethernet settings** into the start menu and open it. Select **Change adapter options** and right-click **VirtualBox Host-Only Network** and click on **Properties**.  Make sure they are set to automatic.
+- In case it is not working, check your network adapter settings. Type **Ethernet settings** into the start menu and open it. Select **Change adapter options** and right-click **VirtualBox Host-Only Network** and select **Properties**.  Make sure they are set to automatic.
 	{% picture 2022-tcbsd/ipv4_settings.png %}
 
 ## Installing Tc/BSD on VMware
@@ -239,7 +239,7 @@ Next to a device manager, the `https://192.168.126.128` page also has a link to 
 As I mentioned earlier, there is no GUI. You do most actions from the terminal. One of the things you can do is install [packages](https://tcbsd.beckhoff.com/TCBSD/13/stable/packages/All/), with a package manager. Package managers are a useful feature in UNIX-like operating systems. Although Windows is now also joining the party with [`winget`](https://winget.run/).
 
 ### Installing TwinCAT HMI server
-*Note: There is also a [video by Coding Bytes](https://beckhoff-au.teachable.com/courses/coding-bytes-twincat-3/lectures/37473242) which describes this step.*
+*Note: See also a [video by Coding Bytes](https://beckhoff-au.teachable.com/courses/coding-bytes-twincat-3/lectures/37473242) which describes this step.*
 
 A package which you likely need is the HMI server. I don't exactly know what it is called, but I know that there is a search feature. If you type in `pkg search hmi`, you see two results.
 
@@ -274,15 +274,15 @@ If you then type `top` and hit enter, you see TcHmiSrv is running. `top` is the 
 
 ### Connecting to the virtual machine
 
-Now you are ready to run some PLC and HMI code on Tc/BSD. You find the target machine as you normally do. You go to **Choose Target System > Search (Ethernet) > Broadcast search**. Note that next to your regular Wi-Fi/Ethernet ports, also two ports from VMware or one from VirtualBox shows up. Make sure the ports of your virtual machine are selected and click **OK** to start the search. 
+Now you are ready to run some PLC and HMI code on Tc/BSD. You find the target machine the usual way. You go to **Choose Target System > Search (Ethernet) > Broadcast search**. Note that next to your regular Wi-Fi/Ethernet ports, also two ports from VMware or one from VirtualBox shows up. Make sure the ports of your virtual machine are selected and click **OK** to start the search. 
 
 {% picture 2022-tcbsd/select_ports.png %}
 
-Click **Add Route** select **Secure ADS** and click **OK**. In case it can't connect, click **Advanced** to show the options. Then select **IP address** instead of **Hostname**. Then try to connect again. 
+Click **Add Route** select **Secure ADS** and click **OK**. In case it can't connect, click **Advanced** to show the options. Then select **IP address** instead of **Host name**. Then try to connect again. 
 
 {% picture 2022-tcbsd/connected.png %}
 
-After successfully connecting to the PLC, you should be able to activate your configuration. Finally. You can develop TwinCAT code again while [sitting in a beer garden like some developers do](https://alltwincat.com/2020/06/15/the-five-best-and-worst-things-with-twincat/#the-very-concept-of-twincat). Freedom!
+After connecting to the PLC, you should be able to activate your configuration. Finally. You can develop TwinCAT code again while [sitting in a beer garden like some developers do](https://alltwincat.com/2020/06/15/the-five-best-and-worst-things-with-twincat/#the-very-concept-of-twincat). Freedom!
 
 ### Publishing the HMI
 
@@ -297,7 +297,7 @@ pass in quick proto tcp to port 1010 keep state
 
 Exit the `ee` editor with <kbd>Esc</kbd>, select `a) leave editor`, save your changes and restart the virtual machine. 
 
-Meanwhile, open the PLC project you want to publish on the virtual machine. Verify that the TF2000 HMI Server license is present in your system manager under **SYSTEM > License**. If it is not present, add it manually via the **Manage Licenses** tab. Then activate your PLC project which serves as the back end for your HMI project. Open the HMI publishing settings, fill in the IP address of the virtual machine and press **Validate connection**. If the connection was successful, select **Publish**.
+Meanwhile, open the PLC project you want to publish on the virtual machine. Verify that the TF2000 HMI Server license is present in your system manager under **SYSTEM > License**. If it's not present, add it manually via the **Manage Licenses** tab. Then activate your PLC project which serves as the back end for your HMI project. Open the HMI publishing settings, fill in the IP address of the virtual machine and press **Validate connection**. If the connection was successful, select **Publish**.
 
 {% picture 2022-tcbsd/VM_HMI_publish_settings.png %}
 
