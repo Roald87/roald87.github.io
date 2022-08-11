@@ -1,2 +1,12 @@
+[Bb]ootable
+[Pp]owershell
+Beckhoff
 check
+Hyper-V
+Jakob
+Sagatowski
+Tc/BSD
 TwinCAT
+TwinCAT/BSD
+VirtualBox
+VMware

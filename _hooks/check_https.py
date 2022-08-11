@@ -19,7 +19,7 @@ def fix_file(filename):
     # If a line was changed, print a message in the console and overwrite the 
     # original file with the fixed one.
     if changed:
-        print(f'Fixing {filename}')
+        print('Fixing ' + filename)
         with open(filename, 'w') as fd:
             fd.write(''.join(new_lines))
 

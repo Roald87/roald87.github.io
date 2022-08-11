@@ -2,3 +2,5 @@
 .sass-cache
 .jekyll-metadata
 .jekyll-cache/
+.obsidian/workspace
+.obsidian/plugins/obsidian-vale/data.json

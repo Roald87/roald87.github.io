@@ -1,0 +1,17 @@
+{
+  "spellcheck": true,
+  "spellcheckDictionary": [
+    "TwinCAT",
+    "FreeBSD",
+    "Beckhoff",
+    "VMware",
+    "bootable",
+    "Jakob",
+    "Sagatowksi",
+    "reformats",
+    "catalogue",
+    "powershell"
+  ],
+  "alwaysUpdateLinks": true,
+  "promptDelete": false
+}
