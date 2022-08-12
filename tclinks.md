@@ -23,11 +23,13 @@ permalink: /tclinks/
 - [Coding Bytes](https://codingbytes.teachable.com/p/codingbytes_twincat3): Team members from Beckhoff Australia share videos which are primarily based on replies to support questions.
 
 ## Tools
-
-- [TcUnit](https://www.tcunit.org): Unit test library.
+- [TcError](https://github.com/Roald87/TcError): Functions and datatypes which describe TwinCAT errors.
 - [TcBlack](https://github.com/Roald87/TcBlack): Open source opinionated auto formatter for TwinCAT structured text.
 - [STweep](https://www.stweep.com/): Highly customizable paid auto formatter.
+- [TcUnit](https://www.tcunit.org): Unit test library.
 - [TcOpen](https://github.com/TcOpenGroup/TcOpen/): A collection of standard TwinCAT components.
+- [TcMatrix](https://github.com/BurksEngineering/TcMatrix): Library for matrix and vector operations for some of your linear algebra needs.
+- [TcTransform](https://github.com/BurksEngineering/TcTransform): Library for 3D coordinate system transformations.
 
 ## Repos
 
@@ -35,6 +37,4 @@ permalink: /tclinks/
 - [TcLibraryVersions](https://github.com/RumstiBumsti/TcLibraryVersions): Unofficial tracker for TwinCAT library versions.
 - [Beckhoff USA GitHub](https://github.com/Beckhoff-USA-Community): A collection of TwinCAT and TcHMI example projects.
 - [Beckhoff HQ GitHub](https://github.com/Beckhoff): Mainly TFxxxx sample projects.
-- [TcMatrix](https://github.com/BurksEngineering/TcMatrix): Library for matrix and vector operations for some of your linear algebra needs.
-- [TcTransform](https://github.com/BurksEngineering/TcTransform): Library for 3D coordinate system transformations.
 - [Awesome open source](https://awesomeopensource.com/projects/industrial-automation?): List of open source GitHub repo's.
