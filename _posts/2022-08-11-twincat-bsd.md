@@ -133,7 +133,7 @@ Installing TwinCAT/BSD on VMware is a bit more complicated. The steps below are 
 
 	{% picture 2022-tcbsd/install_os_later.png %}
 
-5. Select "Linux" and "FreeBSD 12 64-bit"
+5. Select "Other" and "FreeBSD 12 64-bit"
 
 	{% picture 2022-tcbsd/select_guest_os.png %}
 
