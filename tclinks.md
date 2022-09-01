@@ -15,6 +15,10 @@ permalink: /tclinks/
 - [Kassym Dorsel](https://kassymdorsel.com/blog): Various articles and a series on TwinCAT Vision.
 - [WJB Automation Blog](https://dronefactory.co.uk/): Combining TwinCAT with Unity, a 3D graphics development platform.
 
+## Forums
+- [Beckhoff Community Support](https://beckhoffsupport.com/community): Ask for support from the community.
+- [LinkedIn TwinCAT Forum](https://www.linkedin.com/groups/1860933/): Support from your peers. You need to request an invite for this private forum. 
+
 ## YouTube/Videos
 
 - [Jakob Sagatowski](https://www.youtube.com/c/JakobSagatowski): An excellent, extensive and free introduction into TwinCAT and more.
