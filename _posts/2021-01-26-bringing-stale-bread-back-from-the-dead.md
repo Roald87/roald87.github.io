@@ -2,11 +2,10 @@
 layout: post
 title: "Bringing stale bread back from the dead"
 category: cooking
+toc: true
 ---
 
 Not many things can beat the taste and smell of a freshly baked bread. Unfortunately this fresh-bake taste quickly disappears and the texture  becomes worse with time. After day two, the bread is nothing like it was when you bought it. Luckily you can bring it back to (almost) its new state with a simple trick!
-
-[Get me to the recipe!](#recipe)
 
 ## Intro
 Recently it happened to me that a loaf of bread was laying around for 5 days and it became quite stale. Then I remembered this great life hack on how to revive bread. Just make it wet and pop it in the oven. The results are quite amazing. Plus your kitchen smells pretty good afterwards!

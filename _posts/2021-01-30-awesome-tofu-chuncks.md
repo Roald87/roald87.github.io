@@ -31,6 +31,6 @@ Based on the instructions of [Sadia Badiei](https://www.pickuplimes.com/single-p
 
     Gently stir until all the pieces are well coated.  
 
-2. Heat a large pan over medium-high heat. When hot, add the oil and the tofu. Cook the tofu until it's crispy and golden on all sides (~10 minutes). Don't disturb the tofu too much while it's cooking, otherwise, it might crumble. Only stir it every couple of minutes.   
+2. Heat a large pan over medium-high heat. When hot, add the oil and the tofu. Cook the tofu until it's crispy and golden on all sides (~10 minutes). Don't disturb the tofu too much while it's cooking, otherwise, it might crumble. Only stir it every couple of minutes.
 
 {% picture 2021-01-30-awesome-tofu-chunks/chunks_cooking.jpeg %}

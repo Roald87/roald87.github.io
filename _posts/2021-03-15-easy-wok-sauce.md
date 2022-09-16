@@ -2,6 +2,7 @@
 layout: post
 title: "Easy wok sauce"
 category: cooking
+toc: true
 ---
 
 Use this easy wok sauce to make a quick (vegan) meal which tastes great!

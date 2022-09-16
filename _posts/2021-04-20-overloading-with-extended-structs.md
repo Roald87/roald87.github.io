@@ -2,6 +2,7 @@
 layout: post
 title: "'Overloading' functions with extended structs"
 category: twincat
+toc: true
 ---
 
 I was wondering if overloading functions in TwinCAT was possible, but I found out that this is not the case. I did however realize that overloading is possible using a few work-arounds. In this article I'll show how to mimic this behavior with extended structs.

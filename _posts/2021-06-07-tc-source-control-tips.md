@@ -2,6 +2,7 @@
 layout: post
 title: "Source control tips for TwinCAT"
 category: twincat
+toc: true
 ---
 
 Source control is an essential tool when you're developing software. Yet, there is little information online on how to do it for TwinCAT projects. In this post, I share some tips and tricks I picked up along the way. The main focus is git, but many points apply to other source control systems as well.

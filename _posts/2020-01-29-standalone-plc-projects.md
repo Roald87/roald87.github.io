@@ -2,6 +2,7 @@
 layout: post
 title: "Stand-alone PLC projects"
 category: twincat
+toc: true
 ---
 
 In this article I want to highlight a useful and relatively new TwinCAT feature: Stand-alone PLC projects. As usual, Beckhoff’s InfoSys provides a good explanation on how to set-up and run such a project from scratch. However, there is relatively little information on why the separation might be a good idea, how to separate an existing project and some of the pitfalls you might encounter.

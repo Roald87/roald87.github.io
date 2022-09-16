@@ -2,6 +2,7 @@
 layout: post
 title: "How to work with the RowClassesProvider?"
 category: twincat
+toc: true
 ---
 
 Recently a user on the [LinkedIn TwinCAT forum](https://www.linkedin.com/groups/1860933/) shared and example how to use the RowClassesProvider. When I tried the example and went looking for the documentation, there was none to be found! On the whole internet, there is [one (1!) example](https://gist.github.com/benhar-dev/2216bf3001aa49097037f759087667e8) which sort of shows the function. In this post I will show what the RowClassesProvider does and how you can use it to dynamically color data grids.
