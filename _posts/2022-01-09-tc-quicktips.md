@@ -8,10 +8,14 @@ Over the years I've come across some features of TwinCAT or programming in gener
 
 - Don't repeat yourself, often abbreviated as [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), is a saying in software development to denote unnecessary repeating code. One tell-tale sign if you write non-DRY code, is that you copy and paste a lot of code.
 - You can activate multi-line editing by pressing the <kbd>Alt</kbd> key and dragging your mouse across several lines. If you use this function a lot, then it is a sign that your code is probably not [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). So it is time to think about how to refactor your code.
+    
     ![multi-line editing with Alt key](/assets/2022-01-09-tc-quicktips/multiline_editing.gif)
+
 - A `_` can be used as a thousand-separator. For example: `number : INT := 1_000_000;`. Or you can use scientific notation if most decimals are zeros: `number : INT := 1E6;`. 
 - (TwinCAT 4024+) Use <kbd>Ctrl</kbd> + <kbd>K</kbd>, <kbd>Ctrl</kbd> + <kbd>C</kbd> to comment one or more lines and <kbd>Ctrl</kbd> + <kbd>K</kbd>, <kbd>Ctrl</kbd> + <kbd>U</kbd> to uncomment them again. Check InfoSys for [more hotkeys](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/8116040203.html?id=3573376012774111267).
+
     ![comment one or more lines](/assets/2022-01-09-tc-quicktips/commenting.gif)
+    
 - In a `CASE` statement you can use multiple cases `1, 3, 61` or a whole range `1..10` for a single case. For example:
 
 ```
