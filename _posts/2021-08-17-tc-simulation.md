@@ -2,6 +2,7 @@
 layout: post
 title: "Machine simulation with a digital twin"
 category: twincat
+toc: true
 ---
 
 When you're developing PLC code it can be difficult to test the behavior of the whole code, due to all the disconnected in and outputs. A colleague of mine found a nice solution how you can create a digital twin of the real machine. The digital twin then simulates the behavior of the real one. In this article I'll show you how you can do this with a simple oven project. 

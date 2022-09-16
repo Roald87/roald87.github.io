@@ -26,6 +26,7 @@ group :jekyll_plugins do
   gem 'jekyll_picture_tag', "~> 2.0"
   gem 'jekyll-sitemap'
   gem 'jekyll-last-modified-at'
+  gem 'jekyll-toc'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

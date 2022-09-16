@@ -2,6 +2,7 @@
 layout: post
 title: "The Best Vegan Chili"
 category: cooking
+toc: true
 ---
 
 Easy, tasty, vegan, cheap, leftovers. A simplified and *Europeanized* version of [The Best Vegetarian Chili](https://www.seriouseats.com/best-vegetarian-bean-chili) from [The Food Lab](https://www.goodreads.com/book/show/24861842-the-food-lab) by J. Kenji López-Alt.

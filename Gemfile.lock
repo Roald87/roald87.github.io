@@ -24,8 +24,8 @@ GEM
     eventmachine (1.2.7)
     eventmachine (1.2.7-x64-mingw32)
     ffi (1.15.5)
-    ffi (1.15.5-x64-mingw-ucrt)
     ffi (1.15.5-x64-mingw32)
+    ffi (1.15.5-x64-unknown)
     forwardable-extended (2.6.0)
     gemoji (3.0.1)
     html-pipeline (2.14.1)
@@ -60,6 +60,9 @@ GEM
       jekyll (>= 3.8, < 5.0)
     jekyll-sitemap (1.4.0)
       jekyll (>= 3.7, < 5.0)
+    jekyll-toc (0.17.1)
+      jekyll (>= 3.9)
+      nokogiri (~> 1.11)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     jekyll_picture_tag (2.0.3)
@@ -86,9 +89,9 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     minitest (5.15.0)
-    nokogiri (1.13.4-x64-mingw-ucrt)
-      racc (~> 1.4)
     nokogiri (1.13.4-x64-mingw32)
+      racc (~> 1.4)
+    nokogiri (1.13.4-x64-unknown)
       racc (~> 1.4)
     nokogiri (1.13.4-x86_64-linux)
       racc (~> 1.4)
@@ -124,8 +127,8 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
-  x64-mingw-ucrt
   x64-mingw32
+  x64-unknown
   x86_64-linux
 
 DEPENDENCIES
@@ -134,6 +137,7 @@ DEPENDENCIES
   jekyll-feed (~> 0.6)
   jekyll-last-modified-at
   jekyll-sitemap
+  jekyll-toc
   jekyll_picture_tag (~> 2.0)
   jemoji
   kramdown-parser-gfm

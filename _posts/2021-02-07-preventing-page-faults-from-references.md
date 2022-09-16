@@ -2,6 +2,7 @@
 layout: post
 title: "Preventing page faults from references"
 category: twincat
+toc: true
 ---
 
 Recently I was coding up a new function block and passed another function block by reference to it. Somewhere I forgot to check if the reference was valid before using it and 💥 Page Fault! After some thinking I came up with a few solutions how this can be prevented and even how you could catch mistakes like this at compile time instead of during run time. Let me show you what I did.

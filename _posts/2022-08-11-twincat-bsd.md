@@ -2,6 +2,7 @@
 layout: post
 title: "TwinCAT/BSD installation and tutorial"
 category: twincat
+toc: true
 ---
 
 TwinCAT/BSD is a new operating system for the TwinCAT runtime. It has a small footprint and it's free. Furthermore, TwinCAT/BSD allows you to run TwinCAT code locally when you have Hyper-V enabled if you install it on a virtual machine. In this tutorial, I go over the installation of TwinCAT/BSD on VMware and Virtual Box and show some basic usages of Tc/BSD.

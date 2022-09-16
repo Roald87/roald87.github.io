@@ -2,6 +2,7 @@
 layout: post
 title: "TwinCAT EventLogger: HMI part"
 category: twincat
+toc: true
 ---
 
 In an [earlier article](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html) I introduced the PLC part of the TwinCAT EventLogger and showed some useful features. In this article, I go into the details on how to visualize the events using TwinCAT’s web-based HMI (TE2000). 

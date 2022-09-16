@@ -2,14 +2,10 @@
 layout: post
 title: "Vegan 'bolognese' sauce"
 category: cooking
+toc: true
 ---
 
 I don't eat too much meat these days and one of the things I really miss is a good bolognese sauce. Since bolognese revolves so much around meat, it is not easy to veganize. However, I now found a really great alternative, mostly based on a recipe by J. Kenji López-Alt.
-
-Quick links:
-
-- [Ingredients](#ingredients)
-- [Recipe](#recipe)
 
 This recipe is based on a [Hearty Vegan Mushroom Bolognese](https://www.seriouseats.com/2014/02/vegan-pasta-with-rich-and-hearty-mushroom-bol.html) from Kenji. There are a few steps which I skipped or changed. My version is slightly less work and I also prefer it over his version 😁. First the final result.
 
