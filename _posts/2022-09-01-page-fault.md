@@ -7,6 +7,8 @@ toc: true
 
 [Earlier](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html) I talked about how you can prevent page faults from references. In this post, I try to show a complete overview of page fault origins and how to prevent them.
 
+- Example code: [GitHub](https://github.com/Roald87/TwincatTutorials/tree/main/PageFaults)/[Direct download](https://downgit.github.io/#/home?url=https://github.com/Roald87/TwincatTutorials/tree/main/PageFaults) with TwinCAT 4024.25
+
 ## Page faults in TwinCAT
 You probably came across the following error message when you activated a configuration. The error says there is a *Page Fault*. This message was always quite puzzling to me when I started programming PLCs. 
 
