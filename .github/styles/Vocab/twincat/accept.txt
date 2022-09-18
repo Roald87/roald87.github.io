@@ -1,4 +1,5 @@
 [Bb]ootable
+[Dd]ereferenc(e|ing)
 [Pp]owershell
 Beckhoff
 check

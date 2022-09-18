@@ -10,8 +10,12 @@
     "Sagatowksi",
     "reformats",
     "catalogue",
-    "powershell"
+    "powershell",
+    "dereferencing",
+    "dereference"
   ],
   "alwaysUpdateLinks": true,
-  "promptDelete": false
+  "promptDelete": false,
+  "livePreview": false,
+  "legacyEditor": true
 }

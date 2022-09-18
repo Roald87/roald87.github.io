@@ -5,7 +5,7 @@ category: twincat
 toc: true
 ---
 
-[Earlier](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html) I talked about how you can prevent page faults from references. In this post I try to show a complete overview of page fault origins and how to prevent them.
+[Earlier](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html) I talked about how you can prevent page faults from references. In this post, I try to show a complete overview of page fault origins and how to prevent them.
 
 ## Page faults in TwinCAT
 You probably came across the following error message when you activated a configuration. The error says there is a *Page Fault*. This message was always quite puzzling to me when I started programming PLCs. 
@@ -14,7 +14,7 @@ You probably came across the following error message when you activated a config
 
 ![[_site/assets/2021-02-07-preventing-page-faults-from-references/page_fault.png]]
 
-The reason of the page fault is usually quickly found, once you log into your project and you see the point of failure highlighted in yellow.
+The reason for the page fault is easy to see once you log into your project because it highlights the point of failure.
 
 {% picture 2022-page-fault/pointer.png %}
 
@@ -22,15 +22,13 @@ The reason of the page fault is usually quickly found, once you log into your pr
 
 ## What are page faults?
 
-Different [types of page faults are identified on Wikipedia](https://en.wikipedia.org/wiki/Page_fault). But I think the ones you get in TwinCAT are of the invalid type. These types of page fault are caused by a reference to an invalid memory address. Let me show through examples what that means.
-
-I can trigger page faults with three different examples. Note: I ran the examples with TwinCAT 4024.25.
+[Wikipedia lists different types of page faults](https://en.wikipedia.org/wiki/Page_fault). I think the ones you get in TwinCAT are of the invalid type. This type of page fault is caused by a reference to an invalid memory address. Let me show through three different examples what that means.
 
 ## Pointers
 
 ### Cause
 
-[Pointers](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529453451.html?id=5839194631499501145) store the address of a variable. When a pointer to a variable is instantiated, the default address is 0. Therefore, in the example below `pointerToNumber` is 0. Then in the implementation part, I try to save the value to which the pointer points into `number`. This is done by dereferencing the pointer using the `^` symbol.
+[Pointers](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529453451.html?id=5839194631499501145) store the address of a variable. When you instantiate a pointer to a variable, the default address is 0. Therefore, in the example below `pointerToNumber` is 0. Then in the implementation part, I try to save the value to which the pointer points into `number` by dereferencing the pointer using the `^` symbol.
 
 ```
 PROGRAM PointerExample
@@ -63,11 +61,11 @@ IF pointerToNumber <> 0 THEN
 END_IF
 ```
 
-Although this will solve your issue, there is a good chance that you forget to implement the check at least once. But, there is a way to automatically check for valid pointers: the POU [`CheckPointer`](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2530405259.html?id=7869750361486034578). 
+Although this solves your issue, there is a good chance that you forget to implement the check at least once. But, you can automatically check for valid pointers with the POU [`CheckPointer`](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2530405259.html?id=7869750361486034578). 
 
-After adding `CheckPointer` to your project, this function is automatically called _each time_ before you use a pointer. The advantage is that you can trigger an error message which makes diagnostics easier. A disadvantage is that you add an extra function call to each time you use a pointer. If you use a lot of pointers, the extra overhead might cause cycle overruns. Also it can't prevent the pointer from being called, so you will get the page fault regardless.
+The `CheckPointer` function is automatically called _each time_ before you use a pointer. The advantage is that you can trigger an error message which makes diagnostics easier. A disadvantage is that you add an extra function call when you use a pointer. If you use a lot of pointers, the extra overhead might cause cycle overruns. Also, it can't prevent the pointer call, so you get the page fault regardless.
 
-To add the `CheckPointer` to your project, right click on your PLC project and select **Add > POU for implicit checks**. 
+To add the `CheckPointer` to your project, right click your PLC project and select **Add > POU for implicit checks**. 
 
 {% picture 2022-page-fault/implicit_checks.png %}
 
@@ -79,20 +77,20 @@ To add the `CheckPointer` to your project, right click on your PLC project and s
  
  ![[assets/2022-page-fault/add_checkpointer.png]]
  
- This adds the `CheckPointer` function to your project and it already has a suggested implementation. If I the run the failing example code, an error message will be printed in the error console before it crashes.
+ This adds the `CheckPointer` function to your project and it already has a suggested implementation. If I run the failing example code, an error message is printed in the error console before it crashes.
  
  {% picture 2022-page-fault/pointer_check_error_message.png %}
  
  ![[assets/2022-page-fault/pointer_check_error_message.png]]
 
-Another solution would be to pass the pointer via `VAR_IN_OUT` or using constructor injection via `FB_init` as I showed in the [earlier article](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html). 
+Another solution would be to pass the pointer via `VAR_IN_OUT` or use constructor injection via `FB_init` as I showed in the [earlier article](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html). 
 
 ## References
 
 ### Cause
 Another way you can get page faults is through references, as I also showed in an [earlier article](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html). [References](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529458827.html?id=2716630061017907414) are pointers with an improved interface. Thus it shouldn't come as a surprise that these can cause page faults as well.  
 
-The very simple example below will cause a page fault: I instantiate a reference to an integer called `number`. Then I try to assign a number to this reference. 
+The short example below causes a page fault: I instantiate a reference to an integer called `number`. Then I try to assign a number to this reference. 
 
 ```
 PROGRAM ReferenceExample
@@ -103,7 +101,7 @@ END_VAR
 refNumber := 1;
 ```
 
-When you try to assign a number to this reference, you get a page fault, because `refNumber` doesn't actually refer to anything.
+When you try to assign a number to this reference, you get a page fault, because `refNumber` doesn't refer to anything.
 
 {% picture 2022-page-fault/reference_page_fault.png %}
 
@@ -116,7 +114,7 @@ In the [earlier article](https://cookncode.com/twincat/2021/02/07/preventing-pag
 - Adding references to `VAR_IN_OUT`
 - Or using constructor injection via `FB_init`
 
-Here I only show the first solution with `__ISVALIDREF`. You use this function very similar as you do with the pointer check (`somePointer <> 0`): The full example becomes.
+Here I only show the first solution with `__ISVALIDREF`. You use this function in a similar was as you would with the pointer check (`somePointer <> 0`): The full example becomes.
 
 ```
 PROGRAM ReferenceExample
@@ -129,10 +127,10 @@ IF __ISVALIDREF(refNumber) THEN
 END_IF
 ```
 
-The advantage of this is that you prevent page faults. But the reference never gets assigned, thus you might wonder why your code doesn't do what you expect it to. In this case it is probably a good idea to add an `ELSE` clause with an appropriate error message. Even better would be to pass the reference via `VAR_IN_OUT` or `FB_init` if possible.
+The advantage of this is that you prevent page faults. But the reference never gets assigned, thus you might wonder why your code doesn't do what you expect it to. In this case, it's probably a good idea to add an `ELSE` clause with an appropriate error message. Even better would be to pass the reference via `VAR_IN_OUT` or `FB_init` if possible.
 
 ## Interfaces
-[Interfaces](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/4256428299.html?id=507172925224818176) can also cause page faults as shown by this example. I defined an interface `I_Interface` with a single property called `SomeProperty` which should return an integer.
+[Interfaces](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/4256428299.html?id=507172925224818176) can also cause page faults as shown by this example. I defined an interface `I_Interface` with a single property called `SomeProperty` which returns an integer.
 
 ```
 INTERFACE I_Interface
@@ -153,9 +151,7 @@ END_VAR
 number := someInterface.SomeProperty;
 ```
 
-Executing the code again results in a page fault. Normally before you use the interface, you assign a function block to it. Then `someInterface` contains the address to this function block 
-
-This time no function block was assigned to the interface, thus the interface is 0. Again this is not a valid address, so you get a page fault. 
+Executing the code again results in a page fault. That is because a function block needs to be assigned to the interface first. Then `someInterface` contains the address to this function block. Without an assigned function block, the interface is 0. Since this is not a valid address you get a page fault. 
 
 {% picture 2022-page-fault/interface_page_fault.png %}
 
@@ -177,7 +173,9 @@ IF someInterface <> 0 THEN
 END_IF
 ```
 
-Again this solution will silently fail, thus it might be wise to add an `ELSE` clause with an error message. Or if the interface is used in a function or function block you can use the `VAR_IN_OUT` or `FB_init` solutions mentioned in the [earlier article](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html) .
+Again this solution silently fail, thus it might be wise to add an `ELSE` clause with an error message. Or if you use the interface in a function or function block you can use the `VAR_IN_OUT` or `FB_init` solutions mentioned in the [earlier article](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html).
 
 ## Conclusions
-I showed page faults can be caused by invalid pointers, references and interfaces. Then I showed some solutions how to prevent the page faults, mainly by checking if the pointer or interface is not 0 or by using `__iSVALIDREF` for references. Did I miss any cases which can cause page faults? And what are your solutions to prevent plc crashes from page faults? Let me know in the comments below.
+I showed page faults can be caused by invalid pointers, references, and interfaces. For each case,  I showed some solutions how to prevent the page faults, mainly by checking if the pointer or interface is not 0 or by using `__iSVALIDREF` for references. 
+
+Did I miss any cases which can cause page faults and what are your solutions to prevent PLC crashes from page faults? Let me know in the comments below.
