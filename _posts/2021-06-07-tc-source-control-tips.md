@@ -35,7 +35,7 @@ The first step for seamless TwinCAT source control starts with the selection of 
 
 Let me start with a disclaimer. I'm a bit biased on the structured text front. I think that structured text is the future of plc programming. It is so much more versatile than the others. Take for example a simple for loop or an if-else statement. These are impossible to implement with a function block diagram, or a lot more verbose than in structured text.
 
-With that said, I'll now explain why structured text works much better than function block diagrams for source control. In the end, it all boils down to the readability of the raw text files. 
+With that said, I'll now explain why structured text works much better than function block diagrams for source control. In the end, it all boils down to the readability of the raw text files.
 
 When you're using anything other than structured text, the raw text files are unreadable. Furthermore, minor changes in function block diagrams can lead to a code difference of dozens or hundreds of lines. For example, if you switch the order of two statements in a function block diagram.
 
@@ -43,7 +43,7 @@ That is why Beckhoff made the [TcCompare tool](https://infosys.beckhoff.com/engl
 
 ## 1. .gitignore
 
-The `.gitignore` file is very important when you're using git. Git uses this file to determine for which files or folders it can ignore the changes. Files and folders which git can ignore usually fall into two categories. In the first category are files that are created from the other files. For example, the `.tmc` file that is compiled from your plc code. Or if you have some documentation in a markdown file from which you generate an html page. In these cases, you only want to have the plc code or the markdown file under source control. A second category is user-specific files. For example, the `.sou` file from Visual Studio. This file contains the users' options for the Visual Studio project. 
+The `.gitignore` file is very important when you're using git. Git uses this file to determine for which files or folders it can ignore the changes. Files and folders which git can ignore usually fall into two categories. In the first category are files that are created from the other files. For example, the `.tmc` file that is compiled from your plc code. Or if you have some documentation in a markdown file from which you generate an html page. In these cases, you only want to have the plc code or the markdown file under source control. A second category is user-specific files. For example, the `.sou` file from Visual Studio. This file contains the users' options for the Visual Studio project.
 
 Beckhoff already [provides a list](https://infosys.beckhoff.com/content/1033/tc3_sourcecontrol/406303499.html?id=4324324478820586350) which explains where most file extensions are used for. They also list whether files should be under source control or not. Jakob Sagatowski added some more files to this list and [made a general TwinCAT3 .gitignore file](https://github.com/github/gitignore/blob/master/TwinCAT3.gitignore). This file gives you a good starting point with any git source-controlled TwinCAT project.
 
@@ -51,11 +51,11 @@ Beckhoff already [provides a list](https://infosys.beckhoff.com/content/1033/tc3
 
 Once you determined which files should be source controlled, it is important to make sure those files only change when needed. You want to make sure TwinCAT saves settings for independent parts in separate files. Several separate files which it can create are:
 
-1. NC axes or IO devices can be saved in a separate file as explained on [this page on InfoSys](https://infosys.beckhoff.com/content/1033/tc3_sourcecontrol/767894795.html?id=9000520481371853523). 
+1. NC axes or IO devices can be saved in a separate file as explained on [this page on InfoSys](https://infosys.beckhoff.com/content/1033/tc3_sourcecontrol/767894795.html?id=9000520481371853523).
 
 2. [On the same page](https://infosys.beckhoff.com/content/1033/tc3_sourcecontrol/767894795.html?id=9000520481371853523) it mentions that you can save the plc project as a separate file. Or you can create a  stand-alone plc project [as I wrote about earlier](https://roald87.github.io/twincat/2020/01/29/standalone-plc-projects.html).
 
-3. Events from the [TwinCAT EventLogger](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html). These are normally stored in the `.tsproj` file. But you can also store them in an independent file. If you created a new project, you can immediately save them in a separate file. In case you want to transfer existing events to a tmc file, the steps are almost the same. For both, you first right-click **Type System** and select **Add New Item...**. Choose a name and location to save your new event class. 
+3. Events from the [TwinCAT EventLogger](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html). These are normally stored in the `.tsproj` file. But you can also store them in an independent file. If you created a new project, you can immediately save them in a separate file. In case you want to transfer existing events to a tmc file, the steps are almost the same. For both, you first right-click **Type System** and select **Add New Item...**. Choose a name and location to save your new event class.
 
     {% picture 2021-07-06-tc-source-control/create_tmc_event.png --alt image-20210605125836430 %}
 
@@ -63,7 +63,7 @@ Once you determined which files should be source controlled, it is important to 
 
     {% picture 2021-07-06-tc-source-control/existing_events.png --alt existing-events %}
 
-    If you want to save _new events_ into the file, right-click the empty area and select **New**. 
+    If you want to save _new events_ into the file, right-click the empty area and select **New**.
 
     {% picture 2021-07-06-tc-source-control/new_events.png --alt new-events %}
 
@@ -89,7 +89,7 @@ Once you determined which files should be source controlled, it is important to 
 
    - If you're using 4022.x the event tmc files are [not formatted](https://stackoverflow.com/q/68678539/6329629). Beckhoff introduced proper formatting in 4024. If you're stuck with 4022.x, you have to format the tmc files yourself. For example with the Sublime plugin [Indent XML](https://github.com/alek-sys/sublimetext_indentxml) or use [pre-commits](hhttps://cookncode.com/twincat/2022/04/14/pre-commit.html#twincat-relevant-pre-commits).
 
-4. Per default TwinCAT saves so-called LineIDs in the `.TcPOU` files. It [uses the LineIDs for](https://infosys.beckhoff.com/content/1033/tc3_userinterface/4692665483.html?id=1009989685087473824) 
+4. Per default TwinCAT saves so-called LineIDs in the `.TcPOU` files. It [uses the LineIDs for](https://infosys.beckhoff.com/content/1033/tc3_userinterface/4692665483.html?id=1009989685087473824)
 
    > breakpoint handling, for example, and ensure that the code lines can be assigned to machine code instructions
 
@@ -145,18 +145,18 @@ By adding a single white line, the difference went from -1/+2 to -0/+1. There ar
 
 ## 4. git filters
 
-You can use git filters to create a sort of [`.gitignore` for specific lines of code](https://stackoverflow.com/a/22171275/6329629). Whenever you checkout or commit a piece of code it can go through the git filter. If the file matches a filter setting, it can run a script to change some code before git commits or checks out the code. 
+You can use git filters to create a sort of [`.gitignore` for specific lines of code](https://stackoverflow.com/a/22171275/6329629). Whenever you checkout or commit a piece of code it can go through the git filter. If the file matches a filter setting, it can run a script to change some code before git commits or checks out the code.
 
 Let me show you how you can use it. Suppose you are working on a project with a few people. Everyone has their own development PLC with a different target net ID. When you select your development PLC's net ID, TwinCAT saves this change in the `.tsproj` file:
 
 ```xml
-<Project 
-  ProjectGUID="{DEF6D51E-ADA4-4CFE-B6F1-CB3CC59478BE}"    
-  TargetNetId="1.23.456.78.1.1" 
+<Project
+  ProjectGUID="{DEF6D51E-ADA4-4CFE-B6F1-CB3CC59478BE}"
+  TargetNetId="1.23.456.78.1.1"
   ShowHideConfigurations="#x106"
 >
 ```
-Since your colleagues' NetId is different, you want to prevent git from including this change in the code's version history. You can achieve this with the following steps, [as also explained in this StackOverflow post](https://stackoverflow.com/a/22171275/6329629) 
+Since your colleagues' NetId is different, you want to prevent git from including this change in the code's version history. You can achieve this with the following steps, [as also explained in this StackOverflow post](https://stackoverflow.com/a/22171275/6329629)
 
 1. In the `.git/config` file inside the project you add the following:
 
@@ -172,9 +172,9 @@ Since your colleagues' NetId is different, you want to prevent git from includin
     ```bash
     *.tsproj filter=ignoreNetId
     ```
-    
-    This command means that if you commit or checkout a file with the extension `.tsproj`, git calls the `ignoreNetId` filter of the previous step. 
-    
+
+    This command means that if you commit or checkout a file with the extension `.tsproj`, git calls the `ignoreNetId` filter of the previous step.
+
 2. Finally you make a new file called `ignoreNetId.sh` in the `.git` folder and add the following content to this file:
 
     ```bash
@@ -185,7 +185,7 @@ Since your colleagues' NetId is different, you want to prevent git from includin
 
 In summary. The preceding steps ensure that whenever you select your development plc, this change never shows up as a change in git. You can also do the reverse: that on checkout, it automatically adds your developments plc net id into the target net id. Then you do not have to select it each time you checkout the code. See [this StackOverflow post](https://stackoverflow.com/a/22171275/6329629) for more info.
 
-I've also used the filters to remove random changes to the HMI port in the `.hmiproj` file and an automatic add/removal of development specific [compiler definitions](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2533017227.html?id=8439395065138194985). 
+I've also used the filters to remove random changes to the HMI port in the `.hmiproj` file and an automatic add/removal of development specific [compiler definitions](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2533017227.html?id=8439395065138194985).
 
 I hope I shared some useful tips. What kind of tricks do you use?​
 

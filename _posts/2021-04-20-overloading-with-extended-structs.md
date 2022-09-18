@@ -11,7 +11,7 @@ I was wondering if overloading functions in TwinCAT was possible, but I found ou
 
 Overloading a function means that you can call a function with an identical name, but it can have a different number of arguments. Also the data type of the arguments and/or the return type can differ. Some programming languages support more overloading types then others, as you can see here in this [overview](https://en.wikibooks.org/wiki/Computer_Programming/Function_overloading).
 
-An example of overloading in C# would be the following. The function `Rectangle`  can be called using a either a single `int` argument (making it a square), or it can be called using two `float` arguments. Furthermore the single argument function returns an `int`, whereas the two argument one returns a `float`. 
+An example of overloading in C# would be the following. The function `Rectangle`  can be called using a either a single `int` argument (making it a square), or it can be called using two `float` arguments. Furthermore the single argument function returns an `int`, whereas the two argument one returns a `float`.
 
 ```c#
 public static class Area
@@ -66,7 +66,7 @@ END_VAR
 Length := SQRT(EXPT(point.x, 2) + EXPT(point.y, 2));
 ```
 
-Finally we call the method on two different points. One which is of type `Point` and the second which is of type `TimePoint`. 
+Finally we call the method on two different points. One which is of type `Point` and the second which is of type `TimePoint`.
 
 ```
 PROGRAM MAIN
@@ -85,9 +85,6 @@ When we run this program we can see that it calculated the length for both point
 
 {% picture 2021-04-20-overloading-with-structs/result.png %}
 
-Using this trick you can prevent having to write/test the same function multiple times. I couldn't find any mention of this possibility on InfoSys, so I just tried it out. I was a bit surprised and relieved that it worked! 
+Using this trick you can prevent having to write/test the same function multiple times. I couldn't find any mention of this possibility on InfoSys, so I just tried it out. I was a bit surprised and relieved that it worked!
 
 Discuss: [r/plc](https://www.reddit.com/r/PLC/comments/muwyv6/twincat_overloading_functions_with_extended/) & [r/TwinCAT](https://www.reddit.com/r/TwinCat/)
-
-
-

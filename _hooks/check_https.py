@@ -8,7 +8,7 @@ def fix_file(filename):
         original_lines = fd.readlines()
     new_lines = []
     changed = False
-    # For each line in the file check if a http:// is found. 
+    # For each line in the file check if a http:// is found.
     # If so, replace it with https://
     for line in original_lines:
         if "http://" in line:
@@ -16,7 +16,7 @@ def fix_file(filename):
             changed = True
         new_lines.append(line)
 
-    # If a line was changed, print a message in the console and overwrite the 
+    # If a line was changed, print a message in the console and overwrite the
     # original file with the fixed one.
     if changed:
         print('Fixing ' + filename)

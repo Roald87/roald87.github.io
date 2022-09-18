@@ -5,7 +5,7 @@ category: twincat
 toc: true
 ---
 
-Keeping track of all the things which are happening on your machine can be a daunting task. Whether it’s expected events or unexpected warnings and errors of which you want to inform the user. Luckily Beckhoff provides us with a tool that can help with that, namely the EventLogger. In this article, I will introduce the PLC part of the EventLogger and show some useful features (code: [PlcPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart)). A [second article](https://roald87.github.io/twincat/2021/01/20/twincat-eventlogger-hmi-part.html) will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: [HmiPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart)). 
+Keeping track of all the things which are happening on your machine can be a daunting task. Whether it’s expected events or unexpected warnings and errors of which you want to inform the user. Luckily Beckhoff provides us with a tool that can help with that, namely the EventLogger. In this article, I will introduce the PLC part of the EventLogger and show some useful features (code: [PlcPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart)). A [second article](https://roald87.github.io/twincat/2021/01/20/twincat-eventlogger-hmi-part.html) will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: [HmiPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart)).
 
 *Thanks to [Jakob Sagatowski ](https://github.com/sagatowski) for his valuable feedback while writing this article.*
 
@@ -13,7 +13,7 @@ You can create events on the PLC in EventClasses, as shown in the image below. T
 
 {% picture 2020-11-3-twincat-eventlogger-plc-part/event_structure.png %}
 
-A limited number of past events are cached in a local database file on the harddrive in `C:\TwinCAT\3.1\Boot\LoggedEvents.db`. The maximum number of logged events is set to 1000 by default and can be changed under **Tools > Options > TwinCAT XAE Environment > EventLogger**, as shown below. This database is not cleared when you restart the PLC, so you can view past events. For more details on the EventLogger there is an extensive [manual](https://download.beckhoff.com/download/Document/automation/twincat3/TC3_EventLogger_EN.pdf) available and InfoSys has a few [tutorials and examples](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/27021602043327883.html?id=2784076848234793699). 
+A limited number of past events are cached in a local database file on the harddrive in `C:\TwinCAT\3.1\Boot\LoggedEvents.db`. The maximum number of logged events is set to 1000 by default and can be changed under **Tools > Options > TwinCAT XAE Environment > EventLogger**, as shown below. This database is not cleared when you restart the PLC, so you can view past events. For more details on the EventLogger there is an extensive [manual](https://download.beckhoff.com/download/Document/automation/twincat3/TC3_EventLogger_EN.pdf) available and InfoSys has a few [tutorials and examples](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/27021602043327883.html?id=2784076848234793699).
 
 {% picture 2020-11-3-twincat-eventlogger-plc-part/cached_events_setting.PNG --alt cached_events_setting %}
 
@@ -33,18 +33,18 @@ Then I renamed the first default [event](https://infosys.beckhoff.com/content/10
 
 {% picture 2020-11-3-twincat-eventlogger-plc-part/event_details.PNG --alt event_details %}
 
-We can then start adding to code to send this message. For that we create a program `SendMessage`. In the program declaration we make an instance of [`FB_TcMessage`](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/18014403512523147.html?id=2612337694701808037). This function block will contain all the information about our message event. 
+We can then start adding to code to send this message. For that we create a program `SendMessage`. In the program declaration we make an instance of [`FB_TcMessage`](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/18014403512523147.html?id=2612337694701808037). This function block will contain all the information about our message event.
 
 ```
 PROGRAM SendMessage
 VAR
-    bIsInitalized : BOOL;  
+    bIsInitalized : BOOL;
     fbMessage : FB_TcMessage;
     bSendMessage : BOOL;
 END_VAR
 ```
 
-Before we can use it, we have to initialize it as shown below. This is done by calling the [`CreateEx`](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5050947211.html?id=4556597922729890829) method. This method takes two arguments for a message event. The first argument, `TC_Events.MyEvents.Start`, is the event we created earlier in our custom event class. The second argument is where you can enter a [source](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5057918859.html?id=806507598712086760) of the event. An example for a source could be if the message belongs to a certain component in your machine, then you can give it a specific name. I’ll show an example on this at the end of this post. For now we set it at 0, which will give it a default source name. By default the source name is the program+function block path to the event. So for this event the source name is `SendMessage`. 
+Before we can use it, we have to initialize it as shown below. This is done by calling the [`CreateEx`](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5050947211.html?id=4556597922729890829) method. This method takes two arguments for a message event. The first argument, `TC_Events.MyEvents.Start`, is the event we created earlier in our custom event class. The second argument is where you can enter a [source](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5057918859.html?id=806507598712086760) of the event. An example for a source could be if the message belongs to a certain component in your machine, then you can give it a specific name. I’ll show an example on this at the end of this post. For now we set it at 0, which will give it a default source name. By default the source name is the program+function block path to the event. So for this event the source name is `SendMessage`.
 
 ```
 IF NOT bIsInitalized THEN
@@ -67,7 +67,7 @@ The complete code is then as follows:
 ```
 PROGRAM SendMessage
 VAR
-    bIsInitalized : BOOL;    
+    bIsInitalized : BOOL;
     fbMessage : FB_TcMessage;
     bSendMessage : BOOL;
 END_VAR
@@ -83,7 +83,7 @@ IF bSendMessage THEN
 END_IF
 ```
 
-Now we can activate our configuration. In order to see our events we need to activate the [Logged Events window](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/27021602616987915.html?id=2970470299138771131) which can be found under **View > Other Windows > TwinCAT Logged Events**. This logger shows up to 1000 (as set earlier) past events. Now log into the PLC. You should see something which looks like the image below. If you set `bMessage` to `TRUE` a message should be sent to the event logger. To see it in the Logged Events window, refresh the logger using the refresh button on the bottom left in the image. The logger nicely shows an overview of the different parameters of the class name the event is part of, info of the event itself and the time it was sent. 
+Now we can activate our configuration. In order to see our events we need to activate the [Logged Events window](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/27021602616987915.html?id=2970470299138771131) which can be found under **View > Other Windows > TwinCAT Logged Events**. This logger shows up to 1000 (as set earlier) past events. Now log into the PLC. You should see something which looks like the image below. If you set `bMessage` to `TRUE` a message should be sent to the event logger. To see it in the Logged Events window, refresh the logger using the refresh button on the bottom left in the image. The logger nicely shows an overview of the different parameters of the class name the event is part of, info of the event itself and the time it was sent.
 
 {% picture 2020-11-3-twincat-eventlogger-plc-part/first_send_message.png --alt first_send_message %}
 
@@ -95,26 +95,26 @@ Now let’s add some more code so we can also see the behavior of alarms. First 
 
 {% picture 2020-11-3-twincat-eventlogger-plc-part/warning_event_with_argument.png --alt warning_event_with_argument %}
 
-In order to use this alarm we’ll create a new program `ConfirmableAlarmWithArguments`. First we make an instance, `fbAlarm`, of the [`FB_TcAlarm`](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/18014403511408907.html?id=8336441833469907165) function block in the program declaration. 
+In order to use this alarm we’ll create a new program `ConfirmableAlarmWithArguments`. First we make an instance, `fbAlarm`, of the [`FB_TcAlarm`](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/18014403511408907.html?id=8336441833469907165) function block in the program declaration.
 
-```` 
+```
 PROGRAM ConfirmableAlarmWithArguments
 VAR
-    bIsInitalized : BOOL;    
+    bIsInitalized : BOOL;
 
     fbAlarm : FB_TcAlarm;
     bRaiseAlarm : BOOL;
     bClearAlarm : BOOL;
     bConfirmAlarm : BOOL;
 END_VAR
-````
+```
 
-Then we initialize the alarm using the [`CreateEx`](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5050478347.html?id=410353039931221768) method. The first argument this method takes is the same as for the message: it is the event we created earlier `TC_Events.MyEvents.Stop`. The second argument defines if this alarm should have the optional confirmation state, which I set to `TRUE` in this example. The third argument is the event source information, more on this later. 
+Then we initialize the alarm using the [`CreateEx`](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5050478347.html?id=410353039931221768) method. The first argument this method takes is the same as for the message: it is the event we created earlier `TC_Events.MyEvents.Stop`. The second argument defines if this alarm should have the optional confirmation state, which I set to `TRUE` in this example. The third argument is the event source information, more on this later.
 
 ```
 IF NOT bIsInitalized THEN
     bIsInitalized := TRUE;
-    fbAlarm.CreateEx(TC_Events.MyEvents.Stop, TRUE, 0);    
+    fbAlarm.CreateEx(TC_Events.MyEvents.Stop, TRUE, 0);
 END_IF
 ```
 
@@ -151,7 +151,7 @@ So our complete code then looks like this:
 ```
 PROGRAM ConfirmableAlarmWithArguments
 VAR
-    bIsInitalized : BOOL;    
+    bIsInitalized : BOOL;
 
     fbAlarm : FB_TcAlarm;
     bRaiseAlarm : BOOL;
@@ -161,7 +161,7 @@ END_VAR
 
 IF NOT bIsInitalized THEN
     bIsInitalized := TRUE;
-    fbAlarm.CreateEx(TC_Events.MyEvents.Stop, TRUE, 0);    
+    fbAlarm.CreateEx(TC_Events.MyEvents.Stop, TRUE, 0);
 END_IF
 
 IF bRaiseAlarm THEN
@@ -188,7 +188,7 @@ After activating the configuration you can raise, confirm and clear or clear and
 ```
 PROGRAM AlarmWithCustomSourceInfo
 VAR
-    bIsInitalized : BOOL;    
+    bIsInitalized : BOOL;
     fbAlarm : FB_TcAlarm;
     bRaiseAlarm : BOOL;
     bClearAlarm : BOOL;
@@ -200,7 +200,7 @@ We can then initialize `fbSourceInfo` with the source name, as shown below. Firs
 
 ```
 IF NOT bIsInitalized THEN
-    bIsInitalized := TRUE;    
+    bIsInitalized := TRUE;
     fbSourceInfo.Clear();
     fbSourceInfo.sName := 'Water pump 3';
     fbAlarm.CreateEx(TC_Events.MyEvents.Stop, FALSE, fbSourceInfo);
@@ -217,7 +217,7 @@ IF bRaiseAlarm THEN
 END_IF
 ```
 
-Also the clear alarm part is the same. However, because this alarm doesn’t have a confirmation state, the second argument in the  `Clear()` method doesn’t have any influence. 
+Also the clear alarm part is the same. However, because this alarm doesn’t have a confirmation state, the second argument in the  `Clear()` method doesn’t have any influence.
 
 ```
 IF bClearAlarm THEN
@@ -231,7 +231,7 @@ The complete code is as follows:
 ```
 PROGRAM AlarmWithCustomSourceInfo
 VAR
-    bIsInitalized : BOOL;    
+    bIsInitalized : BOOL;
     fbAlarm : FB_TcAlarm;
     bRaiseAlarm : BOOL;
     bClearAlarm : BOOL;
@@ -239,7 +239,7 @@ VAR
 END_VAR
 
 IF NOT bIsInitalized THEN
-    bIsInitalized := TRUE;    
+    bIsInitalized := TRUE;
     fbSourceInfo.Clear();
     fbSourceInfo.sName := 'Water pump 3';
     fbAlarm.CreateEx(TC_Events.MyEvents.Stop, FALSE, fbSourceInfo);

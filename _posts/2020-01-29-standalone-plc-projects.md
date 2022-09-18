@@ -33,11 +33,11 @@ Then select the appropriate option what to do with the PLC project files. After 
 
 There is one thing which is not copied and those are custom events. Custom events in a combined project are stored in the .tsproj file and can be found under SYSTEM > Type System > tab Event Classes. I’m not sure what the appropriate way is to get them in the new stand-alone project, but it can be done by copying the events from the combined project’s .tsproj file into the .tsproj file of the stand-alone PLC project.
 
-At this point I wanted to go into some problems you might encounter with the creation of a stand-alone project. However, I couldn’t recreate issues I was having with a previously combined project which was later on split up into a stand-alone PLC and a TwinCAT 3 project. For those who are also experiencing issues I’ll briefly go into them here. 
+At this point I wanted to go into some problems you might encounter with the creation of a stand-alone project. However, I couldn’t recreate issues I was having with a previously combined project which was later on split up into a stand-alone PLC and a TwinCAT 3 project. For those who are also experiencing issues I’ll briefly go into them here.
 The issues we were facing had to do with custom events. Somehow whenever we added a custom event to our stand-alone PLC project, they were not added to the .tsproj file, but only in the .tmc file (after building of course). So whereas normally .tmc files can be [added to the .gitingore file](https://alltwincat.com/2019/12/02/gitignore-for-twincat/), this was not the case for this project.
 
-Related to this issue is that whenever this buggy stand-alone PLC solution file was opened, the custom event classes were not loaded automatically. Only after manually reloading the project file, the event classes would show up. 
+Related to this issue is that whenever this buggy stand-alone PLC solution file was opened, the custom event classes were not loaded automatically. Only after manually reloading the project file, the event classes would show up.
 
 Perhaps these issues were caused by the fact that the original combined project was created with an older TwinCAT version? Anyway, maybe you’ve experienced similar issues, or have some experience with setting up stand-alone projects.
 
-Discuss [AllTwinCAT](https://alltwincat.com/2020/01/29/standalone-plc-projects#comments) 
+Discuss [AllTwinCAT](https://alltwincat.com/2020/01/29/standalone-plc-projects#comments)

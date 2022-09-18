@@ -12,3 +12,10 @@ repos:
         language: system
         # A valid regex pattern to define which files should be passed to `check_https.py`
         files: '.*\.(md|markdown)'
+        repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace # Removes trailing white spaces
+      - id: check-yaml # checks yaml files for parseable syntax.
+      - id: end-of-file-fixer

@@ -35,15 +35,15 @@ Here I show the data of all complete (length + date) marks. Apparently I had qui
 
 ## Interpolating the missing data
 
-In order to find the length of the date only data points, I noted down the x-position of the pixels of each mark which had a length value. Then I plotted that and I fitted a line through it.  
+In order to find the length of the date only data points, I noted down the x-position of the pixels of each mark which had a length value. Then I plotted that and I fitted a line through it.
 
 {% picture 2021-11-21-growth-puberty/linear_fit.png %}
 
-The fit looks quite good, but how good it is hard to judge with such a large range on the vertical scale. In order to better judge the fit quality, I plot the difference between the fit and the real data points. As you can see below, there seems to be some left over parabolic (u or v shaped) background. 
+The fit looks quite good, but how good it is hard to judge with such a large range on the vertical scale. In order to better judge the fit quality, I plot the difference between the fit and the real data points. As you can see below, there seems to be some left over parabolic (u or v shaped) background.
 
 {% picture 2021-11-21-growth-puberty/deviation_linear_fit.png %}
 
-At first I thought this background would be due to some [distortion](https://en.wikipedia.org/wiki/Distortion_(optics)) of the camera lens. However, after some research I found that camera phones usually have little un-uncorrected distortion. 
+At first I thought this background would be due to some [distortion](https://en.wikipedia.org/wiki/Distortion_(optics)) of the camera lens. However, after some research I found that camera phones usually have little un-uncorrected distortion.
 
 The reason for the difference was more likely to come from the fact that the extreme left and right points of the image are further away from the lens than the points near the middle, as shown in the picture below. I could have gotten the correct lengths in the picture if I rolled up the paper, such that the length segments seen by the camera would all be equal.
 
@@ -62,7 +62,7 @@ This fit looks much better, because the data points now seem to randomly lie abo
 
 ## The case of the tilted book
 
-Now that I have a function describing the mapping from the pixel value of each mark on the photo to the length in cm, I can plot all the data points. That is including the ones which only had the date written next to it. 
+Now that I have a function describing the mapping from the pixel value of each mark on the photo to the length in cm, I can plot all the data points. That is including the ones which only had the date written next to it.
 
 {% picture 2021-11-21-growth-puberty/tilted_book.png %}
 
@@ -73,4 +73,3 @@ From the plot it looks like the book was maybe tilted a bit too high for the fir
 Finally I compare the original lengths as they were marked on the paper in orange with the corrected ones in blue. The corrected ones also include the date only data points. There is very little difference to be seen between the original and corrected points on this scale. But that is also something we saw earlier when I plotted the deviation from the fit, which was within +/- 1 mm.
 
 {% picture 2021-11-21-growth-puberty/growth_corrected.png %}
-
