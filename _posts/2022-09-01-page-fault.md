@@ -22,8 +22,6 @@ The reason for the page fault is easy to see once you log into your project beca
 
 ## Pointers
 
-### Cause
-
 [Pointers](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529453451.html?id=5839194631499501145) store the address of a variable. When you instantiate a pointer to a variable, the default address is 0. Therefore, in the example below `pointerToNumber` is 0. Then in the implementation part, I try to save the value to which the pointer points into `number` by dereferencing the pointer using the `^` symbol.
 
 ```
@@ -75,7 +73,6 @@ Another solution would be to pass the pointer via `VAR_IN_OUT` or use constructo
 
 ## References
 
-### Cause
 Another way you can get page faults is through references, as I also showed in an [earlier article](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html). [References](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529458827.html?id=2716630061017907414) are pointers with an improved interface. Thus it shouldn't come as a surprise that these can cause page faults as well.  
 
 The short example below causes a page fault: I instantiate a reference to an integer called `number`. Then I try to assign a number to this reference. 
@@ -116,6 +113,7 @@ END_IF
 The advantage of this is that you prevent page faults. But the reference never gets assigned, thus you might wonder why your code doesn't do what you expect it to. In this case, it's probably a good idea to add an `ELSE` clause with an appropriate error message. Even better would be to pass the reference via `VAR_IN_OUT` or `FB_init` if possible.
 
 ## Interfaces
+
 [Interfaces](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/4256428299.html?id=507172925224818176) can also cause page faults as shown by this example. I defined an interface `I_Interface` with a single property called `SomeProperty` which returns an integer.
 
 ```
