@@ -11,11 +11,11 @@ We left out the home made chili paste, because these chili's are hard to find in
 
 ## Ingredients
 
-**6 servings, 0.5 hour active time + 1.5 hour semi active** 
+**6 servings, 0.5 hour active time + 1.5 hour semi active**
 
 - 1 onion
 - 3 cloves garlic
-- 2x 400g cans chickpeas 
+- 2x 400g cans chickpeas
 - 2x 400g cans brown beans
 - 2x 400g cans tomatoes (not diced)
 - 1.5 tablespoons ground cumin
@@ -27,38 +27,38 @@ We left out the home made chili paste, because these chili's are hard to find in
 - Optional toppings: coriander, spring onions, jalapeños, lime, creme fraîche, cheese, avocado, …
 
 ## Recipe
-1. Drain the 
-   
+1. Drain the
+
    - 2 cans of chickpeas
-    
-    but reserve the liquid in a separate bowl. Put the chickpeas in a big bowl or pot with a flat base and mash with a potato masher until almost all of the chickpeas are broken. Add the 
 
-    - 2 cans of tomatoes 
+    but reserve the liquid in a separate bowl. Put the chickpeas in a big bowl or pot with a flat base and mash with a potato masher until almost all of the chickpeas are broken. Add the
 
-    and mash until the tomatoes are broken. Drain the 
+    - 2 cans of tomatoes
 
-    - 2 cans of beans 
+    and mash until the tomatoes are broken. Drain the
 
-    reserving the liquid. Add beans to the chickpea/tomato bowl. Add the 
- 
+    - 2 cans of beans
+
+    reserving the liquid. Add beans to the chickpea/tomato bowl. Add the
+
 	- 2 tablespoons of chipotle chilis to the bowl.
 
    {% picture cooking-kenji-vegan-chili/IMG_0298.JPEG %}
 
-2. Dice the 
+2. Dice the
 
-   - onion 
+   - onion
 
-   and mince or press the 
+   and mince or press the
 
-   - 3 garlic cloves. 
+   - 3 garlic cloves.
 
-   In a small bowl, combine 
+   In a small bowl, combine
 
-   - 3 garlic cloves, 
-   - 1.5 tbsp cumin, 
-   - 2 tsp oregano, 
-   - 1 tbsp soy sauce, 
+   - 3 garlic cloves,
+   - 1.5 tbsp cumin,
+   - 2 tsp oregano,
+   - 1 tbsp soy sauce,
    - 1 tsp marmite.
 
    {% picture cooking-kenji-vegan-chili/IMG_0305.JPEG %}

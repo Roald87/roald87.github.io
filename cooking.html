@@ -13,7 +13,7 @@ title: Cooking
 {%- if site.posts.size > 0 -%}
   {% assign tag = "cooking" %}
   <ul class="posts">
-    {%- for post in site.posts -%} 
+    {%- for post in site.posts -%}
       {% if post.category contains tag %}
       <li>
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
@@ -26,12 +26,12 @@ title: Cooking
           </div>
         </div>
         <div class="post">
-          {%- if site.show_excerpts -%} 
-            {{ post.excerpt }} 
+          {%- if site.show_excerpts -%}
+            {{ post.excerpt }}
           {%- endif -%}
         </div>
       </li>
-      {%- endif -%} 
+      {%- endif -%}
     {%- endfor -%}
   </ul>
 {%- endif -%}

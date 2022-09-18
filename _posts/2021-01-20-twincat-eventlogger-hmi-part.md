@@ -5,7 +5,7 @@ category: twincat
 toc: true
 ---
 
-In an [earlier article](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html) I introduced the PLC part of the TwinCAT EventLogger and showed some useful features. In this article, I go into the details on how to visualize the events using TwinCAT’s web-based HMI (TE2000). 
+In an [earlier article](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html) I introduced the PLC part of the TwinCAT EventLogger and showed some useful features. In this article, I go into the details on how to visualize the events using TwinCAT’s web-based HMI (TE2000).
 
 *Thanks to [Jakob Sagatowski](https://github.com/sagatowski) for his valuable feedback while writing this article.*
 
@@ -26,14 +26,14 @@ The standard HMI project contains a couple of folders and files. You mainly use 
 
 ## Adding the event grid
 
-To visualize the events, I'll use a standard HMI control from the Beckhoff: the Event Grid. You can find some [general information](https://infosys.beckhoff.com/content/1033/te2000_tc3_hmi_engineering/26698403957888680715.html?id=5204368253031999869) and more detailed information about [the API](https://infosys.beckhoff.com/content/1033/te2000_tc3_hmi_engineering/4724260747.html?id=5870060213399401190) of the Event Grid on InfoSys. 
+To visualize the events, I'll use a standard HMI control from the Beckhoff: the Event Grid. You can find some [general information](https://infosys.beckhoff.com/content/1033/te2000_tc3_hmi_engineering/26698403957888680715.html?id=5204368253031999869) and more detailed information about [the API](https://infosys.beckhoff.com/content/1033/te2000_tc3_hmi_engineering/4724260747.html?id=5870060213399401190) of the Event Grid on InfoSys.
 
 To add the Event Grid to an HMI page: open the **Desktop.view** file and then drag the Event Grid into the **Desktop.view** from the **Toolbox** view, as shown below. If the toolbox is not shown, you can activate it via **View > Toolbox**.
 
 ![](/assets/2021-01-20-twincat-event-logger-hmi-part/add_event_grid.gif)
 
 The Event Grid Control provides a convenient interface to all past and present events. It has a few buttons in the top row that allow you to:
-- filter/show specific event types 
+- filter/show specific event types
 - confirm alarms
 - add or remove (custom) columns
 
@@ -45,7 +45,7 @@ Before you can start using the HMI, you have to activate the configuration. Sele
 
 ### HMI settings for the remote target
 
-I assumed here that you'll run your project locally. In that case, you can go to the next [section](#sending-messages). But, if you are running your project on a remote target system, please follow these additional instructions here. 
+I assumed here that you'll run your project locally. In that case, you can go to the next [section](#sending-messages). But, if you are running your project on a remote target system, please follow these additional instructions here.
 
 Select a file from the HMI project and go to **TwinCAT HMI > Windows > TwinCAT HMI Server Configuration**. You should see the following screen. Go to the tab **ADS** and make sure to select the default publishing configuration on the top right. Then under **Runtimes**, select the **AmsNetId** of your PLC and accept the changes.
 
@@ -95,22 +95,22 @@ The following menu is then shown. On the left, you see all available columns, an
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameSettings2.png %}
 
-The added column shows the path to the source of the event which can be quite convenient. In this example, it doesn’t add that much, since this is a very small program. But, if the events were a few function blocks deep, the precise path to the source can be handy to trace the origin of the alarm. Note that, as shown in the [PLC part](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html), you can also customize the source as I did for the second event. Here I changed the source name to *Water pump 3*. 
+The added column shows the path to the source of the event which can be quite convenient. In this example, it doesn’t add that much, since this is a very small program. But, if the events were a few function blocks deep, the precise path to the source can be handy to trace the origin of the alarm. Note that, as shown in the [PLC part](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html), you can also customize the source as I did for the second event. Here I changed the source name to *Water pump 3*.
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiWithSourceName.png %}
 
-Another handy column to add to the HMI event overview is the *params::eventClassName*. This column shows the Display text of an event class. It can be handy if you, for example, divided your events into component-specific event classes. With the new column, you can now sort your events per subsystem of your machine. 
+Another handy column to add to the HMI event overview is the *params::eventClassName*. This column shows the Display text of an event class. It can be handy if you, for example, divided your events into component-specific event classes. With the new column, you can now sort your events per subsystem of your machine.
 
 ## Pop-ups
 
-The event grid provides a convenient interface for all events. But, it is easy to miss a raised alarm. Especially if you have various HMI pages and not all contain an event grid control. A good way to grab the user’s attention is through pop-ups. 
+The event grid provides a convenient interface for all events. But, it is easy to miss a raised alarm. Especially if you have various HMI pages and not all contain an event grid control. A good way to grab the user’s attention is through pop-ups.
 
-You can add pop-ups by adding some JavaScript to the HMI project. To do so, right-click the HMI project and go to **Add > New Item....** Then choose **CodeBehind (JavaScript)** and pick an appropriate name. This adds a JavaScript template to your project. The file already contains some boilerplate to make it work with a TwinCAT HMI project. 
+You can add pop-ups by adding some JavaScript to the HMI project. To do so, right-click the HMI project and go to **Add > New Item....** Then choose **CodeBehind (JavaScript)** and pick an appropriate name. This adds a JavaScript template to your project. The file already contains some boilerplate to make it work with a TwinCAT HMI project.
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiAddingCodeBehind.png %}
 
 I added the following code to create the pop-up. First a `composeHtmlPopUpElement` function with a single argument `event` where you can pass the event data to. The event data contains the `event.text` which is placed in a `<div>`. The event data type also holds more information about the event, such as its severity (warning, error, or critical) and the time it was raised. Furthermore, it adds an OK button to acknowledge the pop-up. The OK button removes the topmost layer from the HMI, in this case, the pop-up itself.
- 
+
 ```javascript
 function composeHtmlPopUpElement(event) {
     return $(
@@ -143,7 +143,7 @@ function showPopUp(event) {
 }
 ```
 
-Next, I defined a function that is called whenever a certain type of alarm is raised and it gets passed some data about the event. In this example, I only want to show a pop-up when an alarm is raised. 
+Next, I defined a function that is called whenever a certain type of alarm is raised and it gets passed some data about the event. In this example, I only want to show a pop-up when an alarm is raised.
 
 ```javascript
 function subscriptionCallback(data) {

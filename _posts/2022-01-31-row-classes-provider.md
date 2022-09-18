@@ -15,22 +15,22 @@ Before diving in, this will be the result:
 
 ![all different styles showcased](/assets/2022-01-31-row-classes-provider/all_effects_datagrid.gif)
 
-## Setup 
+## Setup
 
-In order to explore what RowClassesProvider does let's make a small sample project. 
+In order to explore what RowClassesProvider does let's make a small sample project.
 
 1. Create a new HMI project in Visual Studio by going to **File > New > Project** and select **TwinCAT HMI > TwinCAT HMI Project**. Give it an appropriate name and select **OK**.
 2. Open the Desktop.view by double clicking on it.
 3. From the tool bar, drag a Datagrid into the Desktop.view.
   ![data grid being dragged into the desktop.view](/assets/2022-01-31-row-classes-provider/drag_datagrid.gif)
-4. Add a new JavaScript function by right clicking on your HMI project and select **Add > New Item**. 
+4. Add a new JavaScript function by right clicking on your HMI project and select **Add > New Item**.
    {% picture 2022-01-31-row-classes-provider/add_new_item.png --alt add new item to HMI project %}
-5. Then select Function (JavaScript) and give it an appropriate name and select **OK**.  
+5. Then select Function (JavaScript) and give it an appropriate name and select **OK**.
    {% picture 2022-01-31-row-classes-provider/add_javascript_function.png --alt select JavaScript function %}
 
 ## Exploring RowClassesProvider's functionality
 
-Now we have a sample project it is time to explore what the RowClassesProvider does. 
+Now we have a sample project it is time to explore what the RowClassesProvider does.
 
 1. Open the `RowClassesProvider.function.json` file of the JavaScript function we just created, with a double click.
 2. In the new window change/add the following things:
@@ -43,7 +43,7 @@ Now we have a sample project it is time to explore what the RowClassesProvider d
 
     {% picture 2022-01-31-row-classes-provider/function_io.png --alt menu after applying all changes %}
 3. Confirm your changes by selecting **OK** and confirm your changes in the additional pop-up.
-4. In case you had the `RowClassesProvider.js` file open, you will get a pop-up. The pop-up is caused by the changes you just made. Select **Yes** to reload the file. 
+4. In case you had the `RowClassesProvider.js` file open, you will get a pop-up. The pop-up is caused by the changes you just made. Select **Yes** to reload the file.
 
    {% picture 2022-01-31-row-classes-provider/confirm_reload.png %}
 
@@ -54,7 +54,7 @@ If all went **OK** your code in `RowClassesProvider.js` should look as follows (
 
     var RowClassesProvider = function (rowData, rowIndex, rowNumber) {
     };
-    
+
     TcHmi.Functions.registerFunction('RowClassesProvider', RowClassesProvider);
 })(TcHmi);
 ```
@@ -68,18 +68,18 @@ This function takes three inputs: `rowData`, `rowIndex` and `rowNumber`. The inp
         console.log("Data: ", rowData);
         console.log(`Index: ${rowIndex}\nNumber: ${rowNumber}`);
     };
-    
+
     TcHmi.Functions.registerFunction('RowClassesProvider', RowClassesProvider);
 })(TcHmi);
 ```
 
-Now every time this function is called, it will print in the console with which parameters the function was called. 
+Now every time this function is called, it will print in the console with which parameters the function was called.
 
 Save the function. After changing the function the designer shows a prompt that it needs to be reloaded. Click on the yellow ribbon to reload the designer.
 
 {% picture 2022-01-31-row-classes-provider/designer_reload_prompt.png --alt designer reload prompt %}
 
-Next we link this function to our Datagrid. Open the Desktop.view and 
+Next we link this function to our Datagrid. Open the Desktop.view and
 1. Select the TcHmiDataGrid.
 2. In the Properties window under **Data > RowClassesProvider** press the `...` button.
 3. Then find the function we just created and drag it into the right window titled **Functions**.
@@ -94,7 +94,7 @@ Next we link this function to our Datagrid. Open the Desktop.view and
 2. Open the developer tools, by clicking on the gear icon on the top.
 {% picture 2022-01-31-row-classes-provider/live-view_datagrid_log.png --alt log %}
 
-In the developer tools you see the results of the `console.log` calls in our function. The `rowData` variable contains all the column data of a single row. The `rowIndex` and `rowNumber` both contain the number of the row. I'm not sure why there are two variables containing the same information. 
+In the developer tools you see the results of the `console.log` calls in our function. The `rowData` variable contains all the column data of a single row. The `rowIndex` and `rowNumber` both contain the number of the row. I'm not sure why there are two variables containing the same information.
 
 On the initial load of the Desktop.view, all rows were called, However, if later we select a row and make a change, only that row will show up in the log. Here I changed the editable data on the second row to **cookncode**.
 
@@ -107,7 +107,7 @@ From this example you might start to see how we can use the RowClassesProvider. 
 You may recall that when we defined the `RowClassesProvider` function, we also specified it returned an `Array`. In this section I will fill this array with CSS styles, such that that the datagrid can dynamically change its formatting.
 
 
-First we will define a custom style in a CSS file. To add a CSS file, right click on the HMI project and select **Add > New Item** and select **Cascading Style Sheet (CSS)** and click on **Add**. 
+First we will define a custom style in a CSS file. To add a CSS file, right click on the HMI project and select **Add > New Item** and select **Cascading Style Sheet (CSS)** and click on **Add**.
 
 For example we can change the color of a table cell when no data is present. In order to do this we first define a new style by adding the following lines to the `.css` file:
 
@@ -115,12 +115,12 @@ For example we can change the color of a table cell when no data is present. In 
 /* Change the first column's background to orange */
 #TcHmiDatagrid tr.missing-input td[data-column-name="Test1"] {
     background-color: #F76D16;
-} 
+}
 ```
 
-Here: 
-- `#TcHmiDatagrid` means the style is for a TwinCAT HMI datagrid. 
-- [`tr`](https://www.w3schools.com/tags/tag_tr.asp) denotes a row in a table. 
+Here:
+- `#TcHmiDatagrid` means the style is for a TwinCAT HMI datagrid.
+- [`tr`](https://www.w3schools.com/tags/tag_tr.asp) denotes a row in a table.
 - `.missing-input` is the name of the style.
 - [`td`](https://www.w3schools.com/tags/tag_td.asp) denotes a table data cell.
 - `data-column-name="Test1"` means we apply the style only to a specific column with the name `"Test1"`. I will show in a minute where you can find the column name.
@@ -140,14 +140,14 @@ In order to apply the style under certain conditions we change the `RowClassesPr
 
         return cssStyles;
     };
-    
+
     TcHmi.Functions.registerFunction('RowClassesProvider', RowClassesProvider);
 })(TcHmi);
 ```
 
 Now the `RowClassesProvider` returns an array with the style names which should be applied. For now the `missing-input`  style is added in case the input of the first column is empty.
 
-Before we see it in action, we first need to add another row to our Datagrid, since currently all columns contain data. Open the Desktop.view and select the ``...`` of the **SrcData** in the Properties window. 
+Before we see it in action, we first need to add another row to our Datagrid, since currently all columns contain data. Open the Desktop.view and select the ``...`` of the **SrcData** in the Properties window.
 
 {% picture 2022-01-31-row-classes-provider/source_data.png --alt edit source data for data grid %}
 
@@ -223,7 +223,7 @@ and change `RowClassesProvider` into
 
         return cssStyles;
     };
-    
+
     TcHmi.Functions.registerFunction('RowClassesProvider', RowClassesProvider);
 })(TcHmi);
 ```

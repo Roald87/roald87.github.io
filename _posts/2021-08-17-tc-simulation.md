@@ -5,7 +5,7 @@ category: twincat
 toc: true
 ---
 
-When you're developing PLC code it can be difficult to test the behavior of the whole code, due to all the disconnected in and outputs. A colleague of mine found a nice solution how you can create a digital twin of the real machine. The digital twin then simulates the behavior of the real one. In this article I'll show you how you can do this with a simple oven project. 
+When you're developing PLC code it can be difficult to test the behavior of the whole code, due to all the disconnected in and outputs. A colleague of mine found a nice solution how you can create a digital twin of the real machine. The digital twin then simulates the behavior of the real one. In this article I'll show you how you can do this with a simple oven project.
 
 - Example code: [GitHub repo](https://github.com/Roald87/TwincatTutorials/tree/main/DigitalTwin), [direct download](https://downgit.github.io/#/home?url=https://github.com/Roald87/TwincatTutorials/tree/main/DigitalTwin).
 
@@ -23,7 +23,7 @@ On the bottom of the pyramid are the unit tests. With unit tests you test indivi
 
 ### Integration tests
 
-After testing the individual units, you want to make sure that once you glue several units together they work as intended. This is called [integration testing](https://en.wikipedia.org/wiki/Integration_testing). For this there aren't that many well developed options that I know of. 
+After testing the individual units, you want to make sure that once you glue several units together they work as intended. This is called [integration testing](https://en.wikipedia.org/wiki/Integration_testing). For this there aren't that many well developed options that I know of.
 
 One option is that you create an actual 3D model of your machine and connect that to your PLC as shown on the [WJB Automation Blog](https://dronefactory.co.uk/). By using the 3D model you can easily check if parts are moving as intended and that there are no collisions. However, if you have a machine with less or no moving parts, this method is not an option. Furthermore it is harder to automate these tests further down the line.
 
@@ -31,7 +31,7 @@ The second option is to manually force different in/outputs in your program and 
 
 The third and last option is to make use of Beckhoff's [EtherCAT Simulation module](https://www.beckhoff.com/en-en/products/automation/twincat/te1xxx-twincat-3-engineering/te1111.html). This a quite extensive module ([InfoSys](https://infosys.beckhoff.com/content/1033/te1111_ethercat_simulation/9007206134823819.html?id=6382247128242284904)):
 
-> The TE1111 TwinCAT EtherCAT Simulation function simulates an EtherCAT segment. An already created I/O configuration of the real plant is exported and can be imported into a second system as an ‘EtherCAT Simulation’ device. A mirrored process image is thus available on this system that can be linked with corresponding TwinCAT modules (e.g. written in the IEC 61131-3 languages or generated from Matlab®/Simulink®). The desired behavior of the machine must be implemented with sufficient accuracy in these modules. 
+> The TE1111 TwinCAT EtherCAT Simulation function simulates an EtherCAT segment. An already created I/O configuration of the real plant is exported and can be imported into a second system as an ‘EtherCAT Simulation’ device. A mirrored process image is thus available on this system that can be linked with corresponding TwinCAT modules (e.g. written in the IEC 61131-3 languages or generated from Matlab®/Simulink®). The desired behavior of the machine must be implemented with sufficient accuracy in these modules.
 
 When my colleague tested this, he didn't quite get it to work for our machine. The simulation was having trouble simulating all the different terminals he thought. Long story short, that is why he decided to make a simpler version completely from scratch. Another small advantage, especially if you want to try this at home, is that you do not need a license to do this.
 
@@ -53,7 +53,7 @@ Once you have a working TwinTwinCAT project, it can be used to do (automated) in
 
 ## Building a digital twin
 
-Now I will guide you through how to build the digital twin project. I will only go into details on the relevant parts which are needed to get the twin working. The exact implementation of the function blocks you can see for yourself if you download the whole project's [GitHub](https://github.com/Roald87/TwincatTutorials/tree/main/DigitalTwin) repo or the [direct download](https://downgit.github.io/#/home?url=https://github.com/Roald87/TwincatTutorials/tree/main/DigitalTwin). 
+Now I will guide you through how to build the digital twin project. I will only go into details on the relevant parts which are needed to get the twin working. The exact implementation of the function blocks you can see for yourself if you download the whole project's [GitHub](https://github.com/Roald87/TwincatTutorials/tree/main/DigitalTwin) repo or the [direct download](https://downgit.github.io/#/home?url=https://github.com/Roald87/TwincatTutorials/tree/main/DigitalTwin).
 
 Below you see a schematic representation of the PLC project. The main part is the `Oven` function block. It takes a command from the HMI which can change its state. It also sends a command and receives a state from the `Relay` which will turn on the power of the heater inside oven. The oven sets the heater current based on the set temperature. Finally it receives feedback from the thermocouple about the measured temperature.
 
@@ -61,11 +61,11 @@ Below you see a schematic representation of the PLC project. The main part is th
 
 ### Creating a stand-alone PLC & HMI project
 
-I've implemented the above functionality in a [stand-alone PLC project](https://cookncode.com/twincat/2020/01/29/standalone-plc-projects.html). A stand-alone project has the advantage that it can be imported both into a digital twin TwinCAT configuration project as well as a real machine TwinCAT configuration. I recommend that you open the `Oven.sln` file located in `DigitalTwin/Oven` for this part. If you opt for this, you can skip to [the next section](#creating-the-digital-twin-project). 
+I've implemented the above functionality in a [stand-alone PLC project](https://cookncode.com/twincat/2020/01/29/standalone-plc-projects.html). A stand-alone project has the advantage that it can be imported both into a digital twin TwinCAT configuration project as well as a real machine TwinCAT configuration. I recommend that you open the `Oven.sln` file located in `DigitalTwin/Oven` for this part. If you opt for this, you can skip to [the next section](#creating-the-digital-twin-project).
 
 To create the stand-alone PLC project from scratch you can:
 
-1. Open Visual Studio and Go to **File > New > Project** 
+1. Open Visual Studio and Go to **File > New > Project**
 2. Select **TwinCAT PLC > TwinCAT PLC Project**
 3. Give it a name and location and click **OK**
 4. Then in the next window under **PLC Templates** select **Standard PLC project**
@@ -92,7 +92,7 @@ If you've selected the `.plcproj` file, then make sure to select "Use original p
 
 Next, add a new PLC project which will become our digital twin PLC project. Right click on **PLC > Add New Item...** and choose **PLC template > Standard PLC project**. Give it a name, e.g. SimulationPlc.
 
-In the SimulationPlc project, rename the PlcTask to SimulationTask. This is to make a clear distinction between the PlcTask from the Oven project and the Simulation project. 
+In the SimulationPlc project, rename the PlcTask to SimulationTask. This is to make a clear distinction between the PlcTask from the Oven project and the Simulation project.
 
 Then make a new task and call it SimTask.
 
@@ -190,7 +190,7 @@ VAR
     filterParameter : REAL := 0.995;
 END_VAR
 
-thermoCouple_Celcius := previousTemperature * filterParameter 
+thermoCouple_Celcius := previousTemperature * filterParameter
     + LIMIT(20, TO_REAL(EXPT(heaterCurrent_Ampere, 2)), 1E5) * (1 - filterParameter);
 previousTemperature := thermoCouple_Celcius;
 ```
@@ -200,4 +200,3 @@ After making an instance of `SimOven` in `MAIN` and linking the IOs of the simul
 ![](/assets/2021-08-17-tc-simulation/heating_oven.gif)
 
 Discuss: [r/TwinCAT](https://www.reddit.com/r/TwinCat/comments/p6ar7t/machine_simulation_with_a_digital_twin/).
-

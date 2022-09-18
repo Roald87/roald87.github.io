@@ -17,7 +17,7 @@ Start by preparing the [soffritto/mirepoix](https://en.wikipedia.org/wiki/Mirepo
 
 {% picture 2021-02-16-vegan-bolognese/mirepoix.jpeg %}
 
-Preheat a pan on medium heat. When it is hot add some olive oil and the mirepoix. Cook for about 10 minutes until is gets nice and soft. 
+Preheat a pan on medium heat. When it is hot add some olive oil and the mirepoix. Cook for about 10 minutes until is gets nice and soft.
 
 {% picture 2021-02-16-vegan-bolognese/mirepoix_cooking.JPEG %}
 
@@ -57,7 +57,7 @@ When I have a lot of mushrooms to clean, I usually wash them in a salad spinner 
 
 {% picture 2021-02-16-vegan-bolognese/mushrooms_cleaning.JPEG %}
 
-Then use a food processor to cut the mushrooms, or cut them by hand. If your using a food processor make sure not to fill it to the brim, or else only the bottom mushrooms will get chopped. Pulse, or cut, until the largest pieces are just a few millimeter. 
+Then use a food processor to cut the mushrooms, or cut them by hand. If your using a food processor make sure not to fill it to the brim, or else only the bottom mushrooms will get chopped. Pulse, or cut, until the largest pieces are just a few millimeter.
 
 {% picture 2021-02-16-vegan-bolognese/mushrooms_cut.JPEG %}
 
@@ -65,7 +65,7 @@ Preheat a pan on medium-high. When it is hot, add some olive oil and the chopped
 
 {% picture 2021-02-16-vegan-bolognese/frying_mushrooms.jpeg %}
 
-Then add the mushrooms to the sauce, stir it and let it simmer for an hour or so. 
+Then add the mushrooms to the sauce, stir it and let it simmer for an hour or so.
 
 {% picture 2021-02-16-vegan-bolognese/mushrooms_added_to_sauce.JPEG %}
 
@@ -82,9 +82,9 @@ You could eat the sauce with some pappardelle or use it in a (not so vegan) lasa
 - 5 tablespoons of olive oil
 - 2 large stalks of celery (about 50 gram, 1 cup)
 - 1 medium carrot (about 50 gram, 1 cup)
-- 1 medium onion (about 50 gram, 1 cup) 
+- 1 medium onion (about 50 gram, 1 cup)
 - 5 garlic cloves
-- 1 tablespoon tomato paste 
+- 1 tablespoon tomato paste
 - 1 teaspoon oregano
 - pinch of chili flakes
 - 1 tablespoon soy sauce
@@ -99,53 +99,53 @@ You could eat the sauce with some pappardelle or use it in a (not so vegan) lasa
 
 **Serves 4. 1 hour active time, 2 hours in total.**
 
-1. For the mirepoix, add the 
+1. For the mirepoix, add the
  - 2 large stalks of celery (about 50 gram, 1 cup)
  - 1 medium carrot (about 50 gram, 1 cup)
- - 1 medium union (about 50 gram, 1 cup) 
+ - 1 medium union (about 50 gram, 1 cup)
 
    to the food processor and pulse until the pieces are just a few millimeter in size.
 
 2. Heat up a large pan or dutch oven on medium heat. When hot, add 3 tablespoons of olive oil and add the mirepoix. Stir every few minutes.
 
-3. Prepare the taste maker bowl with 
+3. Prepare the taste maker bowl with
  - 5 garlic cloves from a garlic press
- - 1 tablespoon tomato paste 
+ - 1 tablespoon tomato paste
  - 1 teaspoon oregano
  - pinch of chili flakes
  - 1 tablespoon soy sauce
  - 1.5 teaspoon marmite
 
-4. Wash the 
-- 700 g (25-ounces) mix of button and cremini mushrooms 
+4. Wash the
+- 700 g (25-ounces) mix of button and cremini mushrooms
 
     and put them into the food processor. Pulse until the largest pieces are a few millimeter in size.
 
-4. When the vegetables are soft, add the taste makers and stir.  
+4. When the vegetables are soft, add the taste makers and stir.
 
-5. After about a minute, add the 
+5. After about a minute, add the
  - 250 ml (1 cup) of red wine.
 
 6. Let the wine reduce until a thick sauce remains. Thick means, if you scrape along the bottom, the sauce shouldn’t immediately fill the gap.
 
-6. Heat up a frying pan over medium high heat. When hot, add 2 tablespoons of olive oil and add the cut mushrooms. 
+6. Heat up a frying pan over medium high heat. When hot, add 2 tablespoons of olive oil and add the cut mushrooms.
 
 6. It will take a while (~20 minutes) before all the moisture has evaporated. Once the moisture has disappeared, stir every few minutes until the pieces are starting to turn brown.
 
-7. Add the 
+7. Add the
  - 800 g (28-ounce) whole peeled tomatoes packed in juice
 
     to the wine/mirepoix mixture and mash them with a potato masher until a smooth mixture remains.
 
-8. Add the 
+8. Add the
 - 3 bay leafs
 - browned mushroom bits
 
     and stir the whole mixture.
 
-9. Let it simmer over low heat for about an hour. 
+9. Let it simmer over low heat for about an hour.
 
-10. Season to taste using salt an pepper. It probably doesn't need much salt, since there is already some in the soy sauce and marmite. 
+10. Season to taste using salt an pepper. It probably doesn't need much salt, since there is already some in the soy sauce and marmite.
 
 11. Serve with pappardelle or use in a lasagna. Enjoy!
 

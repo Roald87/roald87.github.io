@@ -26,6 +26,6 @@ Sources: [Meteo Schweiz historical data](https://data.geo.admin.ch/ch.meteoschwe
 
 ## Analyses details
 
-For more details see the Jupyter notebooks for [🇳🇱 NL](CoronaWeather_NL.ipynb) and [🇨🇭 CH](CoronaWeather_CH.ipynb) or rerun the notebook in Colab ([🇳🇱 NL](https://colab.research.google.com/github/Roald87/CoronaWeather/blob/master/CoronaWeather_NL.ipynb#) and [🇨🇭 CH](https://colab.research.google.com/github/Roald87/CoronaWeather/blob/master/CoronaWeather_CH.ipynb#)) to see the latest data. 
+For more details see the Jupyter notebooks for [🇳🇱 NL](CoronaWeather_NL.ipynb) and [🇨🇭 CH](CoronaWeather_CH.ipynb) or rerun the notebook in Colab ([🇳🇱 NL](https://colab.research.google.com/github/Roald87/CoronaWeather/blob/master/CoronaWeather_NL.ipynb#) and [🇨🇭 CH](https://colab.research.google.com/github/Roald87/CoronaWeather/blob/master/CoronaWeather_CH.ipynb#)) to see the latest data.
 
-Note: the Swiss Colab notebook sometimes skips cells. To fix this just run the cells one by one or rerun the ones starting from the one which was skipped. For the Dutch Colab one the plots are often not shown correctly on the first run. Just rerun the plot cells to render them. 
+Note: the Swiss Colab notebook sometimes skips cells. To fix this just run the cells one by one or rerun the ones starting from the one which was skipped. For the Dutch Colab one the plots are often not shown correctly on the first run. Just rerun the plot cells to render them.

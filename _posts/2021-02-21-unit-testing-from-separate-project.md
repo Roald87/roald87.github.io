@@ -11,7 +11,7 @@ The other day [I answered a question on StackOverflow](https://stackoverflow.com
 Say you have a TwinCAT project called _MyProject_ which you want to test with the [TcUnit](https://tcunit.org/) library. For this you create another project _MyProject\_Tests_. So you have the following folder structure:
 
 ```
-repos 
+repos
   ├── MyProject
   |  ├── MyProject
   |  |  ├── Plc
@@ -28,7 +28,7 @@ repos
   |  |  └── MyProject_Tests.tsproj
   |  └── MyProject_Tests.sln
   |
-  └── hardlinkPousToTestProject.bat  
+  └── hardlinkPousToTestProject.bat
 ```
 
 You then:
@@ -44,7 +44,7 @@ You then:
 Your file structure should now look like this:
 
 ```
-repos 
+repos
   ├── MyProject
   |  ├── MyProject
   |  |  ├── Plc
@@ -60,12 +60,12 @@ repos
   |  |  |  ├── POUs
   |  |  |  |  └── Function.TcPOU   # Hard linked file
   |  |  |  ├── Tests
-  |  |  |  |  └── Function_Tests.TcPOU  
+  |  |  |  |  └── Function_Tests.TcPOU
   |  |  |  └── Plc.plcproj
   |  |  └── MyProject_Tests.tsproj
   |  └── MyProject_Tests.sln
   |
-  └── hardlinkPousToTestProject.bat  
+  └── hardlinkPousToTestProject.bat
 ```
 
 Now you can change `Function.TcPOU` from either _MyProject_ or _MyProject\_Tests_!

@@ -23,8 +23,8 @@ Use this easy wok sauce to make a quick (vegan) meal which tastes great!
 # Recipe
 
 1. Mix the following together in a bowl
-	- 1/2 tsp corn starch 
-	- 1/2 tsp white sugar 
+	- 1/2 tsp corn starch
+	- 1/2 tsp white sugar
 	- 1/2 - 1 tsp sambal (or other chili paste)
 	- 1 tbsp vegetable oil
 	- 1-1.5 tbsp soy sauce
@@ -35,7 +35,7 @@ Use this easy wok sauce to make a quick (vegan) meal which tastes great!
 
 2. Heat a wok, carbon steel or any pan without a non-stick coating over high heat until it is hot. Don't use a pan with a non-stick coating since they can't handle these high temperatures. You might want to open a window and put the ventilation on high 🔥.
 
-3. Add a few tablespoons of vegetable oil to the hot pan which should start to smoke a little. Then add the bag of 
+3. Add a few tablespoons of vegetable oil to the hot pan which should start to smoke a little. Then add the bag of
 	- 400 g pre-cut Asian vegetables
 
 4. Keep stirring constantly, while the heat remains on high. If it starts to smoke heavily, lower the heat slightly.

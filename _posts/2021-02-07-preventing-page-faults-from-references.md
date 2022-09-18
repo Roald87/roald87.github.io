@@ -67,7 +67,7 @@ In order to prevent the Page Fault, we can use [`__ISVALIDREF`](https://infosys.
 ```
 IF __ISVALIDREF(foo) THEN
     foo();
-END_IF	
+END_IF
 ```
 
 If we now run the new code, we will see that it no longer crashes. However, when we login we see that the `foo.Counter` doesn't increment. It just shows that there is no valid pointer. This makes sense of course, because `foo` is not assigned.
@@ -80,7 +80,7 @@ This solution prevents the PLC from crashing, but the code still doesn't do what
 
 ## Option 2: Using `VAR_IN_OUT`
 
-A better solution would be to use [`VAR_IN_OUT`](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2528771211.html&id=). By using `VAR_IN_OUT`, we're also passing the variable by reference to the function block. So any changes you make to `foo` inside `UsesFoo2` will affect the state of the original `foo` instance. 
+A better solution would be to use [`VAR_IN_OUT`](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2528771211.html&id=). By using `VAR_IN_OUT`, we're also passing the variable by reference to the function block. So any changes you make to `foo` inside `UsesFoo2` will affect the state of the original `foo` instance.
 
 ```
 FUNCTION_BLOCK UsesFoo2
@@ -107,7 +107,7 @@ END_VAR
 usesFoo(foo:=foo);
 ```
 
-When we activate the successfully compiling code and login, we see that the `foo.Counter` is now increasing with every call. 
+When we activate the successfully compiling code and login, we see that the `foo.Counter` is now increasing with every call.
 
 ![](/assets/2021-02-07-preventing-page-faults-from-references/var_in_out_counter.gif)
 
@@ -117,7 +117,7 @@ This is a much better solution than using `__ISVALIDREF` everywhere. The `VAR_IN
 
 ## Option 3: Using `FB_init`
 
-A third option would be to use [`FB_init`](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/5094414603.html&id=). `FB_init` is a function block initializer which gets implicitly called when the code is started. Implicit means that this method gets called automatically when the code is executed. So there is no need to call it explicitly by saying `usesFoo.FB_init()`. For more information there is also an [article](https://stefanhenneken.net/2019/07/26/iec-61131-3-parameter-transfer-via-fb_init/) by Stefan Henneken on `FB_init` usage. 
+A third option would be to use [`FB_init`](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/5094414603.html&id=). `FB_init` is a function block initializer which gets implicitly called when the code is started. Implicit means that this method gets called automatically when the code is executed. So there is no need to call it explicitly by saying `usesFoo.FB_init()`. For more information there is also an [article](https://stefanhenneken.net/2019/07/26/iec-61131-3-parameter-transfer-via-fb_init/) by Stefan Henneken on `FB_init` usage.
 
 Let me show you how to use `FB_init` with our current example. First we add a new function block called `UsesFoo3`. To this function block we add an internal variable `_foo` which is a reference to `Foo`. Finally `_foo` gets called in the implementation part.
 
@@ -153,7 +153,7 @@ END_VAR
 _foo REF= foo;
 ```
 
-To execute the code we add another program and create two instances: `foo` and `usesFoo`. The function block initializer of `UsesFoo3` gets passed the `foo` instance.  Finally we call `usesFoo()` in our implementation part. 
+To execute the code we add another program and create two instances: `foo` and `usesFoo`. The function block initializer of `UsesFoo3` gets passed the `foo` instance.  Finally we call `usesFoo()` in our implementation part.
 
 ```
 PROGRAM Runner3
@@ -178,4 +178,3 @@ The advantage of the `FB_init` solution is that in case you forget to pass `foo`
 Although there are some drawbacks to the `FB_init` method, such as the fact that finding errors in it can be more difficult and the fact that you can still get a Page Fault if you forget to assign the `FB_init` input to a local function block variable as we saw above. I still think it provides some advantage, because you only need to pass a variable once to a function block and not each time you call the function block as with the `VAR_IN_OUT` solution.
 
 Discuss: [Reddit/Plc](https://www.reddit.com/r/PLC/comments/leqbnz/twincat_preventing_page_faults_from_references/), [Reddit/TwinCAT](https://www.reddit.com/r/TwinCat/comments/leqby8/preventing_page_faults_from_references/).
-

@@ -20,16 +20,16 @@ For the exponential growth phase I used data from the [Global EV Outlook 2017](h
 
 {% picture 2019-ev-forecast/ev_stock_world.png %}
 
-The earliest at which all vehicles in the world can be replaced by electrical ones is **2043**. That is assuming all vehicles which were in the world at 2014 will be replaced by electric vehicles. 
+The earliest at which all vehicles in the world can be replaced by electrical ones is **2043**. That is assuming all vehicles which were in the world at 2014 will be replaced by electric vehicles.
 
-### Alternative scenarios 
+### Alternative scenarios
 
 What if:
-1. the total amount of vehicles which should be replaced is larger than the current 1.2 billion, say 3 billion: **2044** 
+1. the total amount of vehicles which should be replaced is larger than the current 1.2 billion, say 3 billion: **2044**
 2. Or what if the vehicle lifetime is longer, say 30 years: **2052**
 3. Or both: **2053**
 
-## Conclusions 
+## Conclusions
 
 Assuming all vehicles will be replaced by electric ones, we have around 4 years of exponential growth of the electrical vehicle market in front of us. Around 2023 linear growth will set in and gradually all internal combustion vehicles will be replaced by electrical ones which will be done by *2044*. Note that although the growth of the market seems impressive on the logarithmic plot, on a linear scale you can see that the electric vehicle market is still very small in 2018 at 0.28%.
 
