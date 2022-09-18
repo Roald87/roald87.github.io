@@ -12,13 +12,9 @@ You probably came across the following error message when you activated a config
 
 {% picture 2021-02-07-preventing-page-faults-from-references/page_fault.png %}
 
-![[_site/assets/2021-02-07-preventing-page-faults-from-references/page_fault.png]]
-
 The reason for the page fault is easy to see once you log into your project because it highlights the point of failure.
 
 {% picture 2022-page-fault/pointer.png %}
-
-![[pointer.png]]
 
 ## What are page faults?
 
@@ -44,8 +40,6 @@ number := pointerToNumber^;
  
  {% picture 2022-page-fault/pointer.png %}
  
- ![[pointer.png]]
-
 ### Solution
 The solution to prevent this is quite simple: check if the address is 0 before you try to dereference the pointer. The complete example becomes:
 
@@ -69,20 +63,14 @@ To add the `CheckPointer` to your project, right click your PLC project and sele
 
 {% picture 2022-page-fault/implicit_checks.png %}
 
-![[assets/2022-page-fault/implicit_checks.png]]
- 
  Select **Pointer Check** and confirm with **Open**.
  
  {% picture 2022-page-fault/add_checkpointer.png %}
- 
- ![[assets/2022-page-fault/add_checkpointer.png]]
  
  This adds the `CheckPointer` function to your project and it already has a suggested implementation. If I run the failing example code, an error message is printed in the error console before it crashes.
  
  {% picture 2022-page-fault/pointer_check_error_message.png %}
  
- ![[assets/2022-page-fault/pointer_check_error_message.png]]
-
 Another solution would be to pass the pointer via `VAR_IN_OUT` or use constructor injection via `FB_init` as I showed in the [earlier article](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html). 
 
 ## References
@@ -104,8 +92,6 @@ refNumber := 1;
 When you try to assign a number to this reference, you get a page fault, because `refNumber` doesn't refer to anything.
 
 {% picture 2022-page-fault/reference_page_fault.png %}
-
-![[assets/2022-page-fault/reference_page_fault.png]]
 
 ### Solution
 
@@ -154,8 +140,6 @@ number := someInterface.SomeProperty;
 Executing the code again results in a page fault. That is because a function block needs to be assigned to the interface first. Then `someInterface` contains the address to this function block. Without an assigned function block, the interface is 0. Since this is not a valid address you get a page fault. 
 
 {% picture 2022-page-fault/interface_page_fault.png %}
-
-![[interface_page_fault.png]]
 
 ### Solutions
 
