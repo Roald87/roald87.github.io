@@ -29,7 +29,7 @@ One option is that you create an actual 3D model of your machine and connect tha
 
 The second option is to manually force different in/outputs in your program and verify that everything works as intended. This option is, of course, vey time consuming and not automated. And if you're like me, than you didn't become a software engineer to do things manually 😁.
 
-The third and last option is to make use of Beckhoff's [EtherCAT Simulation module](https://www.beckhoff.com/en-en/products/automation/twincat/te1xxx-twincat-3-engineering/te1111.html). This a quite extensive module ([InfoSys](https://infosys.beckhoff.com/content/1033/te1111_ethercat_simulation/9007206134823819.html?id=6382247128242284904)):
+The third and last option is to make use of Beckhoff's [EtherCAT Simulation module](https://www.beckhoff.com/en-en/products/automation/twincat/texxxx-twincat-3-engineering/te1111.html). This a quite extensive module ([InfoSys](https://infosys.beckhoff.com/content/1033/te1111_ethercat_simulation/9007206134823819.html?id=6382247128242284904)):
 
 > The TE1111 TwinCAT EtherCAT Simulation function simulates an EtherCAT segment. An already created I/O configuration of the real plant is exported and can be imported into a second system as an ‘EtherCAT Simulation’ device. A mirrored process image is thus available on this system that can be linked with corresponding TwinCAT modules (e.g. written in the IEC 61131-3 languages or generated from Matlab®/Simulink®). The desired behavior of the machine must be implemented with sufficient accuracy in these modules.
 
