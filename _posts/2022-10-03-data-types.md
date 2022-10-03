@@ -26,7 +26,8 @@ When you're working with ADS, you often need to know the size of a data type or 
 |`LREAL`     |`DOUBLE`        | `System.Double`           | `double`     | `Double`               | -1.7976931348623158e+308 | 1.7976931348623158e+308 | 64 bit        |
 
 ## Sources
-- [BOOLs](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529394315.html?id=1768255288341275228)
-- [INTS](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529399691.html&id=)
+
+- [BOOL](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529394315.html?id=1768255288341275228)
+- [INT](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529399691.html&id=)
 - [REAL](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529399691.html&id=)
 - [Data type comparison](https://infosys.beckhoff.com/content/1033/tc3_system/html/tcsysmgr_datatypecomparison.htm?id=3043404538898382042)
