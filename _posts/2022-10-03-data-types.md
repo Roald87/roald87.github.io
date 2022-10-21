@@ -23,7 +23,7 @@ When you're working with ADS, you often need to know the size of a data type or 
 |`UDINT`     |`UINT32`        | `System.UInt32`           | `uint`       | -                    | 0                        | 4.29e+09                | 32 bit        |
 |`ULINT`     |`UINT64`        | `System.UInt64`           | `ulong`      | -                    | 0                        | 2e+64-1                 | 64 bit        |
 |`REAL`      |`FLOAT`         | `System.Single`           | `float`      | `Single`               | -3.40e+38                | 3.40e+38                | 32 bit        |
-|`LREAL`     |`DOUBLE`        | `System.Double`           | `double`     | `Double`               | -1.7976931348623158e+308 | 1.7976931348623158e+308 | 64 bit        |
+|`LREAL`     |`DOUBLE`        | `System.Double`           | `double`     | `Double`               | -1.798e+308 | 1.798e+308 | 64 bit        |
 
 ## Sources
 
