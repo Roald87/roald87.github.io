@@ -25,6 +25,7 @@ permalink: /tclinks/
 - [Oleg Mueller](https://www.youtube.com/channel/UCHvABpkd825kAtaDxnhE-tg): Tons of videos about TcHMI from the TcHMI Guru.
 - [Beckhoff official](https://www.youtube.com/user/BeckhoffAutomation): Beckhoff's own channel with many videos on the latest or upcoming products.
 - [Coding Bytes](https://codingbytes.teachable.com/p/codingbytes_twincat3): Team members from Beckhoff Australia share videos which are primarily based on replies to support questions.
+- [Electrical Automation Hands-On](https://www.youtube.com/channel/UCZqe2O5oBpas73BVdwHTiCA): Excellent tutorials for Beckhoff, Siemens and Allen-Bradley PLC's on PID's, motion, vision and more.
 
 ## Tools
 - [TcError](https://github.com/Roald87/TcError): Functions and datatypes which describe TwinCAT errors.
