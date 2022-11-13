@@ -42,3 +42,4 @@ permalink: /tclinks/
 - [Beckhoff USA GitHub](https://github.com/Beckhoff-USA-Community): A collection of TwinCAT and TcHMI example projects.
 - [Beckhoff HQ GitHub](https://github.com/Beckhoff): Mainly TFxxxx sample projects.
 - [Awesome open source](https://awesomeopensource.com/projects/industrial-automation?): List of open source GitHub repo's.
+- [TwinCAT resources](https://github.com/benhar-dev/twincat-resources): Similar to this list, but with slight differences.
