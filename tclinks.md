@@ -35,6 +35,8 @@ permalink: /tclinks/
 - [TcOpen](https://github.com/TcOpenGroup/TcOpen/): A collection of standard TwinCAT components.
 - [TcMatrix](https://github.com/BurksEngineering/TcMatrix): Library for matrix and vector operations for some of your linear algebra needs.
 - [TcTransform](https://github.com/BurksEngineering/TcTransform): Library for 3D coordinate system transformations.
+- [TcTemplate](https://github.com/rruiter87/tctemplate): A GitHub template repo for TwinCAT projects.
+- [TcUnits](https://github.com/rruiter87/tcunits): TwinCAT library with aliases for units.
 
 ## Repos
 
