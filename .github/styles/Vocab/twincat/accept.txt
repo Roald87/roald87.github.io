@@ -1,6 +1,7 @@
 [Bb]ootable
 [Dd]ereferenc(e|ing)
 [Pp]owershell
+[Rr]epo
 Beckhoff
 check
 Hyper-V
