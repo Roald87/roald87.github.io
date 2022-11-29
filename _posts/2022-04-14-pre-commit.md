@@ -7,7 +7,7 @@ toc: true
 
 [Earlier](https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html) I talked about how you can do version control of your TwinCAT code with git. In this post, I want to show a very neat feature of git which I didn't mention last time: pre-commits. You can use pre-commits to format, lint, or do static code analyses before you commit your code. Unfortunately, there is currently only one pre-commit for structured text files. But, you can also use pre-commits for markdown, html, or javascript files.
 
-*Use the [GitHub TwinCAT template repo](https://github.com/rruiter87/TcTemplate) to quickly set up a TwinCAT repo, including the pre-commits.*
+*Use the [GitHub TwinCAT template repo](https://github.com/rruiter87/TcTemplate) to set up a TwinCAT repo, including the pre-commits.*
 
 ## What are pre-commits?
 
@@ -117,9 +117,9 @@ Why: makes these files readable for humans. Normally TwinCAT doesn't put any new
 
 `check-fixed-library-versions`
 
-What: checks if there are twincat libraries whose versions are not fixed or explicitly set to the latest version.
+What: checks if there are TwinCAT libraries whose versions are not fixed or explicitly set to the latest version.
 
-Why: ensures that your software behaves the same, even if newer libraries are installed on your system.
+Why: ensures that your software behaves the same, even if you install newer library version on your system.
 
 `trailing-whitespace`
 
