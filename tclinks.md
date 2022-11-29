@@ -14,6 +14,7 @@ permalink: /tclinks/
 - [Red Rock Controls](https://www.redrockcontrols.co.uk/?tag=twincat): A few posts on design patterns in TwinCAT.
 - [Kassym Dorsel](https://kassymdorsel.com/blog): Various articles and a series on TwinCAT Vision.
 - [WJB Automation Blog](https://dronefactory.co.uk/): Combining TwinCAT with Unity, a 3D graphics development platform.
+- [Toni Kucic](https://tkucic.github.io/): Various articles and speed tests for CODESYS.
 
 ## Forums
 - [Beckhoff Community Support](https://www.twincontrols.com/community/): Ask for support from the community.
