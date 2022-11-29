@@ -49,7 +49,7 @@ To use the SLAC pre-commits, add the following lines to your `.pre-commit-config
 
 ```yaml
 -   repo: https://github.com/pcdshub/pre-commit-hooks
-    rev: v1.1.0
+    rev: v1.2.0
     hooks:
     # Replaces all leading tabs with spaces
     -   id: twincat-leading-tabs-remover
@@ -58,6 +58,8 @@ To use the SLAC pre-commits, add the following lines to your `.pre-commit-config
     -   id: twincat-lineids-remover
     # Formats .tmc and .tpy files
     -   id: twincat-xml-format
+    # Check if there are any libraries whose versions are not fixed
+    -   id: check-fixed-library-versions
 ```
 
 For completeness, I'll also add the following standard pre-commits. You can first run these pre-commits. Later [I go into details about what they do and why they are useful](#hooks-what-and-why).
@@ -110,6 +112,12 @@ Why: they are only useful locally. When uploaded to source control they only cau
 What: formats the `.tmc` and `.tcp` files with newlines and indentation.
 
 Why: makes these files readable for humans. Normally TwinCAT doesn't put any newlines or indentations in these files. Useful if you would like to have these files in source control and see clear differences.
+
+`check-fixed-library-versions`
+
+What: checks if there are twincat libraries whose versions are not fixed or explicitly set to the latest version.
+
+Why: ensures that your software behaves the same, even if newer libraries are installed on your system.
 
 `trailing-whitespace`
 
