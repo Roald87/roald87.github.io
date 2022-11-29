@@ -7,6 +7,8 @@ toc: true
 
 [Earlier](https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html) I talked about how you can do version control of your TwinCAT code with git. In this post, I want to show a very neat feature of git which I didn't mention last time: pre-commits. You can use pre-commits to format, lint, or do static code analyses before you commit your code. Unfortunately, there is currently only one pre-commit for structured text files. But, you can also use pre-commits for markdown, html, or javascript files.
 
+*Use the [GitHub TwinCAT template repo](https://github.com/rruiter87/TcTemplate) to quickly set up a TwinCAT repo, including the pre-commits.*
+
 ## What are pre-commits?
 
 Pre-commits are part of a class of so-called [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks). These hooks allow you to run a script at some point during a git command. Most hooks are of the pre- kind, which means it does something before a commit, merge, or rebase. They can be very useful. For example, to ensure a consistent code formatting style or that a file is a valid json or xml format.
