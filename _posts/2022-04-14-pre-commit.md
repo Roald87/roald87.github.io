@@ -5,27 +5,27 @@ category: twincat
 toc: true
 ---
 
-[Earlier](https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html) I talked about how you can do version control of your TwinCAT code with git. In this post, I want to show a very neat feature of git which I didn't mention last time: pre-commits. You can use pre-commits to format, lint, or do static code analyses before you commit your code. Unfortunately, there is currently only one pre-commit for structured text files. But, you can also use pre-commits for markdown, html, or javascript files.
+[Earlier](https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html) I talked about how you can do version control of your TwinCAT code with git. In this post, I want to show a neat feature of git which I didn't mention last time: pre-commits. Pre-commits can format, lint, or do static code analyses on your code before committing. One pre-commit is available for structured text files. But, pre-commits are also available for markdown, HTML, or JavaScript files.
 
 *Use the [GitHub TwinCAT template repo](https://github.com/rruiter87/TcTemplate) to set up a TwinCAT repo, including the pre-commits.*
 
 ## What are pre-commits?
 
-Pre-commits are part of a class of so-called [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks). These hooks allow you to run a script at some point during a git command. Most hooks are of the pre- kind, which means it does something before a commit, merge, or rebase. They can be very useful. For example, to ensure a consistent code formatting style or that a file is a valid json or xml format.
+Pre-commits are part of a class of so-called [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks). Hooks enable you to run a script during a git command. Most of these hooks are pre-commit, meaning they do something before a commit, merge, or rebase. Pre-commit hooks can be beneficial; for instance, they can guarantee a uniform code formatting style or verify a file's JSON or XML format.
 
 You can see some examples of git hooks if you have a project which uses git. Navigate to the `.git/hooks` folder and you should see a list of example hooks there. If you can't see the `.git` folder, make sure you have enabled "Hidden items" under the View tab in your Windows Explorer.
 
 {% picture 2022-pre-commit/hook-examples.png --alt git hook examples as found in the ./git/hooks folder %}
 
-If you open one of the files, you see some bash scripts. It is not necessary to use bash. You can use any programming or scripting language which is available on your system.
+If you open one of the files, you see some bash scripts. It's not necessary to use bash. You can use any programming or scripting language which is available on your system.
 
-You can write your own hooks from scratch, but for many files, there is already [a large variety available](https://pre-commit.com/hooks.html). Let me show you how you can use these and a structured text hook for your TwinCAT projects.
+You can write your own hooks from scratch, but for most files, there is already [a large variety available](https://pre-commit.com/hooks.html). Let me show you how you can use these and a structured text hook for your TwinCAT projects.
 
 ## Setup pre-commit
 
-A popular framework to manage pre-commits is called [pre-commit](https://pre-commit.com/). It is written in Python. Thus you first need to install Python, if you do not already have it installed.
+A popular framework to manage pre-commits is [pre-commit](https://pre-commit.com/). It's a Python based framework and thus you need a working Python installation on your system before you can use it.
 
-1. (In case you do not have Python) Download and install conda via one of the methods below. You can either install Miniconda which is a very minimal installation. It comes only with the bare necessities to get started. Miniconda should be enough for this tutorial. Or, if you would like to have a bit more tools/modules installed (mainly for data analyses), choose Anaconda.
+1. (In case you do not have Python) Download and install conda via one of the methods below. You can either install Miniconda which is a minimal installation. It comes with the bare necessities to get started. Miniconda should be enough for this tutorial. Or, if you would like to have a bit more tools/modules installed (mainly for data analyses), choose Anaconda.
     - Manually download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/products/individual#Downloads).
     - Or run `winget install -e --id Anaconda.Miniconda3` or `winget install -e --id Anaconda.Anaconda3` from the terminal.
 
@@ -33,7 +33,7 @@ A popular framework to manage pre-commits is called [pre-commit](https://pre-com
     - `pip install pre-commit`
     - or `conda install -c conda-forge pre-commit`
 
-1. Check if the installation went OK by running the command below in the terminal. If you see a version number, you installed pre-commit successfully.
+1. Check if the installation went OK by running the command below in the terminal. If you see a version number then pre-commit works.
 
   ```
       $ pre-commit --version
@@ -45,9 +45,7 @@ A popular framework to manage pre-commits is called [pre-commit](https://pre-com
 
 ## TwinCAT relevant pre-commits
 
-As you might have noticed, there is not a lot of open source software for TwinCAT. Luckily there is a pre-commit specifically for TwinCAT. The kind people of the Photon Controls and Data Systems at SLAC have open-sourced their TwinCAT pre-commits.
-
-To use the SLAC pre-commits, add the following lines to your `.pre-commit-config.yaml` file:
+The kind people of the Photon Controls and Data Systems at SLAC have open-sourced their TwinCAT pre-commits. To use the SLAC pre-commits, add the following lines to your `.pre-commit-config.yaml` file:
 
 ```yaml
 -   repo: https://github.com/pcdshub/pre-commit-hooks
@@ -129,9 +127,9 @@ Why: whitespace at the end of a line does not influence code execution; you can 
 
 `check-yaml`
 
-What: checks that programs can read your yaml file. For example, the `.pre-commit-config.yaml` one.
+What: checks that programs can read your YAML file. For example, the `.pre-commit-config.yaml` one.
 
-Why: ensures that your yaml files do not break.
+Why: ensures that your YAML files do not break.
 
 `check-added-large-files`:
 
@@ -241,7 +239,7 @@ Fixing tclinks.md
 
 ## Further ideas
 
-Other ideas could be to use [Prettier](https://prettier.io/) to format JavaScript, HTML, or CSS files from HMI projects. Unfortunately, TwinCAT saves the HMI pages as `.content` and `.view` files. So they are not recognized as HTML files by prettier. You could probably make it work though, by temporarily renaming these files to `.html` and then running prettier.
+Other ideas could be to use [Prettier](https://prettier.io/) to format JavaScript, HTML, or CSS files from HMI projects. Unfortunately, TwinCAT saves the HMI pages as `.content` and `.view` files. These files are not recognized as HTML files by prettier, but you could probably make it work by temporarily renaming these files to `.html` and then running prettier.
 
 Pre-commits are automatically executed locally whenever you commit something. But you can also add pre-commit to your CI workflow. For example, use [prettier.ci](https://pre-commit.ci/) to [automatically format markdown files of a pull request](https://github.com/Roald87/TwinCatChangelog/pull/23).
 
