@@ -62,3 +62,11 @@
     color: #ddd;
   }
 }
+
+td,th{
+  border-left: 10px solid #FFF;
+}
+
+ tr>td:first-child {
+   border:0px;
+ }

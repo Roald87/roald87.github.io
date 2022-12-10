@@ -17,5 +17,5 @@
   "alwaysUpdateLinks": true,
   "promptDelete": false,
   "livePreview": false,
-  "legacyEditor": true
+  "legacyEditor": false
 }
