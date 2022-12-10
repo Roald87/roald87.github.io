@@ -66,4 +66,4 @@ force(
 
 After calling another motion function block, the operation mode is automatically switched back from torque mode into position mode. For example `MC_MoveVelocity`,  `MC_MoveAbsolute`, `MC_Halt` etc. Note that when `MC_TorqueControl` is used with the AX5xxx, lag monitoring switches off automatically
 
-[^1]: For continuous force mode to work, the TwinCAT runtime needs to be at version >=4024.35.
+[^1]: [For continuous force mode to work, the TwinCAT runtime needs to be at version >=4024.35](https://cookncode.com/TwinCatChangelog/tc3/#features)
