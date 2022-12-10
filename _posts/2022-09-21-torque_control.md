@@ -7,6 +7,8 @@ toc: true
 
 [`MC_TorqueControl`](https://infosys.beckhoff.com/content/1033/tcplclib_tc2_mc2/7617393803.html?id=6677792901421113137) is a method to force or torque control an axis. In this article I show how to set up a simple project and use this function.
 
+*There is also a [YouTube video](https://www.youtube.com/watch?v=Lw-yW4OdtZA) by Electrical Automation Hands-On who explains these steps.*
+
 ## What is `MC_TorqueControl`
 
 Other than the name suggests, this method can be used for both linear axis as a force controller or for rotational axis as a torque controller. Thus, you can set a force or a torque and the drive ensures that your motor keeps that force or torque. To avoid saying torque _and_ force each time, I refer to both modes when I mention torque control.
