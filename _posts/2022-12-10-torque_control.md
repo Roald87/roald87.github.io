@@ -80,8 +80,8 @@ force(
 After calling another motion function block, the operation mode is automatically switched back from torque mode into position mode. For example `MC_MoveVelocity`,  `MC_MoveAbsolute`, `MC_Halt` etc.
 
 Some final notes:
-	- When `MC_TorqueControl` is used with the AX5000, lag monitoring switches off automatically.
-	-  `MC_TorqueControl` works with all SoE or CoE drives, but maybe the velocity limit function doesn't work.
+- When `MC_TorqueControl` is used with the AX5000, lag monitoring switches off automatically.
+-  `MC_TorqueControl` works with all SoE or CoE drives, but maybe the velocity limit function doesn't work.
 
 [^1]: Velocity limits work with the AX5000 and the AX8000.  But, because this limit is a feature inside the AX firmware it doesn't work for the EL, ELM, or AMI.
 [^2]: [For continuous force mode to work, the TwinCAT runtime needs to be at version >=4024.35](https://cookncode.com/TwinCatChangelog/tc3/#features)
