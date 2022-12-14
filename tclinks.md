@@ -15,6 +15,7 @@ permalink: /tclinks/
 - [Kassym Dorsel](https://kassymdorsel.com/blog): Various articles and a series on TwinCAT Vision.
 - [WJB Automation Blog](https://dronefactory.co.uk/): Combining TwinCAT with Unity, a 3D graphics development platform.
 - [Toni Kucic](https://tkucic.github.io/): Various articles and speed tests for CODESYS.
+- [Jouke Aalvanger](https://joukeaalvanger.nl/): Blog focussed on software development in the industrial automation world.
 
 ## Forums
 - [Beckhoff Community Support](https://www.twincontrols.com/community/): Ask for support from the community.
@@ -38,6 +39,7 @@ permalink: /tclinks/
 - [TcTransform](https://github.com/BurksEngineering/TcTransform): Library for 3D coordinate system transformations.
 - [TcTemplate](https://github.com/rruiter87/tctemplate): A GitHub template repo for TwinCAT projects.
 - [TcUnits](https://github.com/rruiter87/tcunits): TwinCAT library with aliases for units.
+- [TcControl](https://github.com/rruiter87/TcControl): Library for PID control and signal filtering. 
 
 ## Repos
 
