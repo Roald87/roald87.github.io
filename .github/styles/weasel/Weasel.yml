@@ -1,0 +1,30 @@
+extends: substitution
+message: "Consider using '%s' instead of '%s'."
+link: 'https://withoutbullshit.com/blog/avoid-lists-words-avoid'
+ignorecase: true
+level: error
+swap:
+  very noisy: deafening
+  very often: frequently
+  very old: ancient
+  very old-fashioned: archaic
+  very open: transparent
+  very painful: excruciating
+  very pale: ashen
+  very perfect: flawless
+  very poor: destitute
+  very powerful: compelling
+  very pretty: beautiful
+  very quick: rapid
+  very quiet: hushed
+  very rainy: pouring
+  very rich: wealthy
+  very sad: sorrowful
+  very scared: petrified
+  very scary: chilling
+  very serious: grave
+  very sharp: keen
+  very shiny: gleaming
+  very short: brief
+  very shy: timid
+  very simple: basic

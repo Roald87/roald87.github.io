@@ -1,12 +1,16 @@
 [Bb]ootable
+[Cc]heck
+[Cc]onda
 [Dd]ereferenc(e|ing)
 [Pp]owershell
+[Rr]ebase
 [Rr]epo
 Beckhoff
-check
 Hyper-V
 Jakob
+Miniconda
 Sagatowski
+Simatic
 Tc/BSD
 TwinCAT
 TwinCAT/BSD
