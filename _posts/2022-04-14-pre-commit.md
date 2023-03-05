@@ -77,7 +77,7 @@ repos:
     -   id: check-added-large-files
 ```
 
-Now install the pre-commit hooks with `pre-commit install`. **You only need to do this step once per git repo.** After that you can run `pre-commit run --all-files` and let the pre-commits do their magic. Note: you only run this command if you added new pre-commits. Normally all the pre-commits are automatically executed if you do `git commit ...`. In this case, the automatic execution only checks files that were changed.
+Install the pre-commit hooks with `pre-commit install`. This needs to be done once per git repository. Afterwards, you can run `pre-commit run --all-files` to let the pre-commits do their job. Note: you only run this command if you have added new pre-commits. In other cases, all pre-commits are automatically executed when you use `git commit ...`. In this case, the automatic execution limits to the changed files.
 
 Depending on the project you see no, some, or a lot of changed files. For example, when I ran it on my [TwinCAT Tutorial repo](https://github.com/Roald87/TwincatTutorials) I saw the following:
 
