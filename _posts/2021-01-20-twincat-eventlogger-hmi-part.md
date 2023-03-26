@@ -5,18 +5,18 @@ category: twincat
 toc: true
 ---
 
-In an [earlier article](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html) I introduced the PLC part of the TwinCAT EventLogger and showed some useful features. In this article, I go into the details on how to visualize the events using TwinCAT’s web-based HMI (TE2000).
+In an [earlier article](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html), I introduced the PLC part of the TwinCAT EventLogger and showed some useful features. In this article, I go into the details on how to visualize the events using TwinCAT’s web-based HMI (TE2000).
 
 *Thanks to [Jakob Sagatowski](https://github.com/sagatowski) for his valuable feedback while writing this article.*
 
 - Code: [PlcPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart)
 - Code: [HmiPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart)
 
-To follow this tutorial you can either download the completed [HMI project](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart) or you can start with the [PLC project](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart) from the [previous article](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html). **I'll assume here that you  start with the PLC project part and work your way towards the HMI project.**
+To follow this tutorial, you can either download the completed [HMI project](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart), or you can start with the [PLC project](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart) from the [previous article](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html). **I'll assume here that you start with the PLC project part and work your way towards the HMI project.**
 
 ## Adding a new HMI project
 
-With the solution from the PLC part open, add a new HMI project by going to **File > Add > New Project**. You should see the following screen. Select **TwinCAT HMI Project** from the TwinCAT HMI menu and give it a name, for example *EventGridSample*.
+With the solution from the PLC part open, add a new HMI project by going to **File > Add > New Project**. You should see the following screen. Select **TwinCAT HMI Project** from the TwinCAT HMI menu and give it a name, for example, *EventGridSample*.
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/add_hmi_project.png %}
 
@@ -41,7 +41,7 @@ I'll show an example with a custom column a bit [further on](#adding-a-custom-co
 
 ## Activating the configuration
 
-Before you can start using the HMI, you have to activate the configuration. Select **Activate Configuration** and select **Autostart PLC Boot Project(s)** and click **OK**. Select **OK** in the message box to *Restart TwinCAT System in Run Mode*.
+Before you can start using the HMI, you have to activate the configuration. Select **Activate Configuration** and select **Autostart PLC Boot Project(s)**, and click **OK**. Select **OK** in the message box to *Restart TwinCAT System in Run Mode*.
 
 ### HMI settings for the remote target
 
@@ -57,7 +57,7 @@ Then go to the **TcHmiEventLogger** tab. Again make sure to select the default p
 
 ## Sending a message
 
-First, you test the message event. To do so, drag a Toggle button from the **Toolbox** into the **Desktop.view**. Change the button text to, for example *Send message*. Next, you link the button to a variable in the PLC. Click on the small square button, circled in red, next to the **StateSymbol** and choose **Create data binding...**.
+First, you test the message event. To do so, drag a Toggle button from the **Toolbox** into the **Desktop.view**. Change the button text to, for example, *Send message*. Next, you link the button to a variable in the PLC. Click on the small square button, circled in red, next to the **StateSymbol** and choose **Create data binding...**.
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/send_message_button.png %}
 
@@ -65,17 +65,17 @@ You should see the following window. Select the **Server symbols** tab and selec
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/map_symbol.png %}
 
-If you now go back to the **Mapped symbols** tab, you can now link the variable you mapped to the button. To do so, select `PLC1.SendMessage.bSendMessage` and select **OK**.
+If you now go back to the **Mapped symbols** tab, you can now link the variable you mapped to the button. To do so, select `PLC1.SendMessage.bSendMessage`, and select **OK**.
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/link_symbol.png %}
 
 ### Live view
 
-Now it is time to see the event logger in action. You can either publish your HMI project to a remote HMI server or use the Live-View. Here I'll use the Live-View since it allows you to see the changes instantly. You can activate the HMI Live-View via **TwinCAT HMI > Windows > TwinCAT HMI Live-View**. You should now see something which looks like the image below. If you click the "Send Message" button, a new message should appear in the event viewer.
+Now it is time to see the event logger in action. You can either publish your HMI project to a remote HMI server or use the Live-View. Here, I'll use the Live-View since it allows you to see the changes instantly. You can activate the HMI Live-View via **TwinCAT HMI > Windows > TwinCAT HMI Live-View**. You should now see something that looks like the image below. If you click the "Send Message" button, a new message should appear in the event viewer.
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/event_control_with_message.png %}
 
-In case you do not see anything, it might be the case that you made a mistake somewhere. If there are errors on the page, this is shown on the toolbar on the top of the Live-View. Click on it to open the Developer tools window. From here you can try to debug what is causing your issues.
+In case you do not see anything, it might be the case that you made a mistake somewhere. If there are errors on the page, this is shown on the toolbar at the top of the Live-View. Click on it to open the Developer tools window. From here, you can try to debug what is causing your issues.
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/live-view_errors.png %}
 
