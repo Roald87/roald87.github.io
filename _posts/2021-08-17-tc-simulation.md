@@ -15,7 +15,7 @@ There are different levels at which you can test your code, as shown in the imag
 
 {% picture 2021-08-17-tc-simulation/ThePyramidOfTests.png --alt alltwincat.com pyramid of tests %}
 
-*Image courtesy of AllTwinCAT.com*
+_Image courtesy of AllTwinCAT.com_
 
 ### Unit tests
 
@@ -82,7 +82,7 @@ Add the oven stand-alone plc project by right clicking on **PLC > Add Existing I
 
 The advantage if you add the `.plcproj` file, is that you can directly edit the function blocks of the stand-alone project (the one in `DigitalTwin/Oven/Oven/Oven.tsproj`) from the digital twin project (the one in `DigitalTwin/OvenConfig/OvenConfig/OvenConfig.tsproj`). A disadvantage is that if you have the stand-alone project open, it will ask you to reload files every time you make a change. If you choose to go with the `.tmc` file option, you get neither the advantage nor the disadvantage.
 
-If you select the `.tmc` file, make sure to select the "Auto Reload TMI/TMC" option. This option can be found under **PLC Instance > Object**.  This will make sure that whenever the `.tmc` file of the stand-alone project changes, it will automatically be reloaded into the digital twin project. I used the `.tmc` file for this tutorial.
+If you select the `.tmc` file, make sure to select the "Auto Reload TMI/TMC" option. This option can be found under **PLC Instance > Object**. This will make sure that whenever the `.tmc` file of the stand-alone project changes, it will automatically be reloaded into the digital twin project. I used the `.tmc` file for this tutorial.
 
 {% picture 2021-08-17-tc-simulation/auto_reload_tmc.png --alt image-20210813081517593 %}
 
@@ -114,7 +114,7 @@ In this section I will show you how you can create the digital twins of the `Rel
 
 #### Mirroring the relay
 
-The PLC project has a function block `Relay` which represents a relay. The relay has one output `turnOnRelay AT %Q* : BOOL;` which is set to `TRUE` if the relay needs to turn on. It then watches for the feedback of the relay if it actually turned on with `relayOnFeedback AT %I* : BOOL;`.  If the `relayOnFeedback` is set to `TRUE`, `Relay` will switch to the on state.
+The PLC project has a function block `Relay` which represents a relay. The relay has one output `turnOnRelay AT %Q* : BOOL;` which is set to `TRUE` if the relay needs to turn on. It then watches for the feedback of the relay if it actually turned on with `relayOnFeedback AT %I* : BOOL;`. If the `relayOnFeedback` is set to `TRUE`, `Relay` will switch to the on state.
 
 Without a simulation project, the feedback will never go to true, so the relay will always be in state off or turning on. So that is why we get this:
 
@@ -122,10 +122,10 @@ Without a simulation project, the feedback will never go to true, so the relay w
 
 Go get the correct relay behavior we will create a mirror object of `Relay` called `SimRelay`. `SimRelay` will have the mirrored I/O as `Relay` in the PLC project. I.e. `%I*` becomes `%Q*` and vice versa:
 
-| `Relay`                          | `SimRelay`                       |
-| -------------------------------- | -------------------------------- |
+| `Relay`                          | `SimRelay`                         |
+| -------------------------------- | ---------------------------------- |
 | `relayOnFeedback AT %I* : BOOL;` | ➔ `relayOnFeedback AT %Q* : BOOL;` |
-| `turnOnRelay AT %Q* : BOOL`      | ➔ `turnOnRelay AT %I* : BOOL;`  |
+| `turnOnRelay AT %Q* : BOOL`      | ➔ `turnOnRelay AT %I* : BOOL;`     |
 
 For the implementation of `SimRelay` I added some delays before the feedback is set, in order to clearly see the state transitions in the HMI. The complete codes is then as follows.
 

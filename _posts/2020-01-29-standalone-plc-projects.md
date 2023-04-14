@@ -7,7 +7,7 @@ toc: true
 
 In this article, I want to highlight a useful and fairly new TwinCAT feature: Stand-alone PLC projects. As usual, Beckhoff's InfoSys provides a good explanation of how to set up and run such a project from scratch. However, there is little information on why the separation might be a good idea, how to separate an existing project, and some of the pitfalls you might encounter.
 
-*This article was first [published](https://alltwincat.com/2020/01/29/standalone-plc-projects/) on the AllTwinCAT blog.*
+_This article was first [published](https://alltwincat.com/2020/01/29/standalone-plc-projects/) on the AllTwinCAT blog._
 
 A stand-alone PLC project “[makes it possible to separate system, motion and I/O configuration from PLC development at project level](https://infosys.beckhoff.com/content/1033/tc3_plc_intro/4702071179.html?id=135948604315208321)”. In other words, the separation can prevent the configuration of one machine from influencing the other. For example, one issue we faced was that on our production machine, we divided tasks over several cores, whereas in our development environments, we often ran all tasks on a single core. It happened a few times that the development environment's configuration was (partially) uploaded on the production machine, where it caused several issues, as you can imagine.
 

@@ -10,7 +10,8 @@ toc: true
 - Example code: [GitHub](https://github.com/Roald87/TwincatTutorials/tree/main/PageFaults)/[Direct download](https://downgit.github.io/#/home?url=https://github.com/Roald87/TwincatTutorials/tree/main/PageFaults) with TwinCAT 4024.25
 
 ## Page faults in TwinCAT
-You probably came across the following error message when you activated a configuration. The error says there is a *Page Fault*. This message was always quite puzzling to me when I started programming PLCs.
+
+You probably came across the following error message when you activated a configuration. The error says there is a _Page Fault_. This message was always quite puzzling to me when I started programming PLCs.
 
 {% picture 2021-02-07-preventing-page-faults-from-references/page_fault.png %}
 
@@ -36,11 +37,12 @@ END_VAR
 number := pointerToNumber^;
 ```
 
- When you activate this code you get a page fault. If you log in, you see that the pointer has address 0. Because this is not a valid memory address an exception is raised and your code halts here.
+When you activate this code you get a page fault. If you log in, you see that the pointer has address 0. Because this is not a valid memory address an exception is raised and your code halts here.
 
- {% picture 2022-page-fault/pointer.png %}
+{% picture 2022-page-fault/pointer.png %}
 
 ### Solution
+
 The solution to prevent this is quite simple: check if the address is 0 before you try to dereference the pointer. The complete example becomes:
 
 ```
@@ -63,13 +65,13 @@ To add the `CheckPointer` to your project, right click your PLC project and sele
 
 {% picture 2022-page-fault/implicit_checks.png %}
 
- Select **Pointer Check** and confirm with **Open**.
+Select **Pointer Check** and confirm with **Open**.
 
- {% picture 2022-page-fault/add_checkpointer.png %}
+{% picture 2022-page-fault/add_checkpointer.png %}
 
- This adds the `CheckPointer` function to your project and it already has a suggested implementation. If I run the failing example code, an error message is printed in the error console before it crashes.
+This adds the `CheckPointer` function to your project and it already has a suggested implementation. If I run the failing example code, an error message is printed in the error console before it crashes.
 
- {% picture 2022-page-fault/pointer_check_error_message.png %}
+{% picture 2022-page-fault/pointer_check_error_message.png %}
 
 Another solution would be to pass the pointer via `VAR_IN_OUT` or use constructor injection via `FB_init` as I showed in the [earlier article](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html).
 
@@ -95,6 +97,7 @@ When you try to assign a number to this reference, you get a page fault, because
 ### Solution
 
 In the [earlier article](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html) I showed several ways you can prevent page faults from references. They were using:
+
 - [`__ISVALIDREF`](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529165707.html&id=)
 - Adding references to `VAR_IN_OUT`
 - Or using constructor injection via `FB_init`
@@ -125,7 +128,7 @@ PROPERTY SomeProperty : INT
 
 ```
 
-I create an instance `someInterface` of `I_Interface`.  Then I try to save the integer returned by this into the variable `number`.
+I create an instance `someInterface` of `I_Interface`. Then I try to save the integer returned by this into the variable `number`.
 
 ```
 PROGRAM InterfaceExample
@@ -160,6 +163,7 @@ END_IF
 Again this solution silently fail, thus it might be wise to add an `ELSE` clause with an error message. Or if you use the interface in a function or function block you can use the `VAR_IN_OUT` or `FB_init` solutions mentioned in the [earlier article](https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html).
 
 ## Conclusions
-I showed page faults can be caused by invalid pointers, references, and interfaces. For each case,  I showed some solutions how to prevent the page faults, mainly by checking if the pointer or interface is not 0 or by using `__iSVALIDREF` for references.
+
+I showed page faults can be caused by invalid pointers, references, and interfaces. For each case, I showed some solutions how to prevent the page faults, mainly by checking if the pointer or interface is not 0 or by using `__iSVALIDREF` for references.
 
 Did I miss any cases which can cause page faults and what are your solutions to prevent PLC crashes from page faults? Let me know in the comments below.

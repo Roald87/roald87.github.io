@@ -6,7 +6,7 @@ category: miscellaneous
 
 Mijn moeder noemde het altijd slaap, mijn vriendin kladjes en een vriend kwam laatst met oogpitjes. Om erachter te komen of er nog meer woorden voor waren, plaatste ik een oproep op Reddit. Ik was verbaasd over de grote verscheidenheid aan termen voor dit fenomeen!
 
-*Deze blogpost is een combinatie van twee Reddit posts: de [originele oproep](https://www.reddit.com/r/thenetherlands/comments/b04ee4/hoe_noemen_jullie_de_harde_korrels_die_je_s/) en de [update](https://www.reddit.com/r/thenetherlands/comments/b5mga4/update_hoe_noemen_jullie_dat_spul_in_je_ooghoeken/).*
+_Deze blogpost is een combinatie van twee Reddit posts: de [originele oproep](https://www.reddit.com/r/thenetherlands/comments/b04ee4/hoe_noemen_jullie_de_harde_korrels_die_je_s/) en de [update](https://www.reddit.com/r/thenetherlands/comments/b5mga4/update_hoe_noemen_jullie_dat_spul_in_je_ooghoeken/)._
 
 Er waren een hoop reacties op mijn [originele reddit post](https://www.reddit.com/r/thenetherlands/comments/b04ee4/hoe_noemen_jullie_de_harde_korrels_die_je_s/). Ik heb toen alle resultaten even verzameld in een [Google Sheets](https://docs.google.com/spreadsheets/d/1jIeXigNdPL_LzTziZfvS934nlAiOvlrX5AYDBrJujZg/edit?usp=sharing).
 

@@ -5,3 +5,10 @@ repos:
       - id: trailing-whitespace # Removes trailing white spaces
       - id: check-yaml # checks yaml files for parseable syntax.
       - id: end-of-file-fixer
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.7.1
+    hooks:
+      - id: prettier
+        additional_dependencies:
+          - prettier@2.7.1
+          - "@shopify/prettier-plugin-liquid"

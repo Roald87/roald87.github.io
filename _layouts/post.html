@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  {%- include head.html -%}
-</head>
-<body>
-  <header class="texture-{{ site.texture.style }}">
-    <div class="container">
-      {%- include nav.html -%}
-    </div>
-    {%- include post_header.html -%}
-  </header>
-  <main>
-    <div class="container">
-      <div class="post-container">
-          {{ content | toc }}
+  <head>
+    {%- include head.html -%}
+  </head>
+  <body>
+    <header class="texture-{{ site.texture.style }}">
+      <div class="container">{%- include nav.html -%}</div>
+      {%- include post_header.html -%}
+    </header>
+    <main>
+      <div class="container">
+        <div class="post-container">{{ content | toc }}</div>
+        {%- include category_navigation.html -%}
+        <div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
       </div>
-
-      {%- include category_navigation.html -%}
-
-      <div style="margin-bottom:25px">
-        Like my work? <a href="https://ko-fi.com/roald87">Consider a donation!</a>
-      </div>
-
-  <div id="disqus_thread" style="margin-top:25px">
-    <script src="https://utteranc.es/client.js"
-        repo="Roald87/roald87.github.io"
-        issue-term="pathname"
-        label="comment"
-        theme="boxy-light"
-        crossorigin="anonymous"
-        async>
-    </script>
-  </div>
-
-  </main>
-  {%- include footer.html -%}
-</body>
+    </main>
+    {%- include footer.html -%}
+  </body>
 </html>

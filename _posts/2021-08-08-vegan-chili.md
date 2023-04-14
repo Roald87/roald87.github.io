@@ -5,7 +5,7 @@ category: cooking
 toc: true
 ---
 
-Easy, tasty, vegan, cheap, leftovers. A simplified and *Europeanized* version of [The Best Vegetarian Chili](https://www.seriouseats.com/best-vegetarian-bean-chili) from [The Food Lab](https://www.goodreads.com/book/show/24861842-the-food-lab) by J. Kenji López-Alt.
+Easy, tasty, vegan, cheap, leftovers. A simplified and _Europeanized_ version of [The Best Vegetarian Chili](https://www.seriouseats.com/best-vegetarian-bean-chili) from [The Food Lab](https://www.goodreads.com/book/show/24861842-the-food-lab) by J. Kenji López-Alt.
 
 We left out the home made chili paste, because these chili's are hard to find in Europe. If you can find them, go ahead and use them, but the taste is already great with the marmite/soysause + chipotle chilis!
 
@@ -27,21 +27,22 @@ We left out the home made chili paste, because these chili's are hard to find in
 - Optional toppings: coriander, spring onions, jalapeños, lime, creme fraîche, cheese, avocado, …
 
 ## Recipe
+
 1. Drain the
 
    - 2 cans of chickpeas
 
-    but reserve the liquid in a separate bowl. Put the chickpeas in a big bowl or pot with a flat base and mash with a potato masher until almost all of the chickpeas are broken. Add the
+   but reserve the liquid in a separate bowl. Put the chickpeas in a big bowl or pot with a flat base and mash with a potato masher until almost all of the chickpeas are broken. Add the
 
-    - 2 cans of tomatoes
+   - 2 cans of tomatoes
 
-    and mash until the tomatoes are broken. Drain the
+   and mash until the tomatoes are broken. Drain the
 
-    - 2 cans of beans
+   - 2 cans of beans
 
-    reserving the liquid. Add beans to the chickpea/tomato bowl. Add the
+   reserving the liquid. Add beans to the chickpea/tomato bowl. Add the
 
-	- 2 tablespoons of chipotle chilis to the bowl.
+   - 2 tablespoons of chipotle chilis to the bowl.
 
    {% picture cooking-kenji-vegan-chili/IMG_0298.JPEG %}
 

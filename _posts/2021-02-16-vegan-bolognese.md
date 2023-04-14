@@ -13,7 +13,7 @@ This recipe is based on a [Hearty Vegan Mushroom Bolognese](https://www.seriouse
 
 ## Extended step-by-step
 
-Start by preparing the [soffritto/mirepoix](https://en.wikipedia.org/wiki/Mirepoix_(cuisine)). This is a mix of equal parts celery, onion and carrot. You can chop it by hand, but that can be quite tedious. I like to do it in a food processor, because it is easier to get the pieces nice and small. I think the size also helps with thickening the eventual sauce.
+Start by preparing the [soffritto/mirepoix](<https://en.wikipedia.org/wiki/Mirepoix_(cuisine)>). This is a mix of equal parts celery, onion and carrot. You can chop it by hand, but that can be quite tedious. I like to do it in a food processor, because it is easier to get the pieces nice and small. I think the size also helps with thickening the eventual sauce.
 
 {% picture 2021-02-16-vegan-bolognese/mirepoix.jpeg %}
 
@@ -100,48 +100,54 @@ You could eat the sauce with some pappardelle or use it in a (not so vegan) lasa
 **Serves 4. 1 hour active time, 2 hours in total.**
 
 1. For the mirepoix, add the
- - 2 large stalks of celery (about 50 gram, 1 cup)
- - 1 medium carrot (about 50 gram, 1 cup)
- - 1 medium union (about 50 gram, 1 cup)
 
-   to the food processor and pulse until the pieces are just a few millimeter in size.
+- 2 large stalks of celery (about 50 gram, 1 cup)
+- 1 medium carrot (about 50 gram, 1 cup)
+- 1 medium union (about 50 gram, 1 cup)
+
+  to the food processor and pulse until the pieces are just a few millimeter in size.
 
 2. Heat up a large pan or dutch oven on medium heat. When hot, add 3 tablespoons of olive oil and add the mirepoix. Stir every few minutes.
 
 3. Prepare the taste maker bowl with
- - 5 garlic cloves from a garlic press
- - 1 tablespoon tomato paste
- - 1 teaspoon oregano
- - pinch of chili flakes
- - 1 tablespoon soy sauce
- - 1.5 teaspoon marmite
+
+- 5 garlic cloves from a garlic press
+- 1 tablespoon tomato paste
+- 1 teaspoon oregano
+- pinch of chili flakes
+- 1 tablespoon soy sauce
+- 1.5 teaspoon marmite
 
 4. Wash the
+
 - 700 g (25-ounces) mix of button and cremini mushrooms
 
-    and put them into the food processor. Pulse until the largest pieces are a few millimeter in size.
+  and put them into the food processor. Pulse until the largest pieces are a few millimeter in size.
 
 4. When the vegetables are soft, add the taste makers and stir.
 
 5. After about a minute, add the
- - 250 ml (1 cup) of red wine.
+
+- 250 ml (1 cup) of red wine.
 
 6. Let the wine reduce until a thick sauce remains. Thick means, if you scrape along the bottom, the sauce shouldn’t immediately fill the gap.
 
-6. Heat up a frying pan over medium high heat. When hot, add 2 tablespoons of olive oil and add the cut mushrooms.
+7. Heat up a frying pan over medium high heat. When hot, add 2 tablespoons of olive oil and add the cut mushrooms.
 
-6. It will take a while (~20 minutes) before all the moisture has evaporated. Once the moisture has disappeared, stir every few minutes until the pieces are starting to turn brown.
+8. It will take a while (~20 minutes) before all the moisture has evaporated. Once the moisture has disappeared, stir every few minutes until the pieces are starting to turn brown.
 
-7. Add the
- - 800 g (28-ounce) whole peeled tomatoes packed in juice
+9. Add the
 
-    to the wine/mirepoix mixture and mash them with a potato masher until a smooth mixture remains.
+- 800 g (28-ounce) whole peeled tomatoes packed in juice
+
+  to the wine/mirepoix mixture and mash them with a potato masher until a smooth mixture remains.
 
 8. Add the
+
 - 3 bay leafs
 - browned mushroom bits
 
-    and stir the whole mixture.
+  and stir the whole mixture.
 
 9. Let it simmer over low heat for about an hour.
 

@@ -9,23 +9,23 @@ jobs:
   jekyll:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    # Use GitHub Actions' cache to shorten build times and decrease load on servers
-    - uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
+      # Use GitHub Actions' cache to shorten build times and decrease load on servers
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
 
-    # Specify the target branch (optional)
-    - uses: helaili/jekyll-action@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        target_branch: 'gh-pages'
-        pre_build_commands: |
-          git config --global --add safe.directory /github/workspace
-          apk --update add imagemagick
-          apk --update add vips vips-tools
-          apk --update add libwebp
+      # Specify the target branch (optional)
+      - uses: helaili/jekyll-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target_branch: "gh-pages"
+          pre_build_commands: |
+            git config --global --add safe.directory /github/workspace
+            apk --update add imagemagick
+            apk --update add vips vips-tools
+            apk --update add libwebp

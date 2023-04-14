@@ -1,6 +1,6 @@
 extends: substitution
 message: "Consider using '%s' instead of '%s'."
-link: 'https://withoutbullshit.com/blog/avoid-lists-words-avoid'
+link: "https://withoutbullshit.com/blog/avoid-lists-words-avoid"
 ignorecase: true
 level: error
 swap:

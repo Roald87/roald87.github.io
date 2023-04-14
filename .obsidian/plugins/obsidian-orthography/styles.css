@@ -135,7 +135,7 @@
   box-sizing: border-box;
   margin-bottom: 10px;
   cursor: pointer;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .obsidian-orthography-popup--resized {
@@ -175,7 +175,7 @@
 }
 
 .obsidian-orthography-popup-minicard > div:first-child:before {
-  content: '';
+  content: "";
   width: 5px;
   height: 5px;
   border-radius: 100%;
@@ -192,11 +192,11 @@
   display: flex;
   align-items: center;
   font-size: 14px;
-  opacity: .4;
+  opacity: 0.4;
 }
 
 .obsidian-orthography-popup-item-sugg::before {
-  content: '';
+  content: "";
   width: 3px;
   height: 3px;
   background-color: #ccc;
@@ -251,7 +251,7 @@
 }
 
 .obsidian-orthography-popup-card > div:first-child:before {
-  content: '';
+  content: "";
   width: 5px;
   height: 5px;
   border-radius: 100%;
@@ -278,7 +278,7 @@
 }
 
 .obsidian-orthography-popup-replacement {
-  background-color: #57A884;
+  background-color: #57a884;
   border-radius: 3px;
   padding: 2px 6px;
   padding-right: 10px;
@@ -287,7 +287,7 @@
 }
 
 .obsidian-orthography-popup-replacement::before {
-  content: '→';
+  content: "→";
   color: inherit;
   display: inline-block;
   vertical-align: middle;

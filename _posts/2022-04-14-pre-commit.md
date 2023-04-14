@@ -7,7 +7,7 @@ toc: true
 
 [Earlier](https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html) I talked about how you can do version control of your TwinCAT code with git. In this post, I want to show a neat feature of git which I didn't mention last time: pre-commits. Pre-commits can format, lint, or do static code analyses on your code before committing. One pre-commit is available for structured text files. But, pre-commits are also available for markdown, HTML, or JavaScript files.
 
-*Use the [GitHub TwinCAT template repo](https://github.com/rruiter87/TcTemplate) to set up a TwinCAT repo, including the pre-commits.*
+_Use the [GitHub TwinCAT template repo](https://github.com/rruiter87/TcTemplate) to set up a TwinCAT repo, including the pre-commits._
 
 ## What are pre-commits?
 
@@ -26,21 +26,24 @@ You can write your own hooks from scratch, but for most files, there is already 
 A popular framework to manage pre-commits is [pre-commit](https://pre-commit.com/). It's a Python based framework and thus you need a working Python installation on your system before you can use it.
 
 1. (In case you do not have Python) Download and install conda via one of the methods below. You can either install Miniconda which is a minimal installation. It comes with the bare necessities to get started. Miniconda should be enough for this tutorial. Or, if you would like to have a bit more tools/modules installed (mainly for data analyses), choose Anaconda.
-    - Manually download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/products/individual#Downloads).
-    - Or run `winget install -e --id Anaconda.Miniconda3` or `winget install -e --id Anaconda.Anaconda3` from the terminal.
+
+   - Manually download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/products/individual#Downloads).
+   - Or run `winget install -e --id Anaconda.Miniconda3` or `winget install -e --id Anaconda.Anaconda3` from the terminal.
 
 1. Install pre-commit with either:
-    - `pip install pre-commit`
-    - or `conda install -c conda-forge pre-commit`
+
+   - `pip install pre-commit`
+   - or `conda install -c conda-forge pre-commit`
 
 1. Check if the installation went OK by running the command below in the terminal. If you see a version number then pre-commit works.
 
-  ```
-      $ pre-commit --version
-      pre-commit 2.17.0
-  ```
+```
+    $ pre-commit --version
+    pre-commit 2.17.0
+```
 
 {:start="4"}
+
 1. Next, create a new file called `.pre-commit-config.yaml` in the git project folder (same folder as where your `.git` folder resides) where you want to start using pre-commits. Now you're all set up to start using pre-commits.
 
 ## TwinCAT relevant pre-commits
@@ -48,33 +51,33 @@ A popular framework to manage pre-commits is [pre-commit](https://pre-commit.com
 The kind people of the Photon Controls and Data Systems at SLAC have open-sourced their TwinCAT pre-commits. To use the SLAC pre-commits, add the following lines to your `.pre-commit-config.yaml` file:
 
 ```yaml
--   repo: https://github.com/pcdshub/pre-commit-hooks
-    rev: v1.2.0
-    hooks:
+- repo: https://github.com/pcdshub/pre-commit-hooks
+  rev: v1.2.0
+  hooks:
     # Replaces all leading tabs with spaces
-    -   id: twincat-leading-tabs-remover
+    - id: twincat-leading-tabs-remover
     # Removes line ids. See point 4 of the link for why you don't need them
     # https://cookncode.com/twincat/2021/06/07/tc-source-control-tips#2-creating-independent-files
-    -   id: twincat-lineids-remover
+    - id: twincat-lineids-remover
     # Formats .tmc and .tpy files
-    -   id: twincat-xml-format
+    - id: twincat-xml-format
     # Check if there are any libraries whose versions are not fixed
-    -   id: check-fixed-library-versions
+    - id: check-fixed-library-versions
 ```
 
 For completeness, I'll also add the following standard pre-commits. You can first run these pre-commits. Later [I go into details about what they do and why they are useful](#hooks-what-and-why).
 
 ```yaml
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
     hooks:
-    # Removes trailing white spaces
-    -   id: trailing-whitespace
-    # Checks yaml files for parseable syntax
-    -   id: check-yaml
-    # Prevents git from committing large files
-    -   id: check-added-large-files
+      # Removes trailing white spaces
+      - id: trailing-whitespace
+      # Checks yaml files for parseable syntax
+      - id: check-yaml
+      # Prevents git from committing large files
+      - id: check-added-large-files
 ```
 
 Install the pre-commit hooks with `pre-commit install`. This needs to be done once per git repository. Afterwards, you can run `pre-commit run --all-files` to let the pre-commits do their job. Note: you only run this command if you have added new pre-commits. In other cases, all pre-commits are automatically executed when you use `git commit ...`. In this case, the automatic execution limits to the changed files.
@@ -153,19 +156,19 @@ First I added a file called [`.pre-commit-config.yaml`](https://github.com/Roald
 
 ```yaml
 repos:
-    - repo: local
-      hooks:
-        # Name of the hook
-        - id: check-https
-          # Hook name shown during hook execution
-          name: check if all links are https
-          # Where pre-commit can find the script it should call and how it should call it
-          entry: python _hooks/check_https.py
-          # The language to use, in this case we're using a language present on the system.
-          # Using python as an argument would work as well
-          language: system
-          # A valid regular expression pattern to define which files should be passed to `check_https.py`
-          files: '.*\.(md|markdown)'
+  - repo: local
+    hooks:
+      # Name of the hook
+      - id: check-https
+        # Hook name shown during hook execution
+        name: check if all links are https
+        # Where pre-commit can find the script it should call and how it should call it
+        entry: python _hooks/check_https.py
+        # The language to use, in this case we're using a language present on the system.
+        # Using python as an argument would work as well
+        language: system
+        # A valid regular expression pattern to define which files should be passed to `check_https.py`
+        files: '.*\.(md|markdown)'
 ```
 
 When pre-commit runs this local hook, it first searches for files that conform to the regular expression pattern mentioned in `files:`. Then it calls the command mentioned under `entry` with each filename. For example, it finds the files `README.md` and `about.md`. Then it calls `check_https.py` with `python _hooks/check_https.py README.md about.md`.

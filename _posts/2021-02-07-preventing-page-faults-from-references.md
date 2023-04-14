@@ -140,7 +140,7 @@ Then from the drop-down menu select `FB_init`. The other methods in the list are
 
 The `FB_init` already comes with some standard code. This code affects the behavior of `FB_init` depending on the operating case: warm or cold starts and an online change. There is no need to explicitly assign these variables; they are implicitly assigned depending on the operating case, as explained [here](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/6415331211.html&id=).
 
-To the  `VAR_INPUT` of `FB_init` add a new variable: `foo`. This will temporarily hold a reference to the `Foo` function block. In the implementation part you assign the `foo` reference to the `_foo` internal variable of the function block.
+To the `VAR_INPUT` of `FB_init` add a new variable: `foo`. This will temporarily hold a reference to the `Foo` function block. In the implementation part you assign the `foo` reference to the `_foo` internal variable of the function block.
 
 ```
 METHOD FB_init : BOOL
@@ -153,7 +153,7 @@ END_VAR
 _foo REF= foo;
 ```
 
-To execute the code we add another program and create two instances: `foo` and `usesFoo`. The function block initializer of `UsesFoo3` gets passed the `foo` instance.  Finally we call `usesFoo()` in our implementation part.
+To execute the code we add another program and create two instances: `foo` and `usesFoo`. The function block initializer of `UsesFoo3` gets passed the `foo` instance. Finally we call `usesFoo()` in our implementation part.
 
 ```
 PROGRAM Runner3

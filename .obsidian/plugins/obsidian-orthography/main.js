@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var obsidian = require('obsidian');
+var obsidian = require("obsidian");
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -18,99 +18,124 @@ PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 
 function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
+  function adopt(value) {
+    return value instanceof P
+      ? value
+      : new P(function (resolve) {
+          resolve(value);
+        });
+  }
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done
+        ? resolve(result.value)
+        : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
 }
 
 function getDefaultData() {
-    return {
-        displayRunner: true,
-        useGrammar: false,
-        language: 'en, ru, uk'
-    };
+  return {
+    displayRunner: true,
+    useGrammar: false,
+    language: "en, ru, uk",
+  };
 }
 class OrthographySettings {
-    constructor(plugin, emitter) {
-        this.plugin = plugin;
-        this.data = getDefaultData();
-        this.emitter = emitter;
-    }
-    get displayRunner() {
-        const { data } = this;
-        return data.displayRunner;
-    }
-    set displayRunner(value) {
-        const { data } = this;
-        data.displayRunner = value;
-        this.emitter.trigger('onUpdateSettings', this.data);
-    }
-    get useGrammar() {
-        const { data } = this;
-        return data.useGrammar;
-    }
-    set useGrammar(value) {
-        const { data } = this;
-        data.useGrammar = value;
-        this.emitter.trigger('onUpdateSettings', this.data);
-    }
-    get language() {
-        const { data } = this;
-        return data.language;
-    }
-    set language(value) {
-        const { data } = this;
-        data.language = value;
-        this.emitter.trigger('onUpdateSettings', this.data);
-    }
-    loadSettings() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { plugin } = this;
-            this.data = Object.assign(getDefaultData(), yield plugin.loadData());
-        });
-    }
-    saveSettings() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { plugin, data } = this;
-            if (plugin && data) {
-                yield plugin.saveData(data);
-            }
-        });
-    }
+  constructor(plugin, emitter) {
+    this.plugin = plugin;
+    this.data = getDefaultData();
+    this.emitter = emitter;
+  }
+  get displayRunner() {
+    const { data } = this;
+    return data.displayRunner;
+  }
+  set displayRunner(value) {
+    const { data } = this;
+    data.displayRunner = value;
+    this.emitter.trigger("onUpdateSettings", this.data);
+  }
+  get useGrammar() {
+    const { data } = this;
+    return data.useGrammar;
+  }
+  set useGrammar(value) {
+    const { data } = this;
+    data.useGrammar = value;
+    this.emitter.trigger("onUpdateSettings", this.data);
+  }
+  get language() {
+    const { data } = this;
+    return data.language;
+  }
+  set language(value) {
+    const { data } = this;
+    data.language = value;
+    this.emitter.trigger("onUpdateSettings", this.data);
+  }
+  loadSettings() {
+    return __awaiter(this, void 0, void 0, function* () {
+      const { plugin } = this;
+      this.data = Object.assign(getDefaultData(), yield plugin.loadData());
+    });
+  }
+  saveSettings() {
+    return __awaiter(this, void 0, void 0, function* () {
+      const { plugin, data } = this;
+      if (plugin && data) {
+        yield plugin.saveData(data);
+      }
+    });
+  }
 }
 
 // Grammer popup
-const O_POPUP = 'obsidian-orthography-popup';
-const O_POPUP_DISABLED = 'obsidian-orthography-popup--disabled';
-const O_POPUP_CONTROLS = 'obsidian-orthography-popup-controls';
-const O_POPUP_ITEM = 'obsidian-orthography-popup-item';
-const O_POPUP_RESIZED = 'obsidian-orthography-popup--resized';
-const O_POPUP_ITEM_OPENED = 'obsidian-orthography-popup-item--opened';
-const O_POPUP_WORD_TO_REPLACE = 'obsidian-orthography-word-to-replace';
+const O_POPUP = "obsidian-orthography-popup";
+const O_POPUP_DISABLED = "obsidian-orthography-popup--disabled";
+const O_POPUP_CONTROLS = "obsidian-orthography-popup-controls";
+const O_POPUP_ITEM = "obsidian-orthography-popup-item";
+const O_POPUP_RESIZED = "obsidian-orthography-popup--resized";
+const O_POPUP_ITEM_OPENED = "obsidian-orthography-popup-item--opened";
+const O_POPUP_WORD_TO_REPLACE = "obsidian-orthography-word-to-replace";
 // Runner
-const O_RUNNER = 'obsidian-orthography-runner';
-const O_RUNNER_HIDDEN = 'obsidian-orthography-runner--hidden';
-const O_RUNNER_LOADING = 'obsidian-orthography-runner--loading';
+const O_RUNNER = "obsidian-orthography-runner";
+const O_RUNNER_HIDDEN = "obsidian-orthography-runner--hidden";
+const O_RUNNER_LOADING = "obsidian-orthography-runner--loading";
 // Highlight
-const O_HIGHLIGHT = 'obsidian-orthography-highlight';
-const O_HIGHLIGHT_FOCUSED = 'obsidian-orthography-highlight--focused';
+const O_HIGHLIGHT = "obsidian-orthography-highlight";
+const O_HIGHLIGHT_FOCUSED = "obsidian-orthography-highlight--focused";
 
-const O_RUNNER_ICON = '⌘';
-const O_RUNNER_ICON_CLEAR = '✕';
-const O_NOT_OPEN_FILE = 'Please open a file first.';
-const O_SERVER_ERROR = 'The server is not responding. Please check your Internet connection.';
-const O_NO_ERROR = 'Spelling errors not found!';
+const O_RUNNER_ICON = "⌘";
+const O_RUNNER_ICON_CLEAR = "✕";
+const O_NOT_OPEN_FILE = "Please open a file first.";
+const O_SERVER_ERROR =
+  "The server is not responding. Please check your Internet connection.";
+const O_NO_ERROR = "Spelling errors not found!";
 
 const UIControls = (hasData) => {
-    return `
+  return `
       <div class="obsidian-orthography-popup-controls">
-        ${hasData
-        ? '<button id="reloader" class="obsidian-orthography-popup-reload" title="Restart the orthography checker">Reload</button>'
-        : ''}
+        ${
+          hasData
+            ? '<button id="reloader" class="obsidian-orthography-popup-reload" title="Restart the orthography checker">Reload</button>'
+            : ""
+        }
         <div id="closer" class="obsidian-orthography-popup-close" title="Close popup">✕</div>
       </div>
     `;
@@ -118,11 +143,11 @@ const UIControls = (hasData) => {
 
 const JOIN_BY = '<span style="opacity: 0.5;">or</span>&nbsp;';
 const renderHints = (card, index) => {
-    const { replacements, text, begin, highlightText } = card;
-    if (card.category === 'Determiners') {
-        return replacements
-            .map((item) => {
-            return `
+  const { replacements, text, begin, highlightText } = card;
+  if (card.category === "Determiners") {
+    return replacements
+      .map((item) => {
+        return `
           <span
             data-toreplace="${item}"
             data-index="${index}"
@@ -132,27 +157,31 @@ const renderHints = (card, index) => {
             title="Click to correct your spelling">
               <b>${item}</b>&nbsp${highlightText}
           </span>`;
-        })
-            .join(JOIN_BY);
-    }
-    // ----------- FOR REMOVE HINTS ----------- //
-    if (card.category === 'Formatting' ||
-        card.category === 'BasicPunct' ||
-        card.category === 'Wordiness' ||
-        card.category === 'Conjunctions') {
-        return `
+      })
+      .join(JOIN_BY);
+  }
+  // ----------- FOR REMOVE HINTS ----------- //
+  if (
+    card.category === "Formatting" ||
+    card.category === "BasicPunct" ||
+    card.category === "Wordiness" ||
+    card.category === "Conjunctions"
+  ) {
+    return `
       <span
         data-begin="${begin}"
         data-text="${text}"
         data-toreplace="${replacements[0]}"
-        class="obsidian-orthography-word-to-replace obsidian-orthography-popup-hightligh--red">${highlightText || ''}
+        class="obsidian-orthography-word-to-replace obsidian-orthography-popup-hightligh--red">${
+          highlightText || ""
+        }
       </span>
     `;
-    }
-    if (card.category === 'Prepositions') {
-        return replacements
-            .map((item) => {
-            return `
+  }
+  if (card.category === "Prepositions") {
+    return replacements
+      .map((item) => {
+        return `
         <span
           data-toreplace="${item}"
           data-index="${index}"
@@ -163,12 +192,12 @@ const renderHints = (card, index) => {
         >
           <b>${item}</b>&nbsp${highlightText}
         </span>`;
-        })
-            .join(JOIN_BY);
-    }
-    return replacements
-        .map((item) => {
-        return `
+      })
+      .join(JOIN_BY);
+  }
+  return replacements
+    .map((item) => {
+      return `
         <span class="obsidian-orthography-popup-card--line-through">${highlightText}</span>
         <span
           data-toreplace="${item}"
@@ -181,41 +210,49 @@ const renderHints = (card, index) => {
           ${item}
         </span>`;
     })
-        .join(JOIN_BY);
+    .join(JOIN_BY);
 };
 const UIHints = (alerts) => {
-    if (!alerts || !alerts.length)
-        return '';
-    return alerts
-        .map((card, index) => {
-        const { impact, highlightText, minicardTitle, explanation, cardLayout, begin } = card;
-        return `
+  if (!alerts || !alerts.length) return "";
+  return alerts
+    .map((card, index) => {
+      const {
+        impact,
+        highlightText,
+        minicardTitle,
+        explanation,
+        cardLayout,
+        begin,
+      } = card;
+      return `
           <div data-begin="${begin}" id="obsidian-orthography-popup-item-${index}" class="obsidian-orthography-popup-item ${impact}">
             <div class="obsidian-orthography-popup-minicard">
-              <div>${highlightText || ''}</div>
-              ${minicardTitle
-            ? `<div class="obsidian-orthography-popup-item-sugg">${minicardTitle}</div>`
-            : ''}
+              <div>${highlightText || ""}</div>
+              ${
+                minicardTitle
+                  ? `<div class="obsidian-orthography-popup-item-sugg">${minicardTitle}</div>`
+                  : ""
+              }
               <div class="obsidian-orthography-popup-arrows">
                 <svg width="10" viewBox="0 0 10 10"><path d="M5 4.3L.85.14c-.2-.2-.5-.2-.7 0-.2.2-.2.5 0 .7L5 5.7 9.85.87c.2-.2.2-.5 0-.7-.2-.2-.5-.2-.7 0L5 4.28z" stroke="none" transform="translate(0 3) rotate(0)"></path></svg>
                 <svg width="10" viewBox="0 0 10 10"><path d="M5 4.3L.85.14c-.2-.2-.5-.2-.7 0-.2.2-.2.5 0 .7L5 5.7 9.85.87c.2-.2.2-.5 0-.7-.2-.2-.5-.2-.7 0L5 4.28z" stroke="none" transform="translate(0 3) rotate(0)"></path></svg>
               </div>
             </div>
             <div class="obsidian-orthography-popup-card">
-              <div>${cardLayout.group || ''}</div>
+              <div>${cardLayout.group || ""}</div>
               <div class="obsidian-orthography-popup-card-content">
                 ${renderHints(card, index)}
               </div>
-              <div>${explanation || ''}</div>
+              <div>${explanation || ""}</div>
             </div>
           </div>
         `;
     })
-        .join('');
+    .join("");
 };
 
 const UIHintsFallback = () => {
-    const hintsFallback = `
+  const hintsFallback = `
     <div class="obsidian-orthography-hints-fallback">
       <button id="runner">
         Run orthography check
@@ -223,615 +260,616 @@ const UIHintsFallback = () => {
       <p>Alpha version</p>
     </div>
   `;
-    return hintsFallback;
+  return hintsFallback;
 };
 
 const UILoader = () => {
-    const loader = `
+  const loader = `
     <div class="obsidian-orthography-loader">
       Checking...
     </div>
   `;
-    return loader;
+  return loader;
 };
 
 const UIBar = (data, loading) => {
-    const hasData = data && data.alerts && data.alerts.length;
-    const controls = UIControls(!!hasData);
-    const fallback = loading ? UILoader() : UIHintsFallback();
-    const cards = hasData ? UIHints(data.alerts) : fallback;
-    return `${controls}${cards}`;
+  const hasData = data && data.alerts && data.alerts.length;
+  const controls = UIControls(!!hasData);
+  const fallback = loading ? UILoader() : UIHintsFallback();
+  const cards = hasData ? UIHints(data.alerts) : fallback;
+  return `${controls}${cards}`;
 };
 
 let self$3;
 class OrthographyPopup {
-    constructor(app, settings, emitter) {
-        this.popupOffset = [0, 0];
-        this.moverSelected = false;
-        this.created = false;
-        this.app = app;
-        this.settings = settings;
-        this.emitter = emitter;
+  constructor(app, settings, emitter) {
+    this.popupOffset = [0, 0];
+    this.moverSelected = false;
+    this.created = false;
+    this.app = app;
+    this.settings = settings;
+    this.emitter = emitter;
+  }
+  init() {
+    self$3 = this;
+  }
+  create() {
+    self$3.created = true;
+    self$3.popup = document.createElement("div");
+    self$3.popup.classList.add(O_POPUP);
+    self$3.popup.id = O_POPUP;
+    const bar = UIBar(null, false);
+    self$3.popup.innerHTML = bar;
+    document.body.appendChild(self$3.popup);
+    self$3.setListeners();
+  }
+  destroy() {
+    self$3.created = false;
+    self$3.removeListeners();
+    const popup = document.getElementById(O_POPUP);
+    if (popup) popup.remove();
+  }
+  update(data, loading) {
+    self$3.removeListeners();
+    const bar = UIBar(data, loading);
+    self$3.popup.innerHTML = bar;
+    self$3.setListeners();
+  }
+  setLoader() {
+    this.update(null, true);
+  }
+  removeLoader() {
+    this.update(null, false);
+  }
+  disable() {
+    const hints = document.querySelector(`#${O_POPUP}`);
+    if (hints) {
+      hints.classList.add(O_POPUP_DISABLED);
     }
-    init() {
-        self$3 = this;
+  }
+  enable() {
+    const hints = document.querySelector(`#${O_POPUP}`);
+    if (hints) {
+      hints.classList.remove(O_POPUP_DISABLED);
     }
-    create() {
-        self$3.created = true;
-        self$3.popup = document.createElement('div');
-        self$3.popup.classList.add(O_POPUP);
-        self$3.popup.id = O_POPUP;
-        const bar = UIBar(null, false);
-        self$3.popup.innerHTML = bar;
-        document.body.appendChild(self$3.popup);
-        self$3.setListeners();
+  }
+  setListeners() {
+    const minicards = document.querySelectorAll(`.${O_POPUP_ITEM}`);
+    minicards.forEach((mc) =>
+      mc.addEventListener("click", self$3.onClickByHint)
+    );
+    minicards.forEach((mc) =>
+      mc.addEventListener("mouseover", self$3.onFocusWord)
+    );
+    minicards.forEach((mc) =>
+      mc.addEventListener("mouseout", self$3.onRemoveFocusWord)
+    );
+    const replacements = document.querySelectorAll(
+      `.${O_POPUP_WORD_TO_REPLACE}`
+    );
+    replacements.forEach((rp) =>
+      rp.addEventListener("click", self$3.onReplaceWord)
+    );
+    self$3.reloader = document.getElementById("reloader");
+    if (self$3.reloader) {
+      self$3.reloader.addEventListener("click", self$3.onRun);
     }
-    destroy() {
-        self$3.created = false;
-        self$3.removeListeners();
-        const popup = document.getElementById(O_POPUP);
-        if (popup)
-            popup.remove();
+    self$3.runner = document.getElementById("runner");
+    if (self$3.runner) {
+      self$3.runner.addEventListener("click", self$3.onRun);
     }
-    update(data, loading) {
-        self$3.removeListeners();
-        const bar = UIBar(data, loading);
-        self$3.popup.innerHTML = bar;
-        self$3.setListeners();
+    self$3.sizer = document.getElementById("sizer");
+    if (self$3.sizer) {
+      self$3.sizer.addEventListener("click", self$3.onResize);
     }
-    setLoader() {
-        this.update(null, true);
+    self$3.closer = document.getElementById("closer");
+    if (self$3.closer) {
+      self$3.closer.addEventListener("click", self$3.onClose);
     }
-    removeLoader() {
-        this.update(null, false);
+    self$3.mover = document.querySelector(`.${O_POPUP_CONTROLS}`);
+    if (self$3.mover) {
+      self$3.mover.addEventListener("mousedown", self$3.moverIsDown);
     }
-    disable() {
-        const hints = document.querySelector(`#${O_POPUP}`);
-        if (hints) {
-            hints.classList.add(O_POPUP_DISABLED);
-        }
+    document.addEventListener("mouseup", self$3.onMouseUp);
+    document.addEventListener("mousemove", self$3.onMouseMove);
+  }
+  removeListeners() {
+    const minicards = document.querySelectorAll(`.${O_POPUP_ITEM}`);
+    minicards.forEach((mc) =>
+      mc.removeEventListener("click", self$3.onClickByHint)
+    );
+    minicards.forEach((mc) =>
+      mc.removeEventListener("mouseover", self$3.onFocusWord)
+    );
+    minicards.forEach((mc) =>
+      mc.removeEventListener("mouseout", self$3.onRemoveFocusWord)
+    );
+    const replacements = document.querySelectorAll(
+      `.${O_POPUP_WORD_TO_REPLACE}`
+    );
+    replacements.forEach((rp) =>
+      rp.removeEventListener("click", self$3.onReplaceWord)
+    );
+    if (self$3.reloader)
+      self$3.reloader.removeEventListener("click", self$3.onRun);
+    if (self$3.runner) self$3.runner.removeEventListener("click", self$3.onRun);
+    if (self$3.sizer)
+      self$3.sizer.removeEventListener("click", self$3.onResize);
+    if (self$3.closer)
+      self$3.closer.removeEventListener("click", self$3.onClose);
+    if (self$3.mover)
+      self$3.mover.removeEventListener("mousedown", self$3.moverIsDown);
+    document.removeEventListener("mouseup", self$3.onMouseUp);
+    document.removeEventListener("mousemove", self$3.onMouseMove);
+  }
+  onClickByHint(e) {
+    const opened = document.querySelectorAll(`.${O_POPUP_ITEM_OPENED}`);
+    opened.forEach((o) => o.classList.remove(O_POPUP_ITEM_OPENED));
+    if (e.currentTarget.classList.contains(O_POPUP_ITEM_OPENED)) {
+      e.currentTarget.classList.remove(O_POPUP_ITEM_OPENED);
+    } else {
+      e.currentTarget.classList.add(O_POPUP_ITEM_OPENED);
     }
-    enable() {
-        const hints = document.querySelector(`#${O_POPUP}`);
-        if (hints) {
-            hints.classList.remove(O_POPUP_DISABLED);
-        }
+    const begin = e.currentTarget.dataset.begin;
+    if (begin) {
+      self$3.scrollToWord(begin);
     }
-    setListeners() {
-        const minicards = document.querySelectorAll(`.${O_POPUP_ITEM}`);
-        minicards.forEach((mc) => mc.addEventListener('click', self$3.onClickByHint));
-        minicards.forEach((mc) => mc.addEventListener('mouseover', self$3.onFocusWord));
-        minicards.forEach((mc) => mc.addEventListener('mouseout', self$3.onRemoveFocusWord));
-        const replacements = document.querySelectorAll(`.${O_POPUP_WORD_TO_REPLACE}`);
-        replacements.forEach((rp) => rp.addEventListener('click', self$3.onReplaceWord));
-        self$3.reloader = document.getElementById('reloader');
-        if (self$3.reloader) {
-            self$3.reloader.addEventListener('click', self$3.onRun);
-        }
-        self$3.runner = document.getElementById('runner');
-        if (self$3.runner) {
-            self$3.runner.addEventListener('click', self$3.onRun);
-        }
-        self$3.sizer = document.getElementById('sizer');
-        if (self$3.sizer) {
-            self$3.sizer.addEventListener('click', self$3.onResize);
-        }
-        self$3.closer = document.getElementById('closer');
-        if (self$3.closer) {
-            self$3.closer.addEventListener('click', self$3.onClose);
-        }
-        self$3.mover = document.querySelector(`.${O_POPUP_CONTROLS}`);
-        if (self$3.mover) {
-            self$3.mover.addEventListener('mousedown', self$3.moverIsDown);
-        }
-        document.addEventListener('mouseup', self$3.onMouseUp);
-        document.addEventListener('mousemove', self$3.onMouseMove);
+  }
+  moverIsDown(e) {
+    self$3.moverSelected = true;
+    self$3.popupOffset = [
+      self$3.popup.offsetLeft - e.clientX,
+      self$3.popup.offsetTop - e.clientY,
+    ];
+  }
+  onMouseUp() {
+    self$3.moverSelected = false;
+  }
+  onMouseMove(e) {
+    e.preventDefault();
+    if (self$3.moverSelected) {
+      const mousePosition = {
+        x: e.clientX,
+        y: e.clientY,
+      };
+      self$3.popup.style.left = `${mousePosition.x + self$3.popupOffset[0]}px`;
+      self$3.popup.style.top = `${mousePosition.y + self$3.popupOffset[1]}px`;
     }
-    removeListeners() {
-        const minicards = document.querySelectorAll(`.${O_POPUP_ITEM}`);
-        minicards.forEach((mc) => mc.removeEventListener('click', self$3.onClickByHint));
-        minicards.forEach((mc) => mc.removeEventListener('mouseover', self$3.onFocusWord));
-        minicards.forEach((mc) => mc.removeEventListener('mouseout', self$3.onRemoveFocusWord));
-        const replacements = document.querySelectorAll(`.${O_POPUP_WORD_TO_REPLACE}`);
-        replacements.forEach((rp) => rp.removeEventListener('click', self$3.onReplaceWord));
-        if (self$3.reloader)
-            self$3.reloader.removeEventListener('click', self$3.onRun);
-        if (self$3.runner)
-            self$3.runner.removeEventListener('click', self$3.onRun);
-        if (self$3.sizer)
-            self$3.sizer.removeEventListener('click', self$3.onResize);
-        if (self$3.closer)
-            self$3.closer.removeEventListener('click', self$3.onClose);
-        if (self$3.mover)
-            self$3.mover.removeEventListener('mousedown', self$3.moverIsDown);
-        document.removeEventListener('mouseup', self$3.onMouseUp);
-        document.removeEventListener('mousemove', self$3.onMouseMove);
+  }
+  onResize() {
+    if (self$3.popup.className.contains(O_POPUP_RESIZED)) {
+      self$3.popup.classList.remove(O_POPUP_RESIZED);
+    } else {
+      self$3.popup.classList.add(O_POPUP_RESIZED);
     }
-    onClickByHint(e) {
-        const opened = document.querySelectorAll(`.${O_POPUP_ITEM_OPENED}`);
-        opened.forEach((o) => o.classList.remove(O_POPUP_ITEM_OPENED));
-        if (e.currentTarget.classList.contains(O_POPUP_ITEM_OPENED)) {
-            e.currentTarget.classList.remove(O_POPUP_ITEM_OPENED);
-        }
-        else {
-            e.currentTarget.classList.add(O_POPUP_ITEM_OPENED);
-        }
-        const begin = e.currentTarget.dataset.begin;
-        if (begin) {
-            self$3.scrollToWord(begin);
-        }
+  }
+  onClose() {
+    self$3.emitter.trigger("orthography:close");
+  }
+  onFocusWord(e) {
+    const begin = e.currentTarget.dataset.begin;
+    const word = document.querySelector(`[begin="${begin}"]`);
+    if (word) {
+      word.classList.add(O_HIGHLIGHT_FOCUSED);
     }
-    moverIsDown(e) {
-        self$3.moverSelected = true;
-        self$3.popupOffset = [
-            self$3.popup.offsetLeft - e.clientX,
-            self$3.popup.offsetTop - e.clientY
-        ];
+  }
+  onRemoveFocusWord() {
+    const words = document.querySelectorAll(`.${O_HIGHLIGHT_FOCUSED}`);
+    words.forEach((w) => w.classList.remove(O_HIGHLIGHT_FOCUSED));
+  }
+  onRun() {
+    self$3.emitter.trigger("orthography:run");
+  }
+  onReplaceWord(event) {
+    self$3.emitter.trigger("orthography:replace", event);
+    const { index } = event.currentTarget.dataset;
+    const selectedItem = document.getElementById(`${O_POPUP_ITEM}-${index}`);
+    if (selectedItem) selectedItem.remove();
+    if (!document.querySelectorAll(`.${O_POPUP_ITEM}`).length) {
+      self$3.removeLoader();
     }
-    onMouseUp() {
-        self$3.moverSelected = false;
+  }
+  onOpenCard(event) {
+    const { value: begin } = event.currentTarget.attributes.begin;
+    const popup = document.querySelector(`.${O_POPUP}`);
+    const opened = document.querySelectorAll(`.${O_POPUP_ITEM_OPENED}`);
+    opened.forEach((o) => o.classList.remove(O_POPUP_ITEM_OPENED));
+    const selected = document.querySelector(`[data-begin="${begin}"]`);
+    selected.classList.add(O_POPUP_ITEM_OPENED);
+    popup.scrollTop = selected.offsetTop;
+  }
+  scrollToWord(begin) {
+    const activeEditor = self$3.getEditor();
+    if (activeEditor) {
+      const scroller = activeEditor.getScrollerElement();
+      scroller.scrollTop = +begin - 300;
+    } else {
+      self$3.onClose();
+      new obsidian.Notice(O_NOT_OPEN_FILE);
     }
-    onMouseMove(e) {
-        e.preventDefault();
-        if (self$3.moverSelected) {
-            const mousePosition = {
-                x: e.clientX,
-                y: e.clientY
-            };
-            self$3.popup.style.left = `${mousePosition.x + self$3.popupOffset[0]}px`;
-            self$3.popup.style.top = `${mousePosition.y + self$3.popupOffset[1]}px`;
-        }
-    }
-    onResize() {
-        if (self$3.popup.className.contains(O_POPUP_RESIZED)) {
-            self$3.popup.classList.remove(O_POPUP_RESIZED);
-        }
-        else {
-            self$3.popup.classList.add(O_POPUP_RESIZED);
-        }
-    }
-    onClose() {
-        self$3.emitter.trigger('orthography:close');
-    }
-    onFocusWord(e) {
-        const begin = e.currentTarget.dataset.begin;
-        const word = document.querySelector(`[begin="${begin}"]`);
-        if (word) {
-            word.classList.add(O_HIGHLIGHT_FOCUSED);
-        }
-    }
-    onRemoveFocusWord() {
-        const words = document.querySelectorAll(`.${O_HIGHLIGHT_FOCUSED}`);
-        words.forEach((w) => w.classList.remove(O_HIGHLIGHT_FOCUSED));
-    }
-    onRun() {
-        self$3.emitter.trigger('orthography:run');
-    }
-    onReplaceWord(event) {
-        self$3.emitter.trigger('orthography:replace', event);
-        const { index } = event.currentTarget.dataset;
-        const selectedItem = document.getElementById(`${O_POPUP_ITEM}-${index}`);
-        if (selectedItem)
-            selectedItem.remove();
-        if (!document.querySelectorAll(`.${O_POPUP_ITEM}`).length) {
-            self$3.removeLoader();
-        }
-    }
-    onOpenCard(event) {
-        const { value: begin } = event.currentTarget.attributes.begin;
-        const popup = document.querySelector(`.${O_POPUP}`);
-        const opened = document.querySelectorAll(`.${O_POPUP_ITEM_OPENED}`);
-        opened.forEach((o) => o.classList.remove(O_POPUP_ITEM_OPENED));
-        const selected = document.querySelector(`[data-begin="${begin}"]`);
-        selected.classList.add(O_POPUP_ITEM_OPENED);
-        popup.scrollTop = selected.offsetTop;
-    }
-    scrollToWord(begin) {
-        const activeEditor = self$3.getEditor();
-        if (activeEditor) {
-            const scroller = activeEditor.getScrollerElement();
-            scroller.scrollTop = +begin - 300;
-        }
-        else {
-            self$3.onClose();
-            new obsidian.Notice(O_NOT_OPEN_FILE);
-        }
-    }
-    getEditor() {
-        const activeLeaf = this.app.workspace.activeLeaf;
-        const sourceMode = activeLeaf.view.sourceMode;
-        if (!sourceMode)
-            return null;
-        return activeLeaf.view.sourceMode.cmEditor;
-    }
+  }
+  getEditor() {
+    const activeLeaf = this.app.workspace.activeLeaf;
+    const sourceMode = activeLeaf.view.sourceMode;
+    if (!sourceMode) return null;
+    return activeLeaf.view.sourceMode.cmEditor;
+  }
 }
 
 let self$2;
 class OrthographyToggler {
-    constructor(app, settings, emitter) {
-        this.app = app;
-        this.settings = settings;
-        this.emitter = emitter;
+  constructor(app, settings, emitter) {
+    this.app = app;
+    this.settings = settings;
+    this.emitter = emitter;
+  }
+  init() {
+    self$2 = this;
+    this.createButton(O_RUNNER_ICON);
+  }
+  destroy() {
+    this.removeLoading();
+    this.toggler.removeEventListener("click", this.toggle);
+    this.removeButton();
+  }
+  toggle() {
+    const activeEditor = self$2.getEditor();
+    if (!activeEditor) {
+      if (self$2.showed) {
+        self$2.setButtonWithRunner();
+        self$2.showed = false;
+      } else {
+        new obsidian.Notice(O_NOT_OPEN_FILE);
+      }
+      return;
     }
-    init() {
-        self$2 = this;
-        this.createButton(O_RUNNER_ICON);
+    self$2.showed = !self$2.showed;
+    if (self$2.showed) {
+      self$2.setButtonWithClear();
+    } else {
+      self$2.setButtonWithRunner();
     }
-    destroy() {
-        this.removeLoading();
-        this.toggler.removeEventListener('click', this.toggle);
-        this.removeButton();
-    }
-    toggle() {
-        const activeEditor = self$2.getEditor();
-        if (!activeEditor) {
-            if (self$2.showed) {
-                self$2.setButtonWithRunner();
-                self$2.showed = false;
-            }
-            else {
-                new obsidian.Notice(O_NOT_OPEN_FILE);
-            }
-            return;
-        }
-        self$2.showed = !self$2.showed;
-        if (self$2.showed) {
-            self$2.setButtonWithClear();
-        }
-        else {
-            self$2.setButtonWithRunner();
-        }
-    }
-    hide() {
-        const runner = document.querySelector('.' + O_RUNNER);
-        runner.classList.add(O_RUNNER_HIDDEN);
-    }
-    setLoading() {
-        this.toggler.classList.add(O_RUNNER_LOADING);
-    }
-    removeLoading() {
-        this.toggler.classList.remove(O_RUNNER_LOADING);
-    }
-    reset() {
-        this.showed = false;
-        this.removeLoading();
-        this.updateButtonText(O_RUNNER_ICON);
-    }
-    createButton(text) {
-        this.toggler = document.createElement('button');
-        const icon = document.createElement('span');
-        icon.innerText = text;
-        this.toggler.classList.add(O_RUNNER);
-        this.toggler.appendChild(icon);
-        document.body.appendChild(this.toggler);
-        this.toggler.addEventListener('click', this.toggle);
-    }
-    updateButtonText(text) {
-        const toggler = document.querySelector(`.${O_RUNNER} span`);
-        if (toggler)
-            toggler.innerText = text;
-    }
-    removeButton() {
-        const toggler = document.querySelector(`.${O_RUNNER}`);
-        if (toggler)
-            toggler.remove();
-    }
-    setButtonWithClear() {
-        self$2.updateButtonText(O_RUNNER_ICON_CLEAR);
-        self$2.emitter.trigger('orthography:open');
-    }
-    setButtonWithRunner() {
-        self$2.updateButtonText(O_RUNNER_ICON);
-        self$2.removeLoading();
-        self$2.emitter.trigger('orthography:close');
-    }
-    getEditor() {
-        const activeLeaf = this.app.workspace.activeLeaf;
-        const sourceMode = activeLeaf.view.sourceMode;
-        if (!sourceMode)
-            return null;
-        return activeLeaf.view.sourceMode.cmEditor;
-    }
+  }
+  hide() {
+    const runner = document.querySelector("." + O_RUNNER);
+    runner.classList.add(O_RUNNER_HIDDEN);
+  }
+  setLoading() {
+    this.toggler.classList.add(O_RUNNER_LOADING);
+  }
+  removeLoading() {
+    this.toggler.classList.remove(O_RUNNER_LOADING);
+  }
+  reset() {
+    this.showed = false;
+    this.removeLoading();
+    this.updateButtonText(O_RUNNER_ICON);
+  }
+  createButton(text) {
+    this.toggler = document.createElement("button");
+    const icon = document.createElement("span");
+    icon.innerText = text;
+    this.toggler.classList.add(O_RUNNER);
+    this.toggler.appendChild(icon);
+    document.body.appendChild(this.toggler);
+    this.toggler.addEventListener("click", this.toggle);
+  }
+  updateButtonText(text) {
+    const toggler = document.querySelector(`.${O_RUNNER} span`);
+    if (toggler) toggler.innerText = text;
+  }
+  removeButton() {
+    const toggler = document.querySelector(`.${O_RUNNER}`);
+    if (toggler) toggler.remove();
+  }
+  setButtonWithClear() {
+    self$2.updateButtonText(O_RUNNER_ICON_CLEAR);
+    self$2.emitter.trigger("orthography:open");
+  }
+  setButtonWithRunner() {
+    self$2.updateButtonText(O_RUNNER_ICON);
+    self$2.removeLoading();
+    self$2.emitter.trigger("orthography:close");
+  }
+  getEditor() {
+    const activeLeaf = this.app.workspace.activeLeaf;
+    const sourceMode = activeLeaf.view.sourceMode;
+    if (!sourceMode) return null;
+    return activeLeaf.view.sourceMode.cmEditor;
+  }
 }
 
 let self$1;
 class OrthographyEditor {
-    constructor(app, settings) {
-        this.app = app;
-        this.settings = settings;
+  constructor(app, settings) {
+    this.app = app;
+    this.settings = settings;
+  }
+  init() {
+    self$1 = this;
+  }
+  destroy() {
+    self$1.clearHighlightWords();
+  }
+  highlightWords(editor, alerts) {
+    this.clearHighlightWords();
+    if (!editor || !alerts || alerts.length === 0) return;
+    alerts.forEach((alert) => {
+      const textLength = alert.text.length || alert.highlightText.length;
+      const originalWord = {
+        begin: alert.begin,
+        end: alert.end,
+        len: textLength,
+      };
+      this.highlightWord(editor, originalWord);
+    });
+  }
+  highlightWord(editor, originalWord) {
+    if (!editor || !originalWord) return;
+    const colRow = this.getColRow(editor, originalWord);
+    if (!colRow) return;
+    const { col, row } = colRow;
+    this.highlightedWords = editor.markText(
+      { line: row, ch: col },
+      { line: row, ch: col + originalWord.len },
+      {
+        className: O_HIGHLIGHT,
+        attributes: {
+          begin: originalWord.begin,
+          end: originalWord.end,
+          len: originalWord.len,
+        },
+      }
+    );
+  }
+  replaceWord(editor, originalWord, newWord) {
+    if (!editor || !originalWord || !newWord) return;
+    const colRow = this.getColRow(editor, originalWord);
+    if (!colRow) return;
+    const { col, row } = colRow;
+    const doc = editor.getDoc();
+    const from = {
+      line: row,
+      ch: col,
+    };
+    const to = {
+      line: row,
+      ch: col + originalWord.len,
+    };
+    doc.replaceRange(newWord, from, to);
+  }
+  getColRow(editor, originalWord) {
+    if (!editor || !originalWord) return;
+    let ttl = 0;
+    let row = 0;
+    let result;
+    const { begin } = originalWord;
+    if (!editor.eachLine) return undefined;
+    editor.eachLine((line) => {
+      const s = ttl === 0 ? ttl : ttl + 1;
+      const lineTextLength = line.text.length;
+      ttl += lineTextLength;
+      if (row > 0) {
+        ttl++;
+      }
+      if (begin >= s && begin <= ttl) {
+        const diff = ttl - lineTextLength;
+        const col = begin - diff;
+        result = { col, row };
+        return;
+      }
+      row++;
+    });
+    return result;
+  }
+  clearHighlightWords() {
+    if (typeof self$1.highlightedWords === "object") {
+      self$1.highlightedWords.clear();
     }
-    init() {
-        self$1 = this;
-    }
-    destroy() {
-        self$1.clearHighlightWords();
-    }
-    highlightWords(editor, alerts) {
-        this.clearHighlightWords();
-        if (!editor || !alerts || alerts.length === 0)
-            return;
-        alerts.forEach((alert) => {
-            const textLength = alert.text.length || alert.highlightText.length;
-            const originalWord = {
-                begin: alert.begin,
-                end: alert.end,
-                len: textLength
-            };
-            this.highlightWord(editor, originalWord);
-        });
-    }
-    highlightWord(editor, originalWord) {
-        if (!editor || !originalWord)
-            return;
-        const colRow = this.getColRow(editor, originalWord);
-        if (!colRow)
-            return;
-        const { col, row } = colRow;
-        this.highlightedWords = editor.markText({ line: row, ch: col }, { line: row, ch: col + originalWord.len }, {
-            className: O_HIGHLIGHT,
-            attributes: {
-                begin: originalWord.begin,
-                end: originalWord.end,
-                len: originalWord.len
-            }
-        });
-    }
-    replaceWord(editor, originalWord, newWord) {
-        if (!editor || !originalWord || !newWord)
-            return;
-        const colRow = this.getColRow(editor, originalWord);
-        if (!colRow)
-            return;
-        const { col, row } = colRow;
-        const doc = editor.getDoc();
-        const from = {
-            line: row,
-            ch: col
-        };
-        const to = {
-            line: row,
-            ch: col + originalWord.len
-        };
-        doc.replaceRange(newWord, from, to);
-    }
-    getColRow(editor, originalWord) {
-        if (!editor || !originalWord)
-            return;
-        let ttl = 0;
-        let row = 0;
-        let result;
-        const { begin } = originalWord;
-        if (!editor.eachLine)
-            return undefined;
-        editor.eachLine((line) => {
-            const s = ttl === 0 ? ttl : ttl + 1;
-            const lineTextLength = line.text.length;
-            ttl += lineTextLength;
-            if (row > 0) {
-                ttl++;
-            }
-            if (begin >= s && begin <= ttl) {
-                const diff = ttl - lineTextLength;
-                const col = begin - diff;
-                result = { col, row };
-                return;
-            }
-            row++;
-        });
-        return result;
-    }
-    clearHighlightWords() {
-        if (typeof self$1.highlightedWords === 'object') {
-            self$1.highlightedWords.clear();
-        }
-        const highlightWords = document.querySelectorAll(`.${O_HIGHLIGHT}`);
-        highlightWords.forEach((span) => {
-            span.removeAttribute('class');
-        });
-    }
+    const highlightWords = document.querySelectorAll(`.${O_HIGHLIGHT}`);
+    highlightWords.forEach((span) => {
+      span.removeAttribute("class");
+    });
+  }
 }
 
 const debounce = (callback, timeout) => {
-    let timer;
-    return (...args) => {
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            callback.apply(undefined, args);
-        }, timeout);
-    };
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      callback.apply(undefined, args);
+    }, timeout);
+  };
 };
 
 const sortAlerts = (alerts) => {
-    return alerts.sort((a, b) => a.begin - b.begin);
+  return alerts.sort((a, b) => a.begin - b.begin);
 };
 const formatAlerts = (alerts) => {
-    const withoutHidden = alerts.filter((alert) => alert.hidden !== true);
-    const withoutDuplicate = withoutHidden.reduce((acc, current) => {
-        const x = acc.find((item) => item.explanation === current.explanation);
-        if (!x) {
-            return acc.concat([current]);
-        }
-        else {
-            return acc;
-        }
-    }, []);
-    return withoutDuplicate;
+  const withoutHidden = alerts.filter((alert) => alert.hidden !== true);
+  const withoutDuplicate = withoutHidden.reduce((acc, current) => {
+    const x = acc.find((item) => item.explanation === current.explanation);
+    if (!x) {
+      return acc.concat([current]);
+    } else {
+      return acc;
+    }
+  }, []);
+  return withoutDuplicate;
 };
 
-const API_URL_GRAMMAR = 'https://obsidian-orthography-api-mz8l64tz3-denisoed.vercel.app/check';
+const API_URL_GRAMMAR =
+  "https://obsidian-orthography-api-mz8l64tz3-denisoed.vercel.app/check";
 
 // Use self in events callbacks
 let self;
 class OrthographyPlugin extends obsidian.Plugin {
-    constructor() {
-        super(...arguments);
-        this.debounceGetDataFunc = debounce(this.onChangeText.bind(this), 500);
-        this.getDataFunc = debounce(this.onRunFromPopup.bind(this), 0);
-    }
-    onload() {
-        return __awaiter(this, void 0, void 0, function* () {
-            // ------ Init -------- //
-            self = this;
-            this.emitter = new obsidian.Events();
-            const settings = new OrthographySettings(this, this.emitter);
-            yield settings.loadSettings();
-            this.settings = settings;
-            // this.addSettingTab(new OrthographySettingTab(this.app, settings, this));
-            this.initOrthographyToggler();
-            this.initOrthographyPopup();
-            this.initOrthographyEditor();
-            // ------- Events -------- //
-            this.emitter.on('orthography:open', this.onPopupOpen);
-            this.emitter.on('orthography:close', this.onPopupClose);
-            this.emitter.on('orthography:run', this.getDataFunc);
-            this.emitter.on('orthography:replace', this.onReplaceWord);
-            // NOTE: find a better way to do this
-            // Listen to changes in the editor
-            this.registerDomEvent(document, 'click', () => {
-                if (!this.activeEditor)
-                    return;
-                this.activeEditor.off('change', this.debounceGetDataFunc);
-                this.activeEditor = this.getEditor();
-                if (!this.activeEditor)
-                    return;
-                this.activeEditor.on('change', this.debounceGetDataFunc);
-            });
+  constructor() {
+    super(...arguments);
+    this.debounceGetDataFunc = debounce(this.onChangeText.bind(this), 500);
+    this.getDataFunc = debounce(this.onRunFromPopup.bind(this), 0);
+  }
+  onload() {
+    return __awaiter(this, void 0, void 0, function* () {
+      // ------ Init -------- //
+      self = this;
+      this.emitter = new obsidian.Events();
+      const settings = new OrthographySettings(this, this.emitter);
+      yield settings.loadSettings();
+      this.settings = settings;
+      // this.addSettingTab(new OrthographySettingTab(this.app, settings, this));
+      this.initOrthographyToggler();
+      this.initOrthographyPopup();
+      this.initOrthographyEditor();
+      // ------- Events -------- //
+      this.emitter.on("orthography:open", this.onPopupOpen);
+      this.emitter.on("orthography:close", this.onPopupClose);
+      this.emitter.on("orthography:run", this.getDataFunc);
+      this.emitter.on("orthography:replace", this.onReplaceWord);
+      // NOTE: find a better way to do this
+      // Listen to changes in the editor
+      this.registerDomEvent(document, "click", () => {
+        if (!this.activeEditor) return;
+        this.activeEditor.off("change", this.debounceGetDataFunc);
+        this.activeEditor = this.getEditor();
+        if (!this.activeEditor) return;
+        this.activeEditor.on("change", this.debounceGetDataFunc);
+      });
+    });
+  }
+  onunload() {
+    this.emitter.off("orthography:open", this.onPopupOpen);
+    this.emitter.off("orthography:close", this.onPopupClose);
+    this.emitter.off("orthography:run", this.onRunFromPopup);
+    this.emitter.off("orthography:replace", this.onReplaceWord);
+    if (this.activeEditor)
+      this.activeEditor.off("change", this.debounceGetDataFunc);
+    this.toggler.destroy();
+    this.popup.destroy();
+    this.editor.destroy();
+    this.hints = null;
+    this.activeEditor = null;
+  }
+  initOrthographyToggler() {
+    const { app, settings, emitter } = this;
+    this.toggler = new OrthographyToggler(app, settings, emitter);
+    this.toggler.init();
+  }
+  initOrthographyPopup() {
+    const { app, settings, emitter } = this;
+    this.popup = new OrthographyPopup(app, settings, emitter);
+    this.popup.init();
+  }
+  initOrthographyEditor() {
+    const { app, settings } = this;
+    this.editor = new OrthographyEditor(app, settings);
+    this.editor.init();
+  }
+  getEditor() {
+    const activeLeaf = this.app.workspace.activeLeaf;
+    const sourceMode = activeLeaf.view.sourceMode;
+    return sourceMode ? sourceMode.cmEditor : null;
+  }
+  onChangeText() {
+    return __awaiter(this, void 0, void 0, function* () {
+      if (!this.popup.created) return;
+      this.runChecker();
+    });
+  }
+  onRunFromPopup() {
+    return __awaiter(this, void 0, void 0, function* () {
+      if (!this.popup.created) return;
+      this.editor.destroy();
+      this.popup.setLoader();
+      this.activeEditor = this.getEditor();
+      if (this.activeEditor) {
+        this.runChecker();
+      } else {
+        new obsidian.Notice(O_NOT_OPEN_FILE);
+        this.onPopupClose();
+      }
+    });
+  }
+  runChecker() {
+    return __awaiter(this, void 0, void 0, function* () {
+      this.toggler.setLoading();
+      if (!this.activeEditor) return;
+      const text = this.activeEditor.getValue();
+      this.hints = yield this.fetchData(text);
+      if (this.hints instanceof TypeError) {
+        this.popup.removeLoader();
+        this.toggler.removeLoading();
+        new obsidian.Notice(O_SERVER_ERROR);
+        return;
+      }
+      if (this.hints && this.hints.alerts && this.hints.alerts.length) {
+        const alerts = formatAlerts(this.hints.alerts);
+        this.editor.highlightWords(this.activeEditor, alerts);
+        this.popup.update({
+          alerts: sortAlerts(alerts),
         });
+      } else {
+        new obsidian.Notice(O_NO_ERROR);
+        this.popup.removeLoader();
+      }
+      this.toggler.removeLoading();
+    });
+  }
+  onPopupOpen() {
+    self.popup.create();
+  }
+  onPopupClose() {
+    self.editor.destroy();
+    if (self.activeEditor)
+      self.activeEditor.doc.getAllMarks().forEach((m) => m.clear());
+    self.popup.destroy();
+    self.toggler.reset();
+    if (self.aborter) {
+      self.aborter.abort();
+      self.aborter = null;
     }
-    onunload() {
-        this.emitter.off('orthography:open', this.onPopupOpen);
-        this.emitter.off('orthography:close', this.onPopupClose);
-        this.emitter.off('orthography:run', this.onRunFromPopup);
-        this.emitter.off('orthography:replace', this.onReplaceWord);
-        if (this.activeEditor)
-            this.activeEditor.off('change', this.debounceGetDataFunc);
-        this.toggler.destroy();
-        this.popup.destroy();
-        this.editor.destroy();
-        this.hints = null;
-        this.activeEditor = null;
-    }
-    initOrthographyToggler() {
-        const { app, settings, emitter } = this;
-        this.toggler = new OrthographyToggler(app, settings, emitter);
-        this.toggler.init();
-    }
-    initOrthographyPopup() {
-        const { app, settings, emitter } = this;
-        this.popup = new OrthographyPopup(app, settings, emitter);
-        this.popup.init();
-    }
-    initOrthographyEditor() {
-        const { app, settings } = this;
-        this.editor = new OrthographyEditor(app, settings);
-        this.editor.init();
-    }
-    getEditor() {
-        const activeLeaf = this.app.workspace.activeLeaf;
-        const sourceMode = activeLeaf.view.sourceMode;
-        return sourceMode ? sourceMode.cmEditor : null;
-    }
-    onChangeText() {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (!this.popup.created)
-                return;
-            this.runChecker();
+  }
+  onReplaceWord(event) {
+    const origWordLen = event.currentTarget.dataset.text.length;
+    const newWord = event.currentTarget.dataset.toreplace;
+    const begin = event.currentTarget.dataset.begin;
+    const end = begin + origWordLen;
+    self.editor.replaceWord(
+      self.activeEditor,
+      {
+        begin: +begin,
+        end: +end,
+        len: +origWordLen,
+      },
+      newWord
+    );
+  }
+  fetchData(text) {
+    return __awaiter(this, void 0, void 0, function* () {
+      if (self.aborter) self.aborter.abort();
+      self.popup.disable();
+      self.aborter = new AbortController();
+      const { signal } = self.aborter;
+      const url = new URL(API_URL_GRAMMAR);
+      const params = { text };
+      Object.keys(params).forEach((key) =>
+        url.searchParams.append(key, params[key])
+      );
+      try {
+        const response = yield fetch(url, {
+          method: "GET",
+          signal,
         });
-    }
-    onRunFromPopup() {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (!this.popup.created)
-                return;
-            this.editor.destroy();
-            this.popup.setLoader();
-            this.activeEditor = this.getEditor();
-            if (this.activeEditor) {
-                this.runChecker();
-            }
-            else {
-                new obsidian.Notice(O_NOT_OPEN_FILE);
-                this.onPopupClose();
-            }
-        });
-    }
-    runChecker() {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.toggler.setLoading();
-            if (!this.activeEditor)
-                return;
-            const text = this.activeEditor.getValue();
-            this.hints = yield this.fetchData(text);
-            if (this.hints instanceof TypeError) {
-                this.popup.removeLoader();
-                this.toggler.removeLoading();
-                new obsidian.Notice(O_SERVER_ERROR);
-                return;
-            }
-            if (this.hints && this.hints.alerts && this.hints.alerts.length) {
-                const alerts = formatAlerts(this.hints.alerts);
-                this.editor.highlightWords(this.activeEditor, alerts);
-                this.popup.update({
-                    alerts: sortAlerts(alerts)
-                });
-            }
-            else {
-                new obsidian.Notice(O_NO_ERROR);
-                this.popup.removeLoader();
-            }
-            this.toggler.removeLoading();
-        });
-    }
-    onPopupOpen() {
-        self.popup.create();
-    }
-    onPopupClose() {
-        self.editor.destroy();
-        if (self.activeEditor)
-            self.activeEditor.doc.getAllMarks().forEach((m) => m.clear());
-        self.popup.destroy();
-        self.toggler.reset();
-        if (self.aborter) {
-            self.aborter.abort();
-            self.aborter = null;
-        }
-    }
-    onReplaceWord(event) {
-        const origWordLen = event.currentTarget.dataset.text.length;
-        const newWord = event.currentTarget.dataset.toreplace;
-        const begin = event.currentTarget.dataset.begin;
-        const end = begin + origWordLen;
-        self.editor.replaceWord(self.activeEditor, {
-            begin: +begin,
-            end: +end,
-            len: +origWordLen
-        }, newWord);
-    }
-    fetchData(text) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (self.aborter)
-                self.aborter.abort();
-            self.popup.disable();
-            self.aborter = new AbortController();
-            const { signal } = self.aborter;
-            const url = new URL(API_URL_GRAMMAR);
-            const params = { text };
-            Object.keys(params).forEach((key) => url.searchParams.append(key, params[key]));
-            try {
-                const response = yield fetch(url, {
-                    method: 'GET',
-                    signal
-                });
-                self.aborter = null;
-                return yield response.json();
-            }
-            catch (error) {
-                return error;
-            }
-            finally {
-                self.popup.enable();
-            }
-        });
-    }
+        self.aborter = null;
+        return yield response.json();
+      } catch (error) {
+        return error;
+      } finally {
+        self.popup.enable();
+      }
+    });
+  }
 }
 
 module.exports = OrthographyPlugin;

@@ -1,17 +1,13 @@
 {
   "editor:swap-line-down": [
     {
-      "modifiers": [
-        "Mod"
-      ],
+      "modifiers": ["Mod"],
       "key": "ArrowDown"
     }
   ],
   "editor:swap-line-up": [
     {
-      "modifiers": [
-        "Mod"
-      ],
+      "modifiers": ["Mod"],
       "key": "ArrowUp"
     }
   ]

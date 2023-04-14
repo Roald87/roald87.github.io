@@ -27,15 +27,16 @@ The earliest at which all vehicles in the world can be replaced by electric ones
 ### Alternative scenarios
 
 What if:
+
 1. The total number of vehicles that should be replaced is larger than the current 1.2 billion, say 3 billion: **2044**
 2. Or, what if the vehicle lifetime is longer, say 30 years: **2052**
 3. Or both: **2053**
 
 ## Conclusions
 
-Assuming all vehicles are replaced by electric ones, we have around four years of exponential growth of the electric vehicle market ahead. Around 2023, linear growth begins, and gradually, all internal combustion vehicles are replaced by electric ones, which will occur by *2044*. Note that although the market growth seems impressive on the logarithmic plot, on a linear scale, you can see that the electric vehicle market is still small in 2018, at 0.28%.
+Assuming all vehicles are replaced by electric ones, we have around four years of exponential growth of the electric vehicle market ahead. Around 2023, linear growth begins, and gradually, all internal combustion vehicles are replaced by electric ones, which will occur by _2044_. Note that although the market growth seems impressive on the logarithmic plot, on a linear scale, you can see that the electric vehicle market is still small in 2018, at 0.28%.
 
 Also note that the car lifetime has the largest effect on when all vehicles can be replaced. It would, for example, be possible to replace all vehicles earlier than 2044 by artificially lowering the lifetime of a car. In other words, incentivize people to discard their cars and buy an electric one.
 
-[^1]: *Nederlands Tijdschrift voor Natuurkunde* (Dutch Journal of Physics) *Waarom wij wel zonnepanelen maar nog geen kernfusiestroom hebben* (Why we have solar panels but no nuclear fusion power) by Niek Lopes Cardozo, Guido Lange, and Gert Jan Kramer (NTvN 83, October 2017, page 350-354)
+[^1]: _Nederlands Tijdschrift voor Natuurkunde_ (Dutch Journal of Physics) _Waarom wij wel zonnepanelen maar nog geen kernfusiestroom hebben_ (Why we have solar panels but no nuclear fusion power) by Niek Lopes Cardozo, Guido Lange, and Gert Jan Kramer (NTvN 83, October 2017, page 350-354)
 [^2]: https://webstore.iea.org/global-ev-outlook-2017, table 5 on page 49.
