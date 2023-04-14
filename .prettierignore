@@ -1,1 +1,2 @@
-_includes/nav.html # prettier doesnt like the <li ...>
+# prettier doesnt like the <li ...>
+_includes/nav.html
