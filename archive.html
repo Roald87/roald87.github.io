@@ -3,6 +3,7 @@ layout: page
 title: Archive
 ---
 
+<!-- prettier-ignore
 {% comment %}
 =======================
 Source: https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll-based-github-pages/
@@ -43,6 +44,8 @@ The following part removes duplicated tags and invalid tags like blank tag.
 The purpose of this snippet is to list all your posts posted with a certain tag.
 =======================
 {% endcomment %}
+-->
+
 {% for tag in tags %}
 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 	<h2 id="{{ tag | slugify }}">{{ tag }}</h2>

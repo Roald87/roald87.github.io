@@ -22,7 +22,7 @@ In order to explore what RowClassesProvider does let's make a small sample proje
 1. Create a new HMI project in Visual Studio by going to **File > New > Project** and select **TwinCAT HMI > TwinCAT HMI Project**. Give it an appropriate name and select **OK**.
 2. Open the Desktop.view by double clicking on it.
 3. From the tool bar, drag a Datagrid into the Desktop.view.
-  ![data grid being dragged into the desktop.view](/assets/2022-01-31-row-classes-provider/drag_datagrid.gif)
+   ![data grid being dragged into the desktop.view](/assets/2022-01-31-row-classes-provider/drag_datagrid.gif)
 4. Add a new JavaScript function by right clicking on your HMI project and select **Add > New Item**.
    {% picture 2022-01-31-row-classes-provider/add_new_item.png --alt add new item to HMI project %}
 5. Then select Function (JavaScript) and give it an appropriate name and select **OK**.
@@ -34,14 +34,16 @@ Now we have a sample project it is time to explore what the RowClassesProvider d
 
 1. Open the `RowClassesProvider.function.json` file of the JavaScript function we just created, with a double click.
 2. In the new window change/add the following things:
-	- Change the return type to `Array`. Later we fill this array to return the styles which should be applied to the Datagrid.
-	- Change the DisplayName of the first variable to `rowData` and select for the Datatype `Any`.
-	- Add a new row and change the DisplayName to `rowIndex` and for the Datatype select `Integer`.
-	- Add another new row and change the DisplayName to `rowNumber` and for the Datatype select `Integer`.
 
-    In the end it should look as shown here:
+   - Change the return type to `Array`. Later we fill this array to return the styles which should be applied to the Datagrid.
+   - Change the DisplayName of the first variable to `rowData` and select for the Datatype `Any`.
+   - Add a new row and change the DisplayName to `rowIndex` and for the Datatype select `Integer`.
+   - Add another new row and change the DisplayName to `rowNumber` and for the Datatype select `Integer`.
 
-    {% picture 2022-01-31-row-classes-provider/function_io.png --alt menu after applying all changes %}
+   In the end it should look as shown here:
+
+   {% picture 2022-01-31-row-classes-provider/function_io.png --alt menu after applying all changes %}
+
 3. Confirm your changes by selecting **OK** and confirm your changes in the additional pop-up.
 4. In case you had the `RowClassesProvider.js` file open, you will get a pop-up. The pop-up is caused by the changes you just made. Select **Yes** to reload the file.
 
@@ -51,11 +53,9 @@ If all went **OK** your code in `RowClassesProvider.js` should look as follows (
 
 ```javascript
 (function (TcHmi) {
+  var RowClassesProvider = function (rowData, rowIndex, rowNumber) {};
 
-    var RowClassesProvider = function (rowData, rowIndex, rowNumber) {
-    };
-
-    TcHmi.Functions.registerFunction('RowClassesProvider', RowClassesProvider);
+  TcHmi.Functions.registerFunction("RowClassesProvider", RowClassesProvider);
 })(TcHmi);
 ```
 
@@ -63,13 +63,12 @@ This function takes three inputs: `rowData`, `rowIndex` and `rowNumber`. The inp
 
 ```javascript
 (function (TcHmi) {
+  var RowClassesProvider = function (rowData, rowIndex, rowNumber) {
+    console.log("Data: ", rowData);
+    console.log(`Index: ${rowIndex}\nNumber: ${rowNumber}`);
+  };
 
-    var RowClassesProvider = function (rowData, rowIndex, rowNumber) {
-        console.log("Data: ", rowData);
-        console.log(`Index: ${rowIndex}\nNumber: ${rowNumber}`);
-    };
-
-    TcHmi.Functions.registerFunction('RowClassesProvider', RowClassesProvider);
+  TcHmi.Functions.registerFunction("RowClassesProvider", RowClassesProvider);
 })(TcHmi);
 ```
 
@@ -80,6 +79,7 @@ Save the function. After changing the function the designer shows a prompt that 
 {% picture 2022-01-31-row-classes-provider/designer_reload_prompt.png --alt designer reload prompt %}
 
 Next we link this function to our Datagrid. Open the Desktop.view and
+
 1. Select the TcHmiDataGrid.
 2. In the Properties window under **Data > RowClassesProvider** press the `...` button.
 3. Then find the function we just created and drag it into the right window titled **Functions**.
@@ -92,7 +92,7 @@ Next we link this function to our Datagrid. Open the Desktop.view and
 
 1. Open the Live-View window from **TwinCAT HMI > Windows > TwinCAT HMI Live-View**.
 2. Open the developer tools, by clicking on the gear icon on the top.
-{% picture 2022-01-31-row-classes-provider/live-view_datagrid_log.png --alt log %}
+   {% picture 2022-01-31-row-classes-provider/live-view_datagrid_log.png --alt log %}
 
 In the developer tools you see the results of the `console.log` calls in our function. The `rowData` variable contains all the column data of a single row. The `rowIndex` and `rowNumber` both contain the number of the row. I'm not sure why there are two variables containing the same information.
 
@@ -106,7 +106,6 @@ From this example you might start to see how we can use the RowClassesProvider. 
 
 You may recall that when we defined the `RowClassesProvider` function, we also specified it returned an `Array`. In this section I will fill this array with CSS styles, such that that the datagrid can dynamically change its formatting.
 
-
 First we will define a custom style in a CSS file. To add a CSS file, right click on the HMI project and select **Add > New Item** and select **Cascading Style Sheet (CSS)** and click on **Add**.
 
 For example we can change the color of a table cell when no data is present. In order to do this we first define a new style by adding the following lines to the `.css` file:
@@ -114,11 +113,12 @@ For example we can change the color of a table cell when no data is present. In 
 ```css
 /* Change the first column's background to orange */
 #TcHmiDatagrid tr.missing-input td[data-column-name="Test1"] {
-    background-color: #F76D16;
+  background-color: #f76d16;
 }
 ```
 
 Here:
+
 - `#TcHmiDatagrid` means the style is for a TwinCAT HMI datagrid.
 - [`tr`](https://www.w3schools.com/tags/tag_tr.asp) denotes a row in a table.
 - `.missing-input` is the name of the style.
@@ -130,24 +130,24 @@ In order to apply the style under certain conditions we change the `RowClassesPr
 
 ```javascript
 (function (TcHmi) {
+  var RowClassesProvider = function (rowData, rowIndex, rowNumber) {
+    var cssStyles = []; // Collected CSS styles which will be returned at the end
 
-    var RowClassesProvider = function (rowData, rowIndex, rowNumber) {
-        var cssStyles = []; // Collected CSS styles which will be returned at the end
+    if (!rowData.Test1) {
+      // If the first column (Test1) is empty
+      cssStyles.push("missing-input"); // add the missing-input style to the array
+    }
 
-        if (!rowData.Test1) { // If the first column (Test1) is empty
-            cssStyles.push('missing-input'); // add the missing-input style to the array
-        }
+    return cssStyles;
+  };
 
-        return cssStyles;
-    };
-
-    TcHmi.Functions.registerFunction('RowClassesProvider', RowClassesProvider);
+  TcHmi.Functions.registerFunction("RowClassesProvider", RowClassesProvider);
 })(TcHmi);
 ```
 
-Now the `RowClassesProvider` returns an array with the style names which should be applied. For now the `missing-input`  style is added in case the input of the first column is empty.
+Now the `RowClassesProvider` returns an array with the style names which should be applied. For now the `missing-input` style is added in case the input of the first column is empty.
 
-Before we see it in action, we first need to add another row to our Datagrid, since currently all columns contain data. Open the Desktop.view and select the ``...`` of the **SrcData** in the Properties window.
+Before we see it in action, we first need to add another row to our Datagrid, since currently all columns contain data. Open the Desktop.view and select the `...` of the **SrcData** in the Properties window.
 
 {% picture 2022-01-31-row-classes-provider/source_data.png --alt edit source data for data grid %}
 
@@ -162,38 +162,38 @@ Styles can also be applied dynamically after for example toggling a checkbox, ba
 ```css
 /*Change the background color of the first column to orange*/
 #TcHmiDatagrid tr.missing-input td[data-column-name="Test1"] {
-    background-color: #F76D16;
+  background-color: #f76d16;
 }
 
 /*Change the second column's background to orange*/
 #TcHmiDatagrid tr.below-zero td[data-column-name="Test2"] {
-    background-color: #F76D16;
+  background-color: #f76d16;
 }
 
 /*A default background color for the second column*/
 #TcHmiDatagrid tr td[data-column-name="Test2"] {
-    background-color: #A0D5E8;
+  background-color: #a0d5e8;
 }
 
 /*Change the background color of an entire row if a check box' state is changed*/
 #TcHmiDatagrid tr.not-checked td::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 10000px;
-    pointer-events: none;
-    z-index: 1;
-    background-color: rgba(215, 249, 251, 0.5);
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10000px;
+  pointer-events: none;
+  z-index: 1;
+  background-color: rgba(215, 249, 251, 0.5);
 }
 
 /*Make the text in the fourth column bold and change the color*/
 #TcHmiDatagrid tr.bold td[data-column-name="Test4"] {
-    font-weight: bold;
-    color: #F76D16;
+  font-weight: bold;
+  color: #f76d16;
 }
 ```
 
@@ -201,30 +201,33 @@ and change `RowClassesProvider` into
 
 ```javascript
 (function (TcHmi) {
+  var RowClassesProvider = function (rowData, rowIndex, rowNumber) {
+    var cssStyles = []; // Collected CSS styles which will be returned at the end
 
-    var RowClassesProvider = function (rowData, rowIndex, rowNumber) {
-        var cssStyles = []; // Collected CSS styles which will be returned at the end
+    if (!rowData.Test1) {
+      // If the first column (Test1) is empty
+      cssStyles.push("missing-input"); // add the missing-input style to the array
+    }
 
-        if (!rowData.Test1) { // If the first column (Test1) is empty
-            cssStyles.push('missing-input'); // add the missing-input style to the array
-        }
+    if (rowData.Test2 < 0) {
+      // If the value of the second column is negative
+      cssStyles.push("below-zero"); // add the below-zero style
+    }
 
-        if (rowData.Test2 < 0) { // If the value of the second column is negative
-            cssStyles.push('below-zero'); // add the below-zero style
-        }
+    if (!rowData.Test3) {
+      // If the checkbox in the third column is not checked
+      cssStyles.push("not-checked");
+    }
 
-        if (!rowData.Test3) { // If the checkbox in the third column is not checked
-            cssStyles.push('not-checked');
-        }
+    if (rowData.Test4 == "cookncode") {
+      // if the text in the fourth column is cookncode
+      cssStyles.push("bold");
+    }
 
-        if (rowData.Test4 == "cookncode") { // if the text in the fourth column is cookncode
-            cssStyles.push('bold');
-        }
+    return cssStyles;
+  };
 
-        return cssStyles;
-    };
-
-    TcHmi.Functions.registerFunction('RowClassesProvider', RowClassesProvider);
+  TcHmi.Functions.registerFunction("RowClassesProvider", RowClassesProvider);
 })(TcHmi);
 ```
 

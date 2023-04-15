@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Is salting eggplants really necessary?"
-date: '2021-12-12'
+date: "2021-12-12"
 category: cooking
 ---
 

@@ -18,6 +18,7 @@ permalink: /tclinks/
 - [Jouke Aalvanger](https://joukeaalvanger.nl/): Blog focussed on software development in the industrial automation world.
 
 ## Forums
+
 - [Beckhoff Community Support](https://www.twincontrols.com/community/): Ask for support from the community.
 - [LinkedIn TwinCAT Forum](https://www.linkedin.com/groups/1860933/): Support from your peers. You need to request an invite for this private forum.
 
@@ -30,6 +31,7 @@ permalink: /tclinks/
 - [Electrical Automation Hands-On](https://www.youtube.com/channel/UCZqe2O5oBpas73BVdwHTiCA): Excellent tutorials for Beckhoff, Siemens and Allen-Bradley PLC's on PID's, motion, vision and more.
 
 ## Tools
+
 - [TcError](https://github.com/Roald87/TcError): Functions and datatypes which describe TwinCAT errors.
 - [TcBlack](https://github.com/Roald87/TcBlack): Open source opinionated auto formatter for TwinCAT structured text.
 - [STweep](https://www.stweep.com/): Highly customizable paid auto formatter.

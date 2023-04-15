@@ -7,7 +7,7 @@ toc: true
 
 Keeping track of all the things that are happening on your machine can be a daunting task, whether it's expected events or unexpected warnings and errors that you want to inform the user of. Luckily, Beckhoff provides us with a tool that can help with that: namely, the EventLogger. In this article, I will introduce the PLC part of the EventLogger and show some useful features (code: [PlcPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart)). A [second article](https://roald87.github.io/twincat/2021/01/20/twincat-eventlogger-hmi-part.html) will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: [HmiPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart)).
 
-*Thanks to [Jakob Sagatowski ](https://github.com/sagatowski) for his valuable feedback while writing this article.*
+_Thanks to [Jakob Sagatowski ](https://github.com/sagatowski) for his valuable feedback while writing this article._
 
 You can create events on the PLC in EventClasses, as shown in the image below. The events themselves can be of two different types. First, there is the stateless message type which can only be sent. Second, there is the alarm which also has a state. The states of the alarms work as follows. There are two mutually exclusive states: raised and cleared, and an optional third state: confirmed, which is independent of the first two. The raised and cleared states are used to indicate if an alarm condition is fulfilled (e.g., a temperature is above a certain limit). The optional confirmation state can be used to indicate that the user has seen the alarm and is aware of it. Finally, all raised alarms are automatically cleared when the PLC is restarted, but they are not automatically confirmed.
 
@@ -25,11 +25,11 @@ Before we start sending messages and raising events, we'll create a new [EventCl
 
 {% picture 2020-11-3-twincat-eventlogger-plc-part/create_new_event_class.PNG --alt create_new_event_class %}
 
-A TMC editor window should open. I named the EventClass *MyEvents* and set the display text to *My events*. The name can't contain spaces and will be used in the event declaration, as we will see in a minute. The display text is one of the things which can be shown to the user and can be a general description of the EventClass.
+A TMC editor window should open. I named the EventClass _MyEvents_ and set the display text to _My events_. The name can't contain spaces and will be used in the event declaration, as we will see in a minute. The display text is one of the things which can be shown to the user and can be a general description of the EventClass.
 
 {% picture 2020-11-3-twincat-eventlogger-plc-part/event_class_details.PNG --alt event_class_details %}
 
-Then, I renamed the first default [event](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/4852759179.html?id=7440132292714549021) to *Start* and added *Process started* under **Display Text**. Finally, I gave this event the severity of Info because it will be used for a message.
+Then, I renamed the first default [event](https://infosys.beckhoff.com/content/1033/tc3_eventlogger/4852759179.html?id=7440132292714549021) to _Start_ and added _Process started_ under **Display Text**. Finally, I gave this event the severity of Info because it will be used for a message.
 
 {% picture 2020-11-3-twincat-eventlogger-plc-part/event_details.PNG --alt event_details %}
 
@@ -219,7 +219,7 @@ IF bRaiseAlarm THEN
 END_IF
 ```
 
-Also the clear alarm part is the same. However, because this alarm doesn’t have a confirmation state, the second argument in the  `Clear()` method doesn’t have any influence.
+Also the clear alarm part is the same. However, because this alarm doesn’t have a confirmation state, the second argument in the `Clear()` method doesn’t have any influence.
 
 ```
 IF bClearAlarm THEN

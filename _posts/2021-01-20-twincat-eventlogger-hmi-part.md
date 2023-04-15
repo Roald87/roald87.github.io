@@ -7,7 +7,7 @@ toc: true
 
 In an [earlier article](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html), I introduced the PLC part of the TwinCAT EventLogger and showed some useful features. In this article, I go into the details on how to visualize the events using TwinCAT’s web-based HMI (TE2000).
 
-*Thanks to [Jakob Sagatowski](https://github.com/sagatowski) for his valuable feedback while writing this article.*
+_Thanks to [Jakob Sagatowski](https://github.com/sagatowski) for his valuable feedback while writing this article._
 
 - Code: [PlcPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart)
 - Code: [HmiPart](https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart)
@@ -16,7 +16,7 @@ To follow this tutorial, you can either download the completed [HMI project](htt
 
 ## Adding a new HMI project
 
-With the solution from the PLC part open, add a new HMI project by going to **File > Add > New Project**. You should see the following screen. Select **TwinCAT HMI Project** from the TwinCAT HMI menu and give it a name, for example, *EventGridSample*.
+With the solution from the PLC part open, add a new HMI project by going to **File > Add > New Project**. You should see the following screen. Select **TwinCAT HMI Project** from the TwinCAT HMI menu and give it a name, for example, _EventGridSample_.
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/add_hmi_project.png %}
 
@@ -33,6 +33,7 @@ To add the Event Grid to an HMI page: open the **Desktop.view** file and then dr
 ![](/assets/2021-01-20-twincat-event-logger-hmi-part/add_event_grid.gif)
 
 The Event Grid Control provides a convenient interface to all past and present events. It has a few buttons in the top row that allow you to:
+
 - filter/show specific event types
 - confirm alarms
 - add or remove (custom) columns
@@ -41,7 +42,7 @@ I'll show an example with a custom column a bit [further on](#adding-a-custom-co
 
 ## Activating the configuration
 
-Before you can start using the HMI, you have to activate the configuration. Select **Activate Configuration** and select **Autostart PLC Boot Project(s)**, and click **OK**. Select **OK** in the message box to *Restart TwinCAT System in Run Mode*.
+Before you can start using the HMI, you have to activate the configuration. Select **Activate Configuration** and select **Autostart PLC Boot Project(s)**, and click **OK**. Select **OK** in the message box to _Restart TwinCAT System in Run Mode_.
 
 ### HMI settings for the remote target
 
@@ -57,7 +58,7 @@ Then go to the **TcHmiEventLogger** tab. Again make sure to select the default p
 
 ## Sending a message
 
-First, you test the message event. To do so, drag a Toggle button from the **Toolbox** into the **Desktop.view**. Change the button text to, for example, *Send message*. Next, you link the button to a variable in the PLC. Click on the small square button, circled in red, next to the **StateSymbol** and choose **Create data binding...**.
+First, you test the message event. To do so, drag a Toggle button from the **Toolbox** into the **Desktop.view**. Change the button text to, for example, _Send message_. Next, you link the button to a variable in the PLC. Click on the small square button, circled in red, next to the **StateSymbol** and choose **Create data binding...**.
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/send_message_button.png %}
 
@@ -91,15 +92,15 @@ A good feature of the Event Grid is that there are many possibilities to customi
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameButton.png %}
 
-The following menu is then shown. On the left, you see all available columns, and on the right all the shown columns. Now add the **params::** column from the available list. Then on the right for the **Name** enter *params::sourceName* and for the **Label** enter *Source*. Then select **OK** to exit and you should see an extra column.
+The following menu is then shown. On the left, you see all available columns, and on the right all the shown columns. Now add the **params::** column from the available list. Then on the right for the **Name** enter _params::sourceName_ and for the **Label** enter _Source_. Then select **OK** to exit and you should see an extra column.
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameSettings2.png %}
 
-The added column shows the path to the source of the event which can be quite convenient. In this example, it doesn’t add that much, since this is a very small program. But, if the events were a few function blocks deep, the precise path to the source can be handy to trace the origin of the alarm. Note that, as shown in the [PLC part](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html), you can also customize the source as I did for the second event. Here I changed the source name to *Water pump 3*.
+The added column shows the path to the source of the event which can be quite convenient. In this example, it doesn’t add that much, since this is a very small program. But, if the events were a few function blocks deep, the precise path to the source can be handy to trace the origin of the alarm. Note that, as shown in the [PLC part](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html), you can also customize the source as I did for the second event. Here I changed the source name to _Water pump 3_.
 
 {% picture 2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiWithSourceName.png %}
 
-Another handy column to add to the HMI event overview is the *params::eventClassName*. This column shows the Display text of an event class. It can be handy if you, for example, divided your events into component-specific event classes. With the new column, you can now sort your events per subsystem of your machine.
+Another handy column to add to the HMI event overview is the _params::eventClassName_. This column shows the Display text of an event class. It can be handy if you, for example, divided your events into component-specific event classes. With the new column, you can now sort your events per subsystem of your machine.
 
 ## Pop-ups
 
@@ -113,15 +114,17 @@ I added the following code to create the pop-up. First a `composeHtmlPopUpElemen
 
 ```javascript
 function composeHtmlPopUpElement(event) {
-    return $(
-        '<div style="background:white;padding:10px;max-width:400px;">'
-        + event.text + '<br><br>'
-        + '<button type="button" onclick = '
-        + '"var topLayer=document.getElementsByClassName(\'tchmi-in-topmostlayer\');'
-        + 'var currentTop=topLayer[topLayer.length - 1];'
-        + 'TcHmi.TopMostLayer.removeEx($(currentTop));"> OK'
-        + '</button> '
-        + '</div>');
+  return $(
+    '<div style="background:white;padding:10px;max-width:400px;">' +
+      event.text +
+      "<br><br>" +
+      '<button type="button" onclick = ' +
+      "\"var topLayer=document.getElementsByClassName('tchmi-in-topmostlayer');" +
+      "var currentTop=topLayer[topLayer.length - 1];" +
+      'TcHmi.TopMostLayer.removeEx($(currentTop));"> OK' +
+      "</button> " +
+      "</div>"
+  );
 }
 ```
 
@@ -129,17 +132,17 @@ Next, I defined a function that is called whenever a new event is raised. The fu
 
 ```javascript
 function showPopUp(event) {
-    var newPopUp = composeHtmlPopUpElement(event)
-    TcHmi.TopMostLayer.addEx(newPopUp, {
-        centerHorizontal: true,
-        centerVertical: true,
-        removecb: (data) => {
-            if (data.canceled) {
-                // user clicked on the background
-                TcHmi.TopMostLayer.removeEx(newPopUp);
-            }
-        }
-    });
+  var newPopUp = composeHtmlPopUpElement(event);
+  TcHmi.TopMostLayer.addEx(newPopUp, {
+    centerHorizontal: true,
+    centerVertical: true,
+    removecb: (data) => {
+      if (data.canceled) {
+        // user clicked on the background
+        TcHmi.TopMostLayer.removeEx(newPopUp);
+      }
+    },
+  });
 }
 ```
 
@@ -147,13 +150,13 @@ Next, I defined a function that is called whenever a certain type of alarm is ra
 
 ```javascript
 function subscriptionCallback(data) {
-    // check if the callback object is valid
-    if (data.error === TcHmi.Errors.NONE) {
-        // check if an event of type alarm is raised
-        if (data.changeType === TcHmi.Server.Events.ChangeType.AlarmRaised) {
-            showPopUp(data.event);
-        }
+  // check if the callback object is valid
+  if (data.error === TcHmi.Errors.NONE) {
+    // check if an event of type alarm is raised
+    if (data.changeType === TcHmi.Server.Events.ChangeType.AlarmRaised) {
+      showPopUp(data.event);
     }
+  }
 }
 ```
 
@@ -161,31 +164,28 @@ Next, I made a filter to select the type of events I want to show a pop-up for. 
 
 ```javascript
 let allActiveAlarmsFilter = [
-    {
-        path: 'type',
-        comparator: '==',
-        value: TcHmi.Server.Events.Type.Alarm
-    },
-    {
-        logic: 'AND'
-    },
-    {
-        path: 'timeConfirmed',
-        comparator: '==',
-        value: new Date(null)
-    }
+  {
+    path: "type",
+    comparator: "==",
+    value: TcHmi.Server.Events.Type.Alarm,
+  },
+  {
+    logic: "AND",
+  },
+  {
+    path: "timeConfirmed",
+    comparator: "==",
+    value: new Date(null),
+  },
 ];
 ```
 
 Finally, the filter and the callback function get registered. That means that they listen for any new alarm which gets raised.
 
 ```javascript
-TcHmi.Server.Events.registerConsumer(
-    allActiveAlarmsFilter,
-    {
-        subscription: subscriptionCallback
-    }
-);
+TcHmi.Server.Events.registerConsumer(allActiveAlarmsFilter, {
+  subscription: subscriptionCallback,
+});
 ```
 
 If you now raise a new warning, a pop-up should appear in the HMI. You might need to rebuild and/or refresh the Live-View for this to work.

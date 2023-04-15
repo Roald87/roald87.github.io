@@ -7,11 +7,11 @@ toc: true
 
 Source control is an essential tool when you're developing software. Yet, there is little information online on how to do it for TwinCAT projects. In this post, I share some tips and tricks I picked up along the way. The main focus is git, but many points apply to other source control systems as well.
 
-*You might also like my [new post on pre-commits](https://cookncode.com/twincat/2022/04/14/pre-commit.html).*
+_You might also like my [new post on pre-commits](https://cookncode.com/twincat/2022/04/14/pre-commit.html)._
 
 ## What is source control?
 
-If you're not yet familiar with source control then it is something that you should absolutely learn as a software developer. [Source control](https://en.wikipedia.org/wiki/Version_control), also known as version control, allows you to save your code incrementally in a database. Since it saves all your changes, it is easy to return to a previous state of your code. So, if you discover that a  feature you implemented doesn't work out as you planned, it is easy to revert the changes. You no longer have to use the [filename for versioning](https://phdcomics.com/comics/archive.php?comicid=1531).
+If you're not yet familiar with source control then it is something that you should absolutely learn as a software developer. [Source control](https://en.wikipedia.org/wiki/Version_control), also known as version control, allows you to save your code incrementally in a database. Since it saves all your changes, it is easy to return to a previous state of your code. So, if you discover that a feature you implemented doesn't work out as you planned, it is easy to revert the changes. You no longer have to use the [filename for versioning](https://phdcomics.com/comics/archive.php?comicid=1531).
 
 ![PhD comics "final.doc"](https://phdcomics.com/comics/archive/phd101212s.gif)
 
@@ -53,39 +53,39 @@ Once you determined which files should be source controlled, it is important to 
 
 1. NC axes or IO devices can be saved in a separate file as explained on [this page on InfoSys](https://infosys.beckhoff.com/content/1033/tc3_sourcecontrol/767894795.html?id=9000520481371853523).
 
-2. [On the same page](https://infosys.beckhoff.com/content/1033/tc3_sourcecontrol/767894795.html?id=9000520481371853523) it mentions that you can save the plc project as a separate file. Or you can create a  stand-alone plc project [as I wrote about earlier](https://roald87.github.io/twincat/2020/01/29/standalone-plc-projects.html).
+2. [On the same page](https://infosys.beckhoff.com/content/1033/tc3_sourcecontrol/767894795.html?id=9000520481371853523) it mentions that you can save the plc project as a separate file. Or you can create a stand-alone plc project [as I wrote about earlier](https://roald87.github.io/twincat/2020/01/29/standalone-plc-projects.html).
 
 3. Events from the [TwinCAT EventLogger](https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html). These are normally stored in the `.tsproj` file. But you can also store them in an independent file. If you created a new project, you can immediately save them in a separate file. In case you want to transfer existing events to a tmc file, the steps are almost the same. For both, you first right-click **Type System** and select **Add New Item...**. Choose a name and location to save your new event class.
 
-    {% picture 2021-07-06-tc-source-control/create_tmc_event.png --alt image-20210605125836430 %}
+   {% picture 2021-07-06-tc-source-control/create_tmc_event.png --alt image-20210605125836430 %}
 
-    Then if you want to save _existing events_ into the new file, select the event classes you want to save in this new file.
+   Then if you want to save _existing events_ into the new file, select the event classes you want to save in this new file.
 
-    {% picture 2021-07-06-tc-source-control/existing_events.png --alt existing-events %}
+   {% picture 2021-07-06-tc-source-control/existing_events.png --alt existing-events %}
 
-    If you want to save _new events_ into the file, right-click the empty area and select **New**.
+   If you want to save _new events_ into the file, right-click the empty area and select **New**.
 
-    {% picture 2021-07-06-tc-source-control/new_events.png --alt new-events %}
+   {% picture 2021-07-06-tc-source-control/new_events.png --alt new-events %}
 
-    Then add events to this new event class.
+   Then add events to this new event class.
 
-    {% picture 2021-07-06-tc-source-control/new_event_class.png --alt new-event-class %}
+   {% picture 2021-07-06-tc-source-control/new_event_class.png --alt new-event-class %}
 
-    When you select the type system, the new event classes also show up among all other available event classes.
+   When you select the type system, the new event classes also show up among all other available event classes.
 
-    {% picture 2021-07-06-tc-source-control/all_event_classes.png --alt all-event-classes %}
+   {% picture 2021-07-06-tc-source-control/all_event_classes.png --alt all-event-classes %}
 
-    Once the events are in separate tmc files, make sure:
+   Once the events are in separate tmc files, make sure:
 
-    - You add the event tmc to source control. Most `.gitignore` files exclude all tmc files, for example the [GitHub TwinCAT3](https://github.com/github/gitignore/blob/master/TwinCAT3.gitignore) `.gitignore`.
+   - You add the event tmc to source control. Most `.gitignore` files exclude all tmc files, for example the [GitHub TwinCAT3](https://github.com/github/gitignore/blob/master/TwinCAT3.gitignore) `.gitignore`.
 
-    - Clear "Persistent (even if unused)"
+   - Clear "Persistent (even if unused)"
 
-      {% picture 2021-07-06-tc-source-control/uncheck-persistent.png --alt image-20210806223400979 %}
+     {% picture 2021-07-06-tc-source-control/uncheck-persistent.png --alt image-20210806223400979 %}
 
-      Otherwise, the events are [added to the project file again](https://stackoverflow.com/q/68677733/6329629):
+     Otherwise, the events are [added to the project file again](https://stackoverflow.com/q/68677733/6329629):
 
-      {% picture 2021-07-06-tc-source-control/remove_persistent.png --alt remove-persistent %}
+     {% picture 2021-07-06-tc-source-control/remove_persistent.png --alt remove-persistent %}
 
    - If you're using 4022.x the event tmc files are [not formatted](https://stackoverflow.com/q/68678539/6329629). Beckhoff introduced proper formatting in 4024. If you're stuck with 4022.x, you have to format the tmc files yourself. For example with the Sublime plugin [Indent XML](https://github.com/alek-sys/sublimetext_indentxml) or use [pre-commits](hhttps://cookncode.com/twincat/2022/04/14/pre-commit.html#twincat-relevant-pre-commits).
 
@@ -156,32 +156,33 @@ Let me show you how you can use it. Suppose you are working on a project with a 
   ShowHideConfigurations="#x106"
 >
 ```
+
 Since your colleagues' NetId is different, you want to prevent git from including this change in the code's version history. You can achieve this with the following steps, [as also explained in this StackOverflow post](https://stackoverflow.com/a/22171275/6329629)
 
 1. In the `.git/config` file inside the project you add the following:
 
-    ```bash
-    [filter "ignoreNetId"]
-        clean = sh ".git/ignoreTargetNetId.sh"
-    ```
+   ```bash
+   [filter "ignoreNetId"]
+       clean = sh ".git/ignoreTargetNetId.sh"
+   ```
 
-    Here you define a filter called `ignoreNetId` which defines a `clean` step. The `clean` gets triggered when you add a file to a commit (`git add`). When the `clean` gets triggered, it calls a bash script `ignoreTargetNetId.sh`, which is defined below.
+   Here you define a filter called `ignoreNetId` which defines a `clean` step. The `clean` gets triggered when you add a file to a commit (`git add`). When the `clean` gets triggered, it calls a bash script `ignoreTargetNetId.sh`, which is defined below.
 
 1. Add the following line to the `.gitattributes` file:
 
-    ```bash
-    *.tsproj filter=ignoreNetId
-    ```
+   ```bash
+   *.tsproj filter=ignoreNetId
+   ```
 
-    This command means that if you commit or checkout a file with the extension `.tsproj`, git calls the `ignoreNetId` filter of the previous step.
+   This command means that if you commit or checkout a file with the extension `.tsproj`, git calls the `ignoreNetId` filter of the previous step.
 
-2. Finally you make a new file called `ignoreNetId.sh` in the `.git` folder and add the following content to this file:
+1. Finally you make a new file called `ignoreNetId.sh` in the `.git` folder and add the following content to this file:
 
-    ```bash
-    sed --regexp-extended "s/}\" TargetNetId=\"[0-9.]+\"/}\" /g" "$@"
-    ```
+   ```bash
+   sed --regexp-extended "s/}\" TargetNetId=\"[0-9.]+\"/}\" /g" "$@"
+   ```
 
-    The [`sed`](https://www.gnu.org/software/sed/manual/sed.html) command is a text replacement command-line tool. The `--regexp-extended` option means you can use most regular expressions to find the TargetNetId. The regular expression which does the search and replace is `"s/}\" TargetNetId=\"[0-9.]+\"/}\" /g"`.  The search part (`"s/}\" TargetNetId=\"[0-9.]+\"/`) searches for a target net id with an arbitrary net id. If this pattern matches, it replaces it with `}\" `, thus removing the whole net id part. With the net id removed, TwinCAT then selects the `<Local>` TwinCAT runtime when you open the project. The last part `"$@"` is where the filename argument is filled in if git calls this script based on the first step.
+   The [`sed`](https://www.gnu.org/software/sed/manual/sed.html) command is a text replacement command-line tool. The `--regexp-extended` option means you can use most regular expressions to find the TargetNetId. The regular expression which does the search and replace is `"s/}\" TargetNetId=\"[0-9.]+\"/}\" /g"`. The search part (`"s/}\" TargetNetId=\"[0-9.]+\"/`) searches for a target net id with an arbitrary net id. If this pattern matches, it replaces it with `}\" `, thus removing the whole net id part. With the net id removed, TwinCAT then selects the `<Local>` TwinCAT runtime when you open the project. The last part `"$@"` is where the filename argument is filled in if git calls this script based on the first step.
 
 In summary. The preceding steps ensure that whenever you select your development plc, this change never shows up as a change in git. You can also do the reverse: that on checkout, it automatically adds your developments plc net id into the target net id. Then you do not have to select it each time you checkout the code. See [this StackOverflow post](https://stackoverflow.com/a/22171275/6329629) for more info.
 

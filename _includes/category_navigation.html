@@ -1,3 +1,4 @@
+<!-- prettier-ignore
 {% if page.categories %}
   {% assign category = page.categories[0] %}
   {% assign posts = site.categories[category] %}
@@ -16,25 +17,18 @@
     {% endif %}
   {% endfor %}
 {% endif %}
-
-<!-- {% if prev_post %}
-  <div class="article_previous">
-    <a href="{{ prev_post.url }}">❮ {{ prev_post.title }}</a>
-  </div>
-{% endif %} -->
+-->
 
 {% if prev_post and next_post %}
-  <div class="article_previous_next">
-    <a href="{{ prev_post.url }}">❮ {{ prev_post.title }}</a>
-  </div>
+<div class="article_previous_next">
+  <a href="{{ prev_post.url }}">❮ {{ prev_post.title }}</a>
+</div>
 {% elsif prev_post %}
-  <div class="article_previous">
-    <a href="{{ prev_post.url }}">❮ {{ prev_post.title }}</a>
-  </div>
-{% endif %}
-
-{% if next_post %}
-  <div class="article_next">
-    <a href="{{ next_post.url }}">{{ next_post.title }} ❯</a>
-  </div>
+<div class="article_previous">
+  <a href="{{ prev_post.url }}">❮ {{ prev_post.title }}</a>
+</div>
+{% endif %} {% if next_post %}
+<div class="article_next">
+  <a href="{{ next_post.url }}">{{ next_post.title }} ❯</a>
+</div>
 {% endif %}

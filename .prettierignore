@@ -1,0 +1,7 @@
+# prettier doesnt like the <li ...>
+_includes/nav.html
+.obsidian/
+.github/styles/
+_site/
+_sass/ext/_solarized-light.scss
+archive.html

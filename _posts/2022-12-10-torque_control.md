@@ -7,7 +7,7 @@ toc: true
 
 [`MC_TorqueControl`](https://infosys.beckhoff.com/content/1033/tcplclib_tc2_mc2/7617393803.html?id=6677792901421113137) is a method to force or torque control an axis. In this article, I show how to set up a simple project and use this function.
 
-*There is also a [YouTube video](https://www.youtube.com/watch?v=Lw-yW4OdtZA) by Electrical Automation Hands-On who explains these steps.*
+_There is also a [YouTube video](https://www.youtube.com/watch?v=Lw-yW4OdtZA) by Electrical Automation Hands-On who explains these steps._
 
 ## What is `MC_TorqueControl`?
 
@@ -22,31 +22,33 @@ Below is the diagram from the **Tune drive** tab of Drive Manager 2. When you us
 ## How to use torque control?
 
 Make sure you have:
- - [Drive Manager 2](https://www.beckhoff.com/en-en/products/automation/twincat/texxxx-twincat-3-engineering/te5950.html) installed
- - TwinCAT 3.1.4024.15 for both XAE (engineering) and XAR (runtime) or later
- - For AX5000: firmware 2.14 or later
- - For AX8000: firmware 1.03 Build 002 or later.
+
+- [Drive Manager 2](https://www.beckhoff.com/en-en/products/automation/twincat/texxxx-twincat-3-engineering/te5950.html) installed
+- TwinCAT 3.1.4024.15 for both XAE (engineering) and XAR (runtime) or later
+- For AX5000: firmware 2.14 or later
+- For AX8000: firmware 1.03 Build 002 or later.
 
 Then, follow these steps to use torque control:
 
 1. In the **Advanced > Slot settings** tab, select **VelocityControl2** for the **VelocityControlSlot** of the respective axis. This enables the velocity limit.[^1]
-	{% picture 2022-torque-control/velocity_limit.png %}
+   {% picture 2022-torque-control/velocity_limit.png %}
 2. In the **Parameter list**, select **TorqueMightBeReducedToZero (1)**. This is another setting to enable the velocity limit.
-    {% picture 2022-torque-control/speed_limit.png %}
-4. In the **Process data** tab, expand the **Ch A operation** and select **Cyclic_synchronous_torque_mode_CST (10)** for virtual operation mode 0. This adds the necessary process data objects, such as the target torque and the actual measured torque. It also enables you to switch between position and torque control.
-    {% picture 2022-torque-control/torque_mode.png %}
-1. In the **MOTION > NC- TASK1 SAF > Axis > {your axis} > Encoder** and **Drive** tabs, turn on Time compensation. This setting enables smooth switching between position and torque mode. That is because, in torque mode, the NC axis writes permanent actual positions into the set position variable. Due to a dead time, the actual is delayed by four cycles. This dead time can then be compensated by enabling time compensation. This is relevant when you switch back into position mode.
-    {% picture 2022-torque-control/time_compensation_encoder.png %}
-    {% picture 2022-torque-control/time_compensation_drive.png %}
+   {% picture 2022-torque-control/speed_limit.png %}
+3. In the **Process data** tab, expand the **Ch A operation** and select **Cyclic_synchronous_torque_mode_CST (10)** for virtual operation mode 0. This adds the necessary process data objects, such as the target torque and the actual measured torque. It also enables you to switch between position and torque control.
+   {% picture 2022-torque-control/torque_mode.png %}
+4. In the **MOTION > NC- TASK1 SAF > Axis > {your axis} > Encoder** and **Drive** tabs, turn on Time compensation. This setting enables smooth switching between position and torque mode. That is because, in torque mode, the NC axis writes permanent actual positions into the set position variable. Due to a dead time, the actual is delayed by four cycles. This dead time can then be compensated by enabling time compensation. This is relevant when you switch back into position mode.
+   {% picture 2022-torque-control/time_compensation_encoder.png %}
+   {% picture 2022-torque-control/time_compensation_drive.png %}
 
 After applying the settings, you can add the following code to force control an axis. Here
- - `someAxis`: is the axis you want to control.
- - `forceOptions`: defines a starting value of the torque when the `force` function block is activated. This ensures a smooth transition from the previous mode.
- - `targetForce`: the torque you want to apply.
- - `TORQUE_RAMP`: defines a maximum ramp for the torque.
- - `VELOCITY_LIMIT`: Limit the velocity.
- - `ContinuousUpdate`: If `TRUE`, then changes to `targetForce` are immediately applied by torque control, rather than needing to toggle `force.Execute`.[^2]
-Then you activate force control by setting `forceMode` to `TRUE`.
+
+- `someAxis`: is the axis you want to control.
+- `forceOptions`: defines a starting value of the torque when the `force` function block is activated. This ensures a smooth transition from the previous mode.
+- `targetForce`: the torque you want to apply.
+- `TORQUE_RAMP`: defines a maximum ramp for the torque.
+- `VELOCITY_LIMIT`: Limit the velocity.
+- `ContinuousUpdate`: If `TRUE`, then changes to `targetForce` are immediately applied by torque control, rather than needing to toggle `force.Execute`.[^2]
+  Then you activate force control by setting `forceMode` to `TRUE`.
 
 ```
 PROGRAM MAIN
@@ -77,11 +79,12 @@ force(
 );
 ```
 
-After calling another motion function block, the operation mode is automatically switched back from torque mode into position mode. For example `MC_MoveVelocity`,  `MC_MoveAbsolute`, `MC_Halt` etc.
+After calling another motion function block, the operation mode is automatically switched back from torque mode into position mode. For example `MC_MoveVelocity`, `MC_MoveAbsolute`, `MC_Halt` etc.
 
 Some final notes:
-- Lag monitoring switches off automatically if you use `MC_TorqueControl` with the AX5000.
--  `MC_TorqueControl` works with all SoE or CoE drives, but maybe the velocity limit function doesn't work.
 
-[^1]: Velocity limits work with the AX5000 and the AX8000.  But, because this limit is a feature inside the AX firmware it doesn't work for the EL, ELM, or AMI.
+- Lag monitoring switches off automatically if you use `MC_TorqueControl` with the AX5000.
+- `MC_TorqueControl` works with all SoE or CoE drives, but maybe the velocity limit function doesn't work.
+
+[^1]: Velocity limits work with the AX5000 and the AX8000. But, because this limit is a feature inside the AX firmware it doesn't work for the EL, ELM, or AMI.
 [^2]: [For continuous force mode to work, the TwinCAT runtime needs to be at version >=4024.35](https://cookncode.com/TwinCatChangelog/tc3/#features)
