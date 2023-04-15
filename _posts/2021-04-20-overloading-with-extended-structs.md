@@ -11,7 +11,7 @@ I was wondering if overloading functions in TwinCAT was possible, but I found ou
 
 Overloading a function means that you can call a function with an identical name, but it can have a different number of arguments. Also the data type of the arguments and/or the return type can differ. Some programming languages support more overloading types then others, as you can see here in this [overview](https://en.wikibooks.org/wiki/Computer_Programming/Function_overloading).
 
-An example of overloading in C# would be the following. The function `Rectangle`  can be called using a either a single `int` argument (making it a square), or it can be called using two `float` arguments. Furthermore the single argument function returns an `int`, whereas the two argument one returns a `float`.
+An example of overloading in C# would be the following. The function `Rectangle` can be called using a either a single `int` argument (making it a square), or it can be called using two `float` arguments. Furthermore the single argument function returns an `int`, whereas the two argument one returns a `float`.
 
 ```c#
 public static class Area
@@ -34,7 +34,7 @@ Many methods in C# are overloaded. See for example the [`Sum`](https://docs.micr
 
 Jakob Sagatowski showed in his post "[The wonders of any](https://alltwincat.com/2018/03/21/the-wonders-of-any/)" that you can call a single function with different data types. In order to make this work he uses [`ANY`](https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/9007201784167563.html&id=2058661990612177947).
 
-You can also use extended structs to have a single function which accepts multiple structs which use the same base struct. For example we have a `Point`  struct with a x and a y coordinate.
+You can also use extended structs to have a single function which accepts multiple structs which use the same base struct. For example we have a `Point` struct with a x and a y coordinate.
 
 ```
 TYPE Point :
