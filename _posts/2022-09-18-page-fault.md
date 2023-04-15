@@ -13,6 +13,8 @@ toc: true
 
 You probably came across the following error message when you activated a configuration. The error says there is a _Page Fault_. This message was always quite puzzling to me when I started programming PLCs.
 
+> Exception (Exception Code: Oxc0000005, Page Fault) in PLC Application PLC Instance, Task PlcTask (RBP: Oxffffc80154efece0, RIP: 0xfiff800f2741d9a1, RSP: Oxffffc80154efecb0)
+
 {% picture 2021-02-07-preventing-page-faults-from-references/page_fault.png %}
 
 The reason for the page fault is easy to see once you log into your project because it highlights the point of failure.
