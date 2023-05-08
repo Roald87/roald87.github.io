@@ -16,6 +16,7 @@ permalink: /tclinks/
 - [WJB Automation Blog](https://dronefactory.co.uk/): Combining TwinCAT with Unity, a 3D graphics development platform.
 - [Toni Kucic](https://tkucic.github.io/): Various articles and speed tests for CODESYS.
 - [Jouke Aalvanger](https://joukeaalvanger.nl/): Blog focussed on software development in the industrial automation world.
+- [Automate to live](https://hopperpop.github.io/): Beautiful blog by Bram Gurdebeke who shared his automation knowledge.
 
 ## Forums
 
