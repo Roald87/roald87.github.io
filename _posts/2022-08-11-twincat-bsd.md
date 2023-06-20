@@ -15,7 +15,7 @@ Note that TwinCAT/BSD is only for the TwinCAT runtime. Thus the place where your
 
 Tc/BSD is a little different from Windows and it might take you some time to get used to it. For example, Tc/BSD doesn't come with a desktop environment: there is no desktop with icons, wallpaper, and a start menu. If you start Tc/BSD, you see a black screen with white text on it: a terminal.
 
-Make no mistake, working from a terminal can be quite powerful, but it can take some time to get familiar with. At the end of the tutorial, I show some examples of what you can do with it. You can also find some commands in [the official manual](https://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf).
+Make no mistake, working from a terminal can be quite powerful, but it can take some time to get familiar with. At the end of the tutorial, I show some examples of what you can do with it. You can also find some commands in [the official manual](https://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf) or in this [cheat sheet](https://github.com/benhar-dev/tcbsd-cheatsheet).
 
 Some other advantages of using Tc/BSD are that it's free and requires less space. Moreover, because Beckhoff has access to the code of the operating system, they do not rely on Microsoft for support. The reliance is causing issues for Windows CE because its end of life is planned for late 2023.
 
