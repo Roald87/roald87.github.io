@@ -43,6 +43,7 @@ permalink: /tclinks/
 - [TcTemplate](https://github.com/rruiter87/tctemplate): A GitHub template repo for TwinCAT projects.
 - [TcUnits](https://github.com/rruiter87/tcunits): TwinCAT library with aliases for units.
 - [TcControl](https://github.com/rruiter87/TcControl): Library for PID control and signal filtering.
+- [Dynamic Collections](https://github.com/fisothemes/TwinCat-Dynamic-Collections): Library containing Lists, Queues, Maps and more.
 
 ## Repos
 
