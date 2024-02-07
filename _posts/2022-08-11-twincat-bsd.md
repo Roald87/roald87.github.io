@@ -178,7 +178,7 @@ Installing TwinCAT/BSD on VMware is a bit more complicated. The steps below are 
 
     {% picture 2022-tcbsd/diskmgmt.png %}
 
-17.     You see several partitions. In my case, there are two. Disk 1 is the removable one, thus I want to use that as the hard drive.
+17. You see several partitions. In my case, there are two. Disk 1 is the removable one, thus I want to use that as the hard drive.
 
     {% picture 2022-tcbsd/disk0_disk1.png %}
 
