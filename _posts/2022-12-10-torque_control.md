@@ -32,7 +32,7 @@ Then, follow these steps to use torque control:
 
 1. In the **Advanced > Slot settings** tab, select **VelocityControl2** for the **VelocityControlSlot** of the respective axis. This enables the velocity limit.[^1]
    {% picture 2022-torque-control/velocity_limit.png %}
-2. In the **Parameter list**, select **TorqueMightBeReducedToZero (1)**. This is another setting to enable the velocity limit.
+2. In the **Parameter list**, select **TorqueMightBeReducedToZero (1)** at index **0x60CA**. This is another setting to enable the velocity limit.
    {% picture 2022-torque-control/speed_limit.png %}
 3. In the **Process data** tab, expand the **Ch A operation** and select **Cyclic_synchronous_torque_mode_CST (10)** for virtual operation mode 0. This adds the necessary process data objects, such as the target torque and the actual measured torque. It also enables you to switch between position and torque control.
    {% picture 2022-torque-control/torque_mode.png %}
