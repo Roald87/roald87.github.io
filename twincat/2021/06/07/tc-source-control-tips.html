@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>Source control tips for TwinCAT</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Source control tips for TwinCAT | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Source control tips for TwinCAT" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Source control is an essential tool when you’re developing software. Yet, there is little information online on how to do it for TwinCAT projects. In this post, I share some tips and tricks I picked up along the way. The main focus is git, but many points apply to other source control systems as well." />
+<meta property="og:description" content="Source control is an essential tool when you’re developing software. Yet, there is little information online on how to do it for TwinCAT projects. In this post, I share some tips and tricks I picked up along the way. The main focus is git, but many points apply to other source control systems as well." />
+<link rel="canonical" href="https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-07T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Source control tips for TwinCAT" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2021-06-07T00:00:00+00:00","description":"Source control is an essential tool when you’re developing software. Yet, there is little information online on how to do it for TwinCAT projects. In this post, I share some tips and tricks I picked up along the way. The main focus is git, but many points apply to other source control systems as well.","headline":"Source control tips for TwinCAT","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html"},"url":"https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>Source control tips for TwinCAT</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Jun 7, 2021. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#what-is-source-control">What is source control?</a></li>
+<li class="toc-entry toc-h2"><a href="#git">Git</a></li>
+<li class="toc-entry toc-h2"><a href="#0-choosing-the-right-implementation-language">0. Choosing the right implementation language</a></li>
+<li class="toc-entry toc-h2"><a href="#1-gitignore">1. .gitignore</a></li>
+<li class="toc-entry toc-h2"><a href="#2-creating-independent-files">2. creating independent files</a></li>
+<li class="toc-entry toc-h2"><a href="#3-formatting-rules">3. formatting rules</a></li>
+<li class="toc-entry toc-h2"><a href="#4-git-filters">4. git filters</a></li>
+</ul><p>Source control is an essential tool when you’re developing software. Yet, there is little information online on how to do it for TwinCAT projects. In this post, I share some tips and tricks I picked up along the way. The main focus is git, but many points apply to other source control systems as well.</p>
+
+<p><em>You might also like my <a href="https://cookncode.com/twincat/2022/04/14/pre-commit.html">new post on pre-commits</a>.</em></p>
+
+<h2 id="what-is-source-control">
+<a class="anchor" href="#what-is-source-control" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is source control?</h2>
+
+<p>If you’re not yet familiar with source control then it is something that you should absolutely learn as a software developer. <a href="https://en.wikipedia.org/wiki/Version_control">Source control</a>, also known as version control, allows you to save your code incrementally in a database. Since it saves all your changes, it is easy to return to a previous state of your code. So, if you discover that a feature you implemented doesn’t work out as you planned, it is easy to revert the changes. You no longer have to use the <a href="https://phdcomics.com/comics/archive.php?comicid=1531">filename for versioning</a>.</p>
+
+<p><img src="https://phdcomics.com/comics/archive/phd101212s.gif" alt='PhD comics "final.doc"'></p>
+
+<h2 id="git">
+<a class="anchor" href="#git" aria-hidden="true"><span class="octicon octicon-link"></span></a>Git</h2>
+
+<p>The most popular versioning control system is <a href="https://git-scm.com/">git</a>. Git is a free and open source distributed version control system. Distributed means that every developer has a copy of the full history of the code on their machine. Each developer can make local changes first and save each incremental step. Once they are done, they can merge their changes into the main codebase. This process contrasts with <a href="https://faun.pub/centralized-vs-distributed-version-control-systems-a135091299f0">centralized source control</a>. Here you always need a connection to the central source control system to add your changes to the history.</p>
+
+<p>You can even use git only for yourself. So you can do version control on any document on your computer.</p>
+
+<p>Although git and the ideas behind it are very powerful, it is also very difficult to master. So much so, that there are billion-dollar companies like GitLab and GitHub, which provide a more user-friendly interface to git. <a href="https://xkcd.com/1597/">Relevant XKCD</a>:</p>
+
+<p><img src="https://imgs.xkcd.com/comics/git.png" alt="XKCD on gits complexity"></p>
+
+<p>If you’re getting started with git, I recommend installing a git GUI like SourceTree, GitKraken, or <a href="https://github.com/FredrikNoren/ungit">ungit</a>. You’ll learn to use the git command line with time. Or you can play <a href="https://ohmygit.org/">this game</a> which teaches you some git commands.</p>
+
+<p>But even after gaining some experience, I still like to use one of the GUI’s for most git commands.</p>
+
+<h2 id="0-choosing-the-right-implementation-language">
+<a class="anchor" href="#0-choosing-the-right-implementation-language" aria-hidden="true"><span class="octicon octicon-link"></span></a>0. Choosing the right implementation language</h2>
+
+<p>The first step for seamless TwinCAT source control starts with the selection of the implementation language. There are various implementation languages for PLC code. Think of ladder logic, function block diagrams, and structured text. Some of these implementation languages work better with source control systems than others. From my personal experience with function block diagrams and structured text, I’ve noticed a big difference in how well they work under source control.</p>
+
+<p>Let me start with a disclaimer. I’m a bit biased on the structured text front. I think that structured text is the future of plc programming. It is so much more versatile than the others. Take for example a simple for loop or an if-else statement. These are impossible to implement with a function block diagram, or a lot more verbose than in structured text.</p>
+
+<p>With that said, I’ll now explain why structured text works much better than function block diagrams for source control. In the end, it all boils down to the readability of the raw text files.</p>
+
+<p>When you’re using anything other than structured text, the raw text files are unreadable. Furthermore, minor changes in function block diagrams can lead to a code difference of dozens or hundreds of lines. For example, if you switch the order of two statements in a function block diagram.</p>
+
+<p>That is why Beckhoff made the <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_sourcecontrol/1242471435.html&amp;id=">TcCompare tool</a>. It helps you to merge changes or view differences between versions. But, if you’re working on a system that doesn’t have the TcCompare tool, you have a problem. Then it is very difficult to make sense of the changes between versions. Only structured text works on any system.</p>
+
+<h2 id="1-gitignore">
+<a class="anchor" href="#1-gitignore" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. .gitignore</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">.gitignore</code> file is very important when you’re using git. Git uses this file to determine for which files or folders it can ignore the changes. Files and folders which git can ignore usually fall into two categories. In the first category are files that are created from the other files. For example, the <code class="language-plaintext highlighter-rouge">.tmc</code> file that is compiled from your plc code. Or if you have some documentation in a markdown file from which you generate an html page. In these cases, you only want to have the plc code or the markdown file under source control. A second category is user-specific files. For example, the <code class="language-plaintext highlighter-rouge">.sou</code> file from Visual Studio. This file contains the users’ options for the Visual Studio project.</p>
+
+<p>Beckhoff already <a href="https://infosys.beckhoff.com/content/1033/tc3_sourcecontrol/406303499.html?id=4324324478820586350">provides a list</a> which explains where most file extensions are used for. They also list whether files should be under source control or not. Jakob Sagatowski added some more files to this list and <a href="https://github.com/github/gitignore/blob/master/TwinCAT3.gitignore">made a general TwinCAT3 .gitignore file</a>. This file gives you a good starting point with any git source-controlled TwinCAT project.</p>
+
+<h2 id="2-creating-independent-files">
+<a class="anchor" href="#2-creating-independent-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. creating independent files</h2>
+
+<p>Once you determined which files should be source controlled, it is important to make sure those files only change when needed. You want to make sure TwinCAT saves settings for independent parts in separate files. Several separate files which it can create are:</p>
+
+<ol>
+  <li>
+    <p>NC axes or IO devices can be saved in a separate file as explained on <a href="https://infosys.beckhoff.com/content/1033/tc3_sourcecontrol/767894795.html?id=9000520481371853523">this page on InfoSys</a>.</p>
+  </li>
+  <li>
+    <p><a href="https://infosys.beckhoff.com/content/1033/tc3_sourcecontrol/767894795.html?id=9000520481371853523">On the same page</a> it mentions that you can save the plc project as a separate file. Or you can create a stand-alone plc project <a href="https://roald87.github.io/twincat/2020/01/29/standalone-plc-projects.html">as I wrote about earlier</a>.</p>
+  </li>
+  <li>
+    <p>Events from the <a href="https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html">TwinCAT EventLogger</a>. These are normally stored in the <code class="language-plaintext highlighter-rouge">.tsproj</code> file. But you can also store them in an independent file. If you created a new project, you can immediately save them in a separate file. In case you want to transfer existing events to a tmc file, the steps are almost the same. For both, you first right-click <strong>Type System</strong> and select <strong>Add New Item…</strong>. Choose a name and location to save your new event class.</p>
+
+    <p><a href="/assets/2021-07-06-tc-source-control/create_tmc_event.png"><picture><source srcset="/generated/2021-07-06-tc-source-control/create_tmc_event-277-79ffadd30.webp 277w" type="image/webp"><source srcset="/generated/2021-07-06-tc-source-control/create_tmc_event-277-aee9181fd.png 277w" type="image/png"><img src="/generated/2021-07-06-tc-source-control/create_tmc_event-277-aee9181fd.png" alt="image-20210605125836430" width="277" height="150"></source></source></picture></a></p>
+
+    <p>Then if you want to save <em>existing events</em> into the new file, select the event classes you want to save in this new file.</p>
+
+    <p><a href="/assets/2021-07-06-tc-source-control/existing_events.png"><picture><source srcset="/generated/2021-07-06-tc-source-control/existing_events-300-50969c840.webp 300w, /generated/2021-07-06-tc-source-control/existing_events-500-50969c840.webp 500w, /generated/2021-07-06-tc-source-control/existing_events-571-50969c840.webp 571w" type="image/webp"><source srcset="/generated/2021-07-06-tc-source-control/existing_events-300-979027514.png 300w, /generated/2021-07-06-tc-source-control/existing_events-500-979027514.png 500w, /generated/2021-07-06-tc-source-control/existing_events-571-979027514.png 571w" type="image/png"><img src="/generated/2021-07-06-tc-source-control/existing_events-571-979027514.png" alt="existing-events" width="571" height="113"></source></source></picture></a></p>
+
+    <p>If you want to save <em>new events</em> into the file, right-click the empty area and select <strong>New</strong>.</p>
+
+    <p><a href="/assets/2021-07-06-tc-source-control/new_events.png"><picture><source srcset="/generated/2021-07-06-tc-source-control/new_events-300-fb29b3a05.webp 300w, /generated/2021-07-06-tc-source-control/new_events-500-fb29b3a05.webp 500w, /generated/2021-07-06-tc-source-control/new_events-558-fb29b3a05.webp 558w" type="image/webp"><source srcset="/generated/2021-07-06-tc-source-control/new_events-300-d5261129b.png 300w, /generated/2021-07-06-tc-source-control/new_events-500-d5261129b.png 500w, /generated/2021-07-06-tc-source-control/new_events-558-d5261129b.png 558w" type="image/png"><img src="/generated/2021-07-06-tc-source-control/new_events-558-d5261129b.png" alt="new-events" width="558" height="173"></source></source></picture></a></p>
+
+    <p>Then add events to this new event class.</p>
+
+    <p><a href="/assets/2021-07-06-tc-source-control/new_event_class.png"><picture><source srcset="/generated/2021-07-06-tc-source-control/new_event_class-300-c9bdd50f9.webp 300w, /generated/2021-07-06-tc-source-control/new_event_class-500-c9bdd50f9.webp 500w, /generated/2021-07-06-tc-source-control/new_event_class-720-c9bdd50f9.webp 720w" type="image/webp"><source srcset="/generated/2021-07-06-tc-source-control/new_event_class-300-f387816fd.png 300w, /generated/2021-07-06-tc-source-control/new_event_class-500-f387816fd.png 500w, /generated/2021-07-06-tc-source-control/new_event_class-720-f387816fd.png 720w" type="image/png"><img src="/generated/2021-07-06-tc-source-control/new_event_class-752-f387816fd.png" alt="new-event-class" width="752" height="324"></source></source></picture></a></p>
+
+    <p>When you select the type system, the new event classes also show up among all other available event classes.</p>
+
+    <p><a href="/assets/2021-07-06-tc-source-control/all_event_classes.png"><picture><source srcset="/generated/2021-07-06-tc-source-control/all_event_classes-300-5b1e72502.webp 300w, /generated/2021-07-06-tc-source-control/all_event_classes-500-5b1e72502.webp 500w, /generated/2021-07-06-tc-source-control/all_event_classes-517-5b1e72502.webp 517w" type="image/webp"><source srcset="/generated/2021-07-06-tc-source-control/all_event_classes-300-e1cca40bc.png 300w, /generated/2021-07-06-tc-source-control/all_event_classes-500-e1cca40bc.png 500w, /generated/2021-07-06-tc-source-control/all_event_classes-517-e1cca40bc.png 517w" type="image/png"><img src="/generated/2021-07-06-tc-source-control/all_event_classes-517-e1cca40bc.png" alt="all-event-classes" width="517" height="241"></source></source></picture></a></p>
+
+    <p>Once the events are in separate tmc files, make sure:</p>
+
+    <ul>
+      <li>
+        <p>You add the event tmc to source control. Most <code class="language-plaintext highlighter-rouge">.gitignore</code> files exclude all tmc files, for example the <a href="https://github.com/github/gitignore/blob/master/TwinCAT3.gitignore">GitHub TwinCAT3</a> <code class="language-plaintext highlighter-rouge">.gitignore</code>.</p>
+      </li>
+      <li>
+        <p>Clear “Persistent (even if unused)”</p>
+
+        <p><a href="/assets/2021-07-06-tc-source-control/uncheck-persistent.png"><picture><source srcset="/generated/2021-07-06-tc-source-control/uncheck-persistent-300-003566f1f.webp 300w, /generated/2021-07-06-tc-source-control/uncheck-persistent-391-003566f1f.webp 391w" type="image/webp"><source srcset="/generated/2021-07-06-tc-source-control/uncheck-persistent-300-74e55a8c1.png 300w, /generated/2021-07-06-tc-source-control/uncheck-persistent-391-74e55a8c1.png 391w" type="image/png"><img src="/generated/2021-07-06-tc-source-control/uncheck-persistent-391-74e55a8c1.png" alt="image-20210806223400979" width="391" height="234"></source></source></picture></a></p>
+
+        <p>Otherwise, the events are <a href="https://stackoverflow.com/q/68677733/6329629">added to the project file again</a>:</p>
+
+        <p><a href="/assets/2021-07-06-tc-source-control/remove_persistent.png"><picture><source srcset="/generated/2021-07-06-tc-source-control/remove_persistent-300-9cef11c3d.webp 300w, /generated/2021-07-06-tc-source-control/remove_persistent-500-9cef11c3d.webp 500w" type="image/webp"><source srcset="/generated/2021-07-06-tc-source-control/remove_persistent-300-729ff3fb3.png 300w, /generated/2021-07-06-tc-source-control/remove_persistent-500-729ff3fb3.png 500w" type="image/png"><img src="/generated/2021-07-06-tc-source-control/remove_persistent-500-729ff3fb3.png" alt="remove-persistent" width="500" height="107"></source></source></picture></a></p>
+      </li>
+      <li>
+        <p>If you’re using 4022.x the event tmc files are <a href="https://stackoverflow.com/q/68678539/6329629">not formatted</a>. Beckhoff introduced proper formatting in 4024. If you’re stuck with 4022.x, you have to format the tmc files yourself. For example with the Sublime plugin <a href="https://github.com/alek-sys/sublimetext_indentxml">Indent XML</a> or use <a href="hhttps://cookncode.com/twincat/2022/04/14/pre-commit.html#twincat-relevant-pre-commits">pre-commits</a>.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Per default TwinCAT saves so-called LineIDs in the <code class="language-plaintext highlighter-rouge">.TcPOU</code> files. It <a href="https://infosys.beckhoff.com/content/1033/tc3_userinterface/4692665483.html?id=1009989685087473824">uses the LineIDs for</a></p>
+
+    <blockquote>
+      <p>breakpoint handling, for example, and ensure that the code lines can be assigned to machine code instructions</p>
+    </blockquote>
+
+    <p>There are no adverse effects from saving them in a separate file, so I’m not sure why this is not the default. Especially since these LineIDs often change, even without any changes to the code. Once you enabled this option (under <strong>Tools &gt; Options &gt;TwinCAT &gt; PLC Environment &gt; Write options</strong>), TwinCAT saves the LineIDs in the <code class="language-plaintext highlighter-rouge">LineIDs.dbg</code> file. So if you enable this option, make sure this file is then added to the <code class="language-plaintext highlighter-rouge">.gitignore</code> file.</p>
+
+    <p>If you have an existing project with LineIDs in the <code class="language-plaintext highlighter-rouge">.TcPOU</code> file, you can easily remove them with the bash command: <code class="language-plaintext highlighter-rouge">find . -type f -wholename "*.TcPOU" -exec sed -i "/LineId/d" {} \;</code>. Run this command in the top folder of your project. It performs a recursive search through all folders, match files with a <code class="language-plaintext highlighter-rouge">.TcPOU</code> extension, and remove all lines containing <code class="language-plaintext highlighter-rouge">LineId</code>. This command should work unless you used <code class="language-plaintext highlighter-rouge">LineId</code> somewhere in your code.</p>
+
+    <p>To prevent LineIDs from re-entering your code, you can add a <a href="https://cookncode.com/twincat/2022/04/14/pre-commit.html#twincat-relevant-pre-commits">pre-commit</a>.</p>
+  </li>
+</ol>
+
+<h2 id="3-formatting-rules">
+<a class="anchor" href="#3-formatting-rules" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. formatting rules</h2>
+
+<p>With the preceding measures implemented, source control of your TwinCAT3 project has already improved significantly. But, there are some more measures you can take. One of them is making sure you format your code in such a way that it makes comparing code differences easier when viewed in plain text.</p>
+
+<p>One example which can make a difference is a new white line at the end of a declaration or implementation part. Take the following very short example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Counter := Counter + 1;
+a := Counter * 2;
+</code></pre></div></div>
+
+<p>When you look into the <code class="language-plaintext highlighter-rouge">.TcPOU</code> file itself this part looks as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Implementation&gt;
+  &lt;ST&gt;&lt;![CDATA[Counter := Counter + 1;
+  a := Counter * 2;]]&gt;&lt;/ST&gt;
+&lt;/Implementation&gt;
+</code></pre></div></div>
+
+<p>If you now make a very minor change to the code. For example, add <code class="language-plaintext highlighter-rouge">b := a/4;</code> on the last line. The plain text difference of this change looks as follows:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Implementation&gt;
+  &lt;ST&gt;&lt;![CDATA[Counter := Counter + 1;
+<span class="gd">- a := Counter * 2;]]&gt;&lt;/ST&gt;
+</span><span class="gi">+ a := Counter * 2;
++ b := a/4;]]&gt;&lt;/ST&gt;
+</span>&lt;/Implementation&gt;
+</code></pre></div></div>
+
+<p>If instead, you changed a file with a new line at the end, then the diff would look like</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Implementation&gt;
+  &lt;ST&gt;&lt;![CDATA[Counter := Counter + 1;
+    a := Counter * 2;
+<span class="gi">+   b := a/4;
+</span>  ]]&gt;&lt;/ST&gt;
+&lt;/Implementation&gt;
+</code></pre></div></div>
+
+<p>By adding a single white line, the difference went from -1/+2 to -0/+1. There are a few more of these tricks. Have a <a href="https://github.com/Roald87/TcBlack/blob/master/docs/style.md">look at the style guide</a> of the structured text formatter (<em>TcBlack</em>) I’m building for more ideas. Unfortunately <em>TcBlack</em> has a limited capability currently. There is however a fully functional, paid alternative, called <a href="https://www.stweep.com/">STweep</a>. You could use this, with the options outlined in the <em>TcBlack</em> style guide, to achieve minimal differences.</p>
+
+<h2 id="4-git-filters">
+<a class="anchor" href="#4-git-filters" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. git filters</h2>
+
+<p>You can use git filters to create a sort of <a href="https://stackoverflow.com/a/22171275/6329629"><code class="language-plaintext highlighter-rouge">.gitignore</code> for specific lines of code</a>. Whenever you checkout or commit a piece of code it can go through the git filter. If the file matches a filter setting, it can run a script to change some code before git commits or checks out the code.</p>
+
+<p>Let me show you how you can use it. Suppose you are working on a project with a few people. Everyone has their own development PLC with a different target net ID. When you select your development PLC’s net ID, TwinCAT saves this change in the <code class="language-plaintext highlighter-rouge">.tsproj</code> file:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Project</span>
+  <span class="na">ProjectGUID=</span><span class="s">"{DEF6D51E-ADA4-4CFE-B6F1-CB3CC59478BE}"</span>
+  <span class="na">TargetNetId=</span><span class="s">"1.23.456.78.1.1"</span>
+  <span class="na">ShowHideConfigurations=</span><span class="s">"#x106"</span>
+<span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>Since your colleagues’ NetId is different, you want to prevent git from including this change in the code’s version history. You can achieve this with the following steps, <a href="https://stackoverflow.com/a/22171275/6329629">as also explained in this StackOverflow post</a></p>
+
+<ol>
+  <li>
+    <p>In the <code class="language-plaintext highlighter-rouge">.git/config</code> file inside the project you add the following:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="o">[</span>filter <span class="s2">"ignoreNetId"</span><span class="o">]</span>
+    clean <span class="o">=</span> sh <span class="s2">".git/ignoreTargetNetId.sh"</span>
+</code></pre></div>    </div>
+
+    <p>Here you define a filter called <code class="language-plaintext highlighter-rouge">ignoreNetId</code> which defines a <code class="language-plaintext highlighter-rouge">clean</code> step. The <code class="language-plaintext highlighter-rouge">clean</code> gets triggered when you add a file to a commit (<code class="language-plaintext highlighter-rouge">git add</code>). When the <code class="language-plaintext highlighter-rouge">clean</code> gets triggered, it calls a bash script <code class="language-plaintext highlighter-rouge">ignoreTargetNetId.sh</code>, which is defined below.</p>
+  </li>
+  <li>
+    <p>Add the following line to the <code class="language-plaintext highlighter-rouge">.gitattributes</code> file:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">*</span>.tsproj <span class="nv">filter</span><span class="o">=</span>ignoreNetId
+</code></pre></div>    </div>
+
+    <p>This command means that if you commit or checkout a file with the extension <code class="language-plaintext highlighter-rouge">.tsproj</code>, git calls the <code class="language-plaintext highlighter-rouge">ignoreNetId</code> filter of the previous step.</p>
+  </li>
+  <li>
+    <p>Finally you make a new file called <code class="language-plaintext highlighter-rouge">ignoreNetId.sh</code> in the <code class="language-plaintext highlighter-rouge">.git</code> folder and add the following content to this file:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="nt">--regexp-extended</span> <span class="s2">"s/}</span><span class="se">\"</span><span class="s2"> TargetNetId=</span><span class="se">\"</span><span class="s2">[0-9.]+</span><span class="se">\"</span><span class="s2">/}</span><span class="se">\"</span><span class="s2"> /g"</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</code></pre></div>    </div>
+
+    <p>The <a href="https://www.gnu.org/software/sed/manual/sed.html"><code class="language-plaintext highlighter-rouge">sed</code></a> command is a text replacement command-line tool. The <code class="language-plaintext highlighter-rouge">--regexp-extended</code> option means you can use most regular expressions to find the TargetNetId. The regular expression which does the search and replace is <code class="language-plaintext highlighter-rouge">"s/}\" TargetNetId=\"[0-9.]+\"/}\" /g"</code>. The search part (<code class="language-plaintext highlighter-rouge">"s/}\" TargetNetId=\"[0-9.]+\"/</code>) searches for a target net id with an arbitrary net id. If this pattern matches, it replaces it with <code class="language-plaintext highlighter-rouge">}\" </code>, thus removing the whole net id part. With the net id removed, TwinCAT then selects the <code class="language-plaintext highlighter-rouge">&lt;Local&gt;</code> TwinCAT runtime when you open the project. The last part <code class="language-plaintext highlighter-rouge">"$@"</code> is where the filename argument is filled in if git calls this script based on the first step.</p>
+  </li>
+</ol>
+
+<p>In summary. The preceding steps ensure that whenever you select your development plc, this change never shows up as a change in git. You can also do the reverse: that on checkout, it automatically adds your developments plc net id into the target net id. Then you do not have to select it each time you checkout the code. See <a href="https://stackoverflow.com/a/22171275/6329629">this StackOverflow post</a> for more info.</p>
+
+<p>I’ve also used the filters to remove random changes to the HMI port in the <code class="language-plaintext highlighter-rouge">.hmiproj</code> file and an automatic add/removal of development specific <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2533017227.html?id=8439395065138194985">compiler definitions</a>.</p>
+
+<p>I hope I shared some useful tips. What kind of tricks do you use?​</p>
+
+<p>Posted: <a href="https://www.reddit.com/r/TwinCat/comments/nu5b3c/source_control_tips_for_twincat/">r/TwinCAT</a>, <a href="https://www.reddit.com/r/PLC/comments/nu5ca0/source_control_tips_for_twincat/">r/plc</a>.</p>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/twincat/2021/04/20/overloading-with-extended-structs.html">❮ 'Overloading' functions with extended structs</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/twincat/2021/08/17/tc-simulation.html">Machine simulation with a digital twin ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

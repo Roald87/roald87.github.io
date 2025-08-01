@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>State of the Industry: Hannover Messe 2023</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>State of the Industry: Hannover Messe 2023 | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="State of the Industry: Hannover Messe 2023" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In this post, I summarize my thoughts after visiting the Hannover Messe in 2023. I focus on developments in PLC software. I found that the industry is focusing more on software and developing tools catered to software developers." />
+<meta property="og:description" content="In this post, I summarize my thoughts after visiting the Hannover Messe in 2023. I focus on developments in PLC software. I found that the industry is focusing more on software and developing tools catered to software developers." />
+<link rel="canonical" href="https://cookncode.com/twincat%20plc%20simatic/2023/05/02/hannover-2023.html" />
+<meta property="og:url" content="https://cookncode.com/twincat%20plc%20simatic/2023/05/02/hannover-2023.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-05-02T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="State of the Industry: Hannover Messe 2023" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2023-05-02T00:00:00+00:00","description":"In this post, I summarize my thoughts after visiting the Hannover Messe in 2023. I focus on developments in PLC software. I found that the industry is focusing more on software and developing tools catered to software developers.","headline":"State of the Industry: Hannover Messe 2023","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat%20plc%20simatic/2023/05/02/hannover-2023.html"},"url":"https://cookncode.com/twincat%20plc%20simatic/2023/05/02/hannover-2023.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>State of the Industry: Hannover Messe 2023</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on May 2, 2023. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat plc simatic</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#historical-context">Historical context</a></li>
+<li class="toc-entry toc-h2"><a href="#the-rise-of-software-people">The rise of software people</a></li>
+<li class="toc-entry toc-h2"><a href="#new-kids-on-the-block">New kids on the block</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#controllino">Controllino</a></li>
+<li class="toc-entry toc-h3"><a href="#revolution-pi">Revolution Pi</a></li>
+<li class="toc-entry toc-h3"><a href="#software-defined-automation">Software Defined Automation</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#old-players">Old players</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#simatic-ax">Simatic AX</a></li>
+<li class="toc-entry toc-h3"><a href="#ctrlx-automation">ctrlX Automation</a></li>
+<li class="toc-entry toc-h3"><a href="#twincat">TwinCAT</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#wrapping-up">Wrapping up</a></li>
+</ul><p>In this post, I summarize my thoughts after visiting the Hannover Messe in 2023. I focus on developments in PLC software. I found that the industry is focusing more on software and developing tools catered to software developers.</p>
+
+<p><em>I wrote this article back in 2023 but forgot to post it. Better late than never.</em></p>
+
+<p>Before I start: where do you believe we currently are on the Industry X.0 scale?</p>
+
+<p>1.0 steam
+2.0 electrification
+3.0 digitization
+4.0 smart automation
+5.0 human–machine connectivity</p>
+
+<h2 id="historical-context">
+<a class="anchor" href="#historical-context" aria-hidden="true"><span class="octicon octicon-link"></span></a>Historical context</h2>
+
+<p>Before diving into the current state, I want to explain how we got here.</p>
+
+<p>It started with the Industrial Revolution when we used steam to power machines—Industry 1.0. Then came electrification: Industry 2.0.</p>
+
+<p>With electrical control, relays could implement some <em>logic control</em> in machines. For example: if a box of height 1 arrives here, activate this piston; if the height is larger, activate a second piston. This enabled more complex processes, but changes were cumbersome, and the relay cabinets were large, as seen in the image.</p>
+
+<p><a href="/assets/2023-hannover/relay-room.jpg"><picture><source srcset="/generated/2023-hannover/relay-room-300-7076ce2bd.webp 300w, /generated/2023-hannover/relay-room-500-7076ce2bd.webp 500w, /generated/2023-hannover/relay-room-720-7076ce2bd.webp 720w" type="image/webp"><source srcset="/generated/2023-hannover/relay-room-300-9bb68c712.jpg 300w, /generated/2023-hannover/relay-room-500-9bb68c712.jpg 500w, /generated/2023-hannover/relay-room-720-9bb68c712.jpg 720w" type="image/jpeg"><img src="/generated/2023-hannover/relay-room-800-9bb68c712.jpg" width="879" height="579"></source></source></picture></a></p>
+
+<p>Cue the digital revolution—Industry 3.0. Digitizing the logic allowed for more complex, flexible control. This gave us <em>programmable logic controllers</em>, or PLCs.</p>
+
+<p>PLC programming and tooling were made by and for hardware engineers. That’s why ladder logic resembles a relay schematic. There was never a real separation between hardware and software roles, unlike in general IT.</p>
+
+<p>Until now.</p>
+
+<h2 id="the-rise-of-software-people">
+<a class="anchor" href="#the-rise-of-software-people" aria-hidden="true"><span class="octicon octicon-link"></span></a>The rise of software people</h2>
+
+<p>Over the last few years, I’ve noticed more people with traditional IT backgrounds—including myself—entering the field of industrial automation. These people are used to different tools: command-line interfaces, plain text files, and reusing other people’s code.</p>
+
+<p>For a long time, these things either didn’t exist or barely did. But that is changing. Some new players have entered the space, and some old ones have learned new tricks. I’ll introduce the new ones first, then the old.</p>
+
+<h2 id="new-kids-on-the-block">
+<a class="anchor" href="#new-kids-on-the-block" aria-hidden="true"><span class="octicon octicon-link"></span></a>New kids on the block</h2>
+
+<h3 id="controllino">
+<a class="anchor" href="#controllino" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://www.controllino.com/">Controllino</a>
+</h3>
+
+<p>Controllino made an Arduino-based PLC. It’s quite affordable (€100–€300), though limited in functionality. Depending on the model, you get a fixed number of digital and analog I/O. Currently, there’s no option to extend it.</p>
+
+<p>The most interesting part is the software. Since it’s Arduino-based, you can use existing Arduino sketches. They also support Python integration for non-time-critical tasks.</p>
+
+<p>It’s a great platform for quick prototyping, especially since many developers are more familiar with Arduino code than with IEC-based languages.</p>
+
+<h3 id="revolution-pi">
+<a class="anchor" href="#revolution-pi" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://revolutionpi.com/">Revolution Pi</a>
+</h3>
+
+<p>Another new player, this one is Raspberry Pi-based. It offers more compute power and supports up to ten add-on terminals. Along with digital and analog I/O, it also supports Profinet, Profibus, and Ethernet terminals. Prices are higher than for the Arduino option.</p>
+
+<p>The Pi PLC can be programmed using traditional PLC languages, or with C and Python.</p>
+
+<h3 id="software-defined-automation">
+<a class="anchor" href="#software-defined-automation" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://www.softwaredefinedautomation.io/">Software Defined Automation</a>
+</h3>
+
+<p>This company doesn’t produce PLCs—it’s a SaaS provider. Their product focuses on PLCops: managing PLCs and code history across vendors, factories, and machines.</p>
+
+<p>It’s interesting to see software-only companies entering the PLC space.</p>
+
+<h2 id="old-players">
+<a class="anchor" href="#old-players" aria-hidden="true"><span class="octicon octicon-link"></span></a>Old players</h2>
+
+<h3 id="simatic-ax">
+<a class="anchor" href="#simatic-ax" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://www.dex.siemens.com/...">Simatic AX</a>
+</h3>
+
+<p>Siemens surprised me most with its new Simatic AX framework. It’s a completely new approach to PLC programming, compared to their previous TIA Portal solution.</p>
+
+<p>The editor is VS Code–based. Code is saved in plain text, there’s a CLI, a package manager, unit tests, an autoformatter, and configuration is done in YAML files!</p>
+
+<p>Amazing.</p>
+
+<p>All the wishes Jakob and Peter mentioned in their <a href="https://www.youtube.com/watch?v=dgEsib42WaA">TwinCAT 4 wish list</a> are implemented—and more.</p>
+
+<p>Currently, Simatic AX is in limited beta and can be used to write libraries for import into TIA Portal. It sounds very promising, and I think AX will quickly replace TIA Portal.</p>
+
+<h3 id="ctrlx-automation">
+<a class="anchor" href="#ctrlx-automation" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://apps.boschrexroth.com/microsites/ctrlx-automation/en/">ctrlX Automation</a>
+</h3>
+
+<p>Rexroth has built a new PLC platform based on a real-time version of Ubuntu. It even runs on other hardware (though without hard real-time guarantees).</p>
+
+<p>I haven’t used it myself, but the features sound great. For example, the PLC runs a web server, allowing configuration directly from a PC—no software installation required.</p>
+
+<p>You can also write real-time code in C and integrate it into your PLC logic.</p>
+
+<p>Finally, all PLC variables are exposed over a REST API. This allows reading/writing from any programming language.</p>
+
+<p>One great demo featured a Jupyter notebook executing commands like <code class="language-plaintext highlighter-rouge">axis.goto(1.1, 2.1, 3.5)</code> on demand. This makes it easy to experiment with actuators.</p>
+
+<h3 id="twincat">
+<a class="anchor" href="#twincat" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://www.beckhoff.com/en-en/products/automation/twincat/">TwinCAT</a>
+</h3>
+
+<p>From Beckhoff, I didn’t see many promising software developments. They launched a ChatGPT API for TwinCAT, which is ironic considering these models rely on open-source code—something mostly absent for Structured Text. They may have retrained it on internal code, though.</p>
+
+<h2 id="wrapping-up">
+<a class="anchor" href="#wrapping-up" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wrapping up</h2>
+
+<p>The mindset around PLC software development is shifting. Not only are users changing—suppliers are too. It’s good to see vendors offer native interfaces and support general-purpose languages like Python and C. More code is being shared on GitHub. And Arduino- and Raspberry Pi–based products are introducing fresh perspectives.</p>
+
+<p>I estimate we’re currently at <strong>Industry 3.2</strong>. But with these tools on the horizon, we may finally reach the long-hyped Industry 4.0.</p>
+</div><!-- prettier-ignore
+
+-->
+
+ 
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

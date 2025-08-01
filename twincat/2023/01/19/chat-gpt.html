@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>Playing with Chat-GPT and structured text</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Playing with Chat-GPT and structured text | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Playing with Chat-GPT and structured text" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Chat-GPT is OpenAI’s latest release of it GPT series language models. Its capabilities have surpassed a threshold that made it famous outside of the IT crowd. In the mean time, it has gathered many supporters and possibly even more haters. Let me test its ability to generate structured text." />
+<meta property="og:description" content="Chat-GPT is OpenAI’s latest release of it GPT series language models. Its capabilities have surpassed a threshold that made it famous outside of the IT crowd. In the mean time, it has gathered many supporters and possibly even more haters. Let me test its ability to generate structured text." />
+<link rel="canonical" href="https://cookncode.com/twincat/2023/01/19/chat-gpt.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2023/01/19/chat-gpt.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-01-19T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Playing with Chat-GPT and structured text" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2023-01-19T00:00:00+00:00","description":"Chat-GPT is OpenAI’s latest release of it GPT series language models. Its capabilities have surpassed a threshold that made it famous outside of the IT crowd. In the mean time, it has gathered many supporters and possibly even more haters. Let me test its ability to generate structured text.","headline":"Playing with Chat-GPT and structured text","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2023/01/19/chat-gpt.html"},"url":"https://cookncode.com/twincat/2023/01/19/chat-gpt.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>Playing with Chat-GPT and structured text</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Jan 19, 2023. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><ul id="toc" class="section-nav">
+</ul><p><a href="https://chat.openai.com/">Chat-GPT</a> is OpenAI’s latest release of it GPT series language models. Its capabilities have surpassed a threshold that made it famous outside of the IT crowd. In the mean time, it has gathered many supporters and possibly even more haters. Let me test its ability to generate structured text.</p>
+
+<p><strong>Prompt:</strong> <em>write a function in structured text which replaces all vowels with the numbers 1-5.</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION ReplaceVowels(s: STRING) : STRING
+VAR
+    i: INT;
+    vowels: ARRAY[1..5] OF CHAR;
+BEGIN
+    vowels[1] := 'a';
+    vowels[2] := 'e';
+    vowels[3] := 'i';
+    vowels[4] := 'o';
+    vowels[5] := 'u';
+
+    FOR i := 1 TO LEN(s) DO
+        IF (s[i] = vowels[1]) THEN s[i] := '1';
+        IF (s[i] = vowels[2]) THEN s[i] := '2';
+        IF (s[i] = vowels[3]) THEN s[i] := '3';
+        IF (s[i] = vowels[4]) THEN s[i] := '4';
+        IF (s[i] = vowels[5]) THEN s[i] := '5';
+    END_FOR;
+
+    ReplaceVowels := s;
+END_FUNCTION
+</code></pre></div></div>
+
+<blockquote>
+  <p>This function takes a string as input, and replaces all vowels with the numbers 1-5. The function first declares an array of characters called “vowels” which contains all the vowels. Then it loops through each character of the input string, and checks if the current character is equal to any of the vowels in the array. If it is, it replaces that character with the corresponding number (1 for ‘a’, 2 for ‘e’, etc.). Finally, the function returns the modified string.</p>
+</blockquote>
+
+<p>Pretty good! Not valid structured text, but it’s close. Lets try to call the function anyway, to see if it works.</p>
+
+<p><strong>Prompt:</strong> <em>ReplaceVowels(“Apple”)</em></p>
+
+<blockquote>
+  <p>If the input string is “Apple” and you call the ReplaceVowels function with “Apple” as the argument, the function will loop through each character of the input string and check if it is a vowel. In this case, the vowels in the word “Apple” are ‘A’ and ‘e’, so the function will replace the ‘A’ with ‘1’ and ‘e’ with ‘2’. So the output will be “1ppl2”</p>
+</blockquote>
+
+<p>It is quite verbose, but it gave the correct answer! Not bad. Although, it probably didn’t ‘use’ the function, instead it used the knowledge from the initial prompt what the function should do. Let’s optimize the function a little.</p>
+
+<p><strong>Prompt:</strong> <em>modify the function such that you use a switch case instead of IF ELSE statements</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION ReplaceVowels(s: STRING) : STRING
+VAR
+    i: INT;
+BEGIN
+    FOR i := 1 TO LEN(s) DO
+        CASE s[i] OF
+            'a': s[i] := '1';
+            'e': s[i] := '2';
+            'i': s[i] := '3';
+            'o': s[i] := '4';
+            'u': s[i] := '5';
+        END_CASE;
+    END_FOR;
+
+    ReplaceVowels := s;
+END_FUNCTION
+</code></pre></div></div>
+
+<blockquote>
+  <p>This function uses a switch case statement instead of IF ELSE statements to check if a character is a vowel and replace it with the corresponding number. The switch case statement checks the value of the current character in the input string (s[i]), and replaces it with the corresponding number based on the case that matches the character.</p>
+</blockquote>
+
+<p>Very nice. Next improvement.</p>
+
+<p><strong>Prompt:</strong> <em>use a new string to save the modified string into</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION ReplaceVowels(s: STRING) : STRING
+VAR
+    i: INT;
+    newStr: STRING;
+BEGIN
+    newStr := '';
+    FOR i := 1 TO LEN(s) DO
+        CASE s[i] OF
+            'a': newStr := newStr + '1';
+            'e': newStr := newStr + '2';
+            'i': newStr := newStr + '3';
+            'o': newStr := newStr + '4';
+            'u': newStr := newStr + '5';
+            ELSE newStr := newStr + s[i];
+        END_CASE;
+    END_FOR;
+
+    ReplaceVowels := newStr;
+END_FUNCTION
+</code></pre></div></div>
+
+<p>Cool.</p>
+
+<p><strong>Prompt:</strong> <em>you can’t concatenate strings with a + in structured text. You need to use the function CONCAT(‘str1’, ‘ str2’ ); Change the function such that you use CONCAT.</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION ReplaceVowels(s: STRING) : STRING
+VAR
+    i: INT;
+    newStr: STRING;
+BEGIN
+    newStr := '';
+    FOR i := 1 TO LEN(s) DO
+        CASE s[i] OF
+            'a': newStr := CONCAT(newStr, '1');
+            'e': newStr := CONCAT(newStr, '2');
+            'i': newStr := CONCAT(newStr, '3');
+            'o': newStr := CONCAT(newStr, '4');
+            'u': newStr := CONCAT(newStr, '5');
+            ELSE newStr := CONCAT(newStr, s[i]);
+        END_CASE;
+    END_FOR;
+
+    ReplaceVowels := newStr;
+END_FUNCTION
+</code></pre></div></div>
+
+<p>Impressive! now lets try to get and <code class="language-plaintext highlighter-rouge">END_VAR</code> in there.</p>
+
+<p><strong>Prompt:</strong> <em>you forgot the END_VAR</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION ReplaceVowels(s: STRING) : STRING
+VAR
+    i: INT;
+    newStr: STRING;
+BEGIN
+    newStr := '';
+    FOR i := 1 TO LEN(s) DO
+        CASE s[i] OF
+            'a': newStr := CONCAT(newStr, '1');
+            'e': newStr := CONCAT(newStr, '2');
+            'i': newStr := CONCAT(newStr, '3');
+            'o': newStr := CONCAT(newStr, '4');
+            'u': newStr := CONCAT(newStr, '5');
+            ELSE newStr := CONCAT(newStr, s[i]);
+        END_CASE;
+    END_FOR;
+
+    ReplaceVowels := newStr;
+END_FUNCTION
+END_VAR
+</code></pre></div></div>
+
+<p>Uh-oh. This is where it starts to fail. Maybe If I’m more explicit.</p>
+
+<p><strong>Prompt:</strong> <em>the end_var should come before BEGIN. Also with twincat structed text, the input variables need to be placed between VAR INPUT and END_VAR, not in brackets after the function name,</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VAR_INPUT
+    s: STRING;
+END_VAR
+
+VAR
+    i: INT;
+    newStr: STRING;
+
+FUNCTION ReplaceVowels() : STRING
+BEGIN
+    newStr := '';
+    FOR i := 1 TO LEN(s) DO
+        CASE s[i] OF
+            'a': newStr := CONCAT(newStr, '1');
+            'e': newStr := CONCAT(newStr, '2');
+            'i': newStr := CONCAT(newStr, '3');
+            'o': newStr := CONCAT(newStr, '4');
+            'u': newStr := CONCAT(newStr, '5');
+            ELSE newStr := CONCAT(newStr, s[i]);
+        END_CASE;
+    END_FOR;
+
+    ReplaceVowels := newStr;
+END_FUNCTION
+</code></pre></div></div>
+
+<p>It is becoming a hot mess. It forgot one <code class="language-plaintext highlighter-rouge">END_VAR</code> and moved the FUNCTION too far down. One more attempt:</p>
+
+<p><strong>Prompt:</strong> <em>The FUNCTION declaration should go at the top. Followed by all VAR* blocks. Each VAR* block should be closed with END_VAR. And remove the parentheses after function name</em></p>
+
+<blockquote>
+  <p>Too many requests in 1 hour. Try again later.</p>
+</blockquote>
+
+<p>¯\_(ツ)_/¯</p>
+
+<p>I guess it’s time to call it a day. Quite impressive none-the-less what it showed there. It got 90% right, and might save you some typing and thinking. What’s your experience?</p>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous">
+  <a href="/twincat/2022/12/10/torque_control.html">❮ How to use MC_TorqueControl?</a>
+</div>
+ 
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

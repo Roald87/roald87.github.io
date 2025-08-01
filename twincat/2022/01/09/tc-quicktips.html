@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>Tips and tricks for TwinCAT</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Tips and tricks for TwinCAT | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Tips and tricks for TwinCAT" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Over the years I’ve come across some features of TwinCAT or programming in general which can improve your code or your coding experience. Read on to level up your TwinCAT game in 2022!" />
+<meta property="og:description" content="Over the years I’ve come across some features of TwinCAT or programming in general which can improve your code or your coding experience. Read on to level up your TwinCAT game in 2022!" />
+<link rel="canonical" href="https://cookncode.com/twincat/2022/01/09/tc-quicktips.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2022/01/09/tc-quicktips.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-01-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Tips and tricks for TwinCAT" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2022-01-09T00:00:00+00:00","description":"Over the years I’ve come across some features of TwinCAT or programming in general which can improve your code or your coding experience. Read on to level up your TwinCAT game in 2022!","headline":"Tips and tricks for TwinCAT","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2022/01/09/tc-quicktips.html"},"url":"https://cookncode.com/twincat/2022/01/09/tc-quicktips.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>Tips and tricks for TwinCAT</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Jan 9, 2022. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><p>Over the years I’ve come across some features of TwinCAT or programming in general which can improve your code or your coding experience. Read on to level up your TwinCAT game in 2022!</p>
+
+<ul>
+  <li>Don’t repeat yourself, often abbreviated as <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>, is a saying in software development to denote unnecessary repeating code. One tell-tale sign if you write non-DRY code, is that you copy and paste a lot of code.</li>
+  <li>
+    <p>You can activate multi-line editing by pressing the <kbd>Alt</kbd> key and dragging your mouse across several lines. If you use this function a lot, then it is a sign that your code is probably not <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>. So it is time to think about how to refactor your code.</p>
+
+    <p><img src="/assets/2022-01-09-tc-quicktips/multiline_editing.gif" alt="multi-line editing with Alt key" /></p>
+  </li>
+  <li>A <code class="language-plaintext highlighter-rouge">_</code> can be used as a thousand-separator. For example: <code class="language-plaintext highlighter-rouge">number : INT := 1_000_000;</code>. Or you can use scientific notation if most decimals are zeros: <code class="language-plaintext highlighter-rouge">number : INT := 1E6;</code>.</li>
+  <li>
+    <p>(TwinCAT 4024+) Use <kbd>Ctrl</kbd> + <kbd>K</kbd>, <kbd>Ctrl</kbd> + <kbd>C</kbd> to comment one or more lines and <kbd>Ctrl</kbd> + <kbd>K</kbd>, <kbd>Ctrl</kbd> + <kbd>U</kbd> to uncomment them again. Check InfoSys for <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/8116040203.html?id=3573376012774111267">more hotkeys</a>.</p>
+
+    <p><img src="/assets/2022-01-09-tc-quicktips/commenting.gif" alt="comment one or more lines" /></p>
+  </li>
+  <li>In a <code class="language-plaintext highlighter-rouge">CASE</code> statement you can use multiple cases <code class="language-plaintext highlighter-rouge">1, 3, 61</code> or a whole range <code class="language-plaintext highlighter-rouge">1..10</code> for a single case. For example:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	// Instead of this
+	CASE aCase OF
+	    1: Method1();
+	    2: AnotherMethod();
+	    3: AnotherMethod();
+	    4: AnotherMethod();
+	    6: Method1();
+	END_CASE
+
+	// You can do this
+	CASE aCase OF
+	    1, 6: Method1();
+	    2..4: AnotherMethod();
+	END_CASE
+</code></pre></div></div>
+
+<ul>
+  <li>Using numbers to denote a case is usually not the best way to denote a case. You can make cases self-documenting by creating an <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tcplccontrol/html/tcplcctrl_enum.htm&amp;id=">ENUM</a> for each case.</li>
+  <li>There are implicit enums or local enums in TwinCAT. They can be used if you only need an enum in a single function block. You can define them as follows: <code class="language-plaintext highlighter-rouge">colors : (Red, Blue, Green);</code>. See for more info <a href="https://alltwincat.com/2021/11/16/local-enumerations/">this AllTwinCAT post</a>.</li>
+  <li>If you have a method or a function which returns a boolean, try to avoid the usage of an <code class="language-plaintext highlighter-rouge">IF</code> statement. Since you’re returning a boolean, you can often do this in a single line:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	// Do not do this
+	METHOD LargerThenTwelve : BOOL
+	VAR_INPUT
+		number : INT;
+	END_VAR
+
+	IF number &gt; 12 THEN
+		LargerThenTwelve := TRUE;
+	ELSE
+		LargerThenTwelve := FALSE;
+	END_IF
+
+	// Do this
+	METHOD LargerThenTwelve : BOOL
+	VAR_INPUT
+		number : INT;
+	END_VAR
+
+	LargerThenTwelve := number &gt; 12;
+</code></pre></div></div>
+
+<ul>
+  <li>Use <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529600907.html&amp;id="><code class="language-plaintext highlighter-rouge">{attribute 'call_after_init'}</code></a> to call a method once <em>after</em> a function block was initialized. You can use this, instead of a <code class="language-plaintext highlighter-rouge">bInitialized</code> flag in your code, which inevitability you forget to set to <code class="language-plaintext highlighter-rouge">TRUE</code> at least once 😉.</li>
+  <li>Prevent the usage of <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529453451.html?id=5839194631499501145"><code class="language-plaintext highlighter-rouge">POINTER</code></a>s. They can lead to some pretty unpredictable behavior since you’re accessing a piece of memory directly. A better alternative is to use <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529458827.html?id=2716630061017907414"><code class="language-plaintext highlighter-rouge">REFERENCE</code></a>, because it has a cleaner syntax and type safety. Although also references need to be checked for validity as <a href="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html">I wrote about earlier</a>. For the health and safety of you and your code, I recommend to only use them if you’re memory constrained for example.</li>
+  <li>Try to prevent method calls from multiple tasks, since it makes debugging difficult. If you really have to do it, use <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/45844579955484184843.html?id=2972649925198044529">this</a>.</li>
+  <li>
+    <p>You can use <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529343371.html?id=6082056588980779846">bit access</a> for integer variables. For example, <code class="language-plaintext highlighter-rouge">variable.2 := TRUE</code>, sets the third bit to <code class="language-plaintext highlighter-rouge">TRUE</code>. There is read access as well. You can for example check if some bit of a number is true by <code class="language-plaintext highlighter-rouge">IF variable.3 THEN ...</code>. This method allows you to decipher an error code where each bit represents a specific error. Note that <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529442699.html?id=5627824830837717856">bit access can be a factor five slower</a> than using a bit mask.</p>
+
+    <p><a href="/assets/2022-01-09-tc-quicktips/timing_bit_access.png"><picture><source srcset="/generated/2022-01-09-tc-quicktips/timing_bit_access-300-3e99c82be.webp 300w, /generated/2022-01-09-tc-quicktips/timing_bit_access-500-3e99c82be.webp 500w, /generated/2022-01-09-tc-quicktips/timing_bit_access-720-3e99c82be.webp 720w" type="image/webp"><source srcset="/generated/2022-01-09-tc-quicktips/timing_bit_access-300-8e92e97c1.png 300w, /generated/2022-01-09-tc-quicktips/timing_bit_access-500-8e92e97c1.png 500w, /generated/2022-01-09-tc-quicktips/timing_bit_access-720-8e92e97c1.png 720w" type="image/png"><img src="/generated/2022-01-09-tc-quicktips/timing_bit_access-800-8e92e97c1.png" width="1182" height="563"></picture></a>
+<em>Timing results from <a href="https://github.com/tkucic/codesys_code_execution_speedTests">Toni Kucic</a>.</em></p>
+  </li>
+</ul>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/twincat/2021/09/13/units.html">❮ How not to screw up your units</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/twincat/2022/01/31/row-classes-provider.html">How to work with the RowClassesProvider? ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

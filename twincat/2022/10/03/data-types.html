@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>TwinCAT datatypes in .NET</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>TwinCAT datatypes in .NET | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="TwinCAT datatypes in .NET" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="When you’re working with ADS, you often need to know the size of a data type or what a data type is called in your .NET language. I couldn’t find the combined information, so I decided to make the overview myself." />
+<meta property="og:description" content="When you’re working with ADS, you often need to know the size of a data type or what a data type is called in your .NET language. I couldn’t find the combined information, so I decided to make the overview myself." />
+<link rel="canonical" href="https://cookncode.com/twincat/2022/10/03/data-types.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2022/10/03/data-types.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-10-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="TwinCAT datatypes in .NET" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2022-10-03T00:00:00+00:00","description":"When you’re working with ADS, you often need to know the size of a data type or what a data type is called in your .NET language. I couldn’t find the combined information, so I decided to make the overview myself.","headline":"TwinCAT datatypes in .NET","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2022/10/03/data-types.html"},"url":"https://cookncode.com/twincat/2022/10/03/data-types.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>TwinCAT datatypes in .NET</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Oct 3, 2022. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><p>When you’re working with ADS, you often need to know the size of a data type or what a data type is called in your .NET language. I couldn’t find the combined information, so I decided to make the overview myself.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IEC61131-3</th>
+      <th>System Manager</th>
+      <th>.NET type</th>
+      <th>C#</th>
+      <th>Visual Basic</th>
+      <th>Lower bound</th>
+      <th>Upper bound</th>
+      <th>Memory space</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BOOL</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BIT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Boolean</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Boolean</code></td>
+      <td>0 (<code class="language-plaintext highlighter-rouge">FALSE</code>)</td>
+      <td>1 (<code class="language-plaintext highlighter-rouge">TRUE</code>)</td>
+      <td>8 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BOOL</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BIT8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Boolean</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Boolean</code></td>
+      <td>0 (<code class="language-plaintext highlighter-rouge">FALSE</code>)</td>
+      <td>1 (<code class="language-plaintext highlighter-rouge">TRUE</code>)</td>
+      <td>8 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BYTE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BITARR8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Byte</code></td>
+      <td><code class="language-plaintext highlighter-rouge">byte</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Byte</code></td>
+      <td>0</td>
+      <td>255</td>
+      <td>8 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WORD</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BITARR16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.UInt16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ushort</code></td>
+      <td>-</td>
+      <td>0</td>
+      <td>65535</td>
+      <td>16 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DWORD</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BITARR32</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.UInt32</code></td>
+      <td><code class="language-plaintext highlighter-rouge">uint</code></td>
+      <td>-</td>
+      <td>0</td>
+      <td>4.29·10<sup>9</sup></td>
+      <td>32 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">INT8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.SByte</code></td>
+      <td><code class="language-plaintext highlighter-rouge">sbyte</code></td>
+      <td>-</td>
+      <td>-128</td>
+      <td>127</td>
+      <td>8 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">INT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">INT16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Int16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">short</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Short</code></td>
+      <td>-32768</td>
+      <td>32767</td>
+      <td>16 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">INT32</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Int32</code></td>
+      <td><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Integer</code></td>
+      <td>-2.15·10<sup>9</sup></td>
+      <td>2.15·10<sup>9</sup></td>
+      <td>32 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">INT64</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Int64</code></td>
+      <td><code class="language-plaintext highlighter-rouge">long</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Long</code></td>
+      <td>-2<sup>63</sup></td>
+      <td>-2<sup>63</sup>-1</td>
+      <td>64 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">USINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">UINT8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Byte</code></td>
+      <td><code class="language-plaintext highlighter-rouge">byte</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Byte</code></td>
+      <td>0</td>
+      <td>255</td>
+      <td>8 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">UINT16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.UInt16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ushort</code></td>
+      <td>-</td>
+      <td>0</td>
+      <td>65535</td>
+      <td>16 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UDINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">UINT32</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.UInt32</code></td>
+      <td><code class="language-plaintext highlighter-rouge">uint</code></td>
+      <td>-</td>
+      <td>0</td>
+      <td>4.29·10<sup>9</sup></td>
+      <td>32 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ULINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">UINT64</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.UInt64</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ulong</code></td>
+      <td>-</td>
+      <td>0</td>
+      <td>2<sup>64</sup>-1</td>
+      <td>64 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">REAL</code></td>
+      <td><code class="language-plaintext highlighter-rouge">FLOAT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Single</code></td>
+      <td><code class="language-plaintext highlighter-rouge">float</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Single</code></td>
+      <td>-3.40·10<sup>38</sup></td>
+      <td>3.40·10<sup>38</sup></td>
+      <td>32 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LREAL</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DOUBLE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Double</code></td>
+      <td><code class="language-plaintext highlighter-rouge">double</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Double</code></td>
+      <td>-1.798·10<sup>308</sup></td>
+      <td>1.798·10<sup>308</sup></td>
+      <td>64 bit</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sources">Sources</h2>
+
+<ul>
+  <li><a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529394315.html?id=1768255288341275228">BOOL</a></li>
+  <li><a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529399691.html&amp;id=">INT</a></li>
+  <li><a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529399691.html&amp;id=">REAL</a></li>
+  <li><a href="https://infosys.beckhoff.com/content/1033/tc3_system/html/tcsysmgr_datatypecomparison.htm?id=3043404538898382042">Data type comparison</a></li>
+</ul>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/twincat/2022/09/18/page-fault.html">❮ Why am I getting a page fault in TwinCAT?</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/twincat/2022/12/10/torque_control.html">How to use MC_TorqueControl? ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

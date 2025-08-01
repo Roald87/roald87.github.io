@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>Unit testing code from a separate project</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Unit testing code from a separate project | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Unit testing code from a separate project" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The other day I answered a question on StackOverflow on how to unit test code from a separate project. To increase its exposure I also added it here." />
+<meta property="og:description" content="The other day I answered a question on StackOverflow on how to unit test code from a separate project. To increase its exposure I also added it here." />
+<link rel="canonical" href="https://cookncode.com/twincat/2021/02/21/unit-testing-from-separate-project.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2021/02/21/unit-testing-from-separate-project.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-21T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Unit testing code from a separate project" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2021-02-21T00:00:00+00:00","description":"The other day I answered a question on StackOverflow on how to unit test code from a separate project. To increase its exposure I also added it here.","headline":"Unit testing code from a separate project","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2021/02/21/unit-testing-from-separate-project.html"},"url":"https://cookncode.com/twincat/2021/02/21/unit-testing-from-separate-project.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>Unit testing code from a separate project</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Feb 21, 2021. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><p>The other day <a href="https://stackoverflow.com/a/60542846/6329629">I answered a question on StackOverflow</a> on how to unit test code from a separate project. To increase its exposure I also added it here.</p>
+
+<ul>
+  <li><a href="https://gist.github.com/Roald87/c68ea920607ec8f32d977d32f3f82712">Code</a></li>
+</ul>
+
+<p>Say you have a TwinCAT project called <em>MyProject</em> which you want to test with the <a href="https://tcunit.org/">TcUnit</a> library. For this you create another project <em>MyProject_Tests</em>. So you have the following folder structure:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>repos
+  ├── MyProject
+  |  ├── MyProject
+  |  |  ├── Plc
+  |  |  |  ├── POUs
+  |  |  |  └── Plc.plcproj
+  |  |  └── MyProject.tsproj
+  |  └── MyProject.sln
+  |
+  ├── MyProject_Tests
+  |  ├── MyProject_Tests
+  |  |  ├── Plc
+  |  |  |  ├── POUs
+  |  |  |  └── Plc.plcproj
+  |  |  └── MyProject_Tests.tsproj
+  |  └── MyProject_Tests.sln
+  |
+  └── hardlinkPousToTestProject.bat
+</code></pre></div></div>
+
+<p>You then:</p>
+
+<ol>
+  <li>Add a folder <em>Tests</em> under <em>Plc</em> in the <em>MyProject_Tests</em> project.</li>
+  <li>Add a method you want to test to <em>MyProject/MyProject/Plc/POUs</em>.</li>
+  <li>Edit the path names in <a href="https://gist.github.com/Roald87/c68ea920607ec8f32d977d32f3f82712#file-hardlinkpoustotestproject-bat"><code class="language-plaintext highlighter-rouge">hardlinkPousToTestProject.bat</code></a> such that they point to the correct folders. So for the current example:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">for %%i in (.\path\to\project\POUs\*.TcPOU) do (</code> becomes <code class="language-plaintext highlighter-rouge">for %%i in (.\MyProject\MyProject\Plc\POUs\*.TcPOU) do (</code></li>
+      <li>and <code class="language-plaintext highlighter-rouge">mklink /H .\path\to\testproject\POUs\%%~nxi %%i</code> becomes <code class="language-plaintext highlighter-rouge">mklink /H .\MyProject_Tests\MyProject_Tests\Plc\POUs\%%~nxi %%i</code></li>
+    </ul>
+  </li>
+  <li>Run the batch script.</li>
+  <li>Manually add the <code class="language-plaintext highlighter-rouge">.TcPOU</code> files to the <code class="language-plaintext highlighter-rouge">_MyProject\_Tests_ project</code></li>
+  <li>Add the <em>MyProject_Tests\MyProject_Tests\Plc\POUs</em> folder to the <code class="language-plaintext highlighter-rouge">.gitignore</code> file since these files are already in <em>MyProject</em>.</li>
+</ol>
+
+<p>Your file structure should now look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>repos
+  ├── MyProject
+  |  ├── MyProject
+  |  |  ├── Plc
+  |  |  |  ├── POUs
+  |  |  |  |  └── Function.TcPOU  # Original file
+  |  |  |  └── Plc.plcproj
+  |  |  └── MyProject.tsproj
+  |  └── MyProject.sln
+  |
+  ├── MyProject_Tests
+  |  ├── MyProject_Tests
+  |  |  ├── Plc
+  |  |  |  ├── POUs
+  |  |  |  |  └── Function.TcPOU   # Hard linked file
+  |  |  |  ├── Tests
+  |  |  |  |  └── Function_Tests.TcPOU
+  |  |  |  └── Plc.plcproj
+  |  |  └── MyProject_Tests.tsproj
+  |  └── MyProject_Tests.sln
+  |
+  └── hardlinkPousToTestProject.bat
+</code></pre></div></div>
+
+<p>Now you can change <code class="language-plaintext highlighter-rouge">Function.TcPOU</code> from either <em>MyProject</em> or <em>MyProject_Tests</em>!</p>
+
+<h2 id="what-is-hard-linking">What is hard linking?</h2>
+
+<p>With hard linking, identical copies of a file are created. All the copies still point to the original file. So, whenever a change is made to a hard linked file, or the original, the changes show up in all the files. Hard linking basically creates multiple access points to the same file from different locations.</p>
+
+<p>Discuss: <a href="https://gist.github.com/Roald87/c68ea920607ec8f32d977d32f3f82712">Github snippet</a>.</p>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/twincat/2021/02/07/preventing-page-faults-from-references.html">❮ Preventing page faults from references</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/twincat/2021/04/20/overloading-with-extended-structs.html">'Overloading' functions with extended structs ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

@@ -1,0 +1,1586 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://cookncode.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cookncode.com/" rel="alternate" type="text/html" /><updated>2025-08-01T14:27:08+00:00</updated><id>https://cookncode.com/feed.xml</id><title type="html">Cook &amp;amp; Code</title><subtitle>Personal projects and ideas.</subtitle><entry><title type="html">How to structure a story</title><link href="https://cookncode.com/writing/2025/08/01/story-structures.html" rel="alternate" type="text/html" title="How to structure a story" /><published>2025-08-01T00:00:00+00:00</published><updated>2025-08-01T14:25:53+00:00</updated><id>https://cookncode.com/writing/2025/08/01/story-structures</id><content type="html" xml:base="https://cookncode.com/writing/2025/08/01/story-structures.html"><![CDATA[<p>I often visualize story structure with two vertical lines. The top is the beginning, and the bottom is the end. The distance between the lines reflects how detailed the story is at that point. Visualizing it this way helps me remember different structures. Here, I’ll discuss the following: the hourglass, the Klein bottle, and the Minto pyramid.</p>
+
+<h2 id="the-hourglass">The hourglass</h2>
+
+<p>The hourglass structure starts wide to capture a broad audience. As the story continues, it becomes increasingly detailed. Toward the end, the lines widen again as the storyteller makes broader statements and places the story in a larger context.</p>
+
+<p>A typical example of this structure is in academic publications or presentations. Publications often have a double hourglass structure: one for the abstract and one for the main text.</p>
+
+<svg viewBox="60 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <g inkscape:label="abstract_main" inkscape:groupmode="layer" id="layer1" style="display:inline">
+    <g id="g72034">
+      <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 136.525,19.05 c 0,6.377238 13.27524,9.565857 13.27524,19.131714 0,9.565857 -13.27524,12.754476 -13.27524,19.131714" id="hourglass_left" sodipodi:nodetypes="ccc" />
+      <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 168.35672,19.131714 c 0,6.381196 -12.52443,9.571795 -12.52443,19.143589 0,9.571794 12.52443,12.762393 12.52443,19.143589" id="hourglass_right" sodipodi:nodetypes="ccc" />
+    </g>
+    <g id="g72030">
+      <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 136.525,3.2294843 c 0,2.125147 10.627,3.187721 10.627,6.3754367 0,3.18772 -10.627,4.2503 -10.627,6.37545" id="path859-6" sodipodi:nodetypes="ccc" />
+      <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 168.35672,3.2567143 c 0,2.126466 -10.02597,3.1897 -10.02597,6.3793967 0,3.1897 10.02597,4.25293 10.02597,6.3794" id="hourglass__right-7" sodipodi:nodetypes="ccc" />
+    </g>
+    <text xml:space="preserve" style="font-style:normal;font-weight:normal;font-size:4.58611px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583" x="130.25539" y="12.819619" id="text4113"><tspan sodipodi:role="line" id="tspan4111" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.25539" y="12.819619">abstract</tspan></text>
+    <text xml:space="preserve" style="font-style:normal;font-weight:normal;font-size:4.58611px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583" x="129.61864" y="37.987865" id="text4113-8"><tspan sodipodi:role="line" id="tspan4111-5" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="129.61864" y="37.987865">main text</tspan></text>
+    <text xml:space="preserve" style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583" x="63.5" y="107.95" id="text19714"><tspan sodipodi:role="line" id="tspan19712" style="stroke-width:0.264583" x="63.5" y="107.95"></tspan></text>
+  </g>
+  </svg>
+
+<p>For the abstract, this is beautifully illustrated by this <a href="https://www.fabriziogilardi.org/resources/papers/good-abstracts.pdf">template abstract by Fabrizio Gilardi from ETH Zürich</a>:</p>
+
+<blockquote>
+  <p>Everyone agrees that this issue is really important. But we do not know much about this specific question, although it matters a great deal, for these reasons. We approach the problem from this perspective. Our research design focuses on these cases and relies on these data, which we analyze using this method. Results show what we have learned about the question. They have these broader implications.</p>
+</blockquote>
+
+<svg viewBox="10 110 200 50" xmlns="http://www.w3.org/2000/svg">
+<g inkscape:groupmode="layer" id="layer2" inkscape:label="abstract" style="display:inline">
+    <g id="g72042" transform="translate(-3.13579,-0.84177)">
+      <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 139.66079,111.96677 c 0,6.37721 13.27525,9.56583 13.27525,19.13168 0,9.56586 -13.27525,12.75447 -13.27525,19.1317" id="hourglass_left-8-2" sodipodi:nodetypes="ccc" />
+      <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 171.49252,112.04847 c 0,6.38119 -12.52443,9.57177 -12.52443,19.14357 0,9.57179 12.52443,12.76238 12.52443,19.14358" id="hourglass_right-0-9" sodipodi:nodetypes="ccc" />
+    </g>
+    <text xml:space="preserve" style="font-style:normal;font-weight:normal;font-size:4.58611px;line-height:1.55;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583" x="131.76546" y="114.63779" id="text11950-7"><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="131.76546" y="114.63779" id="tspan14006-3">Everyone agrees this issue is important.</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="131.76546" y="121.74625" id="tspan19996">There are many unknowns, but they are vital.</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="131.76546" y="128.85472" id="tspan19998">We approach the problem from this angle.</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="131.76546" y="135.9632" id="tspan20000">We uses these data, analyzed with this method.</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="131.76546" y="143.07167" id="tspan20002">Results show what we learned.</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="131.76546" y="150.18015" id="tspan20004">They have broader implications.</tspan></text>
+  </g>
+</svg>
+
+<p>Similarly, the structure of the main article follows the hourglass structure: introduction, methods, results, discussion, conclusion.</p>
+
+<svg viewBox="60 60 200 50" xmlns="http://www.w3.org/2000/svg">
+<g inkscape:groupmode="layer" id="layer3" inkscape:label="main" style="display:inline">
+    <g id="g72038">
+      <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 136.525,63.499998 c 0,6.377212 13.27524,9.565829 13.27524,19.131683 0,9.565857 -13.27524,12.754474 -13.27524,19.131699" id="hourglass_left-8" sodipodi:nodetypes="ccc" />
+      <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 168.35672,63.581705 c 0,6.381185 -12.52443,9.571772 -12.52443,19.143566 0,9.571787 12.52443,12.762384 12.52443,19.143579" id="hourglass_right-0" sodipodi:nodetypes="ccc" />
+    </g>
+    <text xml:space="preserve" style="font-style:normal;font-weight:normal;font-size:4.58611px;line-height:1.75;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583" x="130.12216" y="68.473434" id="text11950"><tspan sodipodi:role="line" id="tspan11948" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.12216" y="68.473434">introduction</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.12216" y="76.49913" id="tspan14000">methods</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.12216" y="84.524818" id="tspan14002">results</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.12216" y="92.550514" id="tspan14004">discussion</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.12216" y="100.5762" id="tspan14006">conclusions</tspan></text>
+  </g>
+  </svg>
+
+<h2 id="the-klein-bottle">The Klein bottle</h2>
+
+<p>The Klein bottle is a curious shape that has only a single surface.</p>
+
+<p><a href="/assets/2025-story-structure/klein-bottle.png"><picture><source srcset="/generated/2025-story-structure/klein-bottle-300-e958ceb49.webp 300w, /generated/2025-story-structure/klein-bottle-500-e958ceb49.webp 500w, /generated/2025-story-structure/klein-bottle-720-e958ceb49.webp 720w" type="image/webp"><source srcset="/generated/2025-story-structure/klein-bottle-300-e7d3174c6.png 300w, /generated/2025-story-structure/klein-bottle-500-e7d3174c6.png 500w, /generated/2025-story-structure/klein-bottle-720-e7d3174c6.png 720w" type="image/png"><img width="250 1024" style="display:block; margin:auto;" src="/generated/2025-story-structure/klein-bottle-800-e7d3174c6.png" height="1967"></picture></a></p>
+
+<p><em>By <a href="//commons.wikimedia.org/wiki/User:Tttrung" title="User:Tttrung">Tttrung</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=960446">Link</a></em></p>
+
+<p>A Klein bottle story starts wide, often with an anecdote or trivia, to capture a large audience. Then, it goes into increasing detail. At the end, the storyteller returns to the opening anecdote.</p>
+
+<svg viewBox="30 225 200 45" xmlns="http://www.w3.org/2000/svg">
+<g inkscape:groupmode="layer" id="layer5" inkscape:label="klein" style="display:inline">
+    <text xml:space="preserve" style="font-style:normal;font-weight:normal;font-size:4.58611px;line-height:3.5;font-family:sans-serif;text-align:end;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583" x="130.03532" y="232.70222" id="text11950-3-7"><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.03532" y="232.70222" id="tspan57063">introduction with anecdote</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.03532" y="248.75362" id="tspan58648">going into more detail</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.03532" y="264.80499" id="tspan58650">coming back to the anecdote</tspan></text>
+    <g id="g72049" transform="translate(-3.28094,-1.05452)">
+      <path id="path54429" style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 168.275,228.6 c 0,9.525 -12.7,28.575 -9.42989,31.83076 3.09386,3.08027 15.5785,-6.43064 15.67566,-12.55749 0.10423,-6.57327 -7.72733,-11.86875 -7.72733,-11.86875 M 139.7,228.6 c 0,12.7 12.76645,38.06931 19.05,38.1 6.41729,0 19.05,-12.7 19.05,-19.05 0,-6.35 -4.86382,-10.36813 -10.15549,-14.60146" sodipodi:nodetypes="csscccsc" />
+    </g>
+  </g>
+  </svg>
+
+<h2 id="the-minto-pyramid">The Minto pyramid</h2>
+
+<p>This structure was developed by <a href="https://en.wikipedia.org/wiki/Barbara_Minto">Barbara Minto</a>, hence the name. It starts with the main point, conclusion, or answer. The main point is then supported by arguments, and finally by data and facts.</p>
+
+<svg viewBox="30 165 200 50" xmlns="http://www.w3.org/2000/svg">
+<g inkscape:groupmode="layer" id="layer4" inkscape:label="minto" style="display:inline">
+    <g id="g72046" transform="translate(-3.175)">
+      <path style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 158.75,171.45 -19.05,38.1 h 38.1 z" id="path45900" />
+      <circle style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path46206" cx="158.60944" cy="171.22211" r="3.175" />
+    </g>
+    <text xml:space="preserve" style="font-style:normal;font-weight:normal;font-size:4.58611px;line-height:3.5;font-family:sans-serif;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583" x="130.06161" y="174.10516" id="text11950-3"><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.06161" y="174.10516" id="tspan14006-2">main point</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.06161" y="190.15656" id="tspan46507">supporting arguments</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.06161" y="206.20793" id="tspan48509">supporting data and facts</tspan><tspan sodipodi:role="line" style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583" x="130.06161" y="222.25932" id="tspan46509" /></text>
+  </g>
+</svg>]]></content><author><name></name></author><category term="writing" /><summary type="html"><![CDATA[I often visualize story structure with two vertical lines. The top is the beginning, and the bottom is the end. The distance between the lines reflects how detailed the story is at that point. Visualizing it this way helps me remember different structures. Here, I’ll discuss the following: the hourglass, the Klein bottle, and the Minto pyramid.]]></summary></entry><entry><title type="html">State of the Industry: Hannover Messe 2023</title><link href="https://cookncode.com/twincat%20plc%20simatic/2023/05/02/hannover-2023.html" rel="alternate" type="text/html" title="State of the Industry: Hannover Messe 2023" /><published>2023-05-02T00:00:00+00:00</published><updated>2025-08-01T14:25:53+00:00</updated><id>https://cookncode.com/twincat%20plc%20simatic/2023/05/02/hannover-2023</id><content type="html" xml:base="https://cookncode.com/twincat%20plc%20simatic/2023/05/02/hannover-2023.html"><![CDATA[<p>In this post, I summarize my thoughts after visiting the Hannover Messe in 2023. I focus on developments in PLC software. I found that the industry is focusing more on software and developing tools catered to software developers.</p>
+
+<p><em>I wrote this article back in 2023 but forgot to post it. Better late than never.</em></p>
+
+<p>Before I start: where do you believe we currently are on the Industry X.0 scale?</p>
+
+<p>1.0 steam
+2.0 electrification
+3.0 digitization
+4.0 smart automation
+5.0 human–machine connectivity</p>
+
+<h2 id="historical-context">Historical context</h2>
+
+<p>Before diving into the current state, I want to explain how we got here.</p>
+
+<p>It started with the Industrial Revolution when we used steam to power machines—Industry 1.0. Then came electrification: Industry 2.0.</p>
+
+<p>With electrical control, relays could implement some <em>logic control</em> in machines. For example: if a box of height 1 arrives here, activate this piston; if the height is larger, activate a second piston. This enabled more complex processes, but changes were cumbersome, and the relay cabinets were large, as seen in the image.</p>
+
+<p><a href="/assets/2023-hannover/relay-room.jpg"><picture><source srcset="/generated/2023-hannover/relay-room-300-7076ce2bd.webp 300w, /generated/2023-hannover/relay-room-500-7076ce2bd.webp 500w, /generated/2023-hannover/relay-room-720-7076ce2bd.webp 720w" type="image/webp"><source srcset="/generated/2023-hannover/relay-room-300-9bb68c712.jpg 300w, /generated/2023-hannover/relay-room-500-9bb68c712.jpg 500w, /generated/2023-hannover/relay-room-720-9bb68c712.jpg 720w" type="image/jpeg"><img src="/generated/2023-hannover/relay-room-800-9bb68c712.jpg" width="879" height="579"></picture></a></p>
+
+<p>Cue the digital revolution—Industry 3.0. Digitizing the logic allowed for more complex, flexible control. This gave us <em>programmable logic controllers</em>, or PLCs.</p>
+
+<p>PLC programming and tooling were made by and for hardware engineers. That’s why ladder logic resembles a relay schematic. There was never a real separation between hardware and software roles, unlike in general IT.</p>
+
+<p>Until now.</p>
+
+<h2 id="the-rise-of-software-people">The rise of software people</h2>
+
+<p>Over the last few years, I’ve noticed more people with traditional IT backgrounds—including myself—entering the field of industrial automation. These people are used to different tools: command-line interfaces, plain text files, and reusing other people’s code.</p>
+
+<p>For a long time, these things either didn’t exist or barely did. But that is changing. Some new players have entered the space, and some old ones have learned new tricks. I’ll introduce the new ones first, then the old.</p>
+
+<h2 id="new-kids-on-the-block">New kids on the block</h2>
+
+<h3 id="controllino"><a href="https://www.controllino.com/">Controllino</a></h3>
+
+<p>Controllino made an Arduino-based PLC. It’s quite affordable (€100–€300), though limited in functionality. Depending on the model, you get a fixed number of digital and analog I/O. Currently, there’s no option to extend it.</p>
+
+<p>The most interesting part is the software. Since it’s Arduino-based, you can use existing Arduino sketches. They also support Python integration for non-time-critical tasks.</p>
+
+<p>It’s a great platform for quick prototyping, especially since many developers are more familiar with Arduino code than with IEC-based languages.</p>
+
+<h3 id="revolution-pi"><a href="https://revolutionpi.com/">Revolution Pi</a></h3>
+
+<p>Another new player, this one is Raspberry Pi-based. It offers more compute power and supports up to ten add-on terminals. Along with digital and analog I/O, it also supports Profinet, Profibus, and Ethernet terminals. Prices are higher than for the Arduino option.</p>
+
+<p>The Pi PLC can be programmed using traditional PLC languages, or with C and Python.</p>
+
+<h3 id="software-defined-automation"><a href="https://www.softwaredefinedautomation.io/">Software Defined Automation</a></h3>
+
+<p>This company doesn’t produce PLCs—it’s a SaaS provider. Their product focuses on PLCops: managing PLCs and code history across vendors, factories, and machines.</p>
+
+<p>It’s interesting to see software-only companies entering the PLC space.</p>
+
+<h2 id="old-players">Old players</h2>
+
+<h3 id="simatic-ax"><a href="https://www.dex.siemens.com/...">Simatic AX</a></h3>
+
+<p>Siemens surprised me most with its new Simatic AX framework. It’s a completely new approach to PLC programming, compared to their previous TIA Portal solution.</p>
+
+<p>The editor is VS Code–based. Code is saved in plain text, there’s a CLI, a package manager, unit tests, an autoformatter, and configuration is done in YAML files!</p>
+
+<p>Amazing.</p>
+
+<p>All the wishes Jakob and Peter mentioned in their <a href="https://www.youtube.com/watch?v=dgEsib42WaA">TwinCAT 4 wish list</a> are implemented—and more.</p>
+
+<p>Currently, Simatic AX is in limited beta and can be used to write libraries for import into TIA Portal. It sounds very promising, and I think AX will quickly replace TIA Portal.</p>
+
+<h3 id="ctrlx-automation"><a href="https://apps.boschrexroth.com/microsites/ctrlx-automation/en/">ctrlX Automation</a></h3>
+
+<p>Rexroth has built a new PLC platform based on a real-time version of Ubuntu. It even runs on other hardware (though without hard real-time guarantees).</p>
+
+<p>I haven’t used it myself, but the features sound great. For example, the PLC runs a web server, allowing configuration directly from a PC—no software installation required.</p>
+
+<p>You can also write real-time code in C and integrate it into your PLC logic.</p>
+
+<p>Finally, all PLC variables are exposed over a REST API. This allows reading/writing from any programming language.</p>
+
+<p>One great demo featured a Jupyter notebook executing commands like <code class="language-plaintext highlighter-rouge">axis.goto(1.1, 2.1, 3.5)</code> on demand. This makes it easy to experiment with actuators.</p>
+
+<h3 id="twincat"><a href="https://www.beckhoff.com/en-en/products/automation/twincat/">TwinCAT</a></h3>
+
+<p>From Beckhoff, I didn’t see many promising software developments. They launched a ChatGPT API for TwinCAT, which is ironic considering these models rely on open-source code—something mostly absent for Structured Text. They may have retrained it on internal code, though.</p>
+
+<h2 id="wrapping-up">Wrapping up</h2>
+
+<p>The mindset around PLC software development is shifting. Not only are users changing—suppliers are too. It’s good to see vendors offer native interfaces and support general-purpose languages like Python and C. More code is being shared on GitHub. And Arduino- and Raspberry Pi–based products are introducing fresh perspectives.</p>
+
+<p>I estimate we’re currently at <strong>Industry 3.2</strong>. But with these tools on the horizon, we may finally reach the long-hyped Industry 4.0.</p>]]></content><author><name></name></author><category term="twincat plc simatic" /><summary type="html"><![CDATA[In this post, I summarize my thoughts after visiting the Hannover Messe in 2023. I focus on developments in PLC software. I found that the industry is focusing more on software and developing tools catered to software developers.]]></summary></entry><entry><title type="html">Up your falafel game with this easy hack</title><link href="https://cookncode.com/cooking/2023/03/05/falafel.html" rel="alternate" type="text/html" title="Up your falafel game with this easy hack" /><published>2023-03-05T00:00:00+00:00</published><updated>2025-08-01T14:25:53+00:00</updated><id>https://cookncode.com/cooking/2023/03/05/falafel</id><content type="html" xml:base="https://cookncode.com/cooking/2023/03/05/falafel.html"><![CDATA[<p>Falafel is delicious if you make it from scratch, but it can be quite time-consuming. The ready-made falafel or the dried mix you can buy is mediocre and doesn’t hold a candle to the real deal. But, I found an easy trick to improve the texture of the dry mix falafel by adding baking soda. The improved texture does wonders for the taste as well. Here’s how you can make it.</p>
+
+<h1 id="ingredients">Ingredients</h1>
+
+<p><strong>Serves 4. 30 minutes.</strong></p>
+
+<ul>
+  <li>200 g dry falafel mix (for example from <a href="https://www.coop.ch/en/food/inventories/staples/flour-sugar/flour/karma-bio-falafel-fertig-mischung-186g/p/4919878">coop</a>)</li>
+  <li>2 teaspoons fresh lemon juice. You can also substitute it with vinegar or lime juice.</li>
+  <li>0.5 teaspoon of baking soda or sodium bicarbonate (<a href="https://www.coop.ch/en/food/inventories/baking-ingredients/classic-baking-ingredients/baking-staples/betty-bossi-sodium-bicarbonate/p/4927507?context=search&amp;trackingtoken=searchrelevanz%7Carea1%7CA%7CSearchrelevanz%7CSearchrelevanz_ST2P%7CST2P">coop</a>)</li>
+  <li>1.75 dl boiling water</li>
+</ul>
+
+<h1 id="recipe">Recipe</h1>
+
+<p>This recipe makes the dry-mix falafel airier on the inside and gives it a nice crust.</p>
+
+<ol>
+  <li>Start by following the package instructions. In my case, I add to a bowl and mix
+    <ul>
+      <li>1.75 dl boiling water</li>
+      <li>200 g dry falafel mix</li>
+    </ul>
+  </li>
+  <li>Let it rest for 15 minutes.</li>
+  <li>
+    <p>Add to the bowl and mix</p>
+
+    <ul>
+      <li>2 teaspoons fresh lemon juice</li>
+      <li>0.5 teaspoon of baking soda</li>
+    </ul>
+
+    <p>As soon as you add both, they start to bubble and form CO₂ and water.
+<a href="/assets/2023-falafel/fizzing.jpg"><picture><source srcset="/generated/2023-falafel/fizzing-300-1ada9439a.webp 300w, /generated/2023-falafel/fizzing-500-1ada9439a.webp 500w, /generated/2023-falafel/fizzing-720-1ada9439a.webp 720w" type="image/webp"><source srcset="/generated/2023-falafel/fizzing-300-547a8ae4c.jpg 300w, /generated/2023-falafel/fizzing-500-547a8ae4c.jpg 500w, /generated/2023-falafel/fizzing-720-547a8ae4c.jpg 720w" type="image/jpeg"><img src="/generated/2023-falafel/fizzing-800-547a8ae4c.jpg" width="800" height="897"></picture></a></p>
+  </li>
+  <li>Heat a large skillet, once it’s hot add about 0.5 cm of olive oil or sunflower oil.</li>
+  <li>With a spoon add some falafel mixture to the skillet. Usually, my mixture has a consistency that it forms a ~ 2 cm thick disc.</li>
+  <li>After a minute or so, you start to see bubbles which drift to the surface. That’s the CO₂ making your falafel nice and airy.
+<a href="/assets/2023-falafel/baking.jpg"><picture><source srcset="/generated/2023-falafel/baking-300-c95bb13eb.webp 300w, /generated/2023-falafel/baking-500-c95bb13eb.webp 500w, /generated/2023-falafel/baking-720-c95bb13eb.webp 720w" type="image/webp"><source srcset="/generated/2023-falafel/baking-300-b5ca52a6e.jpg 300w, /generated/2023-falafel/baking-500-b5ca52a6e.jpg 500w, /generated/2023-falafel/baking-720-b5ca52a6e.jpg 720w" type="image/jpeg"><img src="/generated/2023-falafel/baking-800-b5ca52a6e.jpg" width="850" height="847"></picture></a></li>
+  <li>Turn the falafel after a few minutes when it’s browned on one side. Turning can be tricky since the top is still liquid.</li>
+  <li>When the second side is done, put the falafel patties on a double layer of kitchen paper to drain some of the excess fat.</li>
+</ol>
+
+<p>Enjoy in some pita bread or dürüm with some fried aubergine, pickled onions, tzatziki, hummus, pickled peppers or whatever strikes your mood.</p>
+
+<h1 id="why-i-think-it-works">Why I think it works</h1>
+
+<p>The baking soda makes the mixture slightly more alkaline, <a href="https://en.wikipedia.org/wiki/Maillard_reaction">speeding up the browning reaction</a>, which creates the crunchy exterior. I added the lemon juice to prevent the mixture from becoming too alkaline which can result in a soapy taste. In the end, the airy center due to the CO₂ was a positive by-product that I did not expect.</p>
+
+<p>I also tested a batch with only baking soda. This batch produced a browner exterior due to the alkalinity of the mixture. However, it also produced some CO₂, although not as much as the lemon + baking soda combination. Perhaps the falafel mixture is already slightly acidic by itself?</p>
+
+<p><a href="/assets/2023-falafel/fizz_vs_no_fizz.jpg"><picture><source srcset="/generated/2023-falafel/fizz_vs_no_fizz-300-034771e09.webp 300w, /generated/2023-falafel/fizz_vs_no_fizz-500-034771e09.webp 500w, /generated/2023-falafel/fizz_vs_no_fizz-720-034771e09.webp 720w" type="image/webp"><source srcset="/generated/2023-falafel/fizz_vs_no_fizz-300-dd2a33c8d.jpg 300w, /generated/2023-falafel/fizz_vs_no_fizz-500-dd2a33c8d.jpg 500w, /generated/2023-falafel/fizz_vs_no_fizz-720-dd2a33c8d.jpg 720w" type="image/jpeg"><img src="/generated/2023-falafel/fizz_vs_no_fizz-800-dd2a33c8d.jpg" width="850" height="508"></picture></a>
+<em>The lemon + baking soda combination puffs up the falafel, whereas baking soda alone doesn’t seem to have much effect during baking.</em></p>
+
+<p><a href="/assets/2023-falafel/result.jpg"><picture><source srcset="/generated/2023-falafel/result-300-555d3e3b6.webp 300w, /generated/2023-falafel/result-500-555d3e3b6.webp 500w, /generated/2023-falafel/result-720-555d3e3b6.webp 720w" type="image/webp"><source srcset="/generated/2023-falafel/result-300-85cfac1c4.jpg 300w, /generated/2023-falafel/result-500-85cfac1c4.jpg 500w, /generated/2023-falafel/result-720-85cfac1c4.jpg 720w" type="image/jpeg"><img src="/generated/2023-falafel/result-800-85cfac1c4.jpg" width="850" height="296"></picture></a>
+<em>But in the final result the baking soda alone has some air pockets.</em></p>
+
+<p>Since the CO₂ made the falafel nice and airy, I also tried making a batch with baking powder. Using baking powder would make the recipe slightly easier because you only have to add one extra ingredient. <a href="https://en.wikipedia.org/wiki/Baking_powder">Baking powder</a> is a mixture of baking soda combined with some form of acid. Once baking powder dissolves in water, it starts to produce carbon dioxide. And once it’s heated, there is a second reaction that also produces CO₂.</p>
+
+<p>I did one experiment where I added 2/3 of a teaspoon to the mixture at step 3. This falafel turned out the same as the one where I didn’t add anything. It didn’t become airy and also it browned the same as the standard recipe without additions. The fact that it didn’t brown like the baking soda batches is expected, because I assume that the base and the acid amounts are matched to not alter the pH of the mixture. However, I did expect to see some airiness, but that didn’t happen, or at least not noticeably.</p>
+
+<h1 id="methods-and-results">Methods and results</h1>
+
+<p>Below is an overview of the methods I tried and their results. The method refers to whether something is added in step 3 of the recipe.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Result</th>
+      <th>Grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Baking soda + lemon juice</td>
+      <td>Crunchy brown exterior, airy interior.</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Only followed package instructions</td>
+      <td>Soft crust, dense sticky interior</td>
+      <td>6.5</td>
+    </tr>
+    <tr>
+      <td>Baking powder</td>
+      <td>Crunchy brown exterior, airy interior.</td>
+      <td>6.5</td>
+    </tr>
+    <tr>
+      <td>Baking soda</td>
+      <td>Soft crust, dense sticky interior</td>
+      <td>7.5</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Other than that, all preparation was kept the same as far as I remember. Most batches were made on separate days, with weeks between attempts. The only simultaneous batches were made where I added baking soda + lemon juice to one batch and only baking soda to a second one.</p>
+
+<p>The amount of baking soda (or powder) and lemon juice did not vary. It was an initial guess/try. It could be that there is a better outcome with other ratios/amounts.</p>]]></content><author><name></name></author><category term="cooking" /><summary type="html"><![CDATA[Falafel is delicious if you make it from scratch, but it can be quite time-consuming. The ready-made falafel or the dried mix you can buy is mediocre and doesn’t hold a candle to the real deal. But, I found an easy trick to improve the texture of the dry mix falafel by adding baking soda. The improved texture does wonders for the taste as well. Here’s how you can make it.]]></summary></entry><entry><title type="html">How to connect to a Siemens PLC from TIA portal on VMWare</title><link href="https://cookncode.com/simatic/2023/02/15/tia-vm.html" rel="alternate" type="text/html" title="How to connect to a Siemens PLC from TIA portal on VMWare" /><published>2023-02-15T00:00:00+00:00</published><updated>2025-08-01T14:25:53+00:00</updated><id>https://cookncode.com/simatic/2023/02/15/tia-vm</id><content type="html" xml:base="https://cookncode.com/simatic/2023/02/15/tia-vm.html"><![CDATA[<p>Connecting to a PLC from a virtual machine can be challenging. In this article I show a step-by-step guide how to connect to a Siemens Simatic PLC. Although this process is probably be similar for other PLCs. I also show a few tips and tricks on how to debug the process.</p>
+
+<ol>
+  <li>Check if you can see the PLC if you connect the PLC to your computer. If you get a ping reply, that is a yes.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ping 192.168.0.1</code></li>
+    </ul>
+  </li>
+  <li>If you get a reply go to the next step. If not, fix the IP of the Ethernet port in the same range as the IP address of the PLC.
+    <ol>
+      <li>Go to <strong>Control Panel &gt; Network and Internet &gt; Network Connections</strong></li>
+      <li>Right click the network adapter where the PLC is connected to and select <strong>Properties</strong>.</li>
+      <li>Select <strong>Internet protocol Version 4 (TCP/IPv4)</strong></li>
+      <li>For IP address enter the same numbers as your PLC for the first three parts. For the last one give it a unique number. In this case not <code class="language-plaintext highlighter-rouge">.1</code>, to prevent IP conflicts on your network. For example I used <code class="language-plaintext highlighter-rouge">192.168.0.10</code>.
+<a href="/assets/2023-tia-vm/ip_settings.png"><picture><source srcset="/generated/2023-tia-vm/ip_settings-300-81f5e48b9.webp 300w, /generated/2023-tia-vm/ip_settings-402-81f5e48b9.webp 402w" type="image/webp"><source srcset="/generated/2023-tia-vm/ip_settings-300-0657a305c.png 300w, /generated/2023-tia-vm/ip_settings-402-0657a305c.png 402w" type="image/png"><img src="/generated/2023-tia-vm/ip_settings-402-0657a305c.png" width="402" height="456"></picture></a></li>
+    </ol>
+  </li>
+  <li>Try to ping the PLC again. If that works, start the VM and try to ping the PLC from inside the VM.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ping 192.168.0.1</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>If that also works, you can check to which port the PLC is connected with:</p>
+
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">&gt;</span><span class="w"> </span><span class="n">Test-NetConnection</span><span class="w"> </span><span class="nx">192.168.0.1</span><span class="w">
+
+</span><span class="n">ComputerName</span><span class="w">           </span><span class="p">:</span><span class="w"> </span><span class="nx">192.168.0.1</span><span class="w">
+</span><span class="n">RemoteAddress</span><span class="w">          </span><span class="p">:</span><span class="w"> </span><span class="nx">192.168.0.1</span><span class="w">
+</span><span class="n">InterfaceAlias</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="nx">Ethernet0</span><span class="w">
+</span><span class="n">SourceAddress</span><span class="w">          </span><span class="p">:</span><span class="w"> </span><span class="nx">192.168.11.128</span><span class="w">
+</span><span class="n">PingSucceeded</span><span class="w">          </span><span class="p">:</span><span class="w"> </span><span class="nx">True</span><span class="w">
+</span><span class="n">PingReplyDetails</span><span class="w"> </span><span class="p">(</span><span class="n">RTT</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">ms</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Check which network connection the port is using, by selecting <strong>Properties</strong> of Ethernet0 in <strong>Control Panel &gt; Network and Internet &gt; Network Connections</strong>.
+<a href="/assets/2023-tia-vm/port_connection_sing.png"><picture><source srcset="/generated/2023-tia-vm/port_connection_sing-300-51c9a328c.webp 300w, /generated/2023-tia-vm/port_connection_sing-380-51c9a328c.webp 380w" type="image/webp"><source srcset="/generated/2023-tia-vm/port_connection_sing-300-1e866f512.png 300w, /generated/2023-tia-vm/port_connection_sing-380-1e866f512.png 380w" type="image/png"><img src="/generated/2023-tia-vm/port_connection_sing-380-1e866f512.png" width="380" height="136"></picture></a></li>
+  <li>Open your TIA project. Select your PLC and go to <strong>Online &gt; Extended go online</strong>.
+<a href="/assets/2023-tia-vm/tia_go_online.png"><picture><source srcset="/generated/2023-tia-vm/tia_go_online-300-a5ad3ed91.webp 300w, /generated/2023-tia-vm/tia_go_online-422-a5ad3ed91.webp 422w" type="image/webp"><source srcset="/generated/2023-tia-vm/tia_go_online-300-123107abe.png 300w, /generated/2023-tia-vm/tia_go_online-422-123107abe.png 422w" type="image/png"><img src="/generated/2023-tia-vm/tia_go_online-422-123107abe.png" width="422" height="247"></picture></a></li>
+  <li>Under <strong>PG/PC interface</strong> select he network connection you found at step 5 and click <strong>start search</strong>.
+<a href="/assets/2023-tia-vm/tia_start_search.png"><picture><source srcset="/generated/2023-tia-vm/tia_start_search-300-32cde8f1e.webp 300w, /generated/2023-tia-vm/tia_start_search-500-32cde8f1e.webp 500w, /generated/2023-tia-vm/tia_start_search-720-32cde8f1e.webp 720w" type="image/webp"><source srcset="/generated/2023-tia-vm/tia_start_search-300-3feb678b4.png 300w, /generated/2023-tia-vm/tia_start_search-500-3feb678b4.png 500w, /generated/2023-tia-vm/tia_start_search-720-3feb678b4.png 720w" type="image/png"><img src="/generated/2023-tia-vm/tia_start_search-800-3feb678b4.png" width="800" height="685"></picture></a></li>
+  <li>Select <strong>GoOnline</strong>.</li>
+</ol>]]></content><author><name></name></author><category term="simatic" /><summary type="html"><![CDATA[Connecting to a PLC from a virtual machine can be challenging. In this article I show a step-by-step guide how to connect to a Siemens Simatic PLC. Although this process is probably be similar for other PLCs. I also show a few tips and tricks on how to debug the process.]]></summary></entry><entry><title type="html">Playing with Chat-GPT and structured text</title><link href="https://cookncode.com/twincat/2023/01/19/chat-gpt.html" rel="alternate" type="text/html" title="Playing with Chat-GPT and structured text" /><published>2023-01-19T00:00:00+00:00</published><updated>2025-08-01T14:25:53+00:00</updated><id>https://cookncode.com/twincat/2023/01/19/chat-gpt</id><content type="html" xml:base="https://cookncode.com/twincat/2023/01/19/chat-gpt.html"><![CDATA[<p><a href="https://chat.openai.com/">Chat-GPT</a> is OpenAI’s latest release of it GPT series language models. Its capabilities have surpassed a threshold that made it famous outside of the IT crowd. In the mean time, it has gathered many supporters and possibly even more haters. Let me test its ability to generate structured text.</p>
+
+<p><strong>Prompt:</strong> <em>write a function in structured text which replaces all vowels with the numbers 1-5.</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION ReplaceVowels(s: STRING) : STRING
+VAR
+    i: INT;
+    vowels: ARRAY[1..5] OF CHAR;
+BEGIN
+    vowels[1] := 'a';
+    vowels[2] := 'e';
+    vowels[3] := 'i';
+    vowels[4] := 'o';
+    vowels[5] := 'u';
+
+    FOR i := 1 TO LEN(s) DO
+        IF (s[i] = vowels[1]) THEN s[i] := '1';
+        IF (s[i] = vowels[2]) THEN s[i] := '2';
+        IF (s[i] = vowels[3]) THEN s[i] := '3';
+        IF (s[i] = vowels[4]) THEN s[i] := '4';
+        IF (s[i] = vowels[5]) THEN s[i] := '5';
+    END_FOR;
+
+    ReplaceVowels := s;
+END_FUNCTION
+</code></pre></div></div>
+
+<blockquote>
+  <p>This function takes a string as input, and replaces all vowels with the numbers 1-5. The function first declares an array of characters called “vowels” which contains all the vowels. Then it loops through each character of the input string, and checks if the current character is equal to any of the vowels in the array. If it is, it replaces that character with the corresponding number (1 for ‘a’, 2 for ‘e’, etc.). Finally, the function returns the modified string.</p>
+</blockquote>
+
+<p>Pretty good! Not valid structured text, but it’s close. Lets try to call the function anyway, to see if it works.</p>
+
+<p><strong>Prompt:</strong> <em>ReplaceVowels(“Apple”)</em></p>
+
+<blockquote>
+  <p>If the input string is “Apple” and you call the ReplaceVowels function with “Apple” as the argument, the function will loop through each character of the input string and check if it is a vowel. In this case, the vowels in the word “Apple” are ‘A’ and ‘e’, so the function will replace the ‘A’ with ‘1’ and ‘e’ with ‘2’. So the output will be “1ppl2”</p>
+</blockquote>
+
+<p>It is quite verbose, but it gave the correct answer! Not bad. Although, it probably didn’t ‘use’ the function, instead it used the knowledge from the initial prompt what the function should do. Let’s optimize the function a little.</p>
+
+<p><strong>Prompt:</strong> <em>modify the function such that you use a switch case instead of IF ELSE statements</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION ReplaceVowels(s: STRING) : STRING
+VAR
+    i: INT;
+BEGIN
+    FOR i := 1 TO LEN(s) DO
+        CASE s[i] OF
+            'a': s[i] := '1';
+            'e': s[i] := '2';
+            'i': s[i] := '3';
+            'o': s[i] := '4';
+            'u': s[i] := '5';
+        END_CASE;
+    END_FOR;
+
+    ReplaceVowels := s;
+END_FUNCTION
+</code></pre></div></div>
+
+<blockquote>
+  <p>This function uses a switch case statement instead of IF ELSE statements to check if a character is a vowel and replace it with the corresponding number. The switch case statement checks the value of the current character in the input string (s[i]), and replaces it with the corresponding number based on the case that matches the character.</p>
+</blockquote>
+
+<p>Very nice. Next improvement.</p>
+
+<p><strong>Prompt:</strong> <em>use a new string to save the modified string into</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION ReplaceVowels(s: STRING) : STRING
+VAR
+    i: INT;
+    newStr: STRING;
+BEGIN
+    newStr := '';
+    FOR i := 1 TO LEN(s) DO
+        CASE s[i] OF
+            'a': newStr := newStr + '1';
+            'e': newStr := newStr + '2';
+            'i': newStr := newStr + '3';
+            'o': newStr := newStr + '4';
+            'u': newStr := newStr + '5';
+            ELSE newStr := newStr + s[i];
+        END_CASE;
+    END_FOR;
+
+    ReplaceVowels := newStr;
+END_FUNCTION
+</code></pre></div></div>
+
+<p>Cool.</p>
+
+<p><strong>Prompt:</strong> <em>you can’t concatenate strings with a + in structured text. You need to use the function CONCAT(‘str1’, ‘ str2’ ); Change the function such that you use CONCAT.</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION ReplaceVowels(s: STRING) : STRING
+VAR
+    i: INT;
+    newStr: STRING;
+BEGIN
+    newStr := '';
+    FOR i := 1 TO LEN(s) DO
+        CASE s[i] OF
+            'a': newStr := CONCAT(newStr, '1');
+            'e': newStr := CONCAT(newStr, '2');
+            'i': newStr := CONCAT(newStr, '3');
+            'o': newStr := CONCAT(newStr, '4');
+            'u': newStr := CONCAT(newStr, '5');
+            ELSE newStr := CONCAT(newStr, s[i]);
+        END_CASE;
+    END_FOR;
+
+    ReplaceVowels := newStr;
+END_FUNCTION
+</code></pre></div></div>
+
+<p>Impressive! now lets try to get and <code class="language-plaintext highlighter-rouge">END_VAR</code> in there.</p>
+
+<p><strong>Prompt:</strong> <em>you forgot the END_VAR</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION ReplaceVowels(s: STRING) : STRING
+VAR
+    i: INT;
+    newStr: STRING;
+BEGIN
+    newStr := '';
+    FOR i := 1 TO LEN(s) DO
+        CASE s[i] OF
+            'a': newStr := CONCAT(newStr, '1');
+            'e': newStr := CONCAT(newStr, '2');
+            'i': newStr := CONCAT(newStr, '3');
+            'o': newStr := CONCAT(newStr, '4');
+            'u': newStr := CONCAT(newStr, '5');
+            ELSE newStr := CONCAT(newStr, s[i]);
+        END_CASE;
+    END_FOR;
+
+    ReplaceVowels := newStr;
+END_FUNCTION
+END_VAR
+</code></pre></div></div>
+
+<p>Uh-oh. This is where it starts to fail. Maybe If I’m more explicit.</p>
+
+<p><strong>Prompt:</strong> <em>the end_var should come before BEGIN. Also with twincat structed text, the input variables need to be placed between VAR INPUT and END_VAR, not in brackets after the function name,</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VAR_INPUT
+    s: STRING;
+END_VAR
+
+VAR
+    i: INT;
+    newStr: STRING;
+
+FUNCTION ReplaceVowels() : STRING
+BEGIN
+    newStr := '';
+    FOR i := 1 TO LEN(s) DO
+        CASE s[i] OF
+            'a': newStr := CONCAT(newStr, '1');
+            'e': newStr := CONCAT(newStr, '2');
+            'i': newStr := CONCAT(newStr, '3');
+            'o': newStr := CONCAT(newStr, '4');
+            'u': newStr := CONCAT(newStr, '5');
+            ELSE newStr := CONCAT(newStr, s[i]);
+        END_CASE;
+    END_FOR;
+
+    ReplaceVowels := newStr;
+END_FUNCTION
+</code></pre></div></div>
+
+<p>It is becoming a hot mess. It forgot one <code class="language-plaintext highlighter-rouge">END_VAR</code> and moved the FUNCTION too far down. One more attempt:</p>
+
+<p><strong>Prompt:</strong> <em>The FUNCTION declaration should go at the top. Followed by all VAR* blocks. Each VAR* block should be closed with END_VAR. And remove the parentheses after function name</em></p>
+
+<blockquote>
+  <p>Too many requests in 1 hour. Try again later.</p>
+</blockquote>
+
+<p>¯\_(ツ)_/¯</p>
+
+<p>I guess it’s time to call it a day. Quite impressive none-the-less what it showed there. It got 90% right, and might save you some typing and thinking. What’s your experience?</p>]]></content><author><name></name></author><category term="twincat" /><summary type="html"><![CDATA[Chat-GPT is OpenAI’s latest release of it GPT series language models. Its capabilities have surpassed a threshold that made it famous outside of the IT crowd. In the mean time, it has gathered many supporters and possibly even more haters. Let me test its ability to generate structured text.]]></summary></entry><entry><title type="html">How to use MC_TorqueControl?</title><link href="https://cookncode.com/twincat/2022/12/10/torque_control.html" rel="alternate" type="text/html" title="How to use MC_TorqueControl?" /><published>2022-12-10T00:00:00+00:00</published><updated>2025-08-01T14:25:53+00:00</updated><id>https://cookncode.com/twincat/2022/12/10/torque_control</id><content type="html" xml:base="https://cookncode.com/twincat/2022/12/10/torque_control.html"><![CDATA[<p><a href="https://infosys.beckhoff.com/content/1033/tcplclib_tc2_mc2/7617393803.html?id=6677792901421113137"><code class="language-plaintext highlighter-rouge">MC_TorqueControl</code></a> is a method to force or torque control an axis. In this article, I show how to set up a simple project and use this function.</p>
+
+<p><em>There is also a <a href="https://www.youtube.com/watch?v=Lw-yW4OdtZA">YouTube video</a> by Electrical Automation Hands-On who explains these steps.</em></p>
+
+<h2 id="what-is-mc_torquecontrol">What is <code class="language-plaintext highlighter-rouge">MC_TorqueControl</code>?</h2>
+
+<p>Other than the name suggests, this method can be used for both linear axes as a force controller or rotational axis as a torque controller. Thus, you can set a force or torque and the drive ensures that your motor keeps that force or torque. To avoid saying torque <em>and</em> force each time, I refer to both modes when I mention torque control.</p>
+
+<p>Torque control is always used when you move an axis, but you don’t notice it. Depending on the selected mode, between one and three different cascaded PID controllers are used.</p>
+
+<p>Below is the diagram from the <strong>Tune drive</strong> tab of Drive Manager 2. When you use torque control, <code class="language-plaintext highlighter-rouge">Tset</code> is directly fed into the current controller. But once you select the velocity mode, the velocity controller block connects to the current controller one. Then <code class="language-plaintext highlighter-rouge">Tset</code> is no longer fed into the current controller, but instead, the output of the velocity controller is directly fed into it. A similar story occurs when you select position control. Then the output of the position controller connects to the velocity controller, ignoring the <code class="language-plaintext highlighter-rouge">Vset</code>.</p>
+
+<p><a href="/assets/2022-torque-control/pid_torque_control.png"><picture><source srcset="/generated/2022-torque-control/pid_torque_control-300-285e5ec31.webp 300w, /generated/2022-torque-control/pid_torque_control-500-285e5ec31.webp 500w, /generated/2022-torque-control/pid_torque_control-720-285e5ec31.webp 720w" type="image/webp"><source srcset="/generated/2022-torque-control/pid_torque_control-300-38b0f4f10.png 300w, /generated/2022-torque-control/pid_torque_control-500-38b0f4f10.png 500w, /generated/2022-torque-control/pid_torque_control-720-38b0f4f10.png 720w" type="image/png"><img src="/generated/2022-torque-control/pid_torque_control-798-38b0f4f10.png" width="798" height="438"></picture></a></p>
+
+<h2 id="how-to-use-torque-control">How to use torque control?</h2>
+
+<p>Make sure you have:</p>
+
+<ul>
+  <li><a href="https://www.beckhoff.com/en-en/products/automation/twincat/texxxx-twincat-3-engineering/te5950.html">Drive Manager 2</a> installed</li>
+  <li>TwinCAT 3.1.4024.15 for both XAE (engineering) and XAR (runtime) or later</li>
+  <li>For AX5000: firmware 2.14 or later</li>
+  <li>For AX8000: firmware 1.03 Build 002 or later.</li>
+</ul>
+
+<p>Then, follow these steps to use torque control:</p>
+
+<ol>
+  <li>In the <strong>Advanced &gt; Slot settings</strong> tab, select <strong>VelocityControl2</strong> for the <strong>VelocityControlSlot</strong> of the respective axis. This enables the velocity limit.<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>
+<a href="/assets/2022-torque-control/velocity_limit.png"><picture><source srcset="/generated/2022-torque-control/velocity_limit-300-39364b71d.webp 300w, /generated/2022-torque-control/velocity_limit-500-39364b71d.webp 500w, /generated/2022-torque-control/velocity_limit-658-39364b71d.webp 658w" type="image/webp"><source srcset="/generated/2022-torque-control/velocity_limit-300-d56e0276e.png 300w, /generated/2022-torque-control/velocity_limit-500-d56e0276e.png 500w, /generated/2022-torque-control/velocity_limit-658-d56e0276e.png 658w" type="image/png"><img src="/generated/2022-torque-control/velocity_limit-658-d56e0276e.png" width="658" height="436"></picture></a></li>
+  <li>In the <strong>Parameter list</strong>, select <strong>TorqueMightBeReducedToZero (1)</strong> at index <strong>0x60CA</strong>. This is another setting to enable the velocity limit.
+<a href="/assets/2022-torque-control/speed_limit.png"><picture><source srcset="/generated/2022-torque-control/speed_limit-300-21881ccb5.webp 300w, /generated/2022-torque-control/speed_limit-500-21881ccb5.webp 500w, /generated/2022-torque-control/speed_limit-720-21881ccb5.webp 720w" type="image/webp"><source srcset="/generated/2022-torque-control/speed_limit-300-7e1bb4e46.png 300w, /generated/2022-torque-control/speed_limit-500-7e1bb4e46.png 500w, /generated/2022-torque-control/speed_limit-720-7e1bb4e46.png 720w" type="image/png"><img src="/generated/2022-torque-control/speed_limit-800-7e1bb4e46.png" width="1046" height="469"></picture></a></li>
+  <li>In the <strong>Process data</strong> tab, expand the <strong>Ch A operation</strong> and select <strong>Cyclic_synchronous_torque_mode_CST (10)</strong> for virtual operation mode 0. This adds the necessary process data objects, such as the target torque and the actual measured torque. It also enables you to switch between position and torque control.
+<a href="/assets/2022-torque-control/torque_mode.png"><picture><source srcset="/generated/2022-torque-control/torque_mode-300-d8dc2f776.webp 300w, /generated/2022-torque-control/torque_mode-500-d8dc2f776.webp 500w, /generated/2022-torque-control/torque_mode-663-d8dc2f776.webp 663w" type="image/webp"><source srcset="/generated/2022-torque-control/torque_mode-300-c71a32032.png 300w, /generated/2022-torque-control/torque_mode-500-c71a32032.png 500w, /generated/2022-torque-control/torque_mode-663-c71a32032.png 663w" type="image/png"><img src="/generated/2022-torque-control/torque_mode-663-c71a32032.png" width="663" height="247"></picture></a></li>
+  <li>In the <strong>MOTION &gt; NC- TASK1 SAF &gt; Axis &gt; {your axis} &gt; Encoder</strong> and <strong>Drive</strong> tabs, turn on Time compensation. This setting enables smooth switching between position and torque mode. That is because, in torque mode, the NC axis writes permanent actual positions into the set position variable. Due to a dead time, the actual is delayed by four cycles. This dead time can then be compensated by enabling time compensation. This is relevant when you switch back into position mode.
+<a href="/assets/2022-torque-control/time_compensation_encoder.png"><picture><source srcset="/generated/2022-torque-control/time_compensation_encoder-300-399647cab.webp 300w, /generated/2022-torque-control/time_compensation_encoder-500-399647cab.webp 500w, /generated/2022-torque-control/time_compensation_encoder-720-399647cab.webp 720w" type="image/webp"><source srcset="/generated/2022-torque-control/time_compensation_encoder-300-8d5d74b91.png 300w, /generated/2022-torque-control/time_compensation_encoder-500-8d5d74b91.png 500w, /generated/2022-torque-control/time_compensation_encoder-720-8d5d74b91.png 720w" type="image/png"><img src="/generated/2022-torque-control/time_compensation_encoder-800-8d5d74b91.png" width="1185" height="360"></picture></a>
+<a href="/assets/2022-torque-control/time_compensation_drive.png"><picture><source srcset="/generated/2022-torque-control/time_compensation_drive-300-cf29666fa.webp 300w, /generated/2022-torque-control/time_compensation_drive-500-cf29666fa.webp 500w, /generated/2022-torque-control/time_compensation_drive-720-cf29666fa.webp 720w" type="image/webp"><source srcset="/generated/2022-torque-control/time_compensation_drive-300-730062dd3.png 300w, /generated/2022-torque-control/time_compensation_drive-500-730062dd3.png 500w, /generated/2022-torque-control/time_compensation_drive-720-730062dd3.png 720w" type="image/png"><img src="/generated/2022-torque-control/time_compensation_drive-800-730062dd3.png" width="1187" height="361"></picture></a></li>
+</ol>
+
+<p>After applying the settings, you can add the following code to force control an axis. Here</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">someAxis</code>: is the axis you want to control.</li>
+  <li><code class="language-plaintext highlighter-rouge">forceOptions</code>: defines a starting value of the torque when the <code class="language-plaintext highlighter-rouge">force</code> function block is activated. This ensures a smooth transition from the previous mode.</li>
+  <li><code class="language-plaintext highlighter-rouge">targetForce</code>: the torque you want to apply.</li>
+  <li><code class="language-plaintext highlighter-rouge">TORQUE_RAMP</code>: defines a maximum ramp for the torque.</li>
+  <li><code class="language-plaintext highlighter-rouge">VELOCITY_LIMIT</code>: Limit the velocity.</li>
+  <li><code class="language-plaintext highlighter-rouge">ContinuousUpdate</code>: If <code class="language-plaintext highlighter-rouge">TRUE</code>, then changes to <code class="language-plaintext highlighter-rouge">targetForce</code> are immediately applied by torque control, rather than needing to toggle <code class="language-plaintext highlighter-rouge">force.Execute</code>.<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>
+Then you activate force control by setting <code class="language-plaintext highlighter-rouge">forceMode</code> to <code class="language-plaintext highlighter-rouge">TRUE</code>.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM MAIN
+VAR
+    someAxis : Tc2_MC2.AXIS_REF;
+    forceOptions : Tc2_MC2.ST_TorqueControlOptions := (EnableManualTorqueStartValue := TRUE);
+    force : Tc2_MC2.MC_TorqueControl;
+    forceMode : BOOL;
+    targetForce : LREAL := 10;
+END_VAR
+VAR CONSTANT
+	TORQUE_RAMP : LREAL := 50_000;
+	VELOCITY_LIMIT : LREAL := 10_000;
+END_VAR
+
+forceOptions.ManualTorqueStartValue := someAxis.NcToPlc.ActTorque;
+
+force(
+	Execute:=forceMode,
+    ContinuousUpdate:=forceMode,
+    Relative:=FALSE,
+    Torque:=targetForce,
+    Axis:=someAxis,
+    Options:=forceOptions,
+    TorqueRamp:=TORQUE_RAMP,
+    VelocityLimitHigh:=VELOCITY_LIMIT,
+    VelocityLimitLow:=VELOCITY_LIMIT * -1,
+);
+</code></pre></div></div>
+
+<p>After calling another motion function block, the operation mode is automatically switched back from torque mode into position mode. For example <code class="language-plaintext highlighter-rouge">MC_MoveVelocity</code>, <code class="language-plaintext highlighter-rouge">MC_MoveAbsolute</code>, <code class="language-plaintext highlighter-rouge">MC_Halt</code> etc.</p>
+
+<p>Some final notes:</p>
+
+<ul>
+  <li>Lag monitoring switches off automatically if you use <code class="language-plaintext highlighter-rouge">MC_TorqueControl</code> with the AX5000.</li>
+  <li><code class="language-plaintext highlighter-rouge">MC_TorqueControl</code> works with all SoE or CoE drives, but maybe the velocity limit function doesn’t work.</li>
+</ul>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Velocity limits work with the AX5000 and the AX8000. But, because this limit is a feature inside the AX firmware it doesn’t work for the EL, ELM, or AMI. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p><a href="https://cookncode.com/TwinCatChangelog/tc3/#features">For continuous force mode to work, the TwinCAT runtime needs to be at version &gt;=4024.35</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><category term="twincat" /><summary type="html"><![CDATA[MC_TorqueControl is a method to force or torque control an axis. In this article, I show how to set up a simple project and use this function.]]></summary></entry><entry><title type="html">TwinCAT datatypes in .NET</title><link href="https://cookncode.com/twincat/2022/10/03/data-types.html" rel="alternate" type="text/html" title="TwinCAT datatypes in .NET" /><published>2022-10-03T00:00:00+00:00</published><updated>2025-08-01T14:25:53+00:00</updated><id>https://cookncode.com/twincat/2022/10/03/data-types</id><content type="html" xml:base="https://cookncode.com/twincat/2022/10/03/data-types.html"><![CDATA[<p>When you’re working with ADS, you often need to know the size of a data type or what a data type is called in your .NET language. I couldn’t find the combined information, so I decided to make the overview myself.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IEC61131-3</th>
+      <th>System Manager</th>
+      <th>.NET type</th>
+      <th>C#</th>
+      <th>Visual Basic</th>
+      <th>Lower bound</th>
+      <th>Upper bound</th>
+      <th>Memory space</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BOOL</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BIT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Boolean</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Boolean</code></td>
+      <td>0 (<code class="language-plaintext highlighter-rouge">FALSE</code>)</td>
+      <td>1 (<code class="language-plaintext highlighter-rouge">TRUE</code>)</td>
+      <td>8 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BOOL</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BIT8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Boolean</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Boolean</code></td>
+      <td>0 (<code class="language-plaintext highlighter-rouge">FALSE</code>)</td>
+      <td>1 (<code class="language-plaintext highlighter-rouge">TRUE</code>)</td>
+      <td>8 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BYTE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BITARR8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Byte</code></td>
+      <td><code class="language-plaintext highlighter-rouge">byte</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Byte</code></td>
+      <td>0</td>
+      <td>255</td>
+      <td>8 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WORD</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BITARR16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.UInt16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ushort</code></td>
+      <td>-</td>
+      <td>0</td>
+      <td>65535</td>
+      <td>16 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DWORD</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BITARR32</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.UInt32</code></td>
+      <td><code class="language-plaintext highlighter-rouge">uint</code></td>
+      <td>-</td>
+      <td>0</td>
+      <td>4.29·10<sup>9</sup></td>
+      <td>32 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">INT8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.SByte</code></td>
+      <td><code class="language-plaintext highlighter-rouge">sbyte</code></td>
+      <td>-</td>
+      <td>-128</td>
+      <td>127</td>
+      <td>8 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">INT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">INT16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Int16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">short</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Short</code></td>
+      <td>-32768</td>
+      <td>32767</td>
+      <td>16 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">INT32</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Int32</code></td>
+      <td><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Integer</code></td>
+      <td>-2.15·10<sup>9</sup></td>
+      <td>2.15·10<sup>9</sup></td>
+      <td>32 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">INT64</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Int64</code></td>
+      <td><code class="language-plaintext highlighter-rouge">long</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Long</code></td>
+      <td>-2<sup>63</sup></td>
+      <td>-2<sup>63</sup>-1</td>
+      <td>64 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">USINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">UINT8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Byte</code></td>
+      <td><code class="language-plaintext highlighter-rouge">byte</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Byte</code></td>
+      <td>0</td>
+      <td>255</td>
+      <td>8 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">UINT16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.UInt16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ushort</code></td>
+      <td>-</td>
+      <td>0</td>
+      <td>65535</td>
+      <td>16 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UDINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">UINT32</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.UInt32</code></td>
+      <td><code class="language-plaintext highlighter-rouge">uint</code></td>
+      <td>-</td>
+      <td>0</td>
+      <td>4.29·10<sup>9</sup></td>
+      <td>32 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ULINT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">UINT64</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.UInt64</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ulong</code></td>
+      <td>-</td>
+      <td>0</td>
+      <td>2<sup>64</sup>-1</td>
+      <td>64 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">REAL</code></td>
+      <td><code class="language-plaintext highlighter-rouge">FLOAT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Single</code></td>
+      <td><code class="language-plaintext highlighter-rouge">float</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Single</code></td>
+      <td>-3.40·10<sup>38</sup></td>
+      <td>3.40·10<sup>38</sup></td>
+      <td>32 bit</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LREAL</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DOUBLE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">System.Double</code></td>
+      <td><code class="language-plaintext highlighter-rouge">double</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Double</code></td>
+      <td>-1.798·10<sup>308</sup></td>
+      <td>1.798·10<sup>308</sup></td>
+      <td>64 bit</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sources">Sources</h2>
+
+<ul>
+  <li><a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529394315.html?id=1768255288341275228">BOOL</a></li>
+  <li><a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529399691.html&amp;id=">INT</a></li>
+  <li><a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529399691.html&amp;id=">REAL</a></li>
+  <li><a href="https://infosys.beckhoff.com/content/1033/tc3_system/html/tcsysmgr_datatypecomparison.htm?id=3043404538898382042">Data type comparison</a></li>
+</ul>]]></content><author><name></name></author><category term="twincat" /><summary type="html"><![CDATA[When you’re working with ADS, you often need to know the size of a data type or what a data type is called in your .NET language. I couldn’t find the combined information, so I decided to make the overview myself.]]></summary></entry><entry><title type="html">Why am I getting a page fault in TwinCAT?</title><link href="https://cookncode.com/twincat/2022/09/18/page-fault.html" rel="alternate" type="text/html" title="Why am I getting a page fault in TwinCAT?" /><published>2022-09-18T00:00:00+00:00</published><updated>2025-08-01T14:25:53+00:00</updated><id>https://cookncode.com/twincat/2022/09/18/page-fault</id><content type="html" xml:base="https://cookncode.com/twincat/2022/09/18/page-fault.html"><![CDATA[<p><a href="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html">Earlier</a> I talked about how you can prevent page faults from references. In this post, I try to show a complete overview of page fault origins and how to prevent them.</p>
+
+<ul>
+  <li>Example code: <a href="https://github.com/Roald87/TwincatTutorials/tree/main/PageFaults">GitHub</a>/<a href="https://downgit.github.io/#/home?url=https://github.com/Roald87/TwincatTutorials/tree/main/PageFaults">Direct download</a> with TwinCAT 4024.25</li>
+</ul>
+
+<h2 id="page-faults-in-twincat">Page faults in TwinCAT</h2>
+
+<p>You probably came across the following error message when you activated a configuration. The error says there is a <em>Page Fault</em>. This message was always quite puzzling to me when I started programming PLCs.</p>
+
+<blockquote>
+  <p>Exception (Exception Code: Oxc0000005, Page Fault) in PLC Application PLC Instance, Task PlcTask (RBP: Oxffffc80154efece0, RIP: 0xfiff800f2741d9a1, RSP: Oxffffc80154efecb0)</p>
+</blockquote>
+
+<p><a href="/assets/2021-02-07-preventing-page-faults-from-references/page_fault.png"><picture><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/page_fault-300-678e86881.webp 300w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault-500-678e86881.webp 500w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault-540-678e86881.webp 540w" type="image/webp"><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/page_fault-300-50ce8c962.png 300w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault-500-50ce8c962.png 500w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault-540-50ce8c962.png 540w" type="image/png"><img src="/generated/2021-02-07-preventing-page-faults-from-references/page_fault-540-50ce8c962.png" width="540" height="222"></picture></a></p>
+
+<p>The reason for the page fault is easy to see once you log into your project because it highlights the point of failure.</p>
+
+<p><a href="/assets/2022-page-fault/pointer.png"><picture><source srcset="/generated/2022-page-fault/pointer-300-1d1b6009b.webp 300w, /generated/2022-page-fault/pointer-409-1d1b6009b.webp 409w" type="image/webp"><source srcset="/generated/2022-page-fault/pointer-300-3e6d71de3.png 300w, /generated/2022-page-fault/pointer-409-3e6d71de3.png 409w" type="image/png"><img src="/generated/2022-page-fault/pointer-409-3e6d71de3.png" width="409" height="147"></picture></a></p>
+
+<h2 id="what-are-page-faults">What are page faults?</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Page_fault">Wikipedia lists different types of page faults</a>. I think the ones you get in TwinCAT are of the invalid type. This type of page fault is caused by a reference to an invalid memory address. Let me show through three different examples what that means.</p>
+
+<h2 id="pointers">Pointers</h2>
+
+<p><a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529453451.html?id=5839194631499501145">Pointers</a> store the address of a variable. When you instantiate a pointer to a variable, the default address is 0. Therefore, in the example below <code class="language-plaintext highlighter-rouge">pointerToNumber</code> is 0. Then in the implementation part, I try to save the value to which the pointer points into <code class="language-plaintext highlighter-rouge">number</code> by dereferencing the pointer using the <code class="language-plaintext highlighter-rouge">^</code> symbol.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM PointerExample
+VAR
+    pointerToNumber : POINTER TO INT; // 0
+    number : INT;
+END_VAR
+
+number := pointerToNumber^;
+</code></pre></div></div>
+
+<p>When you activate this code you get a page fault. If you log in, you see that the pointer has address 0. Because this is not a valid memory address an exception is raised and your code halts here.</p>
+
+<p><a href="/assets/2022-page-fault/pointer.png"><picture><source srcset="/generated/2022-page-fault/pointer-300-1d1b6009b.webp 300w, /generated/2022-page-fault/pointer-409-1d1b6009b.webp 409w" type="image/webp"><source srcset="/generated/2022-page-fault/pointer-300-3e6d71de3.png 300w, /generated/2022-page-fault/pointer-409-3e6d71de3.png 409w" type="image/png"><img src="/generated/2022-page-fault/pointer-409-3e6d71de3.png" width="409" height="147"></picture></a></p>
+
+<h3 id="solution">Solution</h3>
+
+<p>The solution to prevent this is quite simple: check if the address is 0 before you try to dereference the pointer. The complete example becomes:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM PointerExample
+VAR
+    pointerToNumber : POINTER TO INT;
+    number : INT;
+END_VAR
+
+IF pointerToNumber &lt;&gt; 0 THEN
+    number := pointerToNumber^;
+END_IF
+</code></pre></div></div>
+
+<p>Although this solves your issue, there is a good chance that you forget to implement the check at least once. But, you can automatically check for valid pointers with the POU <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2530405259.html?id=7869750361486034578"><code class="language-plaintext highlighter-rouge">CheckPointer</code></a>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">CheckPointer</code> function is automatically called <em>each time</em> before you use a pointer. The advantage is that you can trigger an error message which makes diagnostics easier. A disadvantage is that you add an extra function call when you use a pointer. If you use a lot of pointers, the extra overhead might cause cycle overruns. Also, it can’t prevent the pointer call, so you get the page fault regardless.</p>
+
+<p>To add the <code class="language-plaintext highlighter-rouge">CheckPointer</code> to your project, right click your PLC project and select <strong>Add &gt; POU for implicit checks</strong>.</p>
+
+<p><a href="/assets/2022-page-fault/implicit_checks.png"><picture><source srcset="/generated/2022-page-fault/implicit_checks-300-9ceb0c59f.webp 300w, /generated/2022-page-fault/implicit_checks-500-9ceb0c59f.webp 500w, /generated/2022-page-fault/implicit_checks-720-9ceb0c59f.webp 720w" type="image/webp"><source srcset="/generated/2022-page-fault/implicit_checks-300-ce6ac06e7.png 300w, /generated/2022-page-fault/implicit_checks-500-ce6ac06e7.png 500w, /generated/2022-page-fault/implicit_checks-720-ce6ac06e7.png 720w" type="image/png"><img src="/generated/2022-page-fault/implicit_checks-721-ce6ac06e7.png" width="721" height="236"></picture></a></p>
+
+<p>Select <strong>Pointer Check</strong> and confirm with <strong>Open</strong>.</p>
+
+<p><a href="/assets/2022-page-fault/add_checkpointer.png"><picture><source srcset="/generated/2022-page-fault/add_checkpointer-300-30133d655.webp 300w, /generated/2022-page-fault/add_checkpointer-346-30133d655.webp 346w" type="image/webp"><source srcset="/generated/2022-page-fault/add_checkpointer-300-51a729a6e.png 300w, /generated/2022-page-fault/add_checkpointer-346-51a729a6e.png 346w" type="image/png"><img src="/generated/2022-page-fault/add_checkpointer-346-51a729a6e.png" width="346" height="480"></picture></a></p>
+
+<p>This adds the <code class="language-plaintext highlighter-rouge">CheckPointer</code> function to your project and it already has a suggested implementation. If I run the failing example code, an error message is printed in the error console before it crashes.</p>
+
+<p><a href="/assets/2022-page-fault/pointer_check_error_message.png"><picture><source srcset="/generated/2022-page-fault/pointer_check_error_message-300-42cee754a.webp 300w, /generated/2022-page-fault/pointer_check_error_message-500-42cee754a.webp 500w, /generated/2022-page-fault/pointer_check_error_message-720-42cee754a.webp 720w" type="image/webp"><source srcset="/generated/2022-page-fault/pointer_check_error_message-300-8c0ca43f7.png 300w, /generated/2022-page-fault/pointer_check_error_message-500-8c0ca43f7.png 500w, /generated/2022-page-fault/pointer_check_error_message-720-8c0ca43f7.png 720w" type="image/png"><img src="/generated/2022-page-fault/pointer_check_error_message-733-8c0ca43f7.png" width="733" height="77"></picture></a></p>
+
+<p>Another solution would be to pass the pointer via <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code> or use constructor injection via <code class="language-plaintext highlighter-rouge">FB_init</code> as I showed in the <a href="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html">earlier article</a>.</p>
+
+<h2 id="references">References</h2>
+
+<p>Another way you can get page faults is through references, as I also showed in an <a href="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html">earlier article</a>. <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529458827.html?id=2716630061017907414">References</a> are pointers with an improved interface. Thus it shouldn’t come as a surprise that these can cause page faults as well.</p>
+
+<p>The short example below causes a page fault: I instantiate a reference to an integer called <code class="language-plaintext highlighter-rouge">number</code>. Then I try to assign a number to this reference.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM ReferenceExample
+VAR
+    refNumber : REFERENCE TO INT;
+END_VAR
+
+refNumber := 1;
+</code></pre></div></div>
+
+<p>When you try to assign a number to this reference, you get a page fault, because <code class="language-plaintext highlighter-rouge">refNumber</code> doesn’t refer to anything.</p>
+
+<p><a href="/assets/2022-page-fault/reference_page_fault.png"><picture><source srcset="/generated/2022-page-fault/reference_page_fault-300-e386d4336.webp 300w, /generated/2022-page-fault/reference_page_fault-483-e386d4336.webp 483w" type="image/webp"><source srcset="/generated/2022-page-fault/reference_page_fault-300-82872a0b0.png 300w, /generated/2022-page-fault/reference_page_fault-483-82872a0b0.png 483w" type="image/png"><img src="/generated/2022-page-fault/reference_page_fault-483-82872a0b0.png" width="483" height="130"></picture></a></p>
+
+<h3 id="solution-1">Solution</h3>
+
+<p>In the <a href="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html">earlier article</a> I showed several ways you can prevent page faults from references. They were using:</p>
+
+<ul>
+  <li><a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529165707.html&amp;id="><code class="language-plaintext highlighter-rouge">__ISVALIDREF</code></a></li>
+  <li>Adding references to <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code></li>
+  <li>Or using constructor injection via <code class="language-plaintext highlighter-rouge">FB_init</code></li>
+</ul>
+
+<p>Here I only show the first solution with <code class="language-plaintext highlighter-rouge">__ISVALIDREF</code>. You use this function in a similar was as you would with the pointer check (<code class="language-plaintext highlighter-rouge">somePointer &lt;&gt; 0</code>): The full example becomes.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM ReferenceExample
+VAR
+    refNumber : REFERENCE TO INT;
+END_VAR
+
+IF __ISVALIDREF(refNumber) THEN
+    refNumber := 1;
+END_IF
+</code></pre></div></div>
+
+<p>The advantage of this is that you prevent page faults. But the reference never gets assigned, thus you might wonder why your code doesn’t do what you expect it to. In this case, it’s probably a good idea to add an <code class="language-plaintext highlighter-rouge">ELSE</code> clause with an appropriate error message. Even better would be to pass the reference via <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code> or <code class="language-plaintext highlighter-rouge">FB_init</code> if possible.</p>
+
+<h2 id="interfaces">Interfaces</h2>
+
+<p><a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/4256428299.html?id=507172925224818176">Interfaces</a> can also cause page faults as shown by this example. I defined an interface <code class="language-plaintext highlighter-rouge">I_Interface</code> with a single property called <code class="language-plaintext highlighter-rouge">SomeProperty</code> which returns an integer.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INTERFACE I_Interface
+
+PROPERTY SomeProperty : INT
+
+</code></pre></div></div>
+
+<p>I create an instance <code class="language-plaintext highlighter-rouge">someInterface</code> of <code class="language-plaintext highlighter-rouge">I_Interface</code>. Then I try to save the integer returned by this into the variable <code class="language-plaintext highlighter-rouge">number</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM InterfaceExample
+VAR
+    number : INT;
+    someInterface : I_Interface;
+END_VAR
+
+number := someInterface.SomeProperty;
+</code></pre></div></div>
+
+<p>Executing the code again results in a page fault. That is because a function block needs to be assigned to the interface first. Then <code class="language-plaintext highlighter-rouge">someInterface</code> contains the address to this function block. Without an assigned function block, the interface is 0. Since this is not a valid address you get a page fault.</p>
+
+<p><a href="/assets/2022-page-fault/interface_page_fault.png"><picture><source srcset="/generated/2022-page-fault/interface_page_fault-300-7d745c2e7.webp 300w, /generated/2022-page-fault/interface_page_fault-434-7d745c2e7.webp 434w" type="image/webp"><source srcset="/generated/2022-page-fault/interface_page_fault-300-fb695d421.png 300w, /generated/2022-page-fault/interface_page_fault-434-fb695d421.png 434w" type="image/png"><img src="/generated/2022-page-fault/interface_page_fault-434-fb695d421.png" width="434" height="146"></picture></a></p>
+
+<h3 id="solutions">Solutions</h3>
+
+<p>The solution to preventing page faults from invalid interfaces is the same as for pointers: before you use the interface, check if it’s not 0.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM InterfaceExample
+VAR
+    number : INT;
+    someInterface : I_Interface;
+END_VAR
+
+IF someInterface &lt;&gt; 0 THEN
+    number := someInterface.SomeProperty;
+END_IF
+</code></pre></div></div>
+
+<p>Again this solution silently fail, thus it might be wise to add an <code class="language-plaintext highlighter-rouge">ELSE</code> clause with an error message. Or if you use the interface in a function or function block you can use the <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code> or <code class="language-plaintext highlighter-rouge">FB_init</code> solutions mentioned in the <a href="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html">earlier article</a>.</p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>I showed page faults can be caused by invalid pointers, references, and interfaces. For each case, I showed some solutions how to prevent the page faults, mainly by checking if the pointer or interface is not 0 or by using <code class="language-plaintext highlighter-rouge">__iSVALIDREF</code> for references.</p>
+
+<p>Did I miss any cases which can cause page faults and what are your solutions to prevent PLC crashes from page faults? Let me know in the comments below.</p>]]></content><author><name></name></author><category term="twincat" /><summary type="html"><![CDATA[Earlier I talked about how you can prevent page faults from references. In this post, I try to show a complete overview of page fault origins and how to prevent them.]]></summary></entry><entry><title type="html">TwinCAT/BSD installation and tutorial</title><link href="https://cookncode.com/twincat/2022/08/11/twincat-bsd.html" rel="alternate" type="text/html" title="TwinCAT/BSD installation and tutorial" /><published>2022-08-11T00:00:00+00:00</published><updated>2025-08-01T14:25:53+00:00</updated><id>https://cookncode.com/twincat/2022/08/11/twincat-bsd</id><content type="html" xml:base="https://cookncode.com/twincat/2022/08/11/twincat-bsd.html"><![CDATA[<p>TwinCAT/BSD is a new operating system for the TwinCAT runtime. It has a small footprint and it’s free. Furthermore, TwinCAT/BSD allows you to run TwinCAT code locally when you have Hyper-V enabled if you install it on a virtual machine. In this tutorial, I go over the installation of TwinCAT/BSD on VMware and Virtual Box and show some basic usages of Tc/BSD.</p>
+
+<h2 id="what-is-twincatbsd">What is TwinCAT/BSD?</h2>
+
+<p>TwinCAT/BSD, or Tc/BSD for short, is an alternative operating system for TwinCAT. It’s based on the open source operating system FreeBSD. Beckhoff took FreeBSD and integrated the TwinCAT runtime into it. It serves as an alternative operating system for the TwinCAT runtime to Windows CE/7/10.</p>
+
+<p>Note that TwinCAT/BSD is only for the TwinCAT runtime. Thus the place where your code gets executed. Nothing changes on the code development side: you still write your code on Windows in either Visual Studio or the TwinCAT XAE Shell.</p>
+
+<p>Tc/BSD is a little different from Windows and it might take you some time to get used to it. For example, Tc/BSD doesn’t come with a desktop environment: there is no desktop with icons, wallpaper, and a start menu. If you start Tc/BSD, you see a black screen with white text on it: a terminal.</p>
+
+<p>Make no mistake, working from a terminal can be quite powerful, but it can take some time to get familiar with. At the end of the tutorial, I show some examples of what you can do with it. You can also find some commands in <a href="https://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf">the official manual</a> or in this <a href="https://github.com/benhar-dev/tcbsd-cheatsheet">cheat sheet</a>.</p>
+
+<p>Some other advantages of using Tc/BSD are that it’s free and requires less space. Moreover, because Beckhoff has access to the code of the operating system, they do not rely on Microsoft for support. The reliance is causing issues for Windows CE because its end of life is planned for late 2023.</p>
+
+<p>If you would like to get more details on Tc/BSD, watch the <a href="https://www.youtube.com/watch?v=az9vSr1GxE4">official Beckhoff video</a> or read <a href="https://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf">the manual</a> for in-depth information.</p>
+
+<h2 id="virtual-machines-️-hyper-v">Virtual machines ❤️ Hyper-V</h2>
+
+<p>I started to look into TwinCAT/BSD, because I wanted to run some TwinCAT code locally. Earlier this was possible, but at a certain point, I installed <a href="https://www.docker.com/">Docker</a> which requires Hyper-V. Unfortunately, once you enable this and you try to run your TwinCAT code locally, you get an error:</p>
+
+<p><a href="/assets/2022-tcbsd/hyperv_error.png"><picture><source srcset="/generated/2022-tcbsd/hyperv_error-300-7d40f40e8.webp 300w, /generated/2022-tcbsd/hyperv_error-359-7d40f40e8.webp 359w" type="image/webp"><source srcset="/generated/2022-tcbsd/hyperv_error-300-25e12b624.png 300w, /generated/2022-tcbsd/hyperv_error-359-25e12b624.png 359w" type="image/png"><img src="/generated/2022-tcbsd/hyperv_error-359-25e12b624.png" width="359" height="318"></picture></a></p>
+
+<p>While researching how to circumvent this restriction, I came across a <a href="https://www.reddit.com/r/PLC/comments/gqzyem/psa_twincat_3_hyperv_wsl_2_working_using_vmware/">Reddit post</a> which mentioned VMware works with TwinCAT 3 and Hyper-V. This provided me with a nice opportunity to test Tc/BSD because I didn’t want to create a big Windows VM. Also it allowed me to answer a <a href="https://stackoverflow.com/questions/71321786/how-can-i-use-a-local-twincat-3-runtime-with-hyper-v-enabled/71333438#71333438">StackOverflow question</a> 🥳. Furthermore, I found out that it also works with Virtual Box.</p>
+
+<h2 id="installing-tcbsd-on-virtualbox">Installing Tc/BSD on VirtualBox</h2>
+
+<p>Installing Tc/BSD on Virtual Box is quite straightforward, thanks to <a href="https://github.com/PTKu/TwinCAT-BSD-VM-creator">an install script</a> from the community. Furthermore, there is also a <a href="https://beckhoff-au.teachable.com/courses/1204788/lectures/37382778">video by Coding Bytes</a> describing installation.</p>
+
+<p>To install Tc/BSD:</p>
+
+<ol>
+  <li><a href="https://www.virtualbox.org/wiki/Downloads">Download</a> and install Virtual Box.</li>
+  <li><a href="https://github.com/PTKu/TwinCAT-BSD-VM-creator">Download or clone</a> the install script.</li>
+  <li>
+    <p>Go to the <a href="https://www.beckhoff.com/en-us/search-results/?q=bsd">Beckhoff website</a> and download the TwinCAT/BSD ISO.</p>
+
+    <p><a href="/assets/2022-tcbsd/download_tcbsd_iso.png"><picture><source srcset="/generated/2022-tcbsd/download_tcbsd_iso-300-05028dc83.webp 300w, /generated/2022-tcbsd/download_tcbsd_iso-500-05028dc83.webp 500w, /generated/2022-tcbsd/download_tcbsd_iso-615-05028dc83.webp 615w" type="image/webp"><source srcset="/generated/2022-tcbsd/download_tcbsd_iso-300-151822c24.png 300w, /generated/2022-tcbsd/download_tcbsd_iso-500-151822c24.png 500w, /generated/2022-tcbsd/download_tcbsd_iso-615-151822c24.png 615w" type="image/png"><img src="/generated/2022-tcbsd/download_tcbsd_iso-615-151822c24.png" width="615" height="151"></picture></a></p>
+  </li>
+  <li>Extract the contents of the installer script and the Tc/BSD ISO. Copy the contents of both to a single folder.</li>
+  <li>Copy the exact filename of the Tc/BSD ISO image and open <code class="language-plaintext highlighter-rouge">Create-TcBsdVM.ps1</code> or <code class="language-plaintext highlighter-rouge">TwinCAT BSD VM creator.bat</code> with a text editor, depending on which you want to use.</li>
+  <li>Change the ISO filename in one of the installer scripts to the one which matches your downloaded ISO file. Here <code class="language-plaintext highlighter-rouge">"TCBSD-x64-13-55702.iso"</code> is the name of the ISO file I downloaded.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Create-TcBsdVM.ps1</code> at line 7: <code class="language-plaintext highlighter-rouge">$tcbsdimagefile="TCBSD-x64-13-55702.iso",</code></li>
+      <li><code class="language-plaintext highlighter-rouge">TwinCAT BSD VM creator.bat</code> at line 2: <code class="language-plaintext highlighter-rouge">SET sourcefilename="TCBSD-x64-13-55702.iso"</code></li>
+    </ul>
+  </li>
+  <li>Save and close the installer script.</li>
+  <li>Then either double click <code class="language-plaintext highlighter-rouge">TwinCAT BSD VM creator.bat</code> to execute, or from powershell run <code class="language-plaintext highlighter-rouge">Create-TcBsdVM.ps1 TcBSD-VM</code>. Here the first argument, <code class="language-plaintext highlighter-rouge">TcBSD-VM</code>, is the name of the virtual machine.</li>
+  <li>
+    <p>You should see a Virtual Box window open and then you wait for the installer to start. This can take a minute. After that, you should see the following screen. Select <strong>TC/BSD Install</strong> and hit enter.</p>
+
+    <p><a href="/assets/2022-tcbsd/bsd_install.png"><picture><source srcset="/generated/2022-tcbsd/bsd_install-300-56c487f3a.webp 300w, /generated/2022-tcbsd/bsd_install-500-56c487f3a.webp 500w, /generated/2022-tcbsd/bsd_install-720-56c487f3a.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/bsd_install-300-480bc4212.png 300w, /generated/2022-tcbsd/bsd_install-500-480bc4212.png 500w, /generated/2022-tcbsd/bsd_install-720-480bc4212.png 720w" type="image/png"><img src="/generated/2022-tcbsd/bsd_install-800-480bc4212.png" width="1026" height="825"></picture></a></p>
+  </li>
+  <li>Then select the 4G hard drive which was automatically created by the script and hit enter.</li>
+  <li>
+    <p>Hit enter again to acknowledge the warning.</p>
+
+    <p><a href="/assets/2022-tcbsd/warning.png"><picture><source srcset="/generated/2022-tcbsd/warning-300-0c6d19cb1.webp 300w, /generated/2022-tcbsd/warning-500-0c6d19cb1.webp 500w, /generated/2022-tcbsd/warning-568-0c6d19cb1.webp 568w" type="image/webp"><source srcset="/generated/2022-tcbsd/warning-300-1fae5fe10.png 300w, /generated/2022-tcbsd/warning-500-1fae5fe10.png 500w, /generated/2022-tcbsd/warning-568-1fae5fe10.png 568w" type="image/png"><img src="/generated/2022-tcbsd/warning-568-1fae5fe10.png" width="568" height="224"></picture></a></p>
+  </li>
+  <li>Then it asks for you to generate a password. Type in a password and repeat it to make sure it’s correct.</li>
+  <li>
+    <p>After several minutes the installation is complete and you see the following screen. Select <strong>OK</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/complete.png"><picture><source srcset="/generated/2022-tcbsd/complete-264-015ad2c81.webp 264w" type="image/webp"><source srcset="/generated/2022-tcbsd/complete-264-7e4adb64f.png 264w" type="image/png"><img src="/generated/2022-tcbsd/complete-264-7e4adb64f.png" width="264" height="215"></picture></a></p>
+  </li>
+  <li>
+    <p>In the new menu select <strong>Shutdown</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/reboot.png"><picture><source srcset="/generated/2022-tcbsd/reboot-300-7a42d66c4.webp 300w, /generated/2022-tcbsd/reboot-406-7a42d66c4.webp 406w" type="image/webp"><source srcset="/generated/2022-tcbsd/reboot-300-70f095f8a.png 300w, /generated/2022-tcbsd/reboot-406-70f095f8a.png 406w" type="image/png"><img src="/generated/2022-tcbsd/reboot-406-70f095f8a.png" width="406" height="436"></picture></a></p>
+  </li>
+  <li>
+    <p>Open the <strong>Settings &gt; Network</strong> of the virtual machine you created. Now there are different options for different use cases:</p>
+
+    <ul>
+      <li>
+        <p>If you just use the runtime locally, enable a Network adapter 1 and set it as a <strong>Host only adapter</strong></p>
+
+        <p><a href="/assets/2022-tcbsd/virtual_box_host_only_adapter.png"><picture><source srcset="/generated/2022-tcbsd/virtual_box_host_only_adapter-300-14abd6629.webp 300w, /generated/2022-tcbsd/virtual_box_host_only_adapter-500-14abd6629.webp 500w, /generated/2022-tcbsd/virtual_box_host_only_adapter-720-14abd6629.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/virtual_box_host_only_adapter-300-86242b29e.png 300w, /generated/2022-tcbsd/virtual_box_host_only_adapter-500-86242b29e.png 500w, /generated/2022-tcbsd/virtual_box_host_only_adapter-720-86242b29e.png 720w" type="image/png"><img src="/generated/2022-tcbsd/virtual_box_host_only_adapter-800-86242b29e.png" width="1298" height="1036"></picture></a></p>
+      </li>
+      <li>
+        <p>If you want to set up a physical connection to an outside network select <strong>Bridged adapter</strong></p>
+
+        <p><a href="/assets/2022-tcbsd/virtual_box_bridged_adapter.png"><picture><source srcset="/generated/2022-tcbsd/virtual_box_bridged_adapter-300-dcdc15b80.webp 300w, /generated/2022-tcbsd/virtual_box_bridged_adapter-500-dcdc15b80.webp 500w, /generated/2022-tcbsd/virtual_box_bridged_adapter-720-dcdc15b80.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/virtual_box_bridged_adapter-300-ba2e8aa94.png 300w, /generated/2022-tcbsd/virtual_box_bridged_adapter-500-ba2e8aa94.png 500w, /generated/2022-tcbsd/virtual_box_bridged_adapter-720-ba2e8aa94.png 720w" type="image/png"><img src="/generated/2022-tcbsd/virtual_box_bridged_adapter-800-ba2e8aa94.png" width="1298" height="1036"></picture></a></p>
+      </li>
+      <li>
+        <p>If you want the Tc/BSD package manager to work, you need to enable both. For adapter 1, select <strong>Host only adapter</strong> and enable a second adapter where you select <strong>Bridged adapter</strong>.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Verify that the network connections work by starting the virtual machine, logging in and:</p>
+
+    <ul>
+      <li>
+        <p>Run <code class="language-plaintext highlighter-rouge">ifconfig</code> . You should see an <code class="language-plaintext highlighter-rouge">inet</code> starting with <code class="language-plaintext highlighter-rouge">192.168.</code>.
+<a href="/assets/2022-tcbsd/ifconfig_virtual_box.png"><picture><source srcset="/generated/2022-tcbsd/ifconfig_virtual_box-300-0c4fb3b27.webp 300w, /generated/2022-tcbsd/ifconfig_virtual_box-500-0c4fb3b27.webp 500w, /generated/2022-tcbsd/ifconfig_virtual_box-720-0c4fb3b27.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/ifconfig_virtual_box-300-aaee1fc5c.png 300w, /generated/2022-tcbsd/ifconfig_virtual_box-500-aaee1fc5c.png 500w, /generated/2022-tcbsd/ifconfig_virtual_box-720-aaee1fc5c.png 720w" type="image/png"><img src="/generated/2022-tcbsd/ifconfig_virtual_box-800-aaee1fc5c.png" width="1770" height="991"></picture></a></p>
+      </li>
+      <li>
+        <p>You can also try to <code class="language-plaintext highlighter-rouge">ping www.beckhoff.com</code> and see if you get a reply. For me, it took a minute before the network connection started to work.</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	$ ping www.beckhoff.com
+	PING d2la171hyf8xwx.cloudfront.net (52.222.139.54): 56 data bytes
+	64 bytes from 52.222.139.54: icmp_seq=0 ttl=128 time=9.673 ms
+	64 bytes from 52.222.139.54: icmp_seq=1 ttl=128 time=8.739 ms
+	64 bytes from 52.222.139.54: icmp_seq=2 ttl=128 time=9.783 ms
+	^C
+	--- d2la171hyf8xwx.cloudfront.net ping statistics ---
+	3 packets transmitted, 3 packets received, 0.0% packet loss
+</code></pre></div></div>
+
+<ul>
+  <li>In case it is not working, check your network adapter settings. Type <strong>Ethernet settings</strong> into the start menu and open it. Select <strong>Change adapter options</strong> and right-click <strong>VirtualBox Host-Only Network</strong> and select <strong>Properties</strong>. Make sure they are set to automatic.
+<a href="/assets/2022-tcbsd/ipv4_settings.png"><picture><source srcset="/generated/2022-tcbsd/ipv4_settings-300-5e484ad72.webp 300w, /generated/2022-tcbsd/ipv4_settings-500-5e484ad72.webp 500w, /generated/2022-tcbsd/ipv4_settings-720-5e484ad72.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/ipv4_settings-300-be31c9f34.png 300w, /generated/2022-tcbsd/ipv4_settings-500-be31c9f34.png 500w, /generated/2022-tcbsd/ipv4_settings-720-be31c9f34.png 720w" type="image/png"><img src="/generated/2022-tcbsd/ipv4_settings-800-be31c9f34.png" width="1566" height="979"></picture></a></li>
+</ul>
+
+<h2 id="installing-tcbsd-on-vmware">Installing Tc/BSD on VMware</h2>
+
+<p>Installing TwinCAT/BSD on VMware is a bit more complicated. The steps below are based on a <a href="https://www.youtube.com/watch?v=H-qfWfz37Fg">YouTube tutorial from Jakob Sagatowski</a>. Before you head over there, I did notice that I had to do several things differently for it to work.</p>
+
+<h3 id="create-a-bootable-usb">Create a bootable USB</h3>
+
+<ol>
+  <li>
+    <p>Install Rufus to create a bootable USB drive.</p>
+
+    <ul>
+      <li>Install via the terminal <code class="language-plaintext highlighter-rouge">winget install -e --id Rufus.Rufus</code>.</li>
+      <li>Or <a href="https://rufus.ie/">download manually</a> and install. You can also use the portable version, which doesn’t require any installation.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Go to the <a href="https://www.beckhoff.com/en-us/search-results/?q=bsd">Beckhoff website</a> and download the TwinCAT/BSD ISO.</p>
+
+    <p><a href="/assets/2022-tcbsd/download_tcbsd_iso.png"><picture><source srcset="/generated/2022-tcbsd/download_tcbsd_iso-300-05028dc83.webp 300w, /generated/2022-tcbsd/download_tcbsd_iso-500-05028dc83.webp 500w, /generated/2022-tcbsd/download_tcbsd_iso-615-05028dc83.webp 615w" type="image/webp"><source srcset="/generated/2022-tcbsd/download_tcbsd_iso-300-151822c24.png 300w, /generated/2022-tcbsd/download_tcbsd_iso-500-151822c24.png 500w, /generated/2022-tcbsd/download_tcbsd_iso-615-151822c24.png 615w" type="image/png"><img src="/generated/2022-tcbsd/download_tcbsd_iso-615-151822c24.png" width="615" height="151"></picture></a></p>
+  </li>
+  <li>
+    <p>Unzip the file you just downloaded. You’ll probably find three files in there. The ISO one is the one you need.</p>
+  </li>
+  <li>
+    <p>Get yourself a USB drive which doesn’t contain important information, since it’s formatted in the process. I used an old 1 GB USB drive that I bought for €30 a long time ago 😱.</p>
+  </li>
+  <li>
+    <p>Open Rufus, click <strong>SELECT</strong> and select the ISO file you just unpacked.</p>
+
+    <p><a href="/assets/2022-tcbsd/rufus_select_iso.png"><picture><source srcset="/generated/2022-tcbsd/rufus_select_iso-300-1bedc024a.webp 300w, /generated/2022-tcbsd/rufus_select_iso-474-1bedc024a.webp 474w" type="image/webp"><source srcset="/generated/2022-tcbsd/rufus_select_iso-300-6b5e79461.png 300w, /generated/2022-tcbsd/rufus_select_iso-474-6b5e79461.png 474w" type="image/png"><img src="/generated/2022-tcbsd/rufus_select_iso-474-6b5e79461.png" width="474" height="538"></picture></a></p>
+  </li>
+  <li>
+    <p>Then select <strong>START</strong>. It then formats the USB drive and makes it a bootable USB drive with Tc/BSD on it.</p>
+  </li>
+</ol>
+
+<h3 id="installing-twincatbsd">Installing TwinCAT/BSD</h3>
+
+<ol>
+  <li>
+    <p>Download and install VMware Workstation Player. It’s free for non-commercial use.</p>
+
+    <ul>
+      <li>Install from the terminal with <code class="language-plaintext highlighter-rouge">winget install -e --id VMware.WorkstationPlayer</code></li>
+      <li>Or <a href="https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html">manually download</a> and install.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Select the free license or enter a license number</p>
+  </li>
+  <li>
+    <p>Start VMware Workstation Player with Administrator rights and select create a New Virtual Machine. You need administrator rights later to access the USB drive.</p>
+
+    <p><a href="/assets/2022-tcbsd/create_new_vm.png"><picture><source srcset="/generated/2022-tcbsd/create_new_vm-300-1c2480a24.webp 300w, /generated/2022-tcbsd/create_new_vm-500-1c2480a24.webp 500w, /generated/2022-tcbsd/create_new_vm-714-1c2480a24.webp 714w" type="image/webp"><source srcset="/generated/2022-tcbsd/create_new_vm-300-9b570045c.png 300w, /generated/2022-tcbsd/create_new_vm-500-9b570045c.png 500w, /generated/2022-tcbsd/create_new_vm-714-9b570045c.png 714w" type="image/png"><img src="/generated/2022-tcbsd/create_new_vm-714-9b570045c.png" width="714" height="588"></picture></a></p>
+  </li>
+  <li>
+    <p>Select <strong>I will install the operating system later</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/install_os_later.png"><picture><source srcset="/generated/2022-tcbsd/install_os_later-300-34722453c.webp 300w, /generated/2022-tcbsd/install_os_later-500-34722453c.webp 500w, /generated/2022-tcbsd/install_os_later-641-34722453c.webp 641w" type="image/webp"><source srcset="/generated/2022-tcbsd/install_os_later-300-4d68f69d2.png 300w, /generated/2022-tcbsd/install_os_later-500-4d68f69d2.png 500w, /generated/2022-tcbsd/install_os_later-641-4d68f69d2.png 641w" type="image/png"><img src="/generated/2022-tcbsd/install_os_later-641-4d68f69d2.png" width="641" height="630"></picture></a></p>
+  </li>
+  <li>
+    <p>Select “Other” and “FreeBSD 12 64-bit”</p>
+
+    <p><a href="/assets/2022-tcbsd/select_guest_os.png"><picture><source srcset="/generated/2022-tcbsd/select_guest_os-300-d075c4030.webp 300w, /generated/2022-tcbsd/select_guest_os-428-d075c4030.webp 428w" type="image/webp"><source srcset="/generated/2022-tcbsd/select_guest_os-300-38be0acf5.png 300w, /generated/2022-tcbsd/select_guest_os-428-38be0acf5.png 428w" type="image/png"><img src="/generated/2022-tcbsd/select_guest_os-428-38be0acf5.png" width="428" height="430"></picture></a></p>
+  </li>
+  <li>
+    <p>Give your virtual machine a descriptive name and change the save location if you would like to.</p>
+
+    <p><a href="/assets/2022-tcbsd/name_vm.png"><picture><source srcset="/generated/2022-tcbsd/name_vm-300-ba1f3fb9f.webp 300w, /generated/2022-tcbsd/name_vm-428-ba1f3fb9f.webp 428w" type="image/webp"><source srcset="/generated/2022-tcbsd/name_vm-300-0f6b157b6.png 300w, /generated/2022-tcbsd/name_vm-428-0f6b157b6.png 428w" type="image/png"><img src="/generated/2022-tcbsd/name_vm-428-0f6b157b6.png" width="428" height="430"></picture></a></p>
+  </li>
+  <li>
+    <p>Specify the disk capacity. I left it at the default 20 GB. Note: <a href="https://www.youtube.com/watch?v=H-qfWfz37Fg">Jakob</a> removes this hard drive and adds the USB drive first and then adds a new hard drive. But, I found that if I do this, I get an error<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> once I remove the USB drive.</p>
+
+    <p><a href="/assets/2022-tcbsd/disk_vm.png"><picture><source srcset="/generated/2022-tcbsd/disk_vm-300-1d56d175c.webp 300w, /generated/2022-tcbsd/disk_vm-428-1d56d175c.webp 428w" type="image/webp"><source srcset="/generated/2022-tcbsd/disk_vm-300-054149f33.png 300w, /generated/2022-tcbsd/disk_vm-428-054149f33.png 428w" type="image/png"><img src="/generated/2022-tcbsd/disk_vm-428-054149f33.png" width="428" height="430"></picture></a></p>
+  </li>
+  <li>
+    <p>You see a screen summarizing the results. Click <strong>Finish</strong>.</p>
+  </li>
+  <li>
+    <p>Select the virtual machine you just created and select <strong>Edit virtual Machine Settings</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/edit_vm_settings.png"><picture><source srcset="/generated/2022-tcbsd/edit_vm_settings-300-67e78f7ae.webp 300w, /generated/2022-tcbsd/edit_vm_settings-500-67e78f7ae.webp 500w, /generated/2022-tcbsd/edit_vm_settings-714-67e78f7ae.webp 714w" type="image/webp"><source srcset="/generated/2022-tcbsd/edit_vm_settings-300-aa3c043a8.png 300w, /generated/2022-tcbsd/edit_vm_settings-500-aa3c043a8.png 500w, /generated/2022-tcbsd/edit_vm_settings-714-aa3c043a8.png 714w" type="image/png"><img src="/generated/2022-tcbsd/edit_vm_settings-714-aa3c043a8.png" width="714" height="588"></picture></a></p>
+  </li>
+  <li>
+    <p>Increase the memory of the virtual machine. I set it to 1 GB. At 256 MB the virtual machine sometimes gets killed when it runs out of memory. If you notice that it crashes, you know what to do.</p>
+
+    <p><a href="/assets/2022-tcbsd/vm_memory.png"><picture><source srcset="/generated/2022-tcbsd/vm_memory-300-cd4d8be82.webp 300w, /generated/2022-tcbsd/vm_memory-500-cd4d8be82.webp 500w, /generated/2022-tcbsd/vm_memory-720-cd4d8be82.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/vm_memory-300-714f91e76.png 300w, /generated/2022-tcbsd/vm_memory-500-714f91e76.png 500w, /generated/2022-tcbsd/vm_memory-720-714f91e76.png 720w" type="image/png"><img src="/generated/2022-tcbsd/vm_memory-750-714f91e76.png" width="750" height="734"></picture></a></p>
+  </li>
+  <li>
+    <p>Add the USB drive as a hard disk by clicking on <strong>Add</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/replace_harddisk.png"><picture><source srcset="/generated/2022-tcbsd/replace_harddisk-300-e89aa245a.webp 300w, /generated/2022-tcbsd/replace_harddisk-500-e89aa245a.webp 500w, /generated/2022-tcbsd/replace_harddisk-720-e89aa245a.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/replace_harddisk-300-79b093bb7.png 300w, /generated/2022-tcbsd/replace_harddisk-500-79b093bb7.png 500w, /generated/2022-tcbsd/replace_harddisk-720-79b093bb7.png 720w" type="image/png"><img src="/generated/2022-tcbsd/replace_harddisk-750-79b093bb7.png" width="750" height="734"></picture></a></p>
+  </li>
+  <li>Then in the new window, select <strong>Hard Disk</strong> and click <strong>Next</strong>.</li>
+  <li>Select <strong>SATA</strong> and click <strong>Next</strong>.</li>
+  <li>Select <strong>Use a physical disk (for advanced users)</strong>. Yes, that’s you :D. Click on <strong>Next</strong>.</li>
+  <li>
+    <p>Now you get prompted to choose a disk. Here you want to select your USB drive, which should still be on your computer.</p>
+
+    <p><a href="/assets/2022-tcbsd/select_disk.png"><picture><source srcset="/generated/2022-tcbsd/select_disk-300-833c70fa0.webp 300w, /generated/2022-tcbsd/select_disk-444-833c70fa0.webp 444w" type="image/webp"><source srcset="/generated/2022-tcbsd/select_disk-300-59914ac6b.png 300w, /generated/2022-tcbsd/select_disk-444-59914ac6b.png 444w" type="image/png"><img src="/generated/2022-tcbsd/select_disk-444-59914ac6b.png" width="444" height="430"></picture></a></p>
+  </li>
+  <li>
+    <p>To find out if you need to select Disk 0 or Disk 1. Type in <code class="language-plaintext highlighter-rouge">diskmgmt</code> in the start menu to open <strong>Create and format hard disk partitions</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/diskmgmt.png"><picture><source srcset="/generated/2022-tcbsd/diskmgmt-300-1eb1cec2f.webp 300w, /generated/2022-tcbsd/diskmgmt-500-1eb1cec2f.webp 500w, /generated/2022-tcbsd/diskmgmt-720-1eb1cec2f.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/diskmgmt-300-3c2b46a29.png 300w, /generated/2022-tcbsd/diskmgmt-500-3c2b46a29.png 500w, /generated/2022-tcbsd/diskmgmt-720-3c2b46a29.png 720w" type="image/png"><img src="/generated/2022-tcbsd/diskmgmt-784-3c2b46a29.png" width="784" height="680"></picture></a></p>
+  </li>
+  <li>
+    <p>You see several partitions. In my case, there are two. Disk 1 is the removable one, thus I want to use that as the hard drive.</p>
+
+    <p><a href="/assets/2022-tcbsd/disk0_disk1.png"><picture><source srcset="/generated/2022-tcbsd/disk0_disk1-300-53bfc229f.webp 300w, /generated/2022-tcbsd/disk0_disk1-500-53bfc229f.webp 500w, /generated/2022-tcbsd/disk0_disk1-720-53bfc229f.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/disk0_disk1-300-aa7f30b63.png 300w, /generated/2022-tcbsd/disk0_disk1-500-aa7f30b63.png 500w, /generated/2022-tcbsd/disk0_disk1-720-aa7f30b63.png 720w" type="image/png"><img src="/generated/2022-tcbsd/disk0_disk1-731-aa7f30b63.png" width="731" height="200"></picture></a></p>
+  </li>
+  <li>
+    <p>Now go back to the virtual machine settings and select <strong>PhysicalDrive1</strong>, <strong>Next</strong> and <strong>Finish</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/select_disk1.png"><picture><source srcset="/generated/2022-tcbsd/select_disk1-300-082cded48.webp 300w, /generated/2022-tcbsd/select_disk1-444-082cded48.webp 444w" type="image/webp"><source srcset="/generated/2022-tcbsd/select_disk1-300-89890f090.png 300w, /generated/2022-tcbsd/select_disk1-444-89890f090.png 444w" type="image/png"><img src="/generated/2022-tcbsd/select_disk1-444-89890f090.png" width="444" height="430"></picture></a></p>
+  </li>
+  <li>
+    <p>Finally, you set the firmware type of the USB drive to <strong>UEFI</strong>. If you have a Pro version of VMware, you can set the firmware type in the virtual machine settings under <strong>Options &gt; Advanced &gt; Firmware type</strong> and select <strong>UEFI</strong>. If you have <a href="https://stackoverflow.com/a/71333438/6329629">the Player version</a>, you:</p>
+
+    <ol>
+      <li>
+        <p>Locate the directory of the virtual machine. You can find its location under <strong>Edit virtual machine settings &gt; Hard Disk (SCSI)</strong></p>
+
+        <p><a href="/assets/2022-tcbsd/vm_location.png"><picture><source srcset="/generated/2022-tcbsd/vm_location-300-bf50faa2a.webp 300w, /generated/2022-tcbsd/vm_location-500-bf50faa2a.webp 500w, /generated/2022-tcbsd/vm_location-720-bf50faa2a.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/vm_location-300-cd9d7072f.png 300w, /generated/2022-tcbsd/vm_location-500-cd9d7072f.png 500w, /generated/2022-tcbsd/vm_location-720-cd9d7072f.png 720w" type="image/png"><img src="/generated/2022-tcbsd/vm_location-800-cd9d7072f.png" width="1086" height="180"></picture></a></p>
+      </li>
+      <li>Open the VMX file in the virtual machine directory with a text editor.</li>
+      <li>Find the line <code class="language-plaintext highlighter-rouge">firmware = "bios"</code> and replace with <code class="language-plaintext highlighter-rouge">firmware = "efi"</code> and save it. If this line doesn’t exist, add it somewhere.</li>
+    </ol>
+
+    <p><a href="/assets/2022-tcbsd/player_vs_pro.png"><picture><source srcset="/generated/2022-tcbsd/player_vs_pro-300-9fc30b104.webp 300w, /generated/2022-tcbsd/player_vs_pro-500-9fc30b104.webp 500w, /generated/2022-tcbsd/player_vs_pro-720-9fc30b104.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/player_vs_pro-300-552889640.png 300w, /generated/2022-tcbsd/player_vs_pro-500-552889640.png 500w, /generated/2022-tcbsd/player_vs_pro-720-552889640.png 720w" type="image/png"><img src="/generated/2022-tcbsd/player_vs_pro-800-552889640.png" width="1500" height="734"></picture></a></p>
+  </li>
+  <li>
+    <p>Now start the virtual machine with <strong>Play virtual machine</strong>.</p>
+  </li>
+  <li>
+    <p>Wait for the installer to start up. This can take a minute. After that, you see the following screen. Select <strong>TC/BSD Install</strong> and hit enter.</p>
+
+    <p><a href="/assets/2022-tcbsd/bsd_install.png"><picture><source srcset="/generated/2022-tcbsd/bsd_install-300-56c487f3a.webp 300w, /generated/2022-tcbsd/bsd_install-500-56c487f3a.webp 500w, /generated/2022-tcbsd/bsd_install-720-56c487f3a.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/bsd_install-300-480bc4212.png 300w, /generated/2022-tcbsd/bsd_install-500-480bc4212.png 500w, /generated/2022-tcbsd/bsd_install-720-480bc4212.png 720w" type="image/png"><img src="/generated/2022-tcbsd/bsd_install-800-480bc4212.png" width="1026" height="825"></picture></a></p>
+  </li>
+  <li>
+    <p>Then select the 20G virtual hard drive you made and hit enter.</p>
+
+    <p><a href="/assets/2022-tcbsd/select_harddrive.png"><picture><source srcset="/generated/2022-tcbsd/select_harddrive-300-6e6c1ecbb.webp 300w, /generated/2022-tcbsd/select_harddrive-500-6e6c1ecbb.webp 500w, /generated/2022-tcbsd/select_harddrive-624-6e6c1ecbb.webp 624w" type="image/webp"><source srcset="/generated/2022-tcbsd/select_harddrive-300-09182c2d4.png 300w, /generated/2022-tcbsd/select_harddrive-500-09182c2d4.png 500w, /generated/2022-tcbsd/select_harddrive-624-09182c2d4.png 624w" type="image/png"><img src="/generated/2022-tcbsd/select_harddrive-624-09182c2d4.png" width="624" height="384"></picture></a></p>
+  </li>
+  <li>
+    <p>Hit enter again to acknowledge the warning.</p>
+
+    <p><a href="/assets/2022-tcbsd/warning.png"><picture><source srcset="/generated/2022-tcbsd/warning-300-0c6d19cb1.webp 300w, /generated/2022-tcbsd/warning-500-0c6d19cb1.webp 500w, /generated/2022-tcbsd/warning-568-0c6d19cb1.webp 568w" type="image/webp"><source srcset="/generated/2022-tcbsd/warning-300-1fae5fe10.png 300w, /generated/2022-tcbsd/warning-500-1fae5fe10.png 500w, /generated/2022-tcbsd/warning-568-1fae5fe10.png 568w" type="image/png"><img src="/generated/2022-tcbsd/warning-568-1fae5fe10.png" width="568" height="224"></picture></a></p>
+  </li>
+  <li>Then it asks for you to generate a password. Type in a password and repeat it to make sure it’s correct.</li>
+  <li>
+    <p>After several minutes the installation is complete and you see the following screen. Select <strong>OK</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/complete.png"><picture><source srcset="/generated/2022-tcbsd/complete-264-015ad2c81.webp 264w" type="image/webp"><source srcset="/generated/2022-tcbsd/complete-264-7e4adb64f.png 264w" type="image/png"><img src="/generated/2022-tcbsd/complete-264-7e4adb64f.png" width="264" height="215"></picture></a></p>
+  </li>
+  <li>
+    <p>In the new menu select <strong>Shutdown</strong> so that you can remove the USB drive.</p>
+
+    <p><a href="/assets/2022-tcbsd/reboot.png"><picture><source srcset="/generated/2022-tcbsd/reboot-300-7a42d66c4.webp 300w, /generated/2022-tcbsd/reboot-406-7a42d66c4.webp 406w" type="image/webp"><source srcset="/generated/2022-tcbsd/reboot-300-70f095f8a.png 300w, /generated/2022-tcbsd/reboot-406-70f095f8a.png 406w" type="image/png"><img src="/generated/2022-tcbsd/reboot-406-70f095f8a.png" width="406" height="436"></picture></a></p>
+  </li>
+  <li>Remove USB drive under <strong>Edit virtual machine settings</strong>. Make sure you don’t select the 20 GB hard drive, on which you just installed Tc/BSD.</li>
+  <li>Go back to the main menu and start the virtual machine.</li>
+  <li>
+    <p>After some time you see the login screen. Log in with your user name and password you made during the installation.</p>
+
+    <p><a href="/assets/2022-tcbsd/bsd_login.png"><picture><source srcset="/generated/2022-tcbsd/bsd_login-300-ba04eb437.webp 300w, /generated/2022-tcbsd/bsd_login-500-ba04eb437.webp 500w, /generated/2022-tcbsd/bsd_login-720-ba04eb437.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/bsd_login-300-d1c8934de.png 300w, /generated/2022-tcbsd/bsd_login-500-d1c8934de.png 500w, /generated/2022-tcbsd/bsd_login-720-d1c8934de.png 720w" type="image/png"><img src="/generated/2022-tcbsd/bsd_login-800-d1c8934de.png" width="1053" height="934"></picture></a></p>
+  </li>
+  <li>Congrats. You now have a running version of TwinCAT/BSD.</li>
+</ol>
+
+<h2 id="device-manager">Device manager</h2>
+
+<p>As I mentioned earlier, Tc/BSD doesn’t have a desktop environment. Most things are done from the terminal. However, the device manager has a GUI. To access it, you first need to find out the IP of the virtual machine. You find the IP by typing in <code class="language-plaintext highlighter-rouge">ifconfig</code>. The IP is right after <code class="language-plaintext highlighter-rouge">inet</code>.</p>
+
+<p><a href="/assets/2022-tcbsd/ifconfig.png"><picture><source srcset="/generated/2022-tcbsd/ifconfig-300-9a05f4b63.webp 300w, /generated/2022-tcbsd/ifconfig-500-9a05f4b63.webp 500w, /generated/2022-tcbsd/ifconfig-720-9a05f4b63.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/ifconfig-300-2d9ab3652.png 300w, /generated/2022-tcbsd/ifconfig-500-2d9ab3652.png 500w, /generated/2022-tcbsd/ifconfig-720-2d9ab3652.png 720w" type="image/png"><img src="/generated/2022-tcbsd/ifconfig-800-2d9ab3652.png" width="1022" height="411"></picture></a></p>
+
+<p>Then open your browser and type in the IP address you found. For me, it’s <code class="language-plaintext highlighter-rouge">https://192.168.126.128</code>. It’s possible that a warning shows up. Accept the risk and continue.</p>
+
+<p><a href="/assets/2022-tcbsd/firefox_accept_risk.png"><picture><source srcset="/generated/2022-tcbsd/firefox_accept_risk-300-25e7fbccd.webp 300w, /generated/2022-tcbsd/firefox_accept_risk-500-25e7fbccd.webp 500w, /generated/2022-tcbsd/firefox_accept_risk-720-25e7fbccd.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/firefox_accept_risk-300-8a4a732ec.png 300w, /generated/2022-tcbsd/firefox_accept_risk-500-8a4a732ec.png 500w, /generated/2022-tcbsd/firefox_accept_risk-720-8a4a732ec.png 720w" type="image/png"><img src="/generated/2022-tcbsd/firefox_accept_risk-800-8a4a732ec.png" width="1756" height="1149"></picture></a></p>
+
+<p>From here you can log into the device manager with the username <code class="language-plaintext highlighter-rouge">Administrator</code> and the password you set during the installation. The device manager shows all kinds of information about the state of the hardware and the software.</p>
+
+<p><a href="/assets/2022-tcbsd/device_manager.png"><picture><source srcset="/generated/2022-tcbsd/device_manager-300-c054b533e.webp 300w, /generated/2022-tcbsd/device_manager-500-c054b533e.webp 500w, /generated/2022-tcbsd/device_manager-720-c054b533e.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/device_manager-300-794770804.png 300w, /generated/2022-tcbsd/device_manager-500-794770804.png 500w, /generated/2022-tcbsd/device_manager-720-794770804.png 720w" type="image/png"><img src="/generated/2022-tcbsd/device_manager-800-794770804.png" width="883" height="393"></picture></a></p>
+
+<h2 id="web-console">Web console</h2>
+
+<p>Next to a device manager, the <code class="language-plaintext highlighter-rouge">https://192.168.126.128</code> page also has a link to a web console. The console shows the same as if you logged into the virtual machine directly, but the web version has a better interface. Mainly because it enables scrolling<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> and copy-pasting commands is easier.</p>
+
+<h2 id="installing-packages">Installing packages</h2>
+
+<p>As I mentioned earlier, there is no GUI. You do most actions from the terminal. One of the things you can do is install <a href="https://tcbsd.beckhoff.com/TCBSD/13/stable/packages/All/">packages</a>, with a package manager. Package managers are a useful feature in UNIX-like operating systems. Although Windows is now also joining the party with <a href="https://winget.run/"><code class="language-plaintext highlighter-rouge">winget</code></a>.</p>
+
+<h3 id="installing-twincat-hmi-server">Installing TwinCAT HMI server</h3>
+
+<p><em>Note: See also a <a href="https://beckhoff-au.teachable.com/courses/coding-bytes-twincat-3/lectures/37473242">video by Coding Bytes</a> which describes this step.</em></p>
+
+<p>A package which you likely need is the HMI server. I don’t exactly know what it is called, but I know that there is a search feature. If you type in <code class="language-plaintext highlighter-rouge">pkg search hmi</code>, you see two results.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pkg search hmi
+TF1810-PLC-HMI-Web-3.1.4024.11_1 TF1810 | TC3 PLC HMI Web
+TF2000-HMI-Server-1.12.754.4   TF2000-HMI-Server
+</code></pre></div></div>
+
+<p>The first one is the old HMI and the second one is the one I want. To install it, type <code class="language-plaintext highlighter-rouge">doas pkg install TF2000-HMI-Server</code> and hit enter. Confirm the start of the installation with <code class="language-plaintext highlighter-rouge">y</code>. Then a warning showed up. So I did <code class="language-plaintext highlighter-rouge">doas service TcHmiSrv start</code> to start it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>=====
+Message from TF2000-HMI-Server-1.12.754.4:
+
+--
+============================== !!!! WARNING !!!! ==========================
+FreeBSD package manager doesn't allow us to automatically start services
+during package installation. To use the Beckhoff TwinCAT HMI Server either
+restart your system or start 'TcHmiSrv' manually with:
+
+doas service TcHmiSrv start
+
+============================== !!!! WARNING !!!! ==========================
+</code></pre></div></div>
+
+<p>If you then type <code class="language-plaintext highlighter-rouge">top</code> and hit enter, you see TcHmiSrv is running. <code class="language-plaintext highlighter-rouge">top</code> is the task manager analogue of FreeBSD. It can be convenient to have it open to see if processes are running, or maybe if your virtual machine has crashed. To exit <code class="language-plaintext highlighter-rouge">top</code>, press <code class="language-plaintext highlighter-rouge">q</code> or <kbd>Ctrl</kbd> + <kbd>C</kbd>.</p>
+
+<p><a href="/assets/2022-tcbsd/top_tchmi.png"><picture><source srcset="/generated/2022-tcbsd/top_tchmi-300-717070c03.webp 300w, /generated/2022-tcbsd/top_tchmi-500-717070c03.webp 500w, /generated/2022-tcbsd/top_tchmi-720-717070c03.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/top_tchmi-300-761251ad3.png 300w, /generated/2022-tcbsd/top_tchmi-500-761251ad3.png 500w, /generated/2022-tcbsd/top_tchmi-720-761251ad3.png 720w" type="image/png"><img src="/generated/2022-tcbsd/top_tchmi-800-761251ad3.png" width="1043" height="825"></picture></a></p>
+
+<h2 id="running-plc-code">Running PLC code</h2>
+
+<h3 id="connecting-to-the-virtual-machine">Connecting to the virtual machine</h3>
+
+<p>Now you are ready to run some PLC and HMI code on Tc/BSD. You find the target machine the usual way. You go to <strong>Choose Target System &gt; Search (Ethernet) &gt; Broadcast search</strong>. Note that next to your regular Wi-Fi/Ethernet ports, also two ports from VMware or one from VirtualBox shows up. Make sure the ports of your virtual machine are selected and click <strong>OK</strong> to start the search.</p>
+
+<p><a href="/assets/2022-tcbsd/select_ports.png"><picture><source srcset="/generated/2022-tcbsd/select_ports-300-43aad7664.webp 300w, /generated/2022-tcbsd/select_ports-500-43aad7664.webp 500w, /generated/2022-tcbsd/select_ports-541-43aad7664.webp 541w" type="image/webp"><source srcset="/generated/2022-tcbsd/select_ports-300-8daf8cda7.png 300w, /generated/2022-tcbsd/select_ports-500-8daf8cda7.png 500w, /generated/2022-tcbsd/select_ports-541-8daf8cda7.png 541w" type="image/png"><img src="/generated/2022-tcbsd/select_ports-541-8daf8cda7.png" width="541" height="217"></picture></a></p>
+
+<p>Click <strong>Add Route</strong> select <strong>Secure ADS</strong> and click <strong>OK</strong>. In case it can’t connect, click <strong>Advanced</strong> to show the options. Then select <strong>IP address</strong> instead of <strong>Host name</strong>. Then try to connect again.</p>
+
+<p><a href="/assets/2022-tcbsd/connected.png"><picture><source srcset="/generated/2022-tcbsd/connected-300-0938262fe.webp 300w, /generated/2022-tcbsd/connected-500-0938262fe.webp 500w, /generated/2022-tcbsd/connected-637-0938262fe.webp 637w" type="image/webp"><source srcset="/generated/2022-tcbsd/connected-300-f4b89fd79.png 300w, /generated/2022-tcbsd/connected-500-f4b89fd79.png 500w, /generated/2022-tcbsd/connected-637-f4b89fd79.png 637w" type="image/png"><img src="/generated/2022-tcbsd/connected-637-f4b89fd79.png" width="637" height="485"></picture></a></p>
+
+<p>After connecting to the PLC, you should be able to activate your configuration. Finally. You can develop TwinCAT code again while <a href="https://alltwincat.com/2020/06/15/the-five-best-and-worst-things-with-twincat/#the-very-concept-of-twincat">sitting in a beer garden like some developers do</a>. Freedom!</p>
+
+<h3 id="publishing-the-hmi">Publishing the HMI</h3>
+
+<p>With your PLC code running, it’s now time to look at how to publish the HMI. I initially had some issues with publishing the HMI. In the end, I made it work by using TcBSD version 13, which has TcHmiSrv 1.12.756.1. I couldn’t make it work with TcBSD v12.2 which has TcHmiSrv v 1.12.746.0. Furthermore, you need to make sure that your HMI project has the same version as the server which is 1.12.756.1 for me.</p>
+
+<p>Once you have that, you need to add an <a href="https://infosys.beckhoff.com/content/1033/twincat_bsd/6423780747.html?id=6393416005524011539">exception to the Tc/BSD firewall</a>. By default a lot of ports are blocked, including the one needed for the HMI server. To add it, open the firewall configuration file with <code class="language-plaintext highlighter-rouge">doas ee /etc/pf.conf</code> from the console. Then add the following new line at the end of the file</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># allow TcHmiSrv outgoing
+pass in quick proto tcp to port 1010 keep state
+</code></pre></div></div>
+
+<p>Exit the <code class="language-plaintext highlighter-rouge">ee</code> editor with <kbd>Esc</kbd>, select <code class="language-plaintext highlighter-rouge">a) leave editor</code>, save your changes and restart the virtual machine.</p>
+
+<p>Meanwhile, open the PLC project you want to publish on the virtual machine. Verify that the TF2000 HMI Server license is present in your system manager under <strong>SYSTEM &gt; License</strong>. If it’s not present, add it manually via the <strong>Manage Licenses</strong> tab. Then activate your PLC project which serves as the back end for your HMI project. Open the HMI publishing settings, fill in the IP address of the virtual machine and press <strong>Validate connection</strong>. If the connection was successful, select <strong>Publish</strong>.</p>
+
+<p><a href="/assets/2022-tcbsd/VM_HMI_publish_settings.png"><picture><source srcset="/generated/2022-tcbsd/VM_HMI_publish_settings-300-fdfacc1af.webp 300w, /generated/2022-tcbsd/VM_HMI_publish_settings-500-fdfacc1af.webp 500w, /generated/2022-tcbsd/VM_HMI_publish_settings-720-fdfacc1af.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/VM_HMI_publish_settings-300-fbf801c3a.png 300w, /generated/2022-tcbsd/VM_HMI_publish_settings-500-fbf801c3a.png 500w, /generated/2022-tcbsd/VM_HMI_publish_settings-720-fbf801c3a.png 720w" type="image/png"><img src="/generated/2022-tcbsd/VM_HMI_publish_settings-800-fbf801c3a.png" width="955" height="831"></picture></a></p>
+
+<p>If you connect to the HMI server for the first time, it asks you to set a password for the HMI server. You need this password whenever you want to publish your HMI project or need to log into the HMI server.</p>
+
+<p><a href="/assets/2022-tcbsd/first_hmi_server_connection.png"><picture><source srcset="/generated/2022-tcbsd/first_hmi_server_connection-300-40af2a1dc.webp 300w, /generated/2022-tcbsd/first_hmi_server_connection-500-40af2a1dc.webp 500w, /generated/2022-tcbsd/first_hmi_server_connection-720-40af2a1dc.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/first_hmi_server_connection-300-b9986c121.png 300w, /generated/2022-tcbsd/first_hmi_server_connection-500-b9986c121.png 500w, /generated/2022-tcbsd/first_hmi_server_connection-720-b9986c121.png 720w" type="image/png"><img src="/generated/2022-tcbsd/first_hmi_server_connection-800-b9986c121.png" width="814" height="588"></picture></a></p>
+
+<p>Once the password is set you can publish your HMI which then should be reachable at the Browser URL as shown in the publishing settings.</p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>The error message:</p>
+
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>No suitable dump device was found.
+Setting hostuuid: 60e34d56-aa3b-ddb2-f508-cbe7cce89d64.
+Setting hostid: 0x0789008c.
+swapon: /dev/ada1p2: No such file or directory Starting file system checks: Can't open `/dev/ada1p1'
+/dev/ada1p1: UNEXPECTED INCONSISTENCY; RUN fsck_msdosfs MANUALLY.
+THE FOLLOWING FILE SYSTEM HAD AN UNEXPECTED INCONSISTENCY:
+	msdosfs: /dev/ada1p1 (/boot/efi)
+Automatic file system check failed; help!
+ERROR: ABORTING BOOT (sending SIGTERM to parent)!
+2022-06-04T08:26:05.670175+00:00 - init 1 - - /bin/sh on /etc/rc terminated abnormally, going to single user mode
+Enter full pathname of shell or RETURN for /bin/sh:
+root@:/
+</code></pre></div>      </div>
+      <p><a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+
+      <p>While playing with Tc/BSD in the virtual machine I ran into an annoying issue: I couldn’t scroll up. For example, when I do <code class="language-plaintext highlighter-rouge">TcHmiSrv --help</code>, the help text is to long for the console screen. At first, I couldn’t figure out how to scroll back up, because there is no scroll bar, <kbd>↑</kbd> shows the previous command and <kbd>Page Up</kbd> just shows a <code class="language-plaintext highlighter-rouge">~</code>. After consulting Google, I found out that is where the <kbd>Scroll Lock</kbd> key is for. I always wondered what this button did. Note: If you’re on a laptop without a Scroll Lock key, you can <a href="https://serverfault.com/a/420341">remap one of the existing key combo’s</a>.
+<img src="/assets/2022-tcbsd/scroll_lock_magic.gif" alt="scroll lock enables scrolling in the TcBSD terminal window" /> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><category term="twincat" /><summary type="html"><![CDATA[TwinCAT/BSD is a new operating system for the TwinCAT runtime. It has a small footprint and it’s free. Furthermore, TwinCAT/BSD allows you to run TwinCAT code locally when you have Hyper-V enabled if you install it on a virtual machine. In this tutorial, I go over the installation of TwinCAT/BSD on VMware and Virtual Box and show some basic usages of Tc/BSD.]]></summary></entry><entry><title type="html">No more formatting fights with pre-commits for TwinCAT</title><link href="https://cookncode.com/twincat/2022/04/14/pre-commit.html" rel="alternate" type="text/html" title="No more formatting fights with pre-commits for TwinCAT" /><published>2022-04-14T00:00:00+00:00</published><updated>2025-08-01T14:25:53+00:00</updated><id>https://cookncode.com/twincat/2022/04/14/pre-commit</id><content type="html" xml:base="https://cookncode.com/twincat/2022/04/14/pre-commit.html"><![CDATA[<p><a href="https://cookncode.com/twincat/2021/06/07/tc-source-control-tips.html">Earlier</a> I talked about how you can do version control of your TwinCAT code with git. In this post, I want to show a neat feature of git which I didn’t mention last time: pre-commits. Pre-commits can format, lint, or do static code analyses on your code before committing. One pre-commit is available for structured text files. But, pre-commits are also available for markdown, HTML, or JavaScript files.</p>
+
+<p><em>Use the <a href="https://github.com/rruiter87/TcTemplate">GitHub TwinCAT template repo</a> to set up a TwinCAT repo, including the pre-commits.</em></p>
+
+<h2 id="what-are-pre-commits">What are pre-commits?</h2>
+
+<p>Pre-commits are part of a class of so-called <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">git hooks</a>. Hooks enable you to run a script during a git command. Most of these hooks are pre-commit, meaning they do something before a commit, merge, or rebase. Pre-commit hooks can be beneficial; for instance, they can guarantee a uniform code formatting style or verify a file’s JSON or XML format.</p>
+
+<p>You can see some examples of git hooks if you have a project which uses git. Navigate to the <code class="language-plaintext highlighter-rouge">.git/hooks</code> folder and you should see a list of example hooks there. If you can’t see the <code class="language-plaintext highlighter-rouge">.git</code> folder, make sure you have enabled “Hidden items” under the View tab in your Windows Explorer.</p>
+
+<p><a href="/assets/2022-pre-commit/hook-examples.png"><picture><source srcset="/generated/2022-pre-commit/hook-examples-300-9aa9c0d95.webp 300w, /generated/2022-pre-commit/hook-examples-500-9aa9c0d95.webp 500w, /generated/2022-pre-commit/hook-examples-720-9aa9c0d95.webp 720w" type="image/webp"><source srcset="/generated/2022-pre-commit/hook-examples-300-ab0aa6599.png 300w, /generated/2022-pre-commit/hook-examples-500-ab0aa6599.png 500w, /generated/2022-pre-commit/hook-examples-720-ab0aa6599.png 720w" type="image/png"><img src="/generated/2022-pre-commit/hook-examples-800-ab0aa6599.png" alt="git hook examples as found in the ./git/hooks folder" width="1294" height="798"></picture></a></p>
+
+<p>If you open one of the files, you see some bash scripts. It’s not necessary to use bash. You can use any programming or scripting language which is available on your system.</p>
+
+<p>You can write your own hooks from scratch, but for most files, there is already <a href="https://pre-commit.com/hooks.html">a large variety available</a>. Let me show you how you can use these and a structured text hook for your TwinCAT projects.</p>
+
+<h2 id="setup-pre-commit">Setup pre-commit</h2>
+
+<p>A popular framework to manage pre-commits is <a href="https://pre-commit.com/">pre-commit</a>. It’s a Python based framework and thus you need a working Python installation on your system before you can use it.</p>
+
+<ol>
+  <li>
+    <p>(In case you do not have Python) Download and install conda via one of the methods below. You can either install Miniconda which is a minimal installation. It comes with the bare necessities to get started. Miniconda should be enough for this tutorial. Or, if you would like to have a bit more tools/modules installed (mainly for data analyses), choose Anaconda.</p>
+
+    <ul>
+      <li>Manually download and install <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> or <a href="https://www.anaconda.com/products/individual#Downloads">Anaconda</a>.</li>
+      <li>Or run <code class="language-plaintext highlighter-rouge">winget install -e --id Anaconda.Miniconda3</code> or <code class="language-plaintext highlighter-rouge">winget install -e --id Anaconda.Anaconda3</code> from the terminal.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Install pre-commit with either:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">pip install pre-commit</code></li>
+      <li>or <code class="language-plaintext highlighter-rouge">conda install -c conda-forge pre-commit</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>Check if the installation went OK by running the command below in the terminal. If you see a version number then pre-commit works.</p>
+  </li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    $ pre-commit --version
+    pre-commit 2.17.0
+</code></pre></div></div>
+
+<ol start="4">
+  <li>Next, create a new file called <code class="language-plaintext highlighter-rouge">.pre-commit-config.yaml</code> in the git project folder (same folder as where your <code class="language-plaintext highlighter-rouge">.git</code> folder resides) where you want to start using pre-commits. Now you’re all set up to start using pre-commits.</li>
+</ol>
+
+<h2 id="twincat-relevant-pre-commits">TwinCAT relevant pre-commits</h2>
+
+<p>The kind people of the Photon Controls and Data Systems at SLAC have open-sourced their TwinCAT pre-commits. To use the SLAC pre-commits, add the following lines to your <code class="language-plaintext highlighter-rouge">.pre-commit-config.yaml</code> file:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">repo</span><span class="pi">:</span> <span class="s">https://github.com/pcdshub/pre-commit-hooks</span>
+  <span class="na">rev</span><span class="pi">:</span> <span class="s">v1.2.0</span>
+  <span class="na">hooks</span><span class="pi">:</span>
+    <span class="c1"># Replaces all leading tabs with spaces</span>
+    <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">twincat-leading-tabs-remover</span>
+    <span class="c1"># Removes line ids. See point 4 of the link for why you don't need them</span>
+    <span class="c1"># https://cookncode.com/twincat/2021/06/07/tc-source-control-tips#2-creating-independent-files</span>
+    <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">twincat-lineids-remover</span>
+    <span class="c1"># Formats .tmc and .tpy files</span>
+    <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">twincat-xml-format</span>
+    <span class="c1"># Check if there are any libraries whose versions are not fixed</span>
+    <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">check-fixed-library-versions</span>
+</code></pre></div></div>
+
+<p>For completeness, I’ll also add the following standard pre-commits. You can first run these pre-commits. Later <a href="#hooks-what-and-why">I go into details about what they do and why they are useful</a>.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">repos</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">repo</span><span class="pi">:</span> <span class="s">https://github.com/pre-commit/pre-commit-hooks</span>
+    <span class="na">rev</span><span class="pi">:</span> <span class="s">v3.2.0</span>
+    <span class="na">hooks</span><span class="pi">:</span>
+      <span class="c1"># Removes trailing white spaces</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">trailing-whitespace</span>
+      <span class="c1"># Checks yaml files for parseable syntax</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">check-yaml</span>
+      <span class="c1"># Prevents git from committing large files</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">check-added-large-files</span>
+</code></pre></div></div>
+
+<p>Install the pre-commit hooks with <code class="language-plaintext highlighter-rouge">pre-commit install</code>. This needs to be done once per git repository. Afterwards, you can run <code class="language-plaintext highlighter-rouge">pre-commit run --all-files</code> to let the pre-commits do their job. Note: you only run this command if you have added new pre-commits. In other cases, all pre-commits are automatically executed when you use <code class="language-plaintext highlighter-rouge">git commit ...</code>. In this case, the automatic execution limits to the changed files.</p>
+
+<p>Depending on the project you see no, some, or a lot of changed files. For example, when I ran it on my <a href="https://github.com/Roald87/TwincatTutorials">TwinCAT Tutorial repo</a> I saw the following:</p>
+
+<p><a href="/assets/2022-pre-commit/changes-twincat-tutorial.png"><picture><source srcset="/generated/2022-pre-commit/changes-twincat-tutorial-300-f97079444.webp 300w, /generated/2022-pre-commit/changes-twincat-tutorial-500-f97079444.webp 500w, /generated/2022-pre-commit/changes-twincat-tutorial-720-f97079444.webp 720w" type="image/webp"><source srcset="/generated/2022-pre-commit/changes-twincat-tutorial-300-74b8aaf4c.png 300w, /generated/2022-pre-commit/changes-twincat-tutorial-500-74b8aaf4c.png 500w, /generated/2022-pre-commit/changes-twincat-tutorial-720-74b8aaf4c.png 720w" type="image/png"><img src="/generated/2022-pre-commit/changes-twincat-tutorial-800-74b8aaf4c.png" alt="pre-commit changes to the twincat tutorial repo" width="824" height="283"></picture></a></p>
+
+<p>For each git hook, you see if it had files to check. If that was the case, you see if any files were changed.</p>
+
+<p>Below I show an example where two hooks were triggered. Here both the leading tabs remover failed (as shown in the screenshot), but also the trailing white space one failed (not shown). Below are the differences I saw afterward in SourceTree:</p>
+
+<p><a href="/assets/2022-pre-commit/after-running-sample-pre-commit.png"><picture><source srcset="/generated/2022-pre-commit/after-running-sample-pre-commit-300-42c2bb735.webp 300w, /generated/2022-pre-commit/after-running-sample-pre-commit-355-42c2bb735.webp 355w" type="image/webp"><source srcset="/generated/2022-pre-commit/after-running-sample-pre-commit-300-8cf5b80f8.png 300w, /generated/2022-pre-commit/after-running-sample-pre-commit-355-8cf5b80f8.png 355w" type="image/png"><img src="/generated/2022-pre-commit/after-running-sample-pre-commit-355-8cf5b80f8.png" alt="git diff after running the sample pre-commit. Here trailing white spaces have been removed and tabs are replaced by spaces." width="355" height="136"></picture></a></p>
+
+<p>You see that it removed a trailing space after the <code class="language-plaintext highlighter-rouge">CASE _state OF</code>. Additionally, the file had a mix of tabs and spaces. The tabs were replaced by spaces. These changes were made by the <code class="language-plaintext highlighter-rouge">trailing-whitespace</code> and <code class="language-plaintext highlighter-rouge">twincat-leading-tabs-remover</code> respectively. For a full list of all the changes, you can see the differences of <a href="https://github.com/Roald87/TwincatTutorials/pull/2/commits/91041e5f94d44095ce070381645609bf82ce52d8">this commit</a>.</p>
+
+<h3 id="hooks-what-and-why">Hooks what and why</h3>
+
+<p>Here I go a little deeper into what the hooks do and why you would want to use them.</p>
+
+<p><code class="language-plaintext highlighter-rouge">twincat-leading-tabs-remover</code></p>
+
+<p>What: replaces all leading tabs with four spaces.</p>
+
+<p>Why: consistency. Also in some editors, the length of a tab can differ from the length of four spaces.</p>
+
+<p><code class="language-plaintext highlighter-rouge">twincat-lineids-remover</code></p>
+
+<p>What: removes LineIDs from a POU file.</p>
+
+<p>Why: they are only useful locally. When uploaded to source control they only cause visual clutter. For more information <a href="https://cookncode.com/twincat/2021/06/07/tc-source-control-tips#2-creating-independent-files">see point 4</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">twincat-xml-format</code></p>
+
+<p>What: formats the <code class="language-plaintext highlighter-rouge">.tmc</code> and <code class="language-plaintext highlighter-rouge">.tcp</code> files with newlines and indentation.</p>
+
+<p>Why: makes these files readable for humans. Normally TwinCAT doesn’t put any newlines or indentations in these files. Useful if you would like to have these files in source control and see clear differences.</p>
+
+<p><code class="language-plaintext highlighter-rouge">check-fixed-library-versions</code></p>
+
+<p>What: checks if there are TwinCAT libraries whose versions are not fixed or explicitly set to the latest version.</p>
+
+<p>Why: ensures that your software behaves the same, even if you install newer library version on your system.</p>
+
+<p><code class="language-plaintext highlighter-rouge">trailing-whitespace</code></p>
+
+<p>What: removes spaces and tabs at the end of lines.</p>
+
+<p>Why: whitespace at the end of a line does not influence code execution; you can add or remove as many as you’d like. But, they show up as (useless) changes if someone adds some or removes them.</p>
+
+<p><code class="language-plaintext highlighter-rouge">check-yaml</code></p>
+
+<p>What: checks that programs can read your YAML file. For example, the <code class="language-plaintext highlighter-rouge">.pre-commit-config.yaml</code> one.</p>
+
+<p>Why: ensures that your YAML files do not break.</p>
+
+<p><code class="language-plaintext highlighter-rouge">check-added-large-files</code>:</p>
+
+<p>What: prevents git from adding large files to its history.</p>
+
+<p>Why: to prevent your git tree from becoming huge. Saves time for new users when they download the repo for the first time. Large, non-text files, such as images or binary files usually contain no useful diffs. You want to commit these files using <a href="https://git-lfs.github.com/">Git LFS</a>.</p>
+
+<h2 id="developing-your-own-hooks">Developing your own hooks</h2>
+
+<p>If you would like to develop your own hooks there are two options: local and remote repo-based hooks. Local hooks are quite easy to set up, but they can only be used in the repo where they are saved. On the other hand, remote-based hooks can be shared across many projects. <a href="https://github.com/pcdshub/pre-commit-hooks">The TwinCAT hooks</a> you saw earlier, is an example of a remote hook.</p>
+
+<p>You can <a href="https://pre-commit.com/#supported-languages">use many languages</a> to develop your hooks. Most languages need a working installation of that specific language on the system where the hooks are executed. The exceptions are node, python, and ruby. For these languages, no existing installation is needed. Hooks developed in these three languages set up their own (node, python, ruby) environment when first executed. On subsequent runs, the environment is reused.</p>
+
+<p>Remote hooks also need to be a valid git repo. That is because pre-commit tries to do a <code class="language-plaintext highlighter-rouge">git clone ...</code> of the repo URL you supplied in the <code class="language-plaintext highlighter-rouge">.pre-commit.yaml</code> file. To make a remote hook, see the <a href="https://github.com/pcdshub/pre-commit-hooks">TwinCAT hooks repo</a> as an example.</p>
+
+<h3 id="local-hook-example">Local hook example</h3>
+
+<p>Developing a local hook is quite straightforward. I’ll explain how to do it by making a hook that checks if all links on this blog start with <code class="language-plaintext highlighter-rouge">https</code>. If they don’t, it replaces <code class="language-plaintext highlighter-rouge">http</code> with <code class="language-plaintext highlighter-rouge">https</code>.</p>
+
+<p>First I added a file called <a href="https://github.com/Roald87/roald87.github.io/blob/main/.pre-commit-config.yaml"><code class="language-plaintext highlighter-rouge">.pre-commit-config.yaml</code></a> with the following content. See the comments for their meaning.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">repos</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">repo</span><span class="pi">:</span> <span class="s">local</span>
+    <span class="na">hooks</span><span class="pi">:</span>
+      <span class="c1"># Name of the hook</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">check-https</span>
+        <span class="c1"># Hook name shown during hook execution</span>
+        <span class="na">name</span><span class="pi">:</span> <span class="s">check if all links are https</span>
+        <span class="c1"># Where pre-commit can find the script it should call and how it should call it</span>
+        <span class="na">entry</span><span class="pi">:</span> <span class="s">python _hooks/check_https.py</span>
+        <span class="c1"># The language to use, in this case we're using a language present on the system.</span>
+        <span class="c1"># Using python as an argument would work as well</span>
+        <span class="na">language</span><span class="pi">:</span> <span class="s">system</span>
+        <span class="c1"># A valid regular expression pattern to define which files should be passed to `check_https.py`</span>
+        <span class="na">files</span><span class="pi">:</span> <span class="s1">'</span><span class="s">.*\.(md|markdown)'</span>
+</code></pre></div></div>
+
+<p>When pre-commit runs this local hook, it first searches for files that conform to the regular expression pattern mentioned in <code class="language-plaintext highlighter-rouge">files:</code>. Then it calls the command mentioned under <code class="language-plaintext highlighter-rouge">entry</code> with each filename. For example, it finds the files <code class="language-plaintext highlighter-rouge">README.md</code> and <code class="language-plaintext highlighter-rouge">about.md</code>. Then it calls <code class="language-plaintext highlighter-rouge">check_https.py</code> with <code class="language-plaintext highlighter-rouge">python _hooks/check_https.py README.md about.md</code>.</p>
+
+<p>Next, I created a new file called <a href="https://github.com/Roald87/roald87.github.io/blob/main/_hooks/check_https.py"><code class="language-plaintext highlighter-rouge">_hooks/check_https.py</code></a> with the following content. See comments for the meaning.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python
+</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="k">def</span> <span class="nf">fix_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="c1"># Open the file
+</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+        <span class="n">original_lines</span> <span class="o">=</span> <span class="n">fd</span><span class="p">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">new_lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">changed</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="c1"># For each line in the file check if a https:// is found.
+</span>    <span class="c1"># If so, replace it with https://
+</span>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">original_lines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s">"https://"</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"https://"</span><span class="p">,</span> <span class="s">"https://"</span><span class="p">)</span>
+            <span class="n">changed</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">new_lines</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+    <span class="c1"># If a line was changed, print a message in the console and overwrite the
+</span>    <span class="c1"># original file with the fixed one.
+</span>    <span class="k">if</span> <span class="n">changed</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Fixing </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+            <span class="n">fd</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">new_lines</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="c1"># Parse the filename arguments:
+</span>    <span class="c1"># e.g. Namespace(filenames=['README.md', 'about.md'])
+</span>    <span class="k">if</span> <span class="n">args</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="p">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+        <span class="n">parser</span><span class="p">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">'filenames'</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s">'*'</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="c1"># For each filename execute the file fixer on it
+</span>    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">args</span><span class="p">.</span><span class="n">filenames</span><span class="p">:</span>
+            <span class="n">fix_file</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="c1"># Return 0, which means the hook executed successfully and pre-commit is happy
+</span>        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+        <span class="c1"># If something went wrong return an error code other than 0 and pre-commit
+</span>        <span class="c1"># then knows something went wrong
+</span>        <span class="k">return</span> <span class="mi">1</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="nb">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>If you now run <code class="language-plaintext highlighter-rouge">pre-commit run --all-files</code> you should see <a href="https://github.com/Roald87/roald87.github.io/commit/85cf128b4a82f1807d8fbbcb74fa57825408c9aa">all the files</a> it changed.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; pre-commit run --all-files
+check if all links are https.................................................Failed
+- hook id: check-https
+- files were modified by this hook
+
+Fixing _posts/2021-09-13-units.markdown
+Fixing _posts/2021-06-07-tc-source-control-tips.markdown
+Fixing _posts/2021-08-17-tc-simulation.markdown
+Fixing tclinks.md
+</code></pre></div></div>
+
+<h2 id="further-ideas">Further ideas</h2>
+
+<p>Other ideas could be to use <a href="https://prettier.io/">Prettier</a> to format JavaScript, HTML, or CSS files from HMI projects. Unfortunately, TwinCAT saves the HMI pages as <code class="language-plaintext highlighter-rouge">.content</code> and <code class="language-plaintext highlighter-rouge">.view</code> files. These files are not recognized as HTML files by prettier, but you could probably make it work by temporarily renaming these files to <code class="language-plaintext highlighter-rouge">.html</code> and then running prettier.</p>
+
+<p>Pre-commits are automatically executed locally whenever you commit something. But you can also add pre-commit to your CI workflow. For example, use <a href="https://pre-commit.ci/">prettier.ci</a> to <a href="https://github.com/Roald87/TwinCatChangelog/pull/23">automatically format markdown files of a pull request</a>.</p>
+
+<p><a href="/assets/2022-pre-commit/precommit_ci.png"><picture><source srcset="/generated/2022-pre-commit/precommit_ci-300-e5a6595d1.webp 300w, /generated/2022-pre-commit/precommit_ci-500-e5a6595d1.webp 500w, /generated/2022-pre-commit/precommit_ci-720-e5a6595d1.webp 720w" type="image/webp"><source srcset="/generated/2022-pre-commit/precommit_ci-300-2f9b5aeba.png 300w, /generated/2022-pre-commit/precommit_ci-500-2f9b5aeba.png 500w, /generated/2022-pre-commit/precommit_ci-720-2f9b5aeba.png 720w" type="image/png"><img src="/generated/2022-pre-commit/precommit_ci-800-2f9b5aeba.png" alt="pre-commit integration in github actions" width="1023" height="126"></picture></a>
+<a href="/assets/2022-pre-commit/precommit_ci_changes.png"><picture><source srcset="/generated/2022-pre-commit/precommit_ci_changes-300-a10e9d105.webp 300w, /generated/2022-pre-commit/precommit_ci_changes-500-a10e9d105.webp 500w, /generated/2022-pre-commit/precommit_ci_changes-720-a10e9d105.webp 720w" type="image/webp"><source srcset="/generated/2022-pre-commit/precommit_ci_changes-300-a8cafaa06.png 300w, /generated/2022-pre-commit/precommit_ci_changes-500-a8cafaa06.png 500w, /generated/2022-pre-commit/precommit_ci_changes-720-a8cafaa06.png 720w" type="image/png"><img src="/generated/2022-pre-commit/precommit_ci_changes-800-a8cafaa06.png" alt="changes made by pre-commit.ci" width="1007" height="685"></picture></a></p>
+
+<p>Have you already used pre-commits for your (TwinCAT) projects? Or do you have other ideas? Let me know in the comments below.</p>]]></content><author><name></name></author><category term="twincat" /><summary type="html"><![CDATA[Earlier I talked about how you can do version control of your TwinCAT code with git. In this post, I want to show a neat feature of git which I didn’t mention last time: pre-commits. Pre-commits can format, lint, or do static code analyses on your code before committing. One pre-commit is available for structured text files. But, pre-commits are also available for markdown, HTML, or JavaScript files.]]></summary></entry></feed>

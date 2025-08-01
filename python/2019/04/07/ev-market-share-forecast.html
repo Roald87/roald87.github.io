@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>Forecasting the market share of battery electrical vehicles</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forecasting the market share of battery electrical vehicles | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Forecasting the market share of battery electrical vehicles" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I came across an article where the authors used a simple model to forecast the total installed wind and solar power. I decided to do a similar analysis for the electric vehicle market." />
+<meta property="og:description" content="I came across an article where the authors used a simple model to forecast the total installed wind and solar power. I decided to do a similar analysis for the electric vehicle market." />
+<link rel="canonical" href="https://cookncode.com/python/2019/04/07/ev-market-share-forecast.html" />
+<meta property="og:url" content="https://cookncode.com/python/2019/04/07/ev-market-share-forecast.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-04-07T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forecasting the market share of battery electrical vehicles" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2019-04-07T00:00:00+00:00","description":"I came across an article where the authors used a simple model to forecast the total installed wind and solar power. I decided to do a similar analysis for the electric vehicle market.","headline":"Forecasting the market share of battery electrical vehicles","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/python/2019/04/07/ev-market-share-forecast.html"},"url":"https://cookncode.com/python/2019/04/07/ev-market-share-forecast.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>Forecasting the market share of battery electrical vehicles</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Apr 7, 2019. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>python</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><p>I came across an article where the authors used a simple model to forecast the total installed wind and solar power. I decided to do a similar analysis for the electric vehicle market.</p>
+
+<ul>
+  <li><a href="https://github.com/Roald87/ev_forecast">Code</a></li>
+</ul>
+
+<h2 id="model">Model</h2>
+
+<p>The model used in the article<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> works as follows: the most direct way to go from point A (no electric cars) to point B (all vehicles are electric) is a straight line. Since you cannot produce electric vehicles equal to the entire demand for new vehicles all at once, an electric vehicle market supply chain must be established. The model identifies three phases:</p>
+
+<ol>
+  <li>An <em>exponential</em> growth phase during which the supply chain develops until its output matches the product replacement rate (as determined by the product lifetime).</li>
+  <li>A <em>linear</em> growth phase during which all old products are steadily replaced by newer counterparts.</li>
+  <li>The <em>saturation</em> phase where the total number of products no longer changes.</li>
+</ol>
+
+<h2 id="results">Results</h2>
+
+<p>For the exponential growth phase, I used data from the <a href="https://webstore.iea.org/global-ev-outlook-2017">Global EV Outlook 2017</a><sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>, and for the linear phase, I assumed a vehicle lifetime of 20 years. Based on these assumptions, the following result is achieved:</p>
+
+<p><a href="/assets/2019-ev-forecast/ev_stock_world.png"><picture><source srcset="/generated/2019-ev-forecast/ev_stock_world-300-1e331110b.webp 300w, /generated/2019-ev-forecast/ev_stock_world-500-1e331110b.webp 500w, /generated/2019-ev-forecast/ev_stock_world-720-1e331110b.webp 720w" type="image/webp"><source srcset="/generated/2019-ev-forecast/ev_stock_world-300-644e6f834.png 300w, /generated/2019-ev-forecast/ev_stock_world-500-644e6f834.png 500w, /generated/2019-ev-forecast/ev_stock_world-720-644e6f834.png 720w" type="image/png"><img src="/generated/2019-ev-forecast/ev_stock_world-740-644e6f834.png" width="740" height="606"></picture></a></p>
+
+<p>The earliest at which all vehicles in the world can be replaced by electric ones is <strong>2043</strong>. That assumes all vehicles that were in the world at 2014 will be replaced by electric vehicles.</p>
+
+<h3 id="alternative-scenarios">Alternative scenarios</h3>
+
+<p>What if:</p>
+
+<ol>
+  <li>The total number of vehicles that should be replaced is larger than the current 1.2 billion, say 3 billion: <strong>2044</strong></li>
+  <li>Or, what if the vehicle lifetime is longer, say 30 years: <strong>2052</strong></li>
+  <li>Or both: <strong>2053</strong></li>
+</ol>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>Assuming all vehicles are replaced by electric ones, we have around four years of exponential growth of the electric vehicle market ahead. Around 2023, linear growth begins, and gradually, all internal combustion vehicles are replaced by electric ones, which will occur by <em>2044</em>. Note that although the market growth seems impressive on the logarithmic plot, on a linear scale, you can see that the electric vehicle market is still small in 2018, at 0.28%.</p>
+
+<p>Also note that the car lifetime has the largest effect on when all vehicles can be replaced. It would, for example, be possible to replace all vehicles earlier than 2044 by artificially lowering the lifetime of a car. In other words, incentivize people to discard their cars and buy an electric one.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p><em>Nederlands Tijdschrift voor Natuurkunde</em> (Dutch Journal of Physics) <em>Waarom wij wel zonnepanelen maar nog geen kernfusiestroom hebben</em> (Why we have solar panels but no nuclear fusion power) by Niek Lopes Cardozo, Guido Lange, and Gert Jan Kramer (NTvN 83, October 2017, page 350-354) <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>https://webstore.iea.org/global-ev-outlook-2017, table 5 on page 49. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div><!-- prettier-ignore
+
+-->
+
+ 
+<div class="article_next">
+  <a href="/python/2020/04/12/corona-weather.html">Corona effect on weather ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

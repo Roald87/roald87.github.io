@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>TwinCAT EventLogger: PLC part</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>TwinCAT EventLogger: PLC part | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="TwinCAT EventLogger: PLC part" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Keeping track of all the things that are happening on your machine can be a daunting task, whether it’s expected events or unexpected warnings and errors that you want to inform the user of. Luckily, Beckhoff provides us with a tool that can help with that: namely, the EventLogger. In this article, I will introduce the PLC part of the EventLogger and show some useful features (code: PlcPart). A second article will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: HmiPart)." />
+<meta property="og:description" content="Keeping track of all the things that are happening on your machine can be a daunting task, whether it’s expected events or unexpected warnings and errors that you want to inform the user of. Luckily, Beckhoff provides us with a tool that can help with that: namely, the EventLogger. In this article, I will introduce the PLC part of the EventLogger and show some useful features (code: PlcPart). A second article will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: HmiPart)." />
+<link rel="canonical" href="https://cookncode.com/twincat/2020/11/03/twincat-eventlogger-plc-part.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2020/11/03/twincat-eventlogger-plc-part.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="TwinCAT EventLogger: PLC part" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2020-11-03T00:00:00+00:00","description":"Keeping track of all the things that are happening on your machine can be a daunting task, whether it’s expected events or unexpected warnings and errors that you want to inform the user of. Luckily, Beckhoff provides us with a tool that can help with that: namely, the EventLogger. In this article, I will introduce the PLC part of the EventLogger and show some useful features (code: PlcPart). A second article will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: HmiPart).","headline":"TwinCAT EventLogger: PLC part","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2020/11/03/twincat-eventlogger-plc-part.html"},"url":"https://cookncode.com/twincat/2020/11/03/twincat-eventlogger-plc-part.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>TwinCAT EventLogger: PLC part</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Nov 3, 2020. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><ul id="toc" class="section-nav">
+</ul><p>Keeping track of all the things that are happening on your machine can be a daunting task, whether it’s expected events or unexpected warnings and errors that you want to inform the user of. Luckily, Beckhoff provides us with a tool that can help with that: namely, the EventLogger. In this article, I will introduce the PLC part of the EventLogger and show some useful features (code: <a href="https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart">PlcPart</a>). A <a href="https://roald87.github.io/twincat/2021/01/20/twincat-eventlogger-hmi-part.html">second article</a> will show how to visualize the events using TwinCAT’s web-based HMI (TE2000) (code: <a href="https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart">HmiPart</a>).</p>
+
+<p><em>Thanks to <a href="https://github.com/sagatowski">Jakob Sagatowski </a> for his valuable feedback while writing this article.</em></p>
+
+<p>You can create events on the PLC in EventClasses, as shown in the image below. The events themselves can be of two different types. First, there is the stateless message type which can only be sent. Second, there is the alarm which also has a state. The states of the alarms work as follows. There are two mutually exclusive states: raised and cleared, and an optional third state: confirmed, which is independent of the first two. The raised and cleared states are used to indicate if an alarm condition is fulfilled (e.g., a temperature is above a certain limit). The optional confirmation state can be used to indicate that the user has seen the alarm and is aware of it. Finally, all raised alarms are automatically cleared when the PLC is restarted, but they are not automatically confirmed.</p>
+
+<p><a href="/assets/2020-11-3-twincat-eventlogger-plc-part/event_structure.png"><picture><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/event_structure-300-b9b083b09.webp 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_structure-469-b9b083b09.webp 469w" type="image/webp"><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/event_structure-300-e9a77cdb7.png 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_structure-469-e9a77cdb7.png 469w" type="image/png"><img src="/generated/2020-11-3-twincat-eventlogger-plc-part/event_structure-469-e9a77cdb7.png" width="469" height="331"></source></source></picture></a></p>
+
+<p>A limited number of past events are cached in a local database file on the hard drive in <code class="language-plaintext highlighter-rouge">C:\TwinCAT\3.1\Boot\LoggedEvents.db</code>. The maximum number of logged events is set to 1000 by default and can be changed under <strong>Tools &gt; Options &gt; TwinCAT XAE Environment &gt; EventLogger</strong>, as shown below. This database is not cleared when you restart the PLC, so you can view past events. For more details on the EventLogger, there is an extensive <a href="https://download.beckhoff.com/download/Document/automation/twincat3/TC3_EventLogger_EN.pdf">manual</a> available, and InfoSys has a few <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/27021602043327883.html?id=2784076848234793699">tutorials and examples</a>.</p>
+
+<p><a href="/assets/2020-11-3-twincat-eventlogger-plc-part/cached_events_setting.PNG"><picture><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/cached_events_setting-300-1af63265c.webp 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/cached_events_setting-500-1af63265c.webp 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/cached_events_setting-720-1af63265c.webp 720w" type="image/webp"><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/cached_events_setting-300-d41a8cc55.png 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/cached_events_setting-500-d41a8cc55.png 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/cached_events_setting-720-d41a8cc55.png 720w" type="image/png"><img src="/generated/2020-11-3-twincat-eventlogger-plc-part/cached_events_setting-800-d41a8cc55.png" alt="cached_events_setting" width="846" height="572"></source></source></picture></a></p>
+
+<p>Now we know a little about the theory behind events, let’s look at an example. You can download the example project from the <a href="https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart">PlcPart</a> folder. I’ve created a standard TwinCAT XAE project with a standard PLC project. I then added the <strong>Tc3_EventLogger</strong> library under <strong>References</strong> as shown in the image below. This library contains all the function blocks we need for the events.</p>
+
+<p><a href="/assets/2020-11-3-twincat-eventlogger-plc-part/twincat_project_structure.PNG"><picture><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/twincat_project_structure-300-2bbbb010c.webp 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/twincat_project_structure-391-2bbbb010c.webp 391w" type="image/webp"><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/twincat_project_structure-300-cbe749503.png 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/twincat_project_structure-391-cbe749503.png 391w" type="image/png"><img src="/generated/2020-11-3-twincat-eventlogger-plc-part/twincat_project_structure-391-cbe749503.png" alt="twincat_project_structure" width="391" height="572"></source></source></picture></a></p>
+
+<p>Before we start sending messages and raising events, we’ll create a new <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/9007204107498251.html?id=4886737213905623273">EventClass</a>. In an EventClass, a number of related events can be organized. Of course, you can also use the standard TwinCAT events (e.g., TcSystemEventClass, as shown below), but those are probably not so relevant for the end user. You can add a new EventClass by going to <strong>SYSTEM &gt; Type System</strong> and then select the tab <strong>Event Classes</strong>, as shown below. Then, right-click on the empty field to create a new EventClass.</p>
+
+<p><a href="/assets/2020-11-3-twincat-eventlogger-plc-part/create_new_event_class.PNG"><picture><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/create_new_event_class-300-7d5b1aac2.webp 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/create_new_event_class-500-7d5b1aac2.webp 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/create_new_event_class-720-7d5b1aac2.webp 720w" type="image/webp"><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/create_new_event_class-300-d9c9de4c8.png 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/create_new_event_class-500-d9c9de4c8.png 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/create_new_event_class-720-d9c9de4c8.png 720w" type="image/png"><img src="/generated/2020-11-3-twincat-eventlogger-plc-part/create_new_event_class-777-d9c9de4c8.png" alt="create_new_event_class" width="777" height="508"></source></source></picture></a></p>
+
+<p>A TMC editor window should open. I named the EventClass <em>MyEvents</em> and set the display text to <em>My events</em>. The name can’t contain spaces and will be used in the event declaration, as we will see in a minute. The display text is one of the things which can be shown to the user and can be a general description of the EventClass.</p>
+
+<p><a href="/assets/2020-11-3-twincat-eventlogger-plc-part/event_class_details.PNG"><picture><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/event_class_details-300-079d80436.webp 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_class_details-500-079d80436.webp 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_class_details-675-079d80436.webp 675w" type="image/webp"><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/event_class_details-300-c82d89590.png 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_class_details-500-c82d89590.png 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_class_details-675-c82d89590.png 675w" type="image/png"><img src="/generated/2020-11-3-twincat-eventlogger-plc-part/event_class_details-675-c82d89590.png" alt="event_class_details" width="675" height="366"></source></source></picture></a></p>
+
+<p>Then, I renamed the first default <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/4852759179.html?id=7440132292714549021">event</a> to <em>Start</em> and added <em>Process started</em> under <strong>Display Text</strong>. Finally, I gave this event the severity of Info because it will be used for a message.</p>
+
+<p><a href="/assets/2020-11-3-twincat-eventlogger-plc-part/event_details.PNG"><picture><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/event_details-300-40f0e30bd.webp 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_details-500-40f0e30bd.webp 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_details-664-40f0e30bd.webp 664w" type="image/webp"><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/event_details-300-dcd43d0e7.png 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_details-500-dcd43d0e7.png 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_details-664-dcd43d0e7.png 664w" type="image/png"><img src="/generated/2020-11-3-twincat-eventlogger-plc-part/event_details-664-dcd43d0e7.png" alt="event_details" width="664" height="337"></source></source></picture></a></p>
+
+<p>We can then start adding code to send this message. For that, we create a program <code class="language-plaintext highlighter-rouge">SendMessage</code>. In the program declaration, we make an instance of <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/18014403512523147.html?id=2612337694701808037"><code class="language-plaintext highlighter-rouge">FB_TcMessage</code></a>. This function block will contain all the information about our message event.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM SendMessage
+VAR
+    bIsInitalized : BOOL;
+    fbMessage : FB_TcMessage;
+    bSendMessage : BOOL;
+END_VAR
+</code></pre></div></div>
+
+<p>Before we can use it, we have to initialize it as shown below. This is done by calling the <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5050947211.html?id=4556597922729890829"><code class="language-plaintext highlighter-rouge">CreateEx</code></a> method. This method takes two arguments for a message event. The first argument, <code class="language-plaintext highlighter-rouge">TC_Events.MyEvents.Start</code>, is the event we created earlier in our custom event class. The second argument is where you can enter a <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5057918859.html?id=806507598712086760">source</a> of the event. An example of a source could be if the message belongs to a certain component in your machine, then you can give it a specific name. I’ll show an example of this at the end of this post. For now, we set it at 0, which will give it a default source name. By default, the source name is the program+function block path to the event. So, for this event, the source name is <code class="language-plaintext highlighter-rouge">SendMessage</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IF NOT bIsInitalized THEN
+    bIsInitalized := TRUE;
+    fbMessage.CreateEx(TC_Events.MyEvents.Start, 0);
+END_IF
+</code></pre></div></div>
+
+<p>Finally, to send the message, we call the <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5051076107.html?id=4895394468327295574"><code class="language-plaintext highlighter-rouge">Send</code></a> method. The send method takes one argument, which is the timestamp of the message. If you set it to 0, it takes the current time, and if it is larger than 0, it takes the time in 100 nanoseconds since January 1st, 1601 (UTC).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IF bSendMessage THEN
+    bSendMessage := FALSE;
+    fbMessage.Send(0);
+END_IF
+</code></pre></div></div>
+
+<p>The complete code is then as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM SendMessage
+VAR
+    bIsInitalized : BOOL;
+    fbMessage : FB_TcMessage;
+    bSendMessage : BOOL;
+END_VAR
+
+IF NOT bIsInitalized THEN
+    bIsInitalized := TRUE;
+    fbMessage.CreateEx(TC_Events.MyEvents.Start, 0);
+END_IF
+
+IF bSendMessage THEN
+    bSendMessage := FALSE;
+    fbMessage.Send(0);
+END_IF
+</code></pre></div></div>
+
+<p>Now we can activate our configuration. In order to see our events, we need to activate the <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/27021602616987915.html?id=2970470299138771131">Logged Events window</a>, which can be found under <strong>View &gt; Other Windows &gt; TwinCAT Logged Events</strong>. This logger shows up to 1000 (as set earlier) past events.</p>
+
+<p>Now log into the PLC. You should see something which looks like the image below. If you set <code class="language-plaintext highlighter-rouge">bMessage</code> to <code class="language-plaintext highlighter-rouge">TRUE</code>, a message should be sent to the event logger. To see it in the Logged Events window, refresh the logger using the refresh button on the bottom left of the image. The logger shows an overview of the different parameters of the class name, the event is part of, the info of the event itself, and the time it was sent.</p>
+
+<p><a href="/assets/2020-11-3-twincat-eventlogger-plc-part/first_send_message.png"><picture><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/first_send_message-300-39d5d4ba4.webp 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/first_send_message-500-39d5d4ba4.webp 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/first_send_message-720-39d5d4ba4.webp 720w" type="image/webp"><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/first_send_message-300-8d87169c2.png 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/first_send_message-500-8d87169c2.png 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/first_send_message-720-8d87169c2.png 720w" type="image/png"><img src="/generated/2020-11-3-twincat-eventlogger-plc-part/first_send_message-800-8d87169c2.png" alt="first_send_message" width="902" height="460"></source></source></picture></a></p>
+
+<p>From the logged events window, it is also possible to remove past events from the database using the button on the right, as shown below. As far as I know, this is the only way to remove old events from the database.</p>
+
+<p><a href="/assets/2020-11-3-twincat-eventlogger-plc-part/clear_logged_events.png"><picture><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/clear_logged_events-300-eba45bc38.webp 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/clear_logged_events-500-eba45bc38.webp 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/clear_logged_events-716-eba45bc38.webp 716w" type="image/webp"><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/clear_logged_events-300-a51d4243b.png 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/clear_logged_events-500-a51d4243b.png 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/clear_logged_events-716-a51d4243b.png 716w" type="image/png"><img src="/generated/2020-11-3-twincat-eventlogger-plc-part/clear_logged_events-716-a51d4243b.png" alt="clear_logged_events" width="716" height="98"></source></source></picture></a></p>
+
+<p>Now let’s add some more code so we can also see the behavior of alarms. First, I add a new event to the event class. I give it the name “Stop” with the severity “Warning”. For the display text, I also added an <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/9007204312656907.html?id=2181748310896520024">argument</a> <code class="language-plaintext highlighter-rouge">{0}</code>. Later we can use this to add custom text to the display text.</p>
+
+<p><a href="/assets/2020-11-3-twincat-eventlogger-plc-part/warning_event_with_argument.png"><picture><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/warning_event_with_argument-300-4c9940dca.webp 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/warning_event_with_argument-500-4c9940dca.webp 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/warning_event_with_argument-662-4c9940dca.webp 662w" type="image/webp"><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/warning_event_with_argument-300-b92fe829d.png 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/warning_event_with_argument-500-b92fe829d.png 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/warning_event_with_argument-662-b92fe829d.png 662w" type="image/png"><img src="/generated/2020-11-3-twincat-eventlogger-plc-part/warning_event_with_argument-662-b92fe829d.png" alt="warning_event_with_argument" width="662" height="327"></source></source></picture></a></p>
+
+<p>To use this alarm, we’ll create a new program, <code class="language-plaintext highlighter-rouge">ConfirmableAlarmWithArguments</code>. First, we make an instance, <code class="language-plaintext highlighter-rouge">fbAlarm</code>, of the <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/18014403511408907.html?id=8336441833469907165"><code class="language-plaintext highlighter-rouge">FB_TcAlarm</code></a> function block in the program declaration.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM ConfirmableAlarmWithArguments
+VAR
+    bIsInitalized : BOOL;
+
+    fbAlarm : FB_TcAlarm;
+    bRaiseAlarm : BOOL;
+    bClearAlarm : BOOL;
+    bConfirmAlarm : BOOL;
+END_VAR
+</code></pre></div></div>
+
+<p>Then we initialize the alarm using the <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5050478347.html?id=410353039931221768"><code class="language-plaintext highlighter-rouge">CreateEx</code></a> method. The first argument this method takes is the same as for the message: it is the event we created earlier, <code class="language-plaintext highlighter-rouge">TC_Events.MyEvents.Stop</code>. The second argument defines if this alarm should have the optional confirmation state, which I set to <code class="language-plaintext highlighter-rouge">TRUE</code> in this example. The third argument is the event source information; more on this later.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IF NOT bIsInitalized THEN
+    bIsInitalized := TRUE;
+    fbAlarm.CreateEx(TC_Events.MyEvents.Stop, TRUE, 0);
+END_IF
+</code></pre></div></div>
+
+<p>Before we can raise the alarm, we need to fill in the <code class="language-plaintext highlighter-rouge">{0}</code> argument. This is done in the line <code class="language-plaintext highlighter-rouge">fbAlarm.ipArguments.Clear().AddString('Alice')</code>, which utilizes a <a href="https://www.plccoder.com/fluent-code/">fluent interface</a>. The property <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5050737547.html?id=8678281429452015597">ipArguments</a> returns all the arguments present in the event text, which are then reset with the <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5051357707.html?id=704794183241270963"><code class="language-plaintext highlighter-rouge">Clear()</code></a> method just to be sure. With the final method, <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/9007204306000139.html?id=6228960240777617204"><code class="language-plaintext highlighter-rouge">AddString()</code></a>, we add our custom string to the first and only argument in the event text. You can then raise the alarm with the <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5050505739.html?id=8432917619912920197"><code class="language-plaintext highlighter-rouge">Raise()</code></a> method, which takes a single argument. This argument is the time, which we set to <code class="language-plaintext highlighter-rouge">0</code> to take the current time.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IF bRaiseAlarm THEN
+    bRaiseAlarm := FALSE;
+    fbAlarm.ipArguments.Clear().AddString('Alice');
+    fbAlarm.Raise(0);
+END_IF
+</code></pre></div></div>
+
+<p>In order to confirm an alarm, we add the following code. Here, the <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5050451339.html?id=3569329908820721746"><code class="language-plaintext highlighter-rouge">Confirm()</code></a> method takes a single argument, which is the time of confirmation. When set to <code class="language-plaintext highlighter-rouge">0</code>, it takes the current time.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IF bConfirmAlarm THEN
+    bConfirmAlarm := FALSE;
+    fbAlarm.Confirm(0);
+END_IF
+</code></pre></div></div>
+
+<p>Finally, we add the following lines to clear an alarm. The <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5050438027.html?id=8213494572379476886"><code class="language-plaintext highlighter-rouge">Clear()</code></a> method takes two arguments. The first one is the time again, which we set to the current time with <code class="language-plaintext highlighter-rouge">0</code>. The second argument determines if this alarm should be confirmable after it has been cleared or, in Beckhoff’s language, if the alarm’s confirmation state should be reset. By setting the argument to <code class="language-plaintext highlighter-rouge">FALSE</code>, the confirmation state is not reset. So you can confirm it after it has been cleared. When it is set to <code class="language-plaintext highlighter-rouge">TRUE</code>, the confirmation state is reset, and you can’t confirm it once it has been cleared.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IF bClearAlarm THEN
+    bClearAlarm := FALSE;
+    fbAlarm.Clear(0, FALSE);
+END_IF
+</code></pre></div></div>
+
+<p>So our complete code then looks like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM ConfirmableAlarmWithArguments
+VAR
+    bIsInitalized : BOOL;
+
+    fbAlarm : FB_TcAlarm;
+    bRaiseAlarm : BOOL;
+    bClearAlarm : BOOL;
+    bConfirmAlarm : BOOL;
+END_VAR
+
+IF NOT bIsInitalized THEN
+    bIsInitalized := TRUE;
+    fbAlarm.CreateEx(TC_Events.MyEvents.Stop, TRUE, 0);
+END_IF
+
+IF bRaiseAlarm THEN
+    bRaiseAlarm := FALSE;
+    fbAlarm.ipArguments.Clear().AddString('Alice');
+    fbAlarm.Raise(0);
+END_IF
+
+IF bConfirmAlarm THEN
+    bConfirmAlarm := FALSE;
+    fbAlarm.Confirm(0);
+END_IF
+
+IF bClearAlarm THEN
+    bClearAlarm := FALSE;
+    fbAlarm.Clear(0, FALSE);
+END_IF
+</code></pre></div></div>
+
+<p>After activating the configuration, you can raise, confirm, and clear or clear and confirm the alarm, and view the state and times in the Logged events window. You should see something like below. Note that the event text displays the name of the operator who stopped the process.</p>
+
+<p><a href="/assets/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_argument.png"><picture><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_argument-300-0c4e5d6d8.webp 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_argument-500-0c4e5d6d8.webp 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_argument-720-0c4e5d6d8.webp 720w" type="image/webp"><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_argument-300-670e8d2c2.png 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_argument-500-670e8d2c2.png 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_argument-720-670e8d2c2.png 720w" type="image/png"><img src="/generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_argument-800-670e8d2c2.png" alt="event_logger_warning_event_with_argument" width="1335" height="118"></source></source></picture></a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM AlarmWithCustomSourceInfo
+VAR
+    bIsInitalized : BOOL;
+    fbAlarm : FB_TcAlarm;
+    bRaiseAlarm : BOOL;
+    bClearAlarm : BOOL;
+    fbSourceInfo : FB_TcSourceInfo;
+END_VAR
+</code></pre></div></div>
+
+<p>We can then initialize <code class="language-plaintext highlighter-rouge">fbSourceInfo</code> with the source name, as shown below. First, we call the <a href="https://infosys.beckhoff.com/content/1033/tc3_eventlogger/5050985483.html?id=2752512302477066048"><code class="language-plaintext highlighter-rouge">Clear()</code></a> method on <code class="language-plaintext highlighter-rouge">fbSourceInfo</code> to reset the source information. Then, we add our custom name with <code class="language-plaintext highlighter-rouge">fbSourceInfo.sName := 'Water pump 3'</code>. Finally, we create a new alarm, where we pass our custom <code class="language-plaintext highlighter-rouge">fbSourceInfo</code> as an argument: <code class="language-plaintext highlighter-rouge">fbAlarm.CreateEx(TC_Events.MyEvents.Stop, FALSE, fbSourceInfo)</code>. Note that this alarm is created as a non-confirmable alarm since the second argument is false.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IF NOT bIsInitalized THEN
+    bIsInitalized := TRUE;
+    fbSourceInfo.Clear();
+    fbSourceInfo.sName := 'Water pump 3';
+    fbAlarm.CreateEx(TC_Events.MyEvents.Stop, FALSE, fbSourceInfo);
+END_IF
+</code></pre></div></div>
+
+<p>The part to raise the event is the same as the previous example, only I added another name.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IF bRaiseAlarm THEN
+    bRaiseAlarm := FALSE;
+    fbAlarm.ipArguments.Clear().AddString('Bob');
+    fbAlarm.Raise(0);
+END_IF
+</code></pre></div></div>
+
+<p>Also the clear alarm part is the same. However, because this alarm doesn’t have a confirmation state, the second argument in the <code class="language-plaintext highlighter-rouge">Clear()</code> method doesn’t have any influence.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IF bClearAlarm THEN
+    bClearAlarm := FALSE;
+    fbAlarm.Clear(0, TRUE);
+END_IF
+</code></pre></div></div>
+
+<p>The complete code is as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM AlarmWithCustomSourceInfo
+VAR
+    bIsInitalized : BOOL;
+    fbAlarm : FB_TcAlarm;
+    bRaiseAlarm : BOOL;
+    bClearAlarm : BOOL;
+    fbSourceInfo : FB_TcSourceInfo;
+END_VAR
+
+IF NOT bIsInitalized THEN
+    bIsInitalized := TRUE;
+    fbSourceInfo.Clear();
+    fbSourceInfo.sName := 'Water pump 3';
+    fbAlarm.CreateEx(TC_Events.MyEvents.Stop, FALSE, fbSourceInfo);
+END_IF
+
+IF bRaiseAlarm THEN
+    bRaiseAlarm := FALSE;
+    fbAlarm.ipArguments.Clear().AddString('Bob');
+    fbAlarm.Raise(0);
+END_IF
+
+IF bClearAlarm THEN
+    bClearAlarm := FALSE;
+    fbAlarm.Clear(0, TRUE);
+END_IF
+</code></pre></div></div>
+
+<p>If we then activate our configuration again and raise and clear the alarm with our custom source information, it should look like the image below. Under the source name, you now see the name we defined earlier with <code class="language-plaintext highlighter-rouge">fbSourceInfo.sName</code>, instead of the program name.</p>
+
+<p><a href="/assets/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_custom_source.png"><picture><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_custom_source-300-3f191b004.webp 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_custom_source-500-3f191b004.webp 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_custom_source-720-3f191b004.webp 720w" type="image/webp"><source srcset="/generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_custom_source-300-6099d3943.png 300w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_custom_source-500-6099d3943.png 500w, /generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_custom_source-720-6099d3943.png 720w" type="image/png"><img src="/generated/2020-11-3-twincat-eventlogger-plc-part/event_logger_warning_event_with_custom_source-800-6099d3943.png" alt="event_logger_warning_event_with_custom_source" width="1192" height="126"></source></source></picture></a></p>
+
+<p>I hope you learned something new today! In a future post, I’ll show how to visualize the events in TwinCAT’s web-based HMI (TE2000).</p>
+
+<p>Discuss: <a href="https://www.reddit.com/r/PLC/comments/jq8dbl/twincat_eventlogger_tutorial/">Reddit</a>.</p>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/twincat/2020/01/29/standalone-plc-projects.html">❮ Stand-alone PLC projects</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/twincat/2021/01/20/twincat-eventlogger-hmi-part.html">TwinCAT EventLogger: HMI part ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

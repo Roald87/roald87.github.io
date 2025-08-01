@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>TwinCAT/BSD installation and tutorial</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>TwinCAT/BSD installation and tutorial | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="TwinCAT/BSD installation and tutorial" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="TwinCAT/BSD is a new operating system for the TwinCAT runtime. It has a small footprint and it’s free. Furthermore, TwinCAT/BSD allows you to run TwinCAT code locally when you have Hyper-V enabled if you install it on a virtual machine. In this tutorial, I go over the installation of TwinCAT/BSD on VMware and Virtual Box and show some basic usages of Tc/BSD." />
+<meta property="og:description" content="TwinCAT/BSD is a new operating system for the TwinCAT runtime. It has a small footprint and it’s free. Furthermore, TwinCAT/BSD allows you to run TwinCAT code locally when you have Hyper-V enabled if you install it on a virtual machine. In this tutorial, I go over the installation of TwinCAT/BSD on VMware and Virtual Box and show some basic usages of Tc/BSD." />
+<link rel="canonical" href="https://cookncode.com/twincat/2022/08/11/twincat-bsd.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2022/08/11/twincat-bsd.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-08-11T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="TwinCAT/BSD installation and tutorial" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2022-08-11T00:00:00+00:00","description":"TwinCAT/BSD is a new operating system for the TwinCAT runtime. It has a small footprint and it’s free. Furthermore, TwinCAT/BSD allows you to run TwinCAT code locally when you have Hyper-V enabled if you install it on a virtual machine. In this tutorial, I go over the installation of TwinCAT/BSD on VMware and Virtual Box and show some basic usages of Tc/BSD.","headline":"TwinCAT/BSD installation and tutorial","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2022/08/11/twincat-bsd.html"},"url":"https://cookncode.com/twincat/2022/08/11/twincat-bsd.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>TwinCAT/BSD installation and tutorial</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Aug 11, 2022. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#what-is-twincatbsd">What is TwinCAT/BSD?</a></li>
+<li class="toc-entry toc-h2"><a href="#virtual-machines-️-hyper-v">Virtual machines ❤️ Hyper-V</a></li>
+<li class="toc-entry toc-h2"><a href="#installing-tcbsd-on-virtualbox">Installing Tc/BSD on VirtualBox</a></li>
+<li class="toc-entry toc-h2"><a href="#installing-tcbsd-on-vmware">Installing Tc/BSD on VMware</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#create-a-bootable-usb">Create a bootable USB</a></li>
+<li class="toc-entry toc-h3"><a href="#installing-twincatbsd">Installing TwinCAT/BSD</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#device-manager">Device manager</a></li>
+<li class="toc-entry toc-h2"><a href="#web-console">Web console</a></li>
+<li class="toc-entry toc-h2"><a href="#installing-packages">Installing packages</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#installing-twincat-hmi-server">Installing TwinCAT HMI server</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#running-plc-code">Running PLC code</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#connecting-to-the-virtual-machine">Connecting to the virtual machine</a></li>
+<li class="toc-entry toc-h3"><a href="#publishing-the-hmi">Publishing the HMI</a></li>
+</ul>
+</li>
+</ul><p>TwinCAT/BSD is a new operating system for the TwinCAT runtime. It has a small footprint and it’s free. Furthermore, TwinCAT/BSD allows you to run TwinCAT code locally when you have Hyper-V enabled if you install it on a virtual machine. In this tutorial, I go over the installation of TwinCAT/BSD on VMware and Virtual Box and show some basic usages of Tc/BSD.</p>
+
+<h2 id="what-is-twincatbsd">
+<a class="anchor" href="#what-is-twincatbsd" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is TwinCAT/BSD?</h2>
+
+<p>TwinCAT/BSD, or Tc/BSD for short, is an alternative operating system for TwinCAT. It’s based on the open source operating system FreeBSD. Beckhoff took FreeBSD and integrated the TwinCAT runtime into it. It serves as an alternative operating system for the TwinCAT runtime to Windows CE/7/10.</p>
+
+<p>Note that TwinCAT/BSD is only for the TwinCAT runtime. Thus the place where your code gets executed. Nothing changes on the code development side: you still write your code on Windows in either Visual Studio or the TwinCAT XAE Shell.</p>
+
+<p>Tc/BSD is a little different from Windows and it might take you some time to get used to it. For example, Tc/BSD doesn’t come with a desktop environment: there is no desktop with icons, wallpaper, and a start menu. If you start Tc/BSD, you see a black screen with white text on it: a terminal.</p>
+
+<p>Make no mistake, working from a terminal can be quite powerful, but it can take some time to get familiar with. At the end of the tutorial, I show some examples of what you can do with it. You can also find some commands in <a href="https://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf">the official manual</a> or in this <a href="https://github.com/benhar-dev/tcbsd-cheatsheet">cheat sheet</a>.</p>
+
+<p>Some other advantages of using Tc/BSD are that it’s free and requires less space. Moreover, because Beckhoff has access to the code of the operating system, they do not rely on Microsoft for support. The reliance is causing issues for Windows CE because its end of life is planned for late 2023.</p>
+
+<p>If you would like to get more details on Tc/BSD, watch the <a href="https://www.youtube.com/watch?v=az9vSr1GxE4">official Beckhoff video</a> or read <a href="https://ftp.beckhoff.com/download/document/ipc/embedded-pc/embedded-pc-cx/TwinCAT_BSD_en.pdf">the manual</a> for in-depth information.</p>
+
+<h2 id="virtual-machines-️-hyper-v">
+<a class="anchor" href="#virtual-machines-%EF%B8%8F-hyper-v" aria-hidden="true"><span class="octicon octicon-link"></span></a>Virtual machines ❤️ Hyper-V</h2>
+
+<p>I started to look into TwinCAT/BSD, because I wanted to run some TwinCAT code locally. Earlier this was possible, but at a certain point, I installed <a href="https://www.docker.com/">Docker</a> which requires Hyper-V. Unfortunately, once you enable this and you try to run your TwinCAT code locally, you get an error:</p>
+
+<p><a href="/assets/2022-tcbsd/hyperv_error.png"><picture><source srcset="/generated/2022-tcbsd/hyperv_error-300-7d40f40e8.webp 300w, /generated/2022-tcbsd/hyperv_error-359-7d40f40e8.webp 359w" type="image/webp"><source srcset="/generated/2022-tcbsd/hyperv_error-300-25e12b624.png 300w, /generated/2022-tcbsd/hyperv_error-359-25e12b624.png 359w" type="image/png"><img src="/generated/2022-tcbsd/hyperv_error-359-25e12b624.png" width="359" height="318"></source></source></picture></a></p>
+
+<p>While researching how to circumvent this restriction, I came across a <a href="https://www.reddit.com/r/PLC/comments/gqzyem/psa_twincat_3_hyperv_wsl_2_working_using_vmware/">Reddit post</a> which mentioned VMware works with TwinCAT 3 and Hyper-V. This provided me with a nice opportunity to test Tc/BSD because I didn’t want to create a big Windows VM. Also it allowed me to answer a <a href="https://stackoverflow.com/questions/71321786/how-can-i-use-a-local-twincat-3-runtime-with-hyper-v-enabled/71333438#71333438">StackOverflow question</a> 🥳. Furthermore, I found out that it also works with Virtual Box.</p>
+
+<h2 id="installing-tcbsd-on-virtualbox">
+<a class="anchor" href="#installing-tcbsd-on-virtualbox" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing Tc/BSD on VirtualBox</h2>
+
+<p>Installing Tc/BSD on Virtual Box is quite straightforward, thanks to <a href="https://github.com/PTKu/TwinCAT-BSD-VM-creator">an install script</a> from the community. Furthermore, there is also a <a href="https://beckhoff-au.teachable.com/courses/1204788/lectures/37382778">video by Coding Bytes</a> describing installation.</p>
+
+<p>To install Tc/BSD:</p>
+
+<ol>
+  <li>
+<a href="https://www.virtualbox.org/wiki/Downloads">Download</a> and install Virtual Box.</li>
+  <li>
+<a href="https://github.com/PTKu/TwinCAT-BSD-VM-creator">Download or clone</a> the install script.</li>
+  <li>
+    <p>Go to the <a href="https://www.beckhoff.com/en-us/search-results/?q=bsd">Beckhoff website</a> and download the TwinCAT/BSD ISO.</p>
+
+    <p><a href="/assets/2022-tcbsd/download_tcbsd_iso.png"><picture><source srcset="/generated/2022-tcbsd/download_tcbsd_iso-300-05028dc83.webp 300w, /generated/2022-tcbsd/download_tcbsd_iso-500-05028dc83.webp 500w, /generated/2022-tcbsd/download_tcbsd_iso-615-05028dc83.webp 615w" type="image/webp"><source srcset="/generated/2022-tcbsd/download_tcbsd_iso-300-151822c24.png 300w, /generated/2022-tcbsd/download_tcbsd_iso-500-151822c24.png 500w, /generated/2022-tcbsd/download_tcbsd_iso-615-151822c24.png 615w" type="image/png"><img src="/generated/2022-tcbsd/download_tcbsd_iso-615-151822c24.png" width="615" height="151"></source></source></picture></a></p>
+  </li>
+  <li>Extract the contents of the installer script and the Tc/BSD ISO. Copy the contents of both to a single folder.</li>
+  <li>Copy the exact filename of the Tc/BSD ISO image and open <code class="language-plaintext highlighter-rouge">Create-TcBsdVM.ps1</code> or <code class="language-plaintext highlighter-rouge">TwinCAT BSD VM creator.bat</code> with a text editor, depending on which you want to use.</li>
+  <li>Change the ISO filename in one of the installer scripts to the one which matches your downloaded ISO file. Here <code class="language-plaintext highlighter-rouge">"TCBSD-x64-13-55702.iso"</code> is the name of the ISO file I downloaded.
+    <ul>
+      <li>
+<code class="language-plaintext highlighter-rouge">Create-TcBsdVM.ps1</code> at line 7: <code class="language-plaintext highlighter-rouge">$tcbsdimagefile="TCBSD-x64-13-55702.iso",</code>
+</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">TwinCAT BSD VM creator.bat</code> at line 2: <code class="language-plaintext highlighter-rouge">SET sourcefilename="TCBSD-x64-13-55702.iso"</code>
+</li>
+    </ul>
+  </li>
+  <li>Save and close the installer script.</li>
+  <li>Then either double click <code class="language-plaintext highlighter-rouge">TwinCAT BSD VM creator.bat</code> to execute, or from powershell run <code class="language-plaintext highlighter-rouge">Create-TcBsdVM.ps1 TcBSD-VM</code>. Here the first argument, <code class="language-plaintext highlighter-rouge">TcBSD-VM</code>, is the name of the virtual machine.</li>
+  <li>
+    <p>You should see a Virtual Box window open and then you wait for the installer to start. This can take a minute. After that, you should see the following screen. Select <strong>TC/BSD Install</strong> and hit enter.</p>
+
+    <p><a href="/assets/2022-tcbsd/bsd_install.png"><picture><source srcset="/generated/2022-tcbsd/bsd_install-300-56c487f3a.webp 300w, /generated/2022-tcbsd/bsd_install-500-56c487f3a.webp 500w, /generated/2022-tcbsd/bsd_install-720-56c487f3a.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/bsd_install-300-480bc4212.png 300w, /generated/2022-tcbsd/bsd_install-500-480bc4212.png 500w, /generated/2022-tcbsd/bsd_install-720-480bc4212.png 720w" type="image/png"><img src="/generated/2022-tcbsd/bsd_install-800-480bc4212.png" width="1026" height="825"></source></source></picture></a></p>
+  </li>
+  <li>Then select the 4G hard drive which was automatically created by the script and hit enter.</li>
+  <li>
+    <p>Hit enter again to acknowledge the warning.</p>
+
+    <p><a href="/assets/2022-tcbsd/warning.png"><picture><source srcset="/generated/2022-tcbsd/warning-300-0c6d19cb1.webp 300w, /generated/2022-tcbsd/warning-500-0c6d19cb1.webp 500w, /generated/2022-tcbsd/warning-568-0c6d19cb1.webp 568w" type="image/webp"><source srcset="/generated/2022-tcbsd/warning-300-1fae5fe10.png 300w, /generated/2022-tcbsd/warning-500-1fae5fe10.png 500w, /generated/2022-tcbsd/warning-568-1fae5fe10.png 568w" type="image/png"><img src="/generated/2022-tcbsd/warning-568-1fae5fe10.png" width="568" height="224"></source></source></picture></a></p>
+  </li>
+  <li>Then it asks for you to generate a password. Type in a password and repeat it to make sure it’s correct.</li>
+  <li>
+    <p>After several minutes the installation is complete and you see the following screen. Select <strong>OK</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/complete.png"><picture><source srcset="/generated/2022-tcbsd/complete-264-015ad2c81.webp 264w" type="image/webp"><source srcset="/generated/2022-tcbsd/complete-264-7e4adb64f.png 264w" type="image/png"><img src="/generated/2022-tcbsd/complete-264-7e4adb64f.png" width="264" height="215"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>In the new menu select <strong>Shutdown</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/reboot.png"><picture><source srcset="/generated/2022-tcbsd/reboot-300-7a42d66c4.webp 300w, /generated/2022-tcbsd/reboot-406-7a42d66c4.webp 406w" type="image/webp"><source srcset="/generated/2022-tcbsd/reboot-300-70f095f8a.png 300w, /generated/2022-tcbsd/reboot-406-70f095f8a.png 406w" type="image/png"><img src="/generated/2022-tcbsd/reboot-406-70f095f8a.png" width="406" height="436"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Open the <strong>Settings &gt; Network</strong> of the virtual machine you created. Now there are different options for different use cases:</p>
+
+    <ul>
+      <li>
+        <p>If you just use the runtime locally, enable a Network adapter 1 and set it as a <strong>Host only adapter</strong></p>
+
+        <p><a href="/assets/2022-tcbsd/virtual_box_host_only_adapter.png"><picture><source srcset="/generated/2022-tcbsd/virtual_box_host_only_adapter-300-14abd6629.webp 300w, /generated/2022-tcbsd/virtual_box_host_only_adapter-500-14abd6629.webp 500w, /generated/2022-tcbsd/virtual_box_host_only_adapter-720-14abd6629.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/virtual_box_host_only_adapter-300-86242b29e.png 300w, /generated/2022-tcbsd/virtual_box_host_only_adapter-500-86242b29e.png 500w, /generated/2022-tcbsd/virtual_box_host_only_adapter-720-86242b29e.png 720w" type="image/png"><img src="/generated/2022-tcbsd/virtual_box_host_only_adapter-800-86242b29e.png" width="1298" height="1036"></source></source></picture></a></p>
+      </li>
+      <li>
+        <p>If you want to set up a physical connection to an outside network select <strong>Bridged adapter</strong></p>
+
+        <p><a href="/assets/2022-tcbsd/virtual_box_bridged_adapter.png"><picture><source srcset="/generated/2022-tcbsd/virtual_box_bridged_adapter-300-dcdc15b80.webp 300w, /generated/2022-tcbsd/virtual_box_bridged_adapter-500-dcdc15b80.webp 500w, /generated/2022-tcbsd/virtual_box_bridged_adapter-720-dcdc15b80.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/virtual_box_bridged_adapter-300-ba2e8aa94.png 300w, /generated/2022-tcbsd/virtual_box_bridged_adapter-500-ba2e8aa94.png 500w, /generated/2022-tcbsd/virtual_box_bridged_adapter-720-ba2e8aa94.png 720w" type="image/png"><img src="/generated/2022-tcbsd/virtual_box_bridged_adapter-800-ba2e8aa94.png" width="1298" height="1036"></source></source></picture></a></p>
+      </li>
+      <li>
+        <p>If you want the Tc/BSD package manager to work, you need to enable both. For adapter 1, select <strong>Host only adapter</strong> and enable a second adapter where you select <strong>Bridged adapter</strong>.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Verify that the network connections work by starting the virtual machine, logging in and:</p>
+
+    <ul>
+      <li>
+        <p>Run <code class="language-plaintext highlighter-rouge">ifconfig</code> . You should see an <code class="language-plaintext highlighter-rouge">inet</code> starting with <code class="language-plaintext highlighter-rouge">192.168.</code>.
+<a href="/assets/2022-tcbsd/ifconfig_virtual_box.png"><picture><source srcset="/generated/2022-tcbsd/ifconfig_virtual_box-300-0c4fb3b27.webp 300w, /generated/2022-tcbsd/ifconfig_virtual_box-500-0c4fb3b27.webp 500w, /generated/2022-tcbsd/ifconfig_virtual_box-720-0c4fb3b27.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/ifconfig_virtual_box-300-aaee1fc5c.png 300w, /generated/2022-tcbsd/ifconfig_virtual_box-500-aaee1fc5c.png 500w, /generated/2022-tcbsd/ifconfig_virtual_box-720-aaee1fc5c.png 720w" type="image/png"><img src="/generated/2022-tcbsd/ifconfig_virtual_box-800-aaee1fc5c.png" width="1770" height="991"></source></source></picture></a></p>
+      </li>
+      <li>
+        <p>You can also try to <code class="language-plaintext highlighter-rouge">ping www.beckhoff.com</code> and see if you get a reply. For me, it took a minute before the network connection started to work.</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	$ ping www.beckhoff.com
+	PING d2la171hyf8xwx.cloudfront.net (52.222.139.54): 56 data bytes
+	64 bytes from 52.222.139.54: icmp_seq=0 ttl=128 time=9.673 ms
+	64 bytes from 52.222.139.54: icmp_seq=1 ttl=128 time=8.739 ms
+	64 bytes from 52.222.139.54: icmp_seq=2 ttl=128 time=9.783 ms
+	^C
+	--- d2la171hyf8xwx.cloudfront.net ping statistics ---
+	3 packets transmitted, 3 packets received, 0.0% packet loss
+</code></pre></div></div>
+
+<ul>
+  <li>In case it is not working, check your network adapter settings. Type <strong>Ethernet settings</strong> into the start menu and open it. Select <strong>Change adapter options</strong> and right-click <strong>VirtualBox Host-Only Network</strong> and select <strong>Properties</strong>. Make sure they are set to automatic.
+<a href="/assets/2022-tcbsd/ipv4_settings.png"><picture><source srcset="/generated/2022-tcbsd/ipv4_settings-300-5e484ad72.webp 300w, /generated/2022-tcbsd/ipv4_settings-500-5e484ad72.webp 500w, /generated/2022-tcbsd/ipv4_settings-720-5e484ad72.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/ipv4_settings-300-be31c9f34.png 300w, /generated/2022-tcbsd/ipv4_settings-500-be31c9f34.png 500w, /generated/2022-tcbsd/ipv4_settings-720-be31c9f34.png 720w" type="image/png"><img src="/generated/2022-tcbsd/ipv4_settings-800-be31c9f34.png" width="1566" height="979"></source></source></picture></a>
+</li>
+</ul>
+
+<h2 id="installing-tcbsd-on-vmware">
+<a class="anchor" href="#installing-tcbsd-on-vmware" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing Tc/BSD on VMware</h2>
+
+<p>Installing TwinCAT/BSD on VMware is a bit more complicated. The steps below are based on a <a href="https://www.youtube.com/watch?v=H-qfWfz37Fg">YouTube tutorial from Jakob Sagatowski</a>. Before you head over there, I did notice that I had to do several things differently for it to work.</p>
+
+<h3 id="create-a-bootable-usb">
+<a class="anchor" href="#create-a-bootable-usb" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a bootable USB</h3>
+
+<ol>
+  <li>
+    <p>Install Rufus to create a bootable USB drive.</p>
+
+    <ul>
+      <li>Install via the terminal <code class="language-plaintext highlighter-rouge">winget install -e --id Rufus.Rufus</code>.</li>
+      <li>Or <a href="https://rufus.ie/">download manually</a> and install. You can also use the portable version, which doesn’t require any installation.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Go to the <a href="https://www.beckhoff.com/en-us/search-results/?q=bsd">Beckhoff website</a> and download the TwinCAT/BSD ISO.</p>
+
+    <p><a href="/assets/2022-tcbsd/download_tcbsd_iso.png"><picture><source srcset="/generated/2022-tcbsd/download_tcbsd_iso-300-05028dc83.webp 300w, /generated/2022-tcbsd/download_tcbsd_iso-500-05028dc83.webp 500w, /generated/2022-tcbsd/download_tcbsd_iso-615-05028dc83.webp 615w" type="image/webp"><source srcset="/generated/2022-tcbsd/download_tcbsd_iso-300-151822c24.png 300w, /generated/2022-tcbsd/download_tcbsd_iso-500-151822c24.png 500w, /generated/2022-tcbsd/download_tcbsd_iso-615-151822c24.png 615w" type="image/png"><img src="/generated/2022-tcbsd/download_tcbsd_iso-615-151822c24.png" width="615" height="151"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Unzip the file you just downloaded. You’ll probably find three files in there. The ISO one is the one you need.</p>
+  </li>
+  <li>
+    <p>Get yourself a USB drive which doesn’t contain important information, since it’s formatted in the process. I used an old 1 GB USB drive that I bought for €30 a long time ago 😱.</p>
+  </li>
+  <li>
+    <p>Open Rufus, click <strong>SELECT</strong> and select the ISO file you just unpacked.</p>
+
+    <p><a href="/assets/2022-tcbsd/rufus_select_iso.png"><picture><source srcset="/generated/2022-tcbsd/rufus_select_iso-300-1bedc024a.webp 300w, /generated/2022-tcbsd/rufus_select_iso-474-1bedc024a.webp 474w" type="image/webp"><source srcset="/generated/2022-tcbsd/rufus_select_iso-300-6b5e79461.png 300w, /generated/2022-tcbsd/rufus_select_iso-474-6b5e79461.png 474w" type="image/png"><img src="/generated/2022-tcbsd/rufus_select_iso-474-6b5e79461.png" width="474" height="538"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Then select <strong>START</strong>. It then formats the USB drive and makes it a bootable USB drive with Tc/BSD on it.</p>
+  </li>
+</ol>
+
+<h3 id="installing-twincatbsd">
+<a class="anchor" href="#installing-twincatbsd" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing TwinCAT/BSD</h3>
+
+<ol>
+  <li>
+    <p>Download and install VMware Workstation Player. It’s free for non-commercial use.</p>
+
+    <ul>
+      <li>Install from the terminal with <code class="language-plaintext highlighter-rouge">winget install -e --id VMware.WorkstationPlayer</code>
+</li>
+      <li>Or <a href="https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html">manually download</a> and install.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Select the free license or enter a license number</p>
+  </li>
+  <li>
+    <p>Start VMware Workstation Player with Administrator rights and select create a New Virtual Machine. You need administrator rights later to access the USB drive.</p>
+
+    <p><a href="/assets/2022-tcbsd/create_new_vm.png"><picture><source srcset="/generated/2022-tcbsd/create_new_vm-300-1c2480a24.webp 300w, /generated/2022-tcbsd/create_new_vm-500-1c2480a24.webp 500w, /generated/2022-tcbsd/create_new_vm-714-1c2480a24.webp 714w" type="image/webp"><source srcset="/generated/2022-tcbsd/create_new_vm-300-9b570045c.png 300w, /generated/2022-tcbsd/create_new_vm-500-9b570045c.png 500w, /generated/2022-tcbsd/create_new_vm-714-9b570045c.png 714w" type="image/png"><img src="/generated/2022-tcbsd/create_new_vm-714-9b570045c.png" width="714" height="588"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Select <strong>I will install the operating system later</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/install_os_later.png"><picture><source srcset="/generated/2022-tcbsd/install_os_later-300-34722453c.webp 300w, /generated/2022-tcbsd/install_os_later-500-34722453c.webp 500w, /generated/2022-tcbsd/install_os_later-641-34722453c.webp 641w" type="image/webp"><source srcset="/generated/2022-tcbsd/install_os_later-300-4d68f69d2.png 300w, /generated/2022-tcbsd/install_os_later-500-4d68f69d2.png 500w, /generated/2022-tcbsd/install_os_later-641-4d68f69d2.png 641w" type="image/png"><img src="/generated/2022-tcbsd/install_os_later-641-4d68f69d2.png" width="641" height="630"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Select “Other” and “FreeBSD 12 64-bit”</p>
+
+    <p><a href="/assets/2022-tcbsd/select_guest_os.png"><picture><source srcset="/generated/2022-tcbsd/select_guest_os-300-d075c4030.webp 300w, /generated/2022-tcbsd/select_guest_os-428-d075c4030.webp 428w" type="image/webp"><source srcset="/generated/2022-tcbsd/select_guest_os-300-38be0acf5.png 300w, /generated/2022-tcbsd/select_guest_os-428-38be0acf5.png 428w" type="image/png"><img src="/generated/2022-tcbsd/select_guest_os-428-38be0acf5.png" width="428" height="430"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Give your virtual machine a descriptive name and change the save location if you would like to.</p>
+
+    <p><a href="/assets/2022-tcbsd/name_vm.png"><picture><source srcset="/generated/2022-tcbsd/name_vm-300-ba1f3fb9f.webp 300w, /generated/2022-tcbsd/name_vm-428-ba1f3fb9f.webp 428w" type="image/webp"><source srcset="/generated/2022-tcbsd/name_vm-300-0f6b157b6.png 300w, /generated/2022-tcbsd/name_vm-428-0f6b157b6.png 428w" type="image/png"><img src="/generated/2022-tcbsd/name_vm-428-0f6b157b6.png" width="428" height="430"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Specify the disk capacity. I left it at the default 20 GB. Note: <a href="https://www.youtube.com/watch?v=H-qfWfz37Fg">Jakob</a> removes this hard drive and adds the USB drive first and then adds a new hard drive. But, I found that if I do this, I get an error<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> once I remove the USB drive.</p>
+
+    <p><a href="/assets/2022-tcbsd/disk_vm.png"><picture><source srcset="/generated/2022-tcbsd/disk_vm-300-1d56d175c.webp 300w, /generated/2022-tcbsd/disk_vm-428-1d56d175c.webp 428w" type="image/webp"><source srcset="/generated/2022-tcbsd/disk_vm-300-054149f33.png 300w, /generated/2022-tcbsd/disk_vm-428-054149f33.png 428w" type="image/png"><img src="/generated/2022-tcbsd/disk_vm-428-054149f33.png" width="428" height="430"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>You see a screen summarizing the results. Click <strong>Finish</strong>.</p>
+  </li>
+  <li>
+    <p>Select the virtual machine you just created and select <strong>Edit virtual Machine Settings</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/edit_vm_settings.png"><picture><source srcset="/generated/2022-tcbsd/edit_vm_settings-300-67e78f7ae.webp 300w, /generated/2022-tcbsd/edit_vm_settings-500-67e78f7ae.webp 500w, /generated/2022-tcbsd/edit_vm_settings-714-67e78f7ae.webp 714w" type="image/webp"><source srcset="/generated/2022-tcbsd/edit_vm_settings-300-aa3c043a8.png 300w, /generated/2022-tcbsd/edit_vm_settings-500-aa3c043a8.png 500w, /generated/2022-tcbsd/edit_vm_settings-714-aa3c043a8.png 714w" type="image/png"><img src="/generated/2022-tcbsd/edit_vm_settings-714-aa3c043a8.png" width="714" height="588"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Increase the memory of the virtual machine. I set it to 1 GB. At 256 MB the virtual machine sometimes gets killed when it runs out of memory. If you notice that it crashes, you know what to do.</p>
+
+    <p><a href="/assets/2022-tcbsd/vm_memory.png"><picture><source srcset="/generated/2022-tcbsd/vm_memory-300-cd4d8be82.webp 300w, /generated/2022-tcbsd/vm_memory-500-cd4d8be82.webp 500w, /generated/2022-tcbsd/vm_memory-720-cd4d8be82.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/vm_memory-300-714f91e76.png 300w, /generated/2022-tcbsd/vm_memory-500-714f91e76.png 500w, /generated/2022-tcbsd/vm_memory-720-714f91e76.png 720w" type="image/png"><img src="/generated/2022-tcbsd/vm_memory-750-714f91e76.png" width="750" height="734"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Add the USB drive as a hard disk by clicking on <strong>Add</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/replace_harddisk.png"><picture><source srcset="/generated/2022-tcbsd/replace_harddisk-300-e89aa245a.webp 300w, /generated/2022-tcbsd/replace_harddisk-500-e89aa245a.webp 500w, /generated/2022-tcbsd/replace_harddisk-720-e89aa245a.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/replace_harddisk-300-79b093bb7.png 300w, /generated/2022-tcbsd/replace_harddisk-500-79b093bb7.png 500w, /generated/2022-tcbsd/replace_harddisk-720-79b093bb7.png 720w" type="image/png"><img src="/generated/2022-tcbsd/replace_harddisk-750-79b093bb7.png" width="750" height="734"></source></source></picture></a></p>
+  </li>
+  <li>Then in the new window, select <strong>Hard Disk</strong> and click <strong>Next</strong>.</li>
+  <li>Select <strong>SATA</strong> and click <strong>Next</strong>.</li>
+  <li>Select <strong>Use a physical disk (for advanced users)</strong>. Yes, that’s you :D. Click on <strong>Next</strong>.</li>
+  <li>
+    <p>Now you get prompted to choose a disk. Here you want to select your USB drive, which should still be on your computer.</p>
+
+    <p><a href="/assets/2022-tcbsd/select_disk.png"><picture><source srcset="/generated/2022-tcbsd/select_disk-300-833c70fa0.webp 300w, /generated/2022-tcbsd/select_disk-444-833c70fa0.webp 444w" type="image/webp"><source srcset="/generated/2022-tcbsd/select_disk-300-59914ac6b.png 300w, /generated/2022-tcbsd/select_disk-444-59914ac6b.png 444w" type="image/png"><img src="/generated/2022-tcbsd/select_disk-444-59914ac6b.png" width="444" height="430"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>To find out if you need to select Disk 0 or Disk 1. Type in <code class="language-plaintext highlighter-rouge">diskmgmt</code> in the start menu to open <strong>Create and format hard disk partitions</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/diskmgmt.png"><picture><source srcset="/generated/2022-tcbsd/diskmgmt-300-1eb1cec2f.webp 300w, /generated/2022-tcbsd/diskmgmt-500-1eb1cec2f.webp 500w, /generated/2022-tcbsd/diskmgmt-720-1eb1cec2f.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/diskmgmt-300-3c2b46a29.png 300w, /generated/2022-tcbsd/diskmgmt-500-3c2b46a29.png 500w, /generated/2022-tcbsd/diskmgmt-720-3c2b46a29.png 720w" type="image/png"><img src="/generated/2022-tcbsd/diskmgmt-784-3c2b46a29.png" width="784" height="680"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>You see several partitions. In my case, there are two. Disk 1 is the removable one, thus I want to use that as the hard drive.</p>
+
+    <p><a href="/assets/2022-tcbsd/disk0_disk1.png"><picture><source srcset="/generated/2022-tcbsd/disk0_disk1-300-53bfc229f.webp 300w, /generated/2022-tcbsd/disk0_disk1-500-53bfc229f.webp 500w, /generated/2022-tcbsd/disk0_disk1-720-53bfc229f.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/disk0_disk1-300-aa7f30b63.png 300w, /generated/2022-tcbsd/disk0_disk1-500-aa7f30b63.png 500w, /generated/2022-tcbsd/disk0_disk1-720-aa7f30b63.png 720w" type="image/png"><img src="/generated/2022-tcbsd/disk0_disk1-731-aa7f30b63.png" width="731" height="200"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Now go back to the virtual machine settings and select <strong>PhysicalDrive1</strong>, <strong>Next</strong> and <strong>Finish</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/select_disk1.png"><picture><source srcset="/generated/2022-tcbsd/select_disk1-300-082cded48.webp 300w, /generated/2022-tcbsd/select_disk1-444-082cded48.webp 444w" type="image/webp"><source srcset="/generated/2022-tcbsd/select_disk1-300-89890f090.png 300w, /generated/2022-tcbsd/select_disk1-444-89890f090.png 444w" type="image/png"><img src="/generated/2022-tcbsd/select_disk1-444-89890f090.png" width="444" height="430"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Finally, you set the firmware type of the USB drive to <strong>UEFI</strong>. If you have a Pro version of VMware, you can set the firmware type in the virtual machine settings under <strong>Options &gt; Advanced &gt; Firmware type</strong> and select <strong>UEFI</strong>. If you have <a href="https://stackoverflow.com/a/71333438/6329629">the Player version</a>, you:</p>
+
+    <ol>
+      <li>
+        <p>Locate the directory of the virtual machine. You can find its location under <strong>Edit virtual machine settings &gt; Hard Disk (SCSI)</strong></p>
+
+        <p><a href="/assets/2022-tcbsd/vm_location.png"><picture><source srcset="/generated/2022-tcbsd/vm_location-300-bf50faa2a.webp 300w, /generated/2022-tcbsd/vm_location-500-bf50faa2a.webp 500w, /generated/2022-tcbsd/vm_location-720-bf50faa2a.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/vm_location-300-cd9d7072f.png 300w, /generated/2022-tcbsd/vm_location-500-cd9d7072f.png 500w, /generated/2022-tcbsd/vm_location-720-cd9d7072f.png 720w" type="image/png"><img src="/generated/2022-tcbsd/vm_location-800-cd9d7072f.png" width="1086" height="180"></source></source></picture></a></p>
+      </li>
+      <li>Open the VMX file in the virtual machine directory with a text editor.</li>
+      <li>Find the line <code class="language-plaintext highlighter-rouge">firmware = "bios"</code> and replace with <code class="language-plaintext highlighter-rouge">firmware = "efi"</code> and save it. If this line doesn’t exist, add it somewhere.</li>
+    </ol>
+
+    <p><a href="/assets/2022-tcbsd/player_vs_pro.png"><picture><source srcset="/generated/2022-tcbsd/player_vs_pro-300-9fc30b104.webp 300w, /generated/2022-tcbsd/player_vs_pro-500-9fc30b104.webp 500w, /generated/2022-tcbsd/player_vs_pro-720-9fc30b104.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/player_vs_pro-300-552889640.png 300w, /generated/2022-tcbsd/player_vs_pro-500-552889640.png 500w, /generated/2022-tcbsd/player_vs_pro-720-552889640.png 720w" type="image/png"><img src="/generated/2022-tcbsd/player_vs_pro-800-552889640.png" width="1500" height="734"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Now start the virtual machine with <strong>Play virtual machine</strong>.</p>
+  </li>
+  <li>
+    <p>Wait for the installer to start up. This can take a minute. After that, you see the following screen. Select <strong>TC/BSD Install</strong> and hit enter.</p>
+
+    <p><a href="/assets/2022-tcbsd/bsd_install.png"><picture><source srcset="/generated/2022-tcbsd/bsd_install-300-56c487f3a.webp 300w, /generated/2022-tcbsd/bsd_install-500-56c487f3a.webp 500w, /generated/2022-tcbsd/bsd_install-720-56c487f3a.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/bsd_install-300-480bc4212.png 300w, /generated/2022-tcbsd/bsd_install-500-480bc4212.png 500w, /generated/2022-tcbsd/bsd_install-720-480bc4212.png 720w" type="image/png"><img src="/generated/2022-tcbsd/bsd_install-800-480bc4212.png" width="1026" height="825"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Then select the 20G virtual hard drive you made and hit enter.</p>
+
+    <p><a href="/assets/2022-tcbsd/select_harddrive.png"><picture><source srcset="/generated/2022-tcbsd/select_harddrive-300-6e6c1ecbb.webp 300w, /generated/2022-tcbsd/select_harddrive-500-6e6c1ecbb.webp 500w, /generated/2022-tcbsd/select_harddrive-624-6e6c1ecbb.webp 624w" type="image/webp"><source srcset="/generated/2022-tcbsd/select_harddrive-300-09182c2d4.png 300w, /generated/2022-tcbsd/select_harddrive-500-09182c2d4.png 500w, /generated/2022-tcbsd/select_harddrive-624-09182c2d4.png 624w" type="image/png"><img src="/generated/2022-tcbsd/select_harddrive-624-09182c2d4.png" width="624" height="384"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>Hit enter again to acknowledge the warning.</p>
+
+    <p><a href="/assets/2022-tcbsd/warning.png"><picture><source srcset="/generated/2022-tcbsd/warning-300-0c6d19cb1.webp 300w, /generated/2022-tcbsd/warning-500-0c6d19cb1.webp 500w, /generated/2022-tcbsd/warning-568-0c6d19cb1.webp 568w" type="image/webp"><source srcset="/generated/2022-tcbsd/warning-300-1fae5fe10.png 300w, /generated/2022-tcbsd/warning-500-1fae5fe10.png 500w, /generated/2022-tcbsd/warning-568-1fae5fe10.png 568w" type="image/png"><img src="/generated/2022-tcbsd/warning-568-1fae5fe10.png" width="568" height="224"></source></source></picture></a></p>
+  </li>
+  <li>Then it asks for you to generate a password. Type in a password and repeat it to make sure it’s correct.</li>
+  <li>
+    <p>After several minutes the installation is complete and you see the following screen. Select <strong>OK</strong>.</p>
+
+    <p><a href="/assets/2022-tcbsd/complete.png"><picture><source srcset="/generated/2022-tcbsd/complete-264-015ad2c81.webp 264w" type="image/webp"><source srcset="/generated/2022-tcbsd/complete-264-7e4adb64f.png 264w" type="image/png"><img src="/generated/2022-tcbsd/complete-264-7e4adb64f.png" width="264" height="215"></source></source></picture></a></p>
+  </li>
+  <li>
+    <p>In the new menu select <strong>Shutdown</strong> so that you can remove the USB drive.</p>
+
+    <p><a href="/assets/2022-tcbsd/reboot.png"><picture><source srcset="/generated/2022-tcbsd/reboot-300-7a42d66c4.webp 300w, /generated/2022-tcbsd/reboot-406-7a42d66c4.webp 406w" type="image/webp"><source srcset="/generated/2022-tcbsd/reboot-300-70f095f8a.png 300w, /generated/2022-tcbsd/reboot-406-70f095f8a.png 406w" type="image/png"><img src="/generated/2022-tcbsd/reboot-406-70f095f8a.png" width="406" height="436"></source></source></picture></a></p>
+  </li>
+  <li>Remove USB drive under <strong>Edit virtual machine settings</strong>. Make sure you don’t select the 20 GB hard drive, on which you just installed Tc/BSD.</li>
+  <li>Go back to the main menu and start the virtual machine.</li>
+  <li>
+    <p>After some time you see the login screen. Log in with your user name and password you made during the installation.</p>
+
+    <p><a href="/assets/2022-tcbsd/bsd_login.png"><picture><source srcset="/generated/2022-tcbsd/bsd_login-300-ba04eb437.webp 300w, /generated/2022-tcbsd/bsd_login-500-ba04eb437.webp 500w, /generated/2022-tcbsd/bsd_login-720-ba04eb437.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/bsd_login-300-d1c8934de.png 300w, /generated/2022-tcbsd/bsd_login-500-d1c8934de.png 500w, /generated/2022-tcbsd/bsd_login-720-d1c8934de.png 720w" type="image/png"><img src="/generated/2022-tcbsd/bsd_login-800-d1c8934de.png" width="1053" height="934"></source></source></picture></a></p>
+  </li>
+  <li>Congrats. You now have a running version of TwinCAT/BSD.</li>
+</ol>
+
+<h2 id="device-manager">
+<a class="anchor" href="#device-manager" aria-hidden="true"><span class="octicon octicon-link"></span></a>Device manager</h2>
+
+<p>As I mentioned earlier, Tc/BSD doesn’t have a desktop environment. Most things are done from the terminal. However, the device manager has a GUI. To access it, you first need to find out the IP of the virtual machine. You find the IP by typing in <code class="language-plaintext highlighter-rouge">ifconfig</code>. The IP is right after <code class="language-plaintext highlighter-rouge">inet</code>.</p>
+
+<p><a href="/assets/2022-tcbsd/ifconfig.png"><picture><source srcset="/generated/2022-tcbsd/ifconfig-300-9a05f4b63.webp 300w, /generated/2022-tcbsd/ifconfig-500-9a05f4b63.webp 500w, /generated/2022-tcbsd/ifconfig-720-9a05f4b63.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/ifconfig-300-2d9ab3652.png 300w, /generated/2022-tcbsd/ifconfig-500-2d9ab3652.png 500w, /generated/2022-tcbsd/ifconfig-720-2d9ab3652.png 720w" type="image/png"><img src="/generated/2022-tcbsd/ifconfig-800-2d9ab3652.png" width="1022" height="411"></source></source></picture></a></p>
+
+<p>Then open your browser and type in the IP address you found. For me, it’s <code class="language-plaintext highlighter-rouge">https://192.168.126.128</code>. It’s possible that a warning shows up. Accept the risk and continue.</p>
+
+<p><a href="/assets/2022-tcbsd/firefox_accept_risk.png"><picture><source srcset="/generated/2022-tcbsd/firefox_accept_risk-300-25e7fbccd.webp 300w, /generated/2022-tcbsd/firefox_accept_risk-500-25e7fbccd.webp 500w, /generated/2022-tcbsd/firefox_accept_risk-720-25e7fbccd.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/firefox_accept_risk-300-8a4a732ec.png 300w, /generated/2022-tcbsd/firefox_accept_risk-500-8a4a732ec.png 500w, /generated/2022-tcbsd/firefox_accept_risk-720-8a4a732ec.png 720w" type="image/png"><img src="/generated/2022-tcbsd/firefox_accept_risk-800-8a4a732ec.png" width="1756" height="1149"></source></source></picture></a></p>
+
+<p>From here you can log into the device manager with the username <code class="language-plaintext highlighter-rouge">Administrator</code> and the password you set during the installation. The device manager shows all kinds of information about the state of the hardware and the software.</p>
+
+<p><a href="/assets/2022-tcbsd/device_manager.png"><picture><source srcset="/generated/2022-tcbsd/device_manager-300-c054b533e.webp 300w, /generated/2022-tcbsd/device_manager-500-c054b533e.webp 500w, /generated/2022-tcbsd/device_manager-720-c054b533e.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/device_manager-300-794770804.png 300w, /generated/2022-tcbsd/device_manager-500-794770804.png 500w, /generated/2022-tcbsd/device_manager-720-794770804.png 720w" type="image/png"><img src="/generated/2022-tcbsd/device_manager-800-794770804.png" width="883" height="393"></source></source></picture></a></p>
+
+<h2 id="web-console">
+<a class="anchor" href="#web-console" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web console</h2>
+
+<p>Next to a device manager, the <code class="language-plaintext highlighter-rouge">https://192.168.126.128</code> page also has a link to a web console. The console shows the same as if you logged into the virtual machine directly, but the web version has a better interface. Mainly because it enables scrolling<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> and copy-pasting commands is easier.</p>
+
+<h2 id="installing-packages">
+<a class="anchor" href="#installing-packages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing packages</h2>
+
+<p>As I mentioned earlier, there is no GUI. You do most actions from the terminal. One of the things you can do is install <a href="https://tcbsd.beckhoff.com/TCBSD/13/stable/packages/All/">packages</a>, with a package manager. Package managers are a useful feature in UNIX-like operating systems. Although Windows is now also joining the party with <a href="https://winget.run/"><code class="language-plaintext highlighter-rouge">winget</code></a>.</p>
+
+<h3 id="installing-twincat-hmi-server">
+<a class="anchor" href="#installing-twincat-hmi-server" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing TwinCAT HMI server</h3>
+
+<p><em>Note: See also a <a href="https://beckhoff-au.teachable.com/courses/coding-bytes-twincat-3/lectures/37473242">video by Coding Bytes</a> which describes this step.</em></p>
+
+<p>A package which you likely need is the HMI server. I don’t exactly know what it is called, but I know that there is a search feature. If you type in <code class="language-plaintext highlighter-rouge">pkg search hmi</code>, you see two results.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pkg search hmi
+TF1810-PLC-HMI-Web-3.1.4024.11_1 TF1810 | TC3 PLC HMI Web
+TF2000-HMI-Server-1.12.754.4   TF2000-HMI-Server
+</code></pre></div></div>
+
+<p>The first one is the old HMI and the second one is the one I want. To install it, type <code class="language-plaintext highlighter-rouge">doas pkg install TF2000-HMI-Server</code> and hit enter. Confirm the start of the installation with <code class="language-plaintext highlighter-rouge">y</code>. Then a warning showed up. So I did <code class="language-plaintext highlighter-rouge">doas service TcHmiSrv start</code> to start it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>=====
+Message from TF2000-HMI-Server-1.12.754.4:
+
+--
+============================== !!!! WARNING !!!! ==========================
+FreeBSD package manager doesn't allow us to automatically start services
+during package installation. To use the Beckhoff TwinCAT HMI Server either
+restart your system or start 'TcHmiSrv' manually with:
+
+doas service TcHmiSrv start
+
+============================== !!!! WARNING !!!! ==========================
+</code></pre></div></div>
+
+<p>If you then type <code class="language-plaintext highlighter-rouge">top</code> and hit enter, you see TcHmiSrv is running. <code class="language-plaintext highlighter-rouge">top</code> is the task manager analogue of FreeBSD. It can be convenient to have it open to see if processes are running, or maybe if your virtual machine has crashed. To exit <code class="language-plaintext highlighter-rouge">top</code>, press <code class="language-plaintext highlighter-rouge">q</code> or <kbd>Ctrl</kbd> + <kbd>C</kbd>.</p>
+
+<p><a href="/assets/2022-tcbsd/top_tchmi.png"><picture><source srcset="/generated/2022-tcbsd/top_tchmi-300-717070c03.webp 300w, /generated/2022-tcbsd/top_tchmi-500-717070c03.webp 500w, /generated/2022-tcbsd/top_tchmi-720-717070c03.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/top_tchmi-300-761251ad3.png 300w, /generated/2022-tcbsd/top_tchmi-500-761251ad3.png 500w, /generated/2022-tcbsd/top_tchmi-720-761251ad3.png 720w" type="image/png"><img src="/generated/2022-tcbsd/top_tchmi-800-761251ad3.png" width="1043" height="825"></source></source></picture></a></p>
+
+<h2 id="running-plc-code">
+<a class="anchor" href="#running-plc-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running PLC code</h2>
+
+<h3 id="connecting-to-the-virtual-machine">
+<a class="anchor" href="#connecting-to-the-virtual-machine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Connecting to the virtual machine</h3>
+
+<p>Now you are ready to run some PLC and HMI code on Tc/BSD. You find the target machine the usual way. You go to <strong>Choose Target System &gt; Search (Ethernet) &gt; Broadcast search</strong>. Note that next to your regular Wi-Fi/Ethernet ports, also two ports from VMware or one from VirtualBox shows up. Make sure the ports of your virtual machine are selected and click <strong>OK</strong> to start the search.</p>
+
+<p><a href="/assets/2022-tcbsd/select_ports.png"><picture><source srcset="/generated/2022-tcbsd/select_ports-300-43aad7664.webp 300w, /generated/2022-tcbsd/select_ports-500-43aad7664.webp 500w, /generated/2022-tcbsd/select_ports-541-43aad7664.webp 541w" type="image/webp"><source srcset="/generated/2022-tcbsd/select_ports-300-8daf8cda7.png 300w, /generated/2022-tcbsd/select_ports-500-8daf8cda7.png 500w, /generated/2022-tcbsd/select_ports-541-8daf8cda7.png 541w" type="image/png"><img src="/generated/2022-tcbsd/select_ports-541-8daf8cda7.png" width="541" height="217"></source></source></picture></a></p>
+
+<p>Click <strong>Add Route</strong> select <strong>Secure ADS</strong> and click <strong>OK</strong>. In case it can’t connect, click <strong>Advanced</strong> to show the options. Then select <strong>IP address</strong> instead of <strong>Host name</strong>. Then try to connect again.</p>
+
+<p><a href="/assets/2022-tcbsd/connected.png"><picture><source srcset="/generated/2022-tcbsd/connected-300-0938262fe.webp 300w, /generated/2022-tcbsd/connected-500-0938262fe.webp 500w, /generated/2022-tcbsd/connected-637-0938262fe.webp 637w" type="image/webp"><source srcset="/generated/2022-tcbsd/connected-300-f4b89fd79.png 300w, /generated/2022-tcbsd/connected-500-f4b89fd79.png 500w, /generated/2022-tcbsd/connected-637-f4b89fd79.png 637w" type="image/png"><img src="/generated/2022-tcbsd/connected-637-f4b89fd79.png" width="637" height="485"></source></source></picture></a></p>
+
+<p>After connecting to the PLC, you should be able to activate your configuration. Finally. You can develop TwinCAT code again while <a href="https://alltwincat.com/2020/06/15/the-five-best-and-worst-things-with-twincat/#the-very-concept-of-twincat">sitting in a beer garden like some developers do</a>. Freedom!</p>
+
+<h3 id="publishing-the-hmi">
+<a class="anchor" href="#publishing-the-hmi" aria-hidden="true"><span class="octicon octicon-link"></span></a>Publishing the HMI</h3>
+
+<p>With your PLC code running, it’s now time to look at how to publish the HMI. I initially had some issues with publishing the HMI. In the end, I made it work by using TcBSD version 13, which has TcHmiSrv 1.12.756.1. I couldn’t make it work with TcBSD v12.2 which has TcHmiSrv v 1.12.746.0. Furthermore, you need to make sure that your HMI project has the same version as the server which is 1.12.756.1 for me.</p>
+
+<p>Once you have that, you need to add an <a href="https://infosys.beckhoff.com/content/1033/twincat_bsd/6423780747.html?id=6393416005524011539">exception to the Tc/BSD firewall</a>. By default a lot of ports are blocked, including the one needed for the HMI server. To add it, open the firewall configuration file with <code class="language-plaintext highlighter-rouge">doas ee /etc/pf.conf</code> from the console. Then add the following new line at the end of the file</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># allow TcHmiSrv outgoing
+pass in quick proto tcp to port 1010 keep state
+</code></pre></div></div>
+
+<p>Exit the <code class="language-plaintext highlighter-rouge">ee</code> editor with <kbd>Esc</kbd>, select <code class="language-plaintext highlighter-rouge">a) leave editor</code>, save your changes and restart the virtual machine.</p>
+
+<p>Meanwhile, open the PLC project you want to publish on the virtual machine. Verify that the TF2000 HMI Server license is present in your system manager under <strong>SYSTEM &gt; License</strong>. If it’s not present, add it manually via the <strong>Manage Licenses</strong> tab. Then activate your PLC project which serves as the back end for your HMI project. Open the HMI publishing settings, fill in the IP address of the virtual machine and press <strong>Validate connection</strong>. If the connection was successful, select <strong>Publish</strong>.</p>
+
+<p><a href="/assets/2022-tcbsd/VM_HMI_publish_settings.png"><picture><source srcset="/generated/2022-tcbsd/VM_HMI_publish_settings-300-fdfacc1af.webp 300w, /generated/2022-tcbsd/VM_HMI_publish_settings-500-fdfacc1af.webp 500w, /generated/2022-tcbsd/VM_HMI_publish_settings-720-fdfacc1af.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/VM_HMI_publish_settings-300-fbf801c3a.png 300w, /generated/2022-tcbsd/VM_HMI_publish_settings-500-fbf801c3a.png 500w, /generated/2022-tcbsd/VM_HMI_publish_settings-720-fbf801c3a.png 720w" type="image/png"><img src="/generated/2022-tcbsd/VM_HMI_publish_settings-800-fbf801c3a.png" width="955" height="831"></source></source></picture></a></p>
+
+<p>If you connect to the HMI server for the first time, it asks you to set a password for the HMI server. You need this password whenever you want to publish your HMI project or need to log into the HMI server.</p>
+
+<p><a href="/assets/2022-tcbsd/first_hmi_server_connection.png"><picture><source srcset="/generated/2022-tcbsd/first_hmi_server_connection-300-40af2a1dc.webp 300w, /generated/2022-tcbsd/first_hmi_server_connection-500-40af2a1dc.webp 500w, /generated/2022-tcbsd/first_hmi_server_connection-720-40af2a1dc.webp 720w" type="image/webp"><source srcset="/generated/2022-tcbsd/first_hmi_server_connection-300-b9986c121.png 300w, /generated/2022-tcbsd/first_hmi_server_connection-500-b9986c121.png 500w, /generated/2022-tcbsd/first_hmi_server_connection-720-b9986c121.png 720w" type="image/png"><img src="/generated/2022-tcbsd/first_hmi_server_connection-800-b9986c121.png" width="814" height="588"></source></source></picture></a></p>
+
+<p>Once the password is set you can publish your HMI which then should be reachable at the Browser URL as shown in the publishing settings.</p>
+
+<hr>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>The error message:</p>
+
+      <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>No suitable dump device was found.
+Setting hostuuid: 60e34d56-aa3b-ddb2-f508-cbe7cce89d64.
+Setting hostid: 0x0789008c.
+swapon: /dev/ada1p2: No such file or directory Starting file system checks: Can't open `/dev/ada1p1'
+/dev/ada1p1: UNEXPECTED INCONSISTENCY; RUN fsck_msdosfs MANUALLY.
+THE FOLLOWING FILE SYSTEM HAD AN UNEXPECTED INCONSISTENCY:
+	msdosfs: /dev/ada1p1 (/boot/efi)
+Automatic file system check failed; help!
+ERROR: ABORTING BOOT (sending SIGTERM to parent)!
+2022-06-04T08:26:05.670175+00:00 - init 1 - - /bin/sh on /etc/rc terminated abnormally, going to single user mode
+Enter full pathname of shell or RETURN for /bin/sh:
+root@:/
+</code></pre></div>      </div>
+      <p><a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+
+      <p>While playing with Tc/BSD in the virtual machine I ran into an annoying issue: I couldn’t scroll up. For example, when I do <code class="language-plaintext highlighter-rouge">TcHmiSrv --help</code>, the help text is to long for the console screen. At first, I couldn’t figure out how to scroll back up, because there is no scroll bar, <kbd>↑</kbd> shows the previous command and <kbd>Page Up</kbd> just shows a <code class="language-plaintext highlighter-rouge">~</code>. After consulting Google, I found out that is where the <kbd>Scroll Lock</kbd> key is for. I always wondered what this button did. Note: If you’re on a laptop without a Scroll Lock key, you can <a href="https://serverfault.com/a/420341">remap one of the existing key combo’s</a>.
+<img src="/assets/2022-tcbsd/scroll_lock_magic.gif" alt="scroll lock enables scrolling in the TcBSD terminal window"> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+  </ol>
+</div>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/twincat/2022/04/14/pre-commit.html">❮ No more formatting fights with pre-commits for TwinCAT</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/twincat/2022/09/18/page-fault.html">Why am I getting a page fault in TwinCAT? ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

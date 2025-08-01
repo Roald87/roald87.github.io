@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>How to use MC_TorqueControl?</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>How to use MC_TorqueControl? | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="How to use MC_TorqueControl?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="MC_TorqueControl is a method to force or torque control an axis. In this article, I show how to set up a simple project and use this function." />
+<meta property="og:description" content="MC_TorqueControl is a method to force or torque control an axis. In this article, I show how to set up a simple project and use this function." />
+<link rel="canonical" href="https://cookncode.com/twincat/2022/12/10/torque_control.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2022/12/10/torque_control.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-12-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How to use MC_TorqueControl?" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2022-12-10T00:00:00+00:00","description":"MC_TorqueControl is a method to force or torque control an axis. In this article, I show how to set up a simple project and use this function.","headline":"How to use MC_TorqueControl?","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2022/12/10/torque_control.html"},"url":"https://cookncode.com/twincat/2022/12/10/torque_control.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>How to use MC_TorqueControl?</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Dec 10, 2022. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#what-is-mc_torquecontrol">What is MC_TorqueControl?</a></li>
+<li class="toc-entry toc-h2"><a href="#how-to-use-torque-control">How to use torque control?</a></li>
+</ul><p><a href="https://infosys.beckhoff.com/content/1033/tcplclib_tc2_mc2/7617393803.html?id=6677792901421113137"><code class="language-plaintext highlighter-rouge">MC_TorqueControl</code></a> is a method to force or torque control an axis. In this article, I show how to set up a simple project and use this function.</p>
+
+<p><em>There is also a <a href="https://www.youtube.com/watch?v=Lw-yW4OdtZA">YouTube video</a> by Electrical Automation Hands-On who explains these steps.</em></p>
+
+<h2 id="what-is-mc_torquecontrol">
+<a class="anchor" href="#what-is-mc_torquecontrol" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is <code class="language-plaintext highlighter-rouge">MC_TorqueControl</code>?</h2>
+
+<p>Other than the name suggests, this method can be used for both linear axes as a force controller or rotational axis as a torque controller. Thus, you can set a force or torque and the drive ensures that your motor keeps that force or torque. To avoid saying torque <em>and</em> force each time, I refer to both modes when I mention torque control.</p>
+
+<p>Torque control is always used when you move an axis, but you don’t notice it. Depending on the selected mode, between one and three different cascaded PID controllers are used.</p>
+
+<p>Below is the diagram from the <strong>Tune drive</strong> tab of Drive Manager 2. When you use torque control, <code class="language-plaintext highlighter-rouge">Tset</code> is directly fed into the current controller. But once you select the velocity mode, the velocity controller block connects to the current controller one. Then <code class="language-plaintext highlighter-rouge">Tset</code> is no longer fed into the current controller, but instead, the output of the velocity controller is directly fed into it. A similar story occurs when you select position control. Then the output of the position controller connects to the velocity controller, ignoring the <code class="language-plaintext highlighter-rouge">Vset</code>.</p>
+
+<p><a href="/assets/2022-torque-control/pid_torque_control.png"><picture><source srcset="/generated/2022-torque-control/pid_torque_control-300-285e5ec31.webp 300w, /generated/2022-torque-control/pid_torque_control-500-285e5ec31.webp 500w, /generated/2022-torque-control/pid_torque_control-720-285e5ec31.webp 720w" type="image/webp"><source srcset="/generated/2022-torque-control/pid_torque_control-300-38b0f4f10.png 300w, /generated/2022-torque-control/pid_torque_control-500-38b0f4f10.png 500w, /generated/2022-torque-control/pid_torque_control-720-38b0f4f10.png 720w" type="image/png"><img src="/generated/2022-torque-control/pid_torque_control-798-38b0f4f10.png" width="798" height="438"></source></source></picture></a></p>
+
+<h2 id="how-to-use-torque-control">
+<a class="anchor" href="#how-to-use-torque-control" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use torque control?</h2>
+
+<p>Make sure you have:</p>
+
+<ul>
+  <li>
+<a href="https://www.beckhoff.com/en-en/products/automation/twincat/texxxx-twincat-3-engineering/te5950.html">Drive Manager 2</a> installed</li>
+  <li>TwinCAT 3.1.4024.15 for both XAE (engineering) and XAR (runtime) or later</li>
+  <li>For AX5000: firmware 2.14 or later</li>
+  <li>For AX8000: firmware 1.03 Build 002 or later.</li>
+</ul>
+
+<p>Then, follow these steps to use torque control:</p>
+
+<ol>
+  <li>In the <strong>Advanced &gt; Slot settings</strong> tab, select <strong>VelocityControl2</strong> for the <strong>VelocityControlSlot</strong> of the respective axis. This enables the velocity limit.<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>
+<a href="/assets/2022-torque-control/velocity_limit.png"><picture><source srcset="/generated/2022-torque-control/velocity_limit-300-39364b71d.webp 300w, /generated/2022-torque-control/velocity_limit-500-39364b71d.webp 500w, /generated/2022-torque-control/velocity_limit-658-39364b71d.webp 658w" type="image/webp"><source srcset="/generated/2022-torque-control/velocity_limit-300-d56e0276e.png 300w, /generated/2022-torque-control/velocity_limit-500-d56e0276e.png 500w, /generated/2022-torque-control/velocity_limit-658-d56e0276e.png 658w" type="image/png"><img src="/generated/2022-torque-control/velocity_limit-658-d56e0276e.png" width="658" height="436"></source></source></picture></a>
+</li>
+  <li>In the <strong>Parameter list</strong>, select <strong>TorqueMightBeReducedToZero (1)</strong> at index <strong>0x60CA</strong>. This is another setting to enable the velocity limit.
+<a href="/assets/2022-torque-control/speed_limit.png"><picture><source srcset="/generated/2022-torque-control/speed_limit-300-21881ccb5.webp 300w, /generated/2022-torque-control/speed_limit-500-21881ccb5.webp 500w, /generated/2022-torque-control/speed_limit-720-21881ccb5.webp 720w" type="image/webp"><source srcset="/generated/2022-torque-control/speed_limit-300-7e1bb4e46.png 300w, /generated/2022-torque-control/speed_limit-500-7e1bb4e46.png 500w, /generated/2022-torque-control/speed_limit-720-7e1bb4e46.png 720w" type="image/png"><img src="/generated/2022-torque-control/speed_limit-800-7e1bb4e46.png" width="1046" height="469"></source></source></picture></a>
+</li>
+  <li>In the <strong>Process data</strong> tab, expand the <strong>Ch A operation</strong> and select <strong>Cyclic_synchronous_torque_mode_CST (10)</strong> for virtual operation mode 0. This adds the necessary process data objects, such as the target torque and the actual measured torque. It also enables you to switch between position and torque control.
+<a href="/assets/2022-torque-control/torque_mode.png"><picture><source srcset="/generated/2022-torque-control/torque_mode-300-d8dc2f776.webp 300w, /generated/2022-torque-control/torque_mode-500-d8dc2f776.webp 500w, /generated/2022-torque-control/torque_mode-663-d8dc2f776.webp 663w" type="image/webp"><source srcset="/generated/2022-torque-control/torque_mode-300-c71a32032.png 300w, /generated/2022-torque-control/torque_mode-500-c71a32032.png 500w, /generated/2022-torque-control/torque_mode-663-c71a32032.png 663w" type="image/png"><img src="/generated/2022-torque-control/torque_mode-663-c71a32032.png" width="663" height="247"></source></source></picture></a>
+</li>
+  <li>In the <strong>MOTION &gt; NC- TASK1 SAF &gt; Axis &gt; {your axis} &gt; Encoder</strong> and <strong>Drive</strong> tabs, turn on Time compensation. This setting enables smooth switching between position and torque mode. That is because, in torque mode, the NC axis writes permanent actual positions into the set position variable. Due to a dead time, the actual is delayed by four cycles. This dead time can then be compensated by enabling time compensation. This is relevant when you switch back into position mode.
+<a href="/assets/2022-torque-control/time_compensation_encoder.png"><picture><source srcset="/generated/2022-torque-control/time_compensation_encoder-300-399647cab.webp 300w, /generated/2022-torque-control/time_compensation_encoder-500-399647cab.webp 500w, /generated/2022-torque-control/time_compensation_encoder-720-399647cab.webp 720w" type="image/webp"><source srcset="/generated/2022-torque-control/time_compensation_encoder-300-8d5d74b91.png 300w, /generated/2022-torque-control/time_compensation_encoder-500-8d5d74b91.png 500w, /generated/2022-torque-control/time_compensation_encoder-720-8d5d74b91.png 720w" type="image/png"><img src="/generated/2022-torque-control/time_compensation_encoder-800-8d5d74b91.png" width="1185" height="360"></source></source></picture></a>
+<a href="/assets/2022-torque-control/time_compensation_drive.png"><picture><source srcset="/generated/2022-torque-control/time_compensation_drive-300-cf29666fa.webp 300w, /generated/2022-torque-control/time_compensation_drive-500-cf29666fa.webp 500w, /generated/2022-torque-control/time_compensation_drive-720-cf29666fa.webp 720w" type="image/webp"><source srcset="/generated/2022-torque-control/time_compensation_drive-300-730062dd3.png 300w, /generated/2022-torque-control/time_compensation_drive-500-730062dd3.png 500w, /generated/2022-torque-control/time_compensation_drive-720-730062dd3.png 720w" type="image/png"><img src="/generated/2022-torque-control/time_compensation_drive-800-730062dd3.png" width="1187" height="361"></source></source></picture></a>
+</li>
+</ol>
+
+<p>After applying the settings, you can add the following code to force control an axis. Here</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">someAxis</code>: is the axis you want to control.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">forceOptions</code>: defines a starting value of the torque when the <code class="language-plaintext highlighter-rouge">force</code> function block is activated. This ensures a smooth transition from the previous mode.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">targetForce</code>: the torque you want to apply.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">TORQUE_RAMP</code>: defines a maximum ramp for the torque.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">VELOCITY_LIMIT</code>: Limit the velocity.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">ContinuousUpdate</code>: If <code class="language-plaintext highlighter-rouge">TRUE</code>, then changes to <code class="language-plaintext highlighter-rouge">targetForce</code> are immediately applied by torque control, rather than needing to toggle <code class="language-plaintext highlighter-rouge">force.Execute</code>.<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>
+Then you activate force control by setting <code class="language-plaintext highlighter-rouge">forceMode</code> to <code class="language-plaintext highlighter-rouge">TRUE</code>.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM MAIN
+VAR
+    someAxis : Tc2_MC2.AXIS_REF;
+    forceOptions : Tc2_MC2.ST_TorqueControlOptions := (EnableManualTorqueStartValue := TRUE);
+    force : Tc2_MC2.MC_TorqueControl;
+    forceMode : BOOL;
+    targetForce : LREAL := 10;
+END_VAR
+VAR CONSTANT
+	TORQUE_RAMP : LREAL := 50_000;
+	VELOCITY_LIMIT : LREAL := 10_000;
+END_VAR
+
+forceOptions.ManualTorqueStartValue := someAxis.NcToPlc.ActTorque;
+
+force(
+	Execute:=forceMode,
+    ContinuousUpdate:=forceMode,
+    Relative:=FALSE,
+    Torque:=targetForce,
+    Axis:=someAxis,
+    Options:=forceOptions,
+    TorqueRamp:=TORQUE_RAMP,
+    VelocityLimitHigh:=VELOCITY_LIMIT,
+    VelocityLimitLow:=VELOCITY_LIMIT * -1,
+);
+</code></pre></div></div>
+
+<p>After calling another motion function block, the operation mode is automatically switched back from torque mode into position mode. For example <code class="language-plaintext highlighter-rouge">MC_MoveVelocity</code>, <code class="language-plaintext highlighter-rouge">MC_MoveAbsolute</code>, <code class="language-plaintext highlighter-rouge">MC_Halt</code> etc.</p>
+
+<p>Some final notes:</p>
+
+<ul>
+  <li>Lag monitoring switches off automatically if you use <code class="language-plaintext highlighter-rouge">MC_TorqueControl</code> with the AX5000.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">MC_TorqueControl</code> works with all SoE or CoE drives, but maybe the velocity limit function doesn’t work.</li>
+</ul>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Velocity limits work with the AX5000 and the AX8000. But, because this limit is a feature inside the AX firmware it doesn’t work for the EL, ELM, or AMI. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p><a href="https://cookncode.com/TwinCatChangelog/tc3/#features">For continuous force mode to work, the TwinCAT runtime needs to be at version &gt;=4024.35</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+  </ol>
+</div>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/twincat/2022/10/03/data-types.html">❮ TwinCAT datatypes in .NET</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/twincat/2023/01/19/chat-gpt.html">Playing with Chat-GPT and structured text ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

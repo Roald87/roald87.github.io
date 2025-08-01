@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>Preventing page faults from references</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Preventing page faults from references | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Preventing page faults from references" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Recently I was coding up a new function block and passed another function block by reference to it. Somewhere I forgot to check if the reference was valid before using it and 💥 Page Fault! After some thinking I came up with a few solutions how this can be prevented and even how you could catch mistakes like this at compile time instead of during run time. Let me show you what I did." />
+<meta property="og:description" content="Recently I was coding up a new function block and passed another function block by reference to it. Somewhere I forgot to check if the reference was valid before using it and 💥 Page Fault! After some thinking I came up with a few solutions how this can be prevented and even how you could catch mistakes like this at compile time instead of during run time. Let me show you what I did." />
+<link rel="canonical" href="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-07T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Preventing page faults from references" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2021-02-07T00:00:00+00:00","description":"Recently I was coding up a new function block and passed another function block by reference to it. Somewhere I forgot to check if the reference was valid before using it and 💥 Page Fault! After some thinking I came up with a few solutions how this can be prevented and even how you could catch mistakes like this at compile time instead of during run time. Let me show you what I did.","headline":"Preventing page faults from references","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html"},"url":"https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>Preventing page faults from references</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Feb 7, 2021. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#what-is-a-reference">What is a reference?</a></li>
+<li class="toc-entry toc-h2"><a href="#page-fault-code">Page fault code</a></li>
+<li class="toc-entry toc-h2"><a href="#option-1-using-__isvalidref">Option 1: Using __ISVALIDREF</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#concluding">Concluding</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#option-2-using-var_in_out">Option 2: Using VAR_IN_OUT</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#concluding-1">Concluding</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#option-3-using-fb_init">Option 3: Using FB_init</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#concluding-2">Concluding</a></li>
+</ul>
+</li>
+</ul><p>Recently I was coding up a new function block and passed another function block by reference to it. Somewhere I forgot to check if the reference was valid before using it and 💥 Page Fault! After some thinking I came up with a few solutions how this can be prevented and even how you could catch mistakes like this at compile time instead of during run time. Let me show you what I did.</p>
+
+<ul>
+  <li><a href="https://github.com/Roald87/TwincatTutorials/tree/main/PreventingPageFaults">Code</a></li>
+</ul>
+
+<h2 id="what-is-a-reference">
+<a class="anchor" href="#what-is-a-reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is a reference?</h2>
+
+<p>Before diving into the subject it is good to briefly explain what a reference is and why you would want to use it. A <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529458827.html&amp;id=">reference</a> is a link to an object, where an object can either be a data type (e.g. <code class="language-plaintext highlighter-rouge">LREAL</code>), a function block (e.g. <code class="language-plaintext highlighter-rouge">R_TRIG</code>) or a user defined data type (e.g. a <code class="language-plaintext highlighter-rouge">STRUCT</code>). A reference just passes on a link to the original object, instead of making a copy of it. References are very much like <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tcplccontrol/html/tcplcctrl_pointer.htm&amp;id=">pointers</a> in that sense, but references are easier to use.</p>
+
+<p>The advantages of pointers and references are that this is more memory efficient, since no copy of the object has to be created each time it is used somewhere. Furthermore changes are directly made to the original object, so there is no need to return anything.</p>
+
+<p>That all sounds very good, but as you might have guessed from the introduction is that it is not all fun and games. There are some drawbacks as well. In this article I will treat one of them: how to make sure you referenced something before it is used.</p>
+
+<h2 id="page-fault-code">
+<a class="anchor" href="#page-fault-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Page fault code</h2>
+
+<p>First let’s set up the problem. We have an simple function block <code class="language-plaintext highlighter-rouge">Foo</code>, which increments a counter each time it is called.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION_BLOCK Foo
+VAR
+    Counter : UINT := 0;
+END_VAR
+
+Counter := Counter + 1;
+</code></pre></div></div>
+
+<p>And another function block, <code class="language-plaintext highlighter-rouge">UsesFoo1</code>, to which <code class="language-plaintext highlighter-rouge">Foo</code> gets passed by reference. The implementation part of <code class="language-plaintext highlighter-rouge">UsesFoo1</code> calls <code class="language-plaintext highlighter-rouge">foo()</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION_BLOCK UsesFoo1
+VAR_INPUT
+    foo : REFERENCE TO Foo;
+END_VAR
+
+foo();
+</code></pre></div></div>
+
+<p>Finally we make a program <code class="language-plaintext highlighter-rouge">Runner1</code> which calls <code class="language-plaintext highlighter-rouge">UsesFoo1</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM Runner1
+VAR
+    usesFoo : UsesFoo1;
+END_VAR
+
+usesFoo();
+</code></pre></div></div>
+
+<p>If we run this code, we’ll get a Page fault.</p>
+
+<p><a href="/assets/2021-02-07-preventing-page-faults-from-references/page_fault.png"><picture><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/page_fault-300-678e86881.webp 300w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault-500-678e86881.webp 500w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault-540-678e86881.webp 540w" type="image/webp"><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/page_fault-300-50ce8c962.png 300w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault-500-50ce8c962.png 500w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault-540-50ce8c962.png 540w" type="image/png"><img src="/generated/2021-02-07-preventing-page-faults-from-references/page_fault-540-50ce8c962.png" width="540" height="222"></source></source></picture></a></p>
+
+<p>And if we log into the PLC, we see that, surprise surprise, it all went tits up when it tried to call <code class="language-plaintext highlighter-rouge">foo()</code>:</p>
+
+<p><a href="/assets/2021-02-07-preventing-page-faults-from-references/page_fault_location.png"><picture><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/page_fault_location-300-7feb2666f.webp 300w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault_location-348-7feb2666f.webp 348w" type="image/webp"><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/page_fault_location-300-996be73e4.png 300w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault_location-348-996be73e4.png 348w" type="image/png"><img src="/generated/2021-02-07-preventing-page-faults-from-references/page_fault_location-348-996be73e4.png" width="348" height="168"></source></source></picture></a></p>
+
+<h2 id="option-1-using-__isvalidref">
+<a class="anchor" href="#option-1-using-__isvalidref" aria-hidden="true"><span class="octicon octicon-link"></span></a>Option 1: Using <code class="language-plaintext highlighter-rouge">__ISVALIDREF</code>
+</h2>
+
+<p>In order to prevent the Page Fault, we can use <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529165707.html&amp;id="><code class="language-plaintext highlighter-rouge">__ISVALIDREF</code></a> to check if the reference is valid before calling it. So the body of <code class="language-plaintext highlighter-rouge">UsesFoo1</code> will change into:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IF __ISVALIDREF(foo) THEN
+    foo();
+END_IF
+</code></pre></div></div>
+
+<p>If we now run the new code, we will see that it no longer crashes. However, when we login we see that the <code class="language-plaintext highlighter-rouge">foo.Counter</code> doesn’t increment. It just shows that there is no valid pointer. This makes sense of course, because <code class="language-plaintext highlighter-rouge">foo</code> is not assigned.</p>
+
+<p><a href="/assets/2021-02-07-preventing-page-faults-from-references/is_valid_ref.png"><picture><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/is_valid_ref-300-4479f44e0.webp 300w, /generated/2021-02-07-preventing-page-faults-from-references/is_valid_ref-500-4479f44e0.webp 500w, /generated/2021-02-07-preventing-page-faults-from-references/is_valid_ref-522-4479f44e0.webp 522w" type="image/webp"><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/is_valid_ref-300-59c194c87.png 300w, /generated/2021-02-07-preventing-page-faults-from-references/is_valid_ref-500-59c194c87.png 500w, /generated/2021-02-07-preventing-page-faults-from-references/is_valid_ref-522-59c194c87.png 522w" type="image/png"><img src="/generated/2021-02-07-preventing-page-faults-from-references/is_valid_ref-522-59c194c87.png" width="522" height="270"></source></source></picture></a></p>
+
+<h3 id="concluding">
+<a class="anchor" href="#concluding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concluding</h3>
+
+<p>This solution prevents the PLC from crashing, but the code still doesn’t do what we want. In order for this solution to work requires you to remember that you need to first check the reference <em>each time</em> before calling it. Furthermore it is now possible the reference is not valid and thus <code class="language-plaintext highlighter-rouge">foo()</code> is not called at all, as we saw above. It might take you a minute (or hour 😛) to figure out why <code class="language-plaintext highlighter-rouge">foo()</code> is not doing anything.</p>
+
+<h2 id="option-2-using-var_in_out">
+<a class="anchor" href="#option-2-using-var_in_out" aria-hidden="true"><span class="octicon octicon-link"></span></a>Option 2: Using <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code>
+</h2>
+
+<p>A better solution would be to use <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2528771211.html&amp;id="><code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code></a>. By using <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code>, we’re also passing the variable by reference to the function block. So any changes you make to <code class="language-plaintext highlighter-rouge">foo</code> inside <code class="language-plaintext highlighter-rouge">UsesFoo2</code> will affect the state of the original <code class="language-plaintext highlighter-rouge">foo</code> instance.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION_BLOCK UsesFoo2
+VAR_IN_OUT
+    foo : Foo;
+END_VAR
+
+foo();
+</code></pre></div></div>
+
+<p>Now when we build the code with <code class="language-plaintext highlighter-rouge">foo</code> unassigned, the compiler will start to complain.</p>
+
+<p><a href="/assets/2021-02-07-preventing-page-faults-from-references/var_int_out_error.png"><picture><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/var_int_out_error-300-ebbbc3f72.webp 300w, /generated/2021-02-07-preventing-page-faults-from-references/var_int_out_error-500-ebbbc3f72.webp 500w, /generated/2021-02-07-preventing-page-faults-from-references/var_int_out_error-510-ebbbc3f72.webp 510w" type="image/webp"><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/var_int_out_error-300-12698ab2c.png 300w, /generated/2021-02-07-preventing-page-faults-from-references/var_int_out_error-500-12698ab2c.png 500w, /generated/2021-02-07-preventing-page-faults-from-references/var_int_out_error-510-12698ab2c.png 510w" type="image/png"><img src="/generated/2021-02-07-preventing-page-faults-from-references/var_int_out_error-510-12698ab2c.png" width="510" height="56"></source></source></picture></a></p>
+
+<p>In order for the program to compile, we have to initialize an instance of <code class="language-plaintext highlighter-rouge">Foo</code> in our <code class="language-plaintext highlighter-rouge">Runner2</code> program and pass the <code class="language-plaintext highlighter-rouge">foo</code> instance to <code class="language-plaintext highlighter-rouge">usesFoo</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM Runner2
+VAR
+    foo : Foo;
+    usesFoo : UsesFoo2;
+END_VAR
+
+usesFoo(foo:=foo);
+</code></pre></div></div>
+
+<p>When we activate the successfully compiling code and login, we see that the <code class="language-plaintext highlighter-rouge">foo.Counter</code> is now increasing with every call.</p>
+
+<p><img src="/assets/2021-02-07-preventing-page-faults-from-references/var_in_out_counter.gif" alt=""></p>
+
+<h3 id="concluding-1">
+<a class="anchor" href="#concluding-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concluding</h3>
+
+<p>This is a much better solution than using <code class="language-plaintext highlighter-rouge">__ISVALIDREF</code> everywhere. The <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code> solution is a form of <a href="https://en.wikipedia.org/wiki/Defensive_programming">defensive programming</a> the code is designed in such a way that making a mistake is impossible, or at least very difficult. Some minor drawbacks of this solution are that bit variables can’t be transferred directly to a <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code> variable (see <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2528771211.html&amp;id=">InfoSys</a> for a workaround) and the fact that each time <code class="language-plaintext highlighter-rouge">usesFoo</code> is called it needs <code class="language-plaintext highlighter-rouge">foo</code> passed to to it. The latter might get annoying if <code class="language-plaintext highlighter-rouge">usesFoo</code> is called multiple times.</p>
+
+<h2 id="option-3-using-fb_init">
+<a class="anchor" href="#option-3-using-fb_init" aria-hidden="true"><span class="octicon octicon-link"></span></a>Option 3: Using <code class="language-plaintext highlighter-rouge">FB_init</code>
+</h2>
+
+<p>A third option would be to use <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/5094414603.html&amp;id="><code class="language-plaintext highlighter-rouge">FB_init</code></a>. <code class="language-plaintext highlighter-rouge">FB_init</code> is a function block initializer which gets implicitly called when the code is started. Implicit means that this method gets called automatically when the code is executed. So there is no need to call it explicitly by saying <code class="language-plaintext highlighter-rouge">usesFoo.FB_init()</code>. For more information there is also an <a href="https://stefanhenneken.net/2019/07/26/iec-61131-3-parameter-transfer-via-fb_init/">article</a> by Stefan Henneken on <code class="language-plaintext highlighter-rouge">FB_init</code> usage.</p>
+
+<p>Let me show you how to use <code class="language-plaintext highlighter-rouge">FB_init</code> with our current example. First we add a new function block called <code class="language-plaintext highlighter-rouge">UsesFoo3</code>. To this function block we add an internal variable <code class="language-plaintext highlighter-rouge">_foo</code> which is a reference to <code class="language-plaintext highlighter-rouge">Foo</code>. Finally <code class="language-plaintext highlighter-rouge">_foo</code> gets called in the implementation part.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION_BLOCK UsesFoo3
+VAR
+    _foo : REFERENCE TO Foo;
+END_VAR
+
+_foo();
+</code></pre></div></div>
+
+<p>At this point the code will also generate a Page Fault when we run it, since <code class="language-plaintext highlighter-rouge">_foo</code> doesn’t reference to anything yet. In order to assign something to <code class="language-plaintext highlighter-rouge">_foo</code> , we add a <code class="language-plaintext highlighter-rouge">FB_init</code> method to our function block. To do so, first add a new method.</p>
+
+<p><a href="/assets/2021-02-07-preventing-page-faults-from-references/add_method.png"><picture><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/add_method-300-ad6564480.webp 300w, /generated/2021-02-07-preventing-page-faults-from-references/add_method-500-ad6564480.webp 500w, /generated/2021-02-07-preventing-page-faults-from-references/add_method-623-ad6564480.webp 623w" type="image/webp"><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/add_method-300-2f656ad24.png 300w, /generated/2021-02-07-preventing-page-faults-from-references/add_method-500-2f656ad24.png 500w, /generated/2021-02-07-preventing-page-faults-from-references/add_method-623-2f656ad24.png 623w" type="image/png"><img src="/generated/2021-02-07-preventing-page-faults-from-references/add_method-623-2f656ad24.png" width="623" height="196"></source></source></picture></a></p>
+
+<p>Then from the drop-down menu select <code class="language-plaintext highlighter-rouge">FB_init</code>. The other methods in the list are outside the scope of this article, but you can always have a look at InfoSys for more info on <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/5094414603.html&amp;id="><code class="language-plaintext highlighter-rouge">FB_reinit</code></a> and <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/5094414603.html&amp;id="><code class="language-plaintext highlighter-rouge">FB_exit</code></a>.</p>
+
+<p><a href="/assets/2021-02-07-preventing-page-faults-from-references/add_fb_init.png"><picture><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/add_fb_init-300-57a08e85d.webp 300w, /generated/2021-02-07-preventing-page-faults-from-references/add_fb_init-462-57a08e85d.webp 462w" type="image/webp"><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/add_fb_init-300-4ad80e066.png 300w, /generated/2021-02-07-preventing-page-faults-from-references/add_fb_init-462-4ad80e066.png 462w" type="image/png"><img src="/generated/2021-02-07-preventing-page-faults-from-references/add_fb_init-462-4ad80e066.png" width="462" height="625"></source></source></picture></a></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">FB_init</code> already comes with some standard code. This code affects the behavior of <code class="language-plaintext highlighter-rouge">FB_init</code> depending on the operating case: warm or cold starts and an online change. There is no need to explicitly assign these variables; they are implicitly assigned depending on the operating case, as explained <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/6415331211.html&amp;id=">here</a>.</p>
+
+<p>To the <code class="language-plaintext highlighter-rouge">VAR_INPUT</code> of <code class="language-plaintext highlighter-rouge">FB_init</code> add a new variable: <code class="language-plaintext highlighter-rouge">foo</code>. This will temporarily hold a reference to the <code class="language-plaintext highlighter-rouge">Foo</code> function block. In the implementation part you assign the <code class="language-plaintext highlighter-rouge">foo</code> reference to the <code class="language-plaintext highlighter-rouge">_foo</code> internal variable of the function block.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+    foo : REFERENCE TO Foo;
+END_VAR
+
+_foo REF= foo;
+</code></pre></div></div>
+
+<p>To execute the code we add another program and create two instances: <code class="language-plaintext highlighter-rouge">foo</code> and <code class="language-plaintext highlighter-rouge">usesFoo</code>. The function block initializer of <code class="language-plaintext highlighter-rouge">UsesFoo3</code> gets passed the <code class="language-plaintext highlighter-rouge">foo</code> instance. Finally we call <code class="language-plaintext highlighter-rouge">usesFoo()</code> in our implementation part.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM Runner3
+VAR
+    foo : Foo;
+    usesFoo : UsesFoo3(foo);
+END_VAR
+
+usesFoo();
+</code></pre></div></div>
+
+<p>Now when we activate the code and log in, we’ll see that the counter is increasing.</p>
+
+<p><a href="/assets/2021-02-07-preventing-page-faults-from-references/fb_init_online.png"><picture><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/fb_init_online-300-83c32f961.webp 300w, /generated/2021-02-07-preventing-page-faults-from-references/fb_init_online-367-83c32f961.webp 367w" type="image/webp"><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/fb_init_online-300-7e77a0fd1.png 300w, /generated/2021-02-07-preventing-page-faults-from-references/fb_init_online-367-7e77a0fd1.png 367w" type="image/png"><img src="/generated/2021-02-07-preventing-page-faults-from-references/fb_init_online-367-7e77a0fd1.png" width="367" height="291"></source></source></picture></a></p>
+
+<p>The advantage of the <code class="language-plaintext highlighter-rouge">FB_init</code> solution is that in case you forget to pass <code class="language-plaintext highlighter-rouge">foo</code> to <code class="language-plaintext highlighter-rouge">UsesFoo3</code>, the compiler will raise an error, so any mistakes are caught early on.</p>
+
+<p><a href="/assets/2021-02-07-preventing-page-faults-from-references/fb_init_error.png"><picture><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/fb_init_error-300-b488e7c81.webp 300w, /generated/2021-02-07-preventing-page-faults-from-references/fb_init_error-500-b488e7c81.webp 500w, /generated/2021-02-07-preventing-page-faults-from-references/fb_init_error-557-b488e7c81.webp 557w" type="image/webp"><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/fb_init_error-300-6e367ce98.png 300w, /generated/2021-02-07-preventing-page-faults-from-references/fb_init_error-500-6e367ce98.png 500w, /generated/2021-02-07-preventing-page-faults-from-references/fb_init_error-557-6e367ce98.png 557w" type="image/png"><img src="/generated/2021-02-07-preventing-page-faults-from-references/fb_init_error-557-6e367ce98.png" width="557" height="337"></source></source></picture></a></p>
+
+<h3 id="concluding-2">
+<a class="anchor" href="#concluding-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concluding</h3>
+
+<p>Although there are some drawbacks to the <code class="language-plaintext highlighter-rouge">FB_init</code> method, such as the fact that finding errors in it can be more difficult and the fact that you can still get a Page Fault if you forget to assign the <code class="language-plaintext highlighter-rouge">FB_init</code> input to a local function block variable as we saw above. I still think it provides some advantage, because you only need to pass a variable once to a function block and not each time you call the function block as with the <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code> solution.</p>
+
+<p>Discuss: <a href="https://www.reddit.com/r/PLC/comments/leqbnz/twincat_preventing_page_faults_from_references/">Reddit/Plc</a>, <a href="https://www.reddit.com/r/TwinCat/comments/leqby8/preventing_page_faults_from_references/">Reddit/TwinCAT</a>.</p>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/twincat/2021/01/20/twincat-eventlogger-hmi-part.html">❮ TwinCAT EventLogger: HMI part</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/twincat/2021/02/21/unit-testing-from-separate-project.html">Unit testing code from a separate project ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

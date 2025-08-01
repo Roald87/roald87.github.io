@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>'Overloading' functions with extended structs</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>‘Overloading’ functions with extended structs | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="‘Overloading’ functions with extended structs" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I was wondering if overloading functions in TwinCAT was possible, but I found out that this is not the case. I did however realize that overloading is possible using a few work-arounds. In this article I’ll show how to mimic this behavior with extended structs." />
+<meta property="og:description" content="I was wondering if overloading functions in TwinCAT was possible, but I found out that this is not the case. I did however realize that overloading is possible using a few work-arounds. In this article I’ll show how to mimic this behavior with extended structs." />
+<link rel="canonical" href="https://cookncode.com/twincat/2021/04/20/overloading-with-extended-structs.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2021/04/20/overloading-with-extended-structs.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="‘Overloading’ functions with extended structs" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2021-04-20T00:00:00+00:00","description":"I was wondering if overloading functions in TwinCAT was possible, but I found out that this is not the case. I did however realize that overloading is possible using a few work-arounds. In this article I’ll show how to mimic this behavior with extended structs.","headline":"‘Overloading’ functions with extended structs","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2021/04/20/overloading-with-extended-structs.html"},"url":"https://cookncode.com/twincat/2021/04/20/overloading-with-extended-structs.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>'Overloading' functions with extended structs</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Apr 20, 2021. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#what-is-overloading">What is overloading</a></li>
+<li class="toc-entry toc-h2"><a href="#overloading-using-structs">‘Overloading’ using structs</a></li>
+</ul><p>I was wondering if overloading functions in TwinCAT was possible, but I found out that this is not the case. I did however realize that overloading is possible using a few work-arounds. In this article I’ll show how to mimic this behavior with extended structs.</p>
+
+<h2 id="what-is-overloading">
+<a class="anchor" href="#what-is-overloading" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is overloading</h2>
+
+<p>Overloading a function means that you can call a function with an identical name, but it can have a different number of arguments. Also the data type of the arguments and/or the return type can differ. Some programming languages support more overloading types then others, as you can see here in this <a href="https://en.wikibooks.org/wiki/Computer_Programming/Function_overloading">overview</a>.</p>
+
+<p>An example of overloading in C# would be the following. The function <code class="language-plaintext highlighter-rouge">Rectangle</code> can be called using a either a single <code class="language-plaintext highlighter-rouge">int</code> argument (making it a square), or it can be called using two <code class="language-plaintext highlighter-rouge">float</code> arguments. Furthermore the single argument function returns an <code class="language-plaintext highlighter-rouge">int</code>, whereas the two argument one returns a <code class="language-plaintext highlighter-rouge">float</code>.</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Area</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">Rectangle</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="p">*</span> <span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">float</span> <span class="nf">Rectangle</span><span class="p">(</span><span class="kt">float</span> <span class="n">a</span><span class="p">,</span> <span class="kt">float</span> <span class="n">b</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="p">*</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Many methods in C# are overloaded. See for example the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.sum?view=net-5.0"><code class="language-plaintext highlighter-rouge">Sum</code></a> method with an impressive 20 overloads!</p>
+
+<h2 id="overloading-using-structs">
+<a class="anchor" href="#overloading-using-structs" aria-hidden="true"><span class="octicon octicon-link"></span></a>‘Overloading’ using structs</h2>
+
+<p>Jakob Sagatowski showed in his post “<a href="https://alltwincat.com/2018/03/21/the-wonders-of-any/">The wonders of any</a>” that you can call a single function with different data types. In order to make this work he uses <a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/9007201784167563.html&amp;id=2058661990612177947"><code class="language-plaintext highlighter-rouge">ANY</code></a>.</p>
+
+<p>You can also use extended structs to have a single function which accepts multiple structs which use the same base struct. For example we have a <code class="language-plaintext highlighter-rouge">Point</code> struct with a x and a y coordinate.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TYPE Point :
+STRUCT
+    x : REAL;
+    y : REAL;
+END_STRUCT
+END_TYPE
+</code></pre></div></div>
+
+<p>And an extension of this struct which can also hold the time and a date.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TYPE TimePoint EXTENDS Point :
+STRUCT
+    t : DT;
+END_STRUCT
+END_TYPE
+</code></pre></div></div>
+
+<p>Then we make a function which calculates the distance of this point with respect to the origin at (0, 0).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION Length : LREAL
+VAR_INPUT
+    point : Point;
+END_VAR
+
+Length := SQRT(EXPT(point.x, 2) + EXPT(point.y, 2));
+</code></pre></div></div>
+
+<p>Finally we call the method on two different points. One which is of type <code class="language-plaintext highlighter-rouge">Point</code> and the second which is of type <code class="language-plaintext highlighter-rouge">TimePoint</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM MAIN
+VAR
+    point1 : Point := (x:=2, y:=5);
+    point2 : TimePoint := (x:=6, y:=7, t:=DT#2000-03-02-1:0);
+    length1 : LREAL;
+    length2 : LREAL;
+END_VAR
+
+length1 := Length(point1);
+length2 := Length(point2);
+</code></pre></div></div>
+
+<p>When we run this program we can see that it calculated the length for both points.</p>
+
+<p><a href="/assets/2021-04-20-overloading-with-structs/result.png"><picture><source srcset="/generated/2021-04-20-overloading-with-structs/result-300-872835ffe.webp 300w, /generated/2021-04-20-overloading-with-structs/result-413-872835ffe.webp 413w" type="image/webp"><source srcset="/generated/2021-04-20-overloading-with-structs/result-300-7952037d1.png 300w, /generated/2021-04-20-overloading-with-structs/result-413-7952037d1.png 413w" type="image/png"><img src="/generated/2021-04-20-overloading-with-structs/result-413-7952037d1.png" width="413" height="318"></source></source></picture></a></p>
+
+<p>Using this trick you can prevent having to write/test the same function multiple times. I couldn’t find any mention of this possibility on InfoSys, so I just tried it out. I was a bit surprised and relieved that it worked!</p>
+
+<p>Discuss: <a href="https://www.reddit.com/r/PLC/comments/muwyv6/twincat_overloading_functions_with_extended/">r/plc</a> &amp; <a href="https://www.reddit.com/r/TwinCat/">r/TwinCAT</a></p>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/twincat/2021/02/21/unit-testing-from-separate-project.html">❮ Unit testing code from a separate project</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/twincat/2021/06/07/tc-source-control-tips.html">Source control tips for TwinCAT ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

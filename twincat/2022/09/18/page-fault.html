@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>Why am I getting a page fault in TwinCAT?</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Why am I getting a page fault in TwinCAT? | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Why am I getting a page fault in TwinCAT?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Earlier I talked about how you can prevent page faults from references. In this post, I try to show a complete overview of page fault origins and how to prevent them." />
+<meta property="og:description" content="Earlier I talked about how you can prevent page faults from references. In this post, I try to show a complete overview of page fault origins and how to prevent them." />
+<link rel="canonical" href="https://cookncode.com/twincat/2022/09/18/page-fault.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2022/09/18/page-fault.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-09-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Why am I getting a page fault in TwinCAT?" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2022-09-18T00:00:00+00:00","description":"Earlier I talked about how you can prevent page faults from references. In this post, I try to show a complete overview of page fault origins and how to prevent them.","headline":"Why am I getting a page fault in TwinCAT?","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2022/09/18/page-fault.html"},"url":"https://cookncode.com/twincat/2022/09/18/page-fault.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>Why am I getting a page fault in TwinCAT?</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Sep 18, 2022. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#page-faults-in-twincat">Page faults in TwinCAT</a></li>
+<li class="toc-entry toc-h2"><a href="#what-are-page-faults">What are page faults?</a></li>
+<li class="toc-entry toc-h2"><a href="#pointers">Pointers</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#references">References</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#solution-1">Solution</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#interfaces">Interfaces</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#conclusions">Conclusions</a></li>
+</ul><p><a href="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html">Earlier</a> I talked about how you can prevent page faults from references. In this post, I try to show a complete overview of page fault origins and how to prevent them.</p>
+
+<ul>
+  <li>Example code: <a href="https://github.com/Roald87/TwincatTutorials/tree/main/PageFaults">GitHub</a>/<a href="https://downgit.github.io/#/home?url=https://github.com/Roald87/TwincatTutorials/tree/main/PageFaults">Direct download</a> with TwinCAT 4024.25</li>
+</ul>
+
+<h2 id="page-faults-in-twincat">
+<a class="anchor" href="#page-faults-in-twincat" aria-hidden="true"><span class="octicon octicon-link"></span></a>Page faults in TwinCAT</h2>
+
+<p>You probably came across the following error message when you activated a configuration. The error says there is a <em>Page Fault</em>. This message was always quite puzzling to me when I started programming PLCs.</p>
+
+<blockquote>
+  <p>Exception (Exception Code: Oxc0000005, Page Fault) in PLC Application PLC Instance, Task PlcTask (RBP: Oxffffc80154efece0, RIP: 0xfiff800f2741d9a1, RSP: Oxffffc80154efecb0)</p>
+</blockquote>
+
+<p><a href="/assets/2021-02-07-preventing-page-faults-from-references/page_fault.png"><picture><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/page_fault-300-678e86881.webp 300w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault-500-678e86881.webp 500w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault-540-678e86881.webp 540w" type="image/webp"><source srcset="/generated/2021-02-07-preventing-page-faults-from-references/page_fault-300-50ce8c962.png 300w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault-500-50ce8c962.png 500w, /generated/2021-02-07-preventing-page-faults-from-references/page_fault-540-50ce8c962.png 540w" type="image/png"><img src="/generated/2021-02-07-preventing-page-faults-from-references/page_fault-540-50ce8c962.png" width="540" height="222"></source></source></picture></a></p>
+
+<p>The reason for the page fault is easy to see once you log into your project because it highlights the point of failure.</p>
+
+<p><a href="/assets/2022-page-fault/pointer.png"><picture><source srcset="/generated/2022-page-fault/pointer-300-1d1b6009b.webp 300w, /generated/2022-page-fault/pointer-409-1d1b6009b.webp 409w" type="image/webp"><source srcset="/generated/2022-page-fault/pointer-300-3e6d71de3.png 300w, /generated/2022-page-fault/pointer-409-3e6d71de3.png 409w" type="image/png"><img src="/generated/2022-page-fault/pointer-409-3e6d71de3.png" width="409" height="147"></source></source></picture></a></p>
+
+<h2 id="what-are-page-faults">
+<a class="anchor" href="#what-are-page-faults" aria-hidden="true"><span class="octicon octicon-link"></span></a>What are page faults?</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Page_fault">Wikipedia lists different types of page faults</a>. I think the ones you get in TwinCAT are of the invalid type. This type of page fault is caused by a reference to an invalid memory address. Let me show through three different examples what that means.</p>
+
+<h2 id="pointers">
+<a class="anchor" href="#pointers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pointers</h2>
+
+<p><a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529453451.html?id=5839194631499501145">Pointers</a> store the address of a variable. When you instantiate a pointer to a variable, the default address is 0. Therefore, in the example below <code class="language-plaintext highlighter-rouge">pointerToNumber</code> is 0. Then in the implementation part, I try to save the value to which the pointer points into <code class="language-plaintext highlighter-rouge">number</code> by dereferencing the pointer using the <code class="language-plaintext highlighter-rouge">^</code> symbol.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM PointerExample
+VAR
+    pointerToNumber : POINTER TO INT; // 0
+    number : INT;
+END_VAR
+
+number := pointerToNumber^;
+</code></pre></div></div>
+
+<p>When you activate this code you get a page fault. If you log in, you see that the pointer has address 0. Because this is not a valid memory address an exception is raised and your code halts here.</p>
+
+<p><a href="/assets/2022-page-fault/pointer.png"><picture><source srcset="/generated/2022-page-fault/pointer-300-1d1b6009b.webp 300w, /generated/2022-page-fault/pointer-409-1d1b6009b.webp 409w" type="image/webp"><source srcset="/generated/2022-page-fault/pointer-300-3e6d71de3.png 300w, /generated/2022-page-fault/pointer-409-3e6d71de3.png 409w" type="image/png"><img src="/generated/2022-page-fault/pointer-409-3e6d71de3.png" width="409" height="147"></source></source></picture></a></p>
+
+<h3 id="solution">
+<a class="anchor" href="#solution" aria-hidden="true"><span class="octicon octicon-link"></span></a>Solution</h3>
+
+<p>The solution to prevent this is quite simple: check if the address is 0 before you try to dereference the pointer. The complete example becomes:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM PointerExample
+VAR
+    pointerToNumber : POINTER TO INT;
+    number : INT;
+END_VAR
+
+IF pointerToNumber &lt;&gt; 0 THEN
+    number := pointerToNumber^;
+END_IF
+</code></pre></div></div>
+
+<p>Although this solves your issue, there is a good chance that you forget to implement the check at least once. But, you can automatically check for valid pointers with the POU <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2530405259.html?id=7869750361486034578"><code class="language-plaintext highlighter-rouge">CheckPointer</code></a>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">CheckPointer</code> function is automatically called <em>each time</em> before you use a pointer. The advantage is that you can trigger an error message which makes diagnostics easier. A disadvantage is that you add an extra function call when you use a pointer. If you use a lot of pointers, the extra overhead might cause cycle overruns. Also, it can’t prevent the pointer call, so you get the page fault regardless.</p>
+
+<p>To add the <code class="language-plaintext highlighter-rouge">CheckPointer</code> to your project, right click your PLC project and select <strong>Add &gt; POU for implicit checks</strong>.</p>
+
+<p><a href="/assets/2022-page-fault/implicit_checks.png"><picture><source srcset="/generated/2022-page-fault/implicit_checks-300-9ceb0c59f.webp 300w, /generated/2022-page-fault/implicit_checks-500-9ceb0c59f.webp 500w, /generated/2022-page-fault/implicit_checks-720-9ceb0c59f.webp 720w" type="image/webp"><source srcset="/generated/2022-page-fault/implicit_checks-300-ce6ac06e7.png 300w, /generated/2022-page-fault/implicit_checks-500-ce6ac06e7.png 500w, /generated/2022-page-fault/implicit_checks-720-ce6ac06e7.png 720w" type="image/png"><img src="/generated/2022-page-fault/implicit_checks-721-ce6ac06e7.png" width="721" height="236"></source></source></picture></a></p>
+
+<p>Select <strong>Pointer Check</strong> and confirm with <strong>Open</strong>.</p>
+
+<p><a href="/assets/2022-page-fault/add_checkpointer.png"><picture><source srcset="/generated/2022-page-fault/add_checkpointer-300-30133d655.webp 300w, /generated/2022-page-fault/add_checkpointer-346-30133d655.webp 346w" type="image/webp"><source srcset="/generated/2022-page-fault/add_checkpointer-300-51a729a6e.png 300w, /generated/2022-page-fault/add_checkpointer-346-51a729a6e.png 346w" type="image/png"><img src="/generated/2022-page-fault/add_checkpointer-346-51a729a6e.png" width="346" height="480"></source></source></picture></a></p>
+
+<p>This adds the <code class="language-plaintext highlighter-rouge">CheckPointer</code> function to your project and it already has a suggested implementation. If I run the failing example code, an error message is printed in the error console before it crashes.</p>
+
+<p><a href="/assets/2022-page-fault/pointer_check_error_message.png"><picture><source srcset="/generated/2022-page-fault/pointer_check_error_message-300-42cee754a.webp 300w, /generated/2022-page-fault/pointer_check_error_message-500-42cee754a.webp 500w, /generated/2022-page-fault/pointer_check_error_message-720-42cee754a.webp 720w" type="image/webp"><source srcset="/generated/2022-page-fault/pointer_check_error_message-300-8c0ca43f7.png 300w, /generated/2022-page-fault/pointer_check_error_message-500-8c0ca43f7.png 500w, /generated/2022-page-fault/pointer_check_error_message-720-8c0ca43f7.png 720w" type="image/png"><img src="/generated/2022-page-fault/pointer_check_error_message-733-8c0ca43f7.png" width="733" height="77"></source></source></picture></a></p>
+
+<p>Another solution would be to pass the pointer via <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code> or use constructor injection via <code class="language-plaintext highlighter-rouge">FB_init</code> as I showed in the <a href="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html">earlier article</a>.</p>
+
+<h2 id="references">
+<a class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h2>
+
+<p>Another way you can get page faults is through references, as I also showed in an <a href="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html">earlier article</a>. <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/2529458827.html?id=2716630061017907414">References</a> are pointers with an improved interface. Thus it shouldn’t come as a surprise that these can cause page faults as well.</p>
+
+<p>The short example below causes a page fault: I instantiate a reference to an integer called <code class="language-plaintext highlighter-rouge">number</code>. Then I try to assign a number to this reference.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM ReferenceExample
+VAR
+    refNumber : REFERENCE TO INT;
+END_VAR
+
+refNumber := 1;
+</code></pre></div></div>
+
+<p>When you try to assign a number to this reference, you get a page fault, because <code class="language-plaintext highlighter-rouge">refNumber</code> doesn’t refer to anything.</p>
+
+<p><a href="/assets/2022-page-fault/reference_page_fault.png"><picture><source srcset="/generated/2022-page-fault/reference_page_fault-300-e386d4336.webp 300w, /generated/2022-page-fault/reference_page_fault-483-e386d4336.webp 483w" type="image/webp"><source srcset="/generated/2022-page-fault/reference_page_fault-300-82872a0b0.png 300w, /generated/2022-page-fault/reference_page_fault-483-82872a0b0.png 483w" type="image/png"><img src="/generated/2022-page-fault/reference_page_fault-483-82872a0b0.png" width="483" height="130"></source></source></picture></a></p>
+
+<h3 id="solution-1">
+<a class="anchor" href="#solution-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Solution</h3>
+
+<p>In the <a href="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html">earlier article</a> I showed several ways you can prevent page faults from references. They were using:</p>
+
+<ul>
+  <li><a href="https://infosys.beckhoff.com/english.php?content=../content/1033/tc3_plc_intro/2529165707.html&amp;id="><code class="language-plaintext highlighter-rouge">__ISVALIDREF</code></a></li>
+  <li>Adding references to <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code>
+</li>
+  <li>Or using constructor injection via <code class="language-plaintext highlighter-rouge">FB_init</code>
+</li>
+</ul>
+
+<p>Here I only show the first solution with <code class="language-plaintext highlighter-rouge">__ISVALIDREF</code>. You use this function in a similar was as you would with the pointer check (<code class="language-plaintext highlighter-rouge">somePointer &lt;&gt; 0</code>): The full example becomes.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM ReferenceExample
+VAR
+    refNumber : REFERENCE TO INT;
+END_VAR
+
+IF __ISVALIDREF(refNumber) THEN
+    refNumber := 1;
+END_IF
+</code></pre></div></div>
+
+<p>The advantage of this is that you prevent page faults. But the reference never gets assigned, thus you might wonder why your code doesn’t do what you expect it to. In this case, it’s probably a good idea to add an <code class="language-plaintext highlighter-rouge">ELSE</code> clause with an appropriate error message. Even better would be to pass the reference via <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code> or <code class="language-plaintext highlighter-rouge">FB_init</code> if possible.</p>
+
+<h2 id="interfaces">
+<a class="anchor" href="#interfaces" aria-hidden="true"><span class="octicon octicon-link"></span></a>Interfaces</h2>
+
+<p><a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/4256428299.html?id=507172925224818176">Interfaces</a> can also cause page faults as shown by this example. I defined an interface <code class="language-plaintext highlighter-rouge">I_Interface</code> with a single property called <code class="language-plaintext highlighter-rouge">SomeProperty</code> which returns an integer.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INTERFACE I_Interface
+
+PROPERTY SomeProperty : INT
+
+</code></pre></div></div>
+
+<p>I create an instance <code class="language-plaintext highlighter-rouge">someInterface</code> of <code class="language-plaintext highlighter-rouge">I_Interface</code>. Then I try to save the integer returned by this into the variable <code class="language-plaintext highlighter-rouge">number</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM InterfaceExample
+VAR
+    number : INT;
+    someInterface : I_Interface;
+END_VAR
+
+number := someInterface.SomeProperty;
+</code></pre></div></div>
+
+<p>Executing the code again results in a page fault. That is because a function block needs to be assigned to the interface first. Then <code class="language-plaintext highlighter-rouge">someInterface</code> contains the address to this function block. Without an assigned function block, the interface is 0. Since this is not a valid address you get a page fault.</p>
+
+<p><a href="/assets/2022-page-fault/interface_page_fault.png"><picture><source srcset="/generated/2022-page-fault/interface_page_fault-300-7d745c2e7.webp 300w, /generated/2022-page-fault/interface_page_fault-434-7d745c2e7.webp 434w" type="image/webp"><source srcset="/generated/2022-page-fault/interface_page_fault-300-fb695d421.png 300w, /generated/2022-page-fault/interface_page_fault-434-fb695d421.png 434w" type="image/png"><img src="/generated/2022-page-fault/interface_page_fault-434-fb695d421.png" width="434" height="146"></source></source></picture></a></p>
+
+<h3 id="solutions">
+<a class="anchor" href="#solutions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Solutions</h3>
+
+<p>The solution to preventing page faults from invalid interfaces is the same as for pointers: before you use the interface, check if it’s not 0.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM InterfaceExample
+VAR
+    number : INT;
+    someInterface : I_Interface;
+END_VAR
+
+IF someInterface &lt;&gt; 0 THEN
+    number := someInterface.SomeProperty;
+END_IF
+</code></pre></div></div>
+
+<p>Again this solution silently fail, thus it might be wise to add an <code class="language-plaintext highlighter-rouge">ELSE</code> clause with an error message. Or if you use the interface in a function or function block you can use the <code class="language-plaintext highlighter-rouge">VAR_IN_OUT</code> or <code class="language-plaintext highlighter-rouge">FB_init</code> solutions mentioned in the <a href="https://cookncode.com/twincat/2021/02/07/preventing-page-faults-from-references.html">earlier article</a>.</p>
+
+<h2 id="conclusions">
+<a class="anchor" href="#conclusions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusions</h2>
+
+<p>I showed page faults can be caused by invalid pointers, references, and interfaces. For each case, I showed some solutions how to prevent the page faults, mainly by checking if the pointer or interface is not 0 or by using <code class="language-plaintext highlighter-rouge">__iSVALIDREF</code> for references.</p>
+
+<p>Did I miss any cases which can cause page faults and what are your solutions to prevent PLC crashes from page faults? Let me know in the comments below.</p>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/twincat/2022/08/11/twincat-bsd.html">❮ TwinCAT/BSD installation and tutorial</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/twincat/2022/10/03/data-types.html">TwinCAT datatypes in .NET ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

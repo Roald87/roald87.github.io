@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>TwinCAT EventLogger: HMI part</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>TwinCAT EventLogger: HMI part | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="TwinCAT EventLogger: HMI part" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In an earlier article, I introduced the PLC part of the TwinCAT EventLogger and showed some useful features. In this article, I go into the details on how to visualize the events using TwinCAT’s web-based HMI (TE2000)." />
+<meta property="og:description" content="In an earlier article, I introduced the PLC part of the TwinCAT EventLogger and showed some useful features. In this article, I go into the details on how to visualize the events using TwinCAT’s web-based HMI (TE2000)." />
+<link rel="canonical" href="https://cookncode.com/twincat/2021/01/20/twincat-eventlogger-hmi-part.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2021/01/20/twincat-eventlogger-hmi-part.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="TwinCAT EventLogger: HMI part" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2021-01-20T00:00:00+00:00","description":"In an earlier article, I introduced the PLC part of the TwinCAT EventLogger and showed some useful features. In this article, I go into the details on how to visualize the events using TwinCAT’s web-based HMI (TE2000).","headline":"TwinCAT EventLogger: HMI part","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2021/01/20/twincat-eventlogger-hmi-part.html"},"url":"https://cookncode.com/twincat/2021/01/20/twincat-eventlogger-hmi-part.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>TwinCAT EventLogger: HMI part</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Jan 20, 2021. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#adding-a-new-hmi-project">Adding a new HMI project</a></li>
+<li class="toc-entry toc-h2"><a href="#adding-the-event-grid">Adding the event grid</a></li>
+<li class="toc-entry toc-h2"><a href="#activating-the-configuration">Activating the configuration</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#hmi-settings-for-the-remote-target">HMI settings for the remote target</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#sending-a-message">Sending a message</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#live-view">Live view</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#adding-the-other-alarms">Adding the other alarms</a></li>
+<li class="toc-entry toc-h2"><a href="#adding-a-custom-column">Adding a custom column</a></li>
+<li class="toc-entry toc-h2"><a href="#pop-ups">Pop-ups</a></li>
+</ul><p>In an <a href="https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html">earlier article</a>, I introduced the PLC part of the TwinCAT EventLogger and showed some useful features. In this article, I go into the details on how to visualize the events using TwinCAT’s web-based HMI (TE2000).</p>
+
+<p><em>Thanks to <a href="https://github.com/sagatowski">Jakob Sagatowski</a> for his valuable feedback while writing this article.</em></p>
+
+<ul>
+  <li>Code: <a href="https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart">PlcPart</a>
+</li>
+  <li>Code: <a href="https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart">HmiPart</a>
+</li>
+</ul>
+
+<p>To follow this tutorial, you can either download the completed <a href="https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/HmiPart">HMI project</a>, or you can start with the <a href="https://github.com/Roald87/TwincatTutorials/tree/main/TwinCatEventLogger/PlcPart">PLC project</a> from the <a href="https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html">previous article</a>. <strong>I’ll assume here that you start with the PLC project part and work your way towards the HMI project.</strong></p>
+
+<h2 id="adding-a-new-hmi-project">
+<a class="anchor" href="#adding-a-new-hmi-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a new HMI project</h2>
+
+<p>With the solution from the PLC part open, add a new HMI project by going to <strong>File &gt; Add &gt; New Project</strong>. You should see the following screen. Select <strong>TwinCAT HMI Project</strong> from the TwinCAT HMI menu and give it a name, for example, <em>EventGridSample</em>.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/add_hmi_project.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/add_hmi_project-300-b8453812e.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/add_hmi_project-500-b8453812e.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/add_hmi_project-720-b8453812e.webp 720w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/add_hmi_project-300-0aee30806.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/add_hmi_project-500-0aee30806.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/add_hmi_project-720-0aee30806.png 720w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/add_hmi_project-786-0aee30806.png" width="786" height="608"></source></source></picture></a></p>
+
+<p>The standard HMI project contains a couple of folders and files. You mainly use the <strong>Desktop.view</strong> in this tutorial, which is also the default home page.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/default_hmi_project.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/default_hmi_project-248-4146203d4.webp 248w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/default_hmi_project-248-0ee082cea.png 248w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/default_hmi_project-248-0ee082cea.png" width="248" height="323"></source></source></picture></a></p>
+
+<h2 id="adding-the-event-grid">
+<a class="anchor" href="#adding-the-event-grid" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding the event grid</h2>
+
+<p>To visualize the events, I’ll use a standard HMI control from the Beckhoff: the Event Grid. You can find some <a href="https://infosys.beckhoff.com/content/1033/te2000_tc3_hmi_engineering/26698403957888680715.html?id=5204368253031999869">general information</a> and more detailed information about <a href="https://infosys.beckhoff.com/content/1033/te2000_tc3_hmi_engineering/4724260747.html?id=5870060213399401190">the API</a> of the Event Grid on InfoSys.</p>
+
+<p>To add the Event Grid to an HMI page: open the <strong>Desktop.view</strong> file and then drag the Event Grid into the <strong>Desktop.view</strong> from the <strong>Toolbox</strong> view, as shown below. If the toolbox is not shown, you can activate it via <strong>View &gt; Toolbox</strong>.</p>
+
+<p><img src="/assets/2021-01-20-twincat-event-logger-hmi-part/add_event_grid.gif" alt=""></p>
+
+<p>The Event Grid Control provides a convenient interface to all past and present events. It has a few buttons in the top row that allow you to:</p>
+
+<ul>
+  <li>filter/show specific event types</li>
+  <li>confirm alarms</li>
+  <li>add or remove (custom) columns</li>
+</ul>
+
+<p>I’ll show an example with a custom column a bit <a href="#adding-a-custom-column">further on</a>.</p>
+
+<h2 id="activating-the-configuration">
+<a class="anchor" href="#activating-the-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Activating the configuration</h2>
+
+<p>Before you can start using the HMI, you have to activate the configuration. Select <strong>Activate Configuration</strong> and select <strong>Autostart PLC Boot Project(s)</strong>, and click <strong>OK</strong>. Select <strong>OK</strong> in the message box to <em>Restart TwinCAT System in Run Mode</em>.</p>
+
+<h3 id="hmi-settings-for-the-remote-target">
+<a class="anchor" href="#hmi-settings-for-the-remote-target" aria-hidden="true"><span class="octicon octicon-link"></span></a>HMI settings for the remote target</h3>
+
+<p>I assumed here that you’ll run your project locally. In that case, you can go to the next <a href="#sending-messages">section</a>. But, if you are running your project on a remote target system, please follow these additional instructions here.</p>
+
+<p>Select a file from the HMI project and go to <strong>TwinCAT HMI &gt; Windows &gt; TwinCAT HMI Server Configuration</strong>. You should see the following screen. Go to the tab <strong>ADS</strong> and make sure to select the default publishing configuration on the top right. Then under <strong>Runtimes</strong>, select the <strong>AmsNetId</strong> of your PLC and accept the changes.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/ads_runtime_config.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/ads_runtime_config-300-8dd73e234.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/ads_runtime_config-500-8dd73e234.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/ads_runtime_config-720-8dd73e234.webp 720w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/ads_runtime_config-300-fde522569.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/ads_runtime_config-500-fde522569.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/ads_runtime_config-720-fde522569.png 720w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/ads_runtime_config-800-fde522569.png" width="882" height="346"></source></source></picture></a></p>
+
+<p>Then go to the <strong>TcHmiEventLogger</strong> tab. Again make sure to select the default publishing configuration. Then under <strong>Target Systems &gt; Local</strong>, change the address to the one of your PLC. Accept the changes.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/event_target.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/event_target-300-6e4a8b557.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/event_target-500-6e4a8b557.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/event_target-671-6e4a8b557.webp 671w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/event_target-300-5344905b9.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/event_target-500-5344905b9.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/event_target-671-5344905b9.png 671w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/event_target-671-5344905b9.png" width="671" height="350"></source></source></picture></a></p>
+
+<h2 id="sending-a-message">
+<a class="anchor" href="#sending-a-message" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sending a message</h2>
+
+<p>First, you test the message event. To do so, drag a Toggle button from the <strong>Toolbox</strong> into the <strong>Desktop.view</strong>. Change the button text to, for example, <em>Send message</em>. Next, you link the button to a variable in the PLC. Click on the small square button, circled in red, next to the <strong>StateSymbol</strong> and choose <strong>Create data binding…</strong>.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/send_message_button.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/send_message_button-300-7a046922b.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/send_message_button-500-7a046922b.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/send_message_button-720-7a046922b.webp 720w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/send_message_button-300-11aabc650.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/send_message_button-500-11aabc650.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/send_message_button-720-11aabc650.png 720w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/send_message_button-800-11aabc650.png" width="966" height="440"></source></source></picture></a></p>
+
+<p>You should see the following window. Select the <strong>Server symbols</strong> tab and select <code class="language-plaintext highlighter-rouge">bSendMessage</code> and select <strong>Map Symbol</strong>. In the new window, leave the default symbol name and select <strong>OK</strong>.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/map_symbol.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/map_symbol-300-5cfbd05eb.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/map_symbol-500-5cfbd05eb.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/map_symbol-720-5cfbd05eb.webp 720w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/map_symbol-300-1a0ea28ed.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/map_symbol-500-1a0ea28ed.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/map_symbol-720-1a0ea28ed.png 720w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/map_symbol-800-1a0ea28ed.png" width="816" height="587"></source></source></picture></a></p>
+
+<p>If you now go back to the <strong>Mapped symbols</strong> tab, you can now link the variable you mapped to the button. To do so, select <code class="language-plaintext highlighter-rouge">PLC1.SendMessage.bSendMessage</code>, and select <strong>OK</strong>.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/link_symbol.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/link_symbol-300-f7a350a21.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/link_symbol-500-f7a350a21.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/link_symbol-720-f7a350a21.webp 720w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/link_symbol-300-e123338d6.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/link_symbol-500-e123338d6.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/link_symbol-720-e123338d6.png 720w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/link_symbol-800-e123338d6.png" width="816" height="393"></source></source></picture></a></p>
+
+<h3 id="live-view">
+<a class="anchor" href="#live-view" aria-hidden="true"><span class="octicon octicon-link"></span></a>Live view</h3>
+
+<p>Now it is time to see the event logger in action. You can either publish your HMI project to a remote HMI server or use the Live-View. Here, I’ll use the Live-View since it allows you to see the changes instantly. You can activate the HMI Live-View via <strong>TwinCAT HMI &gt; Windows &gt; TwinCAT HMI Live-View</strong>. You should now see something that looks like the image below. If you click the “Send Message” button, a new message should appear in the event viewer.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/event_control_with_message.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/event_control_with_message-300-2dc53240a.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/event_control_with_message-500-2dc53240a.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/event_control_with_message-720-2dc53240a.webp 720w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/event_control_with_message-300-9c5eba80a.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/event_control_with_message-500-9c5eba80a.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/event_control_with_message-720-9c5eba80a.png 720w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/event_control_with_message-800-9c5eba80a.png" width="819" height="530"></source></source></picture></a></p>
+
+<p>In case you do not see anything, it might be the case that you made a mistake somewhere. If there are errors on the page, this is shown on the toolbar at the top of the Live-View. Click on it to open the Developer tools window. From here, you can try to debug what is causing your issues.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/live-view_errors.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/live-view_errors-300-7112812bf.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/live-view_errors-500-7112812bf.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/live-view_errors-720-7112812bf.webp 720w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/live-view_errors-300-488f65c8b.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/live-view_errors-500-488f65c8b.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/live-view_errors-720-488f65c8b.png 720w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/live-view_errors-800-488f65c8b.png" width="1231" height="533"></source></source></picture></a></p>
+
+<h2 id="adding-the-other-alarms">
+<a class="anchor" href="#adding-the-other-alarms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding the other alarms</h2>
+
+<p>Very similarly to how you created a button to send a message, you can now add some more buttons to raise, clear, and confirm the other two alarms in the project. For each button, they are labeled according to which variable in the PLC they are linked to.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/all_alarms_annotated.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/all_alarms_annotated-300-d21d30f0c.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/all_alarms_annotated-500-d21d30f0c.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/all_alarms_annotated-720-d21d30f0c.webp 720w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/all_alarms_annotated-300-4a3d9a38a.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/all_alarms_annotated-500-4a3d9a38a.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/all_alarms_annotated-720-4a3d9a38a.png 720w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/all_alarms_annotated-800-4a3d9a38a.png" width="942" height="656"></source></source></picture></a></p>
+
+<h2 id="adding-a-custom-column">
+<a class="anchor" href="#adding-a-custom-column" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding a custom column</h2>
+
+<p>A good feature of the Event Grid is that there are many possibilities to customize it. For example, you can add another column that shows the source of the alarm. To add or remove a column, click the third button from the right.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameButton.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameButton-300-c34746ca1.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameButton-500-c34746ca1.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameButton-720-c34746ca1.webp 720w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameButton-300-8bfca078a.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameButton-500-8bfca078a.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameButton-720-8bfca078a.png 720w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameButton-800-8bfca078a.png" width="952" height="198"></source></source></picture></a></p>
+
+<p>The following menu is then shown. On the left, you see all available columns, and on the right all the shown columns. Now add the <strong>params::</strong> column from the available list. Then on the right for the <strong>Name</strong> enter <em>params::sourceName</em> and for the <strong>Label</strong> enter <em>Source</em>. Then select <strong>OK</strong> to exit and you should see an extra column.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameSettings2.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameSettings2-300-8f4fe00c6.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameSettings2-500-8f4fe00c6.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameSettings2-579-8f4fe00c6.webp 579w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameSettings2-300-344553ba0.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameSettings2-500-344553ba0.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameSettings2-579-344553ba0.png 579w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiSourceNameSettings2-579-344553ba0.png" width="579" height="416"></source></source></picture></a></p>
+
+<p>The added column shows the path to the source of the event which can be quite convenient. In this example, it doesn’t add that much, since this is a very small program. But, if the events were a few function blocks deep, the precise path to the source can be handy to trace the origin of the alarm. Note that, as shown in the <a href="https://roald87.github.io/twincat/2020/11/03/twincat-eventlogger-plc-part.html">PLC part</a>, you can also customize the source as I did for the second event. Here I changed the source name to <em>Water pump 3</em>.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiWithSourceName.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiWithSourceName-300-e2367ee36.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiWithSourceName-500-e2367ee36.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiWithSourceName-720-e2367ee36.webp 720w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiWithSourceName-300-4a550b40a.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiWithSourceName-500-4a550b40a.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiWithSourceName-720-4a550b40a.png 720w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiWithSourceName-800-4a550b40a.png" width="939" height="241"></source></source></picture></a></p>
+
+<p>Another handy column to add to the HMI event overview is the <em>params::eventClassName</em>. This column shows the Display text of an event class. It can be handy if you, for example, divided your events into component-specific event classes. With the new column, you can now sort your events per subsystem of your machine.</p>
+
+<h2 id="pop-ups">
+<a class="anchor" href="#pop-ups" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pop-ups</h2>
+
+<p>The event grid provides a convenient interface for all events. But, it is easy to miss a raised alarm. Especially if you have various HMI pages and not all contain an event grid control. A good way to grab the user’s attention is through pop-ups.</p>
+
+<p>You can add pop-ups by adding some JavaScript to the HMI project. To do so, right-click the HMI project and go to <strong>Add &gt; New Item….</strong> Then choose <strong>CodeBehind (JavaScript)</strong> and pick an appropriate name. This adds a JavaScript template to your project. The file already contains some boilerplate to make it work with a TwinCAT HMI project.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiAddingCodeBehind.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiAddingCodeBehind-300-1099aa69d.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiAddingCodeBehind-500-1099aa69d.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiAddingCodeBehind-720-1099aa69d.webp 720w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiAddingCodeBehind-300-83d4af97c.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiAddingCodeBehind-500-83d4af97c.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiAddingCodeBehind-720-83d4af97c.png 720w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/EventLoggerHmiAddingCodeBehind-796-83d4af97c.png" width="796" height="280"></source></source></picture></a></p>
+
+<p>I added the following code to create the pop-up. First a <code class="language-plaintext highlighter-rouge">composeHtmlPopUpElement</code> function with a single argument <code class="language-plaintext highlighter-rouge">event</code> where you can pass the event data to. The event data contains the <code class="language-plaintext highlighter-rouge">event.text</code> which is placed in a <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>. The event data type also holds more information about the event, such as its severity (warning, error, or critical) and the time it was raised. Furthermore, it adds an OK button to acknowledge the pop-up. The OK button removes the topmost layer from the HMI, in this case, the pop-up itself.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">composeHtmlPopUpElement</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">$</span><span class="p">(</span>
+    <span class="dl">'</span><span class="s1">&lt;div style="background:white;padding:10px;max-width:400px;"&gt;</span><span class="dl">'</span> <span class="o">+</span>
+      <span class="nx">event</span><span class="p">.</span><span class="nx">text</span> <span class="o">+</span>
+      <span class="dl">"</span><span class="s2">&lt;br&gt;&lt;br&gt;</span><span class="dl">"</span> <span class="o">+</span>
+      <span class="dl">'</span><span class="s1">&lt;button type="button" onclick = </span><span class="dl">'</span> <span class="o">+</span>
+      <span class="dl">"</span><span class="se">\"</span><span class="s2">var topLayer=document.getElementsByClassName('tchmi-in-topmostlayer');</span><span class="dl">"</span> <span class="o">+</span>
+      <span class="dl">"</span><span class="s2">var currentTop=topLayer[topLayer.length - 1];</span><span class="dl">"</span> <span class="o">+</span>
+      <span class="dl">'</span><span class="s1">TcHmi.TopMostLayer.removeEx($(currentTop));"&gt; OK</span><span class="dl">'</span> <span class="o">+</span>
+      <span class="dl">"</span><span class="s2">&lt;/button&gt; </span><span class="dl">"</span> <span class="o">+</span>
+      <span class="dl">"</span><span class="s2">&lt;/div&gt;</span><span class="dl">"</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Next, I defined a function that is called whenever a new event is raised. The function adds the html pop-up element, returned by <code class="language-plaintext highlighter-rouge">composeHtmlPopUpElement()</code>, to the topmost layer of the HMI page. So, each time the function is called, it places a new layer on top of the previous one. In practice, this means that when multiple alarms are raised, a whole stack of layers are placed onto your HMI. Of this stack, the topmost layer is from the most recent alarm.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">showPopUp</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">newPopUp</span> <span class="o">=</span> <span class="nx">composeHtmlPopUpElement</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+  <span class="nx">TcHmi</span><span class="p">.</span><span class="nx">TopMostLayer</span><span class="p">.</span><span class="nx">addEx</span><span class="p">(</span><span class="nx">newPopUp</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">centerHorizontal</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">centerVertical</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">removecb</span><span class="p">:</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">canceled</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// user clicked on the background</span>
+        <span class="nx">TcHmi</span><span class="p">.</span><span class="nx">TopMostLayer</span><span class="p">.</span><span class="nx">removeEx</span><span class="p">(</span><span class="nx">newPopUp</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Next, I defined a function that is called whenever a certain type of alarm is raised and it gets passed some data about the event. In this example, I only want to show a pop-up when an alarm is raised.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">subscriptionCallback</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// check if the callback object is valid</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">error</span> <span class="o">===</span> <span class="nx">TcHmi</span><span class="p">.</span><span class="nx">Errors</span><span class="p">.</span><span class="nx">NONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// check if an event of type alarm is raised</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">changeType</span> <span class="o">===</span> <span class="nx">TcHmi</span><span class="p">.</span><span class="nx">Server</span><span class="p">.</span><span class="nx">Events</span><span class="p">.</span><span class="nx">ChangeType</span><span class="p">.</span><span class="nx">AlarmRaised</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">showPopUp</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">event</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Next, I made a filter to select the type of events I want to show a pop-up for. In this case, I only want to get a pop-up if it is an alarm (warning, error, or critical) and is not yet confirmed.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">allActiveAlarmsFilter</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">comparator</span><span class="p">:</span> <span class="dl">"</span><span class="s2">==</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">value</span><span class="p">:</span> <span class="nx">TcHmi</span><span class="p">.</span><span class="nx">Server</span><span class="p">.</span><span class="nx">Events</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Alarm</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">logic</span><span class="p">:</span> <span class="dl">"</span><span class="s2">AND</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="dl">"</span><span class="s2">timeConfirmed</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">comparator</span><span class="p">:</span> <span class="dl">"</span><span class="s2">==</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">value</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span>
+  <span class="p">},</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<p>Finally, the filter and the callback function get registered. That means that they listen for any new alarm which gets raised.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">TcHmi</span><span class="p">.</span><span class="nx">Server</span><span class="p">.</span><span class="nx">Events</span><span class="p">.</span><span class="nx">registerConsumer</span><span class="p">(</span><span class="nx">allActiveAlarmsFilter</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">subscription</span><span class="p">:</span> <span class="nx">subscriptionCallback</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>If you now raise a new warning, a pop-up should appear in the HMI. You might need to rebuild and/or refresh the Live-View for this to work.</p>
+
+<p><a href="/assets/2021-01-20-twincat-event-logger-hmi-part/PopUp.png"><picture><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/PopUp-300-26fd50540.webp 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/PopUp-500-26fd50540.webp 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/PopUp-720-26fd50540.webp 720w" type="image/webp"><source srcset="/generated/2021-01-20-twincat-event-logger-hmi-part/PopUp-300-d296f01ae.png 300w, /generated/2021-01-20-twincat-event-logger-hmi-part/PopUp-500-d296f01ae.png 500w, /generated/2021-01-20-twincat-event-logger-hmi-part/PopUp-720-d296f01ae.png 720w" type="image/png"><img src="/generated/2021-01-20-twincat-event-logger-hmi-part/PopUp-800-d296f01ae.png" width="1245" height="652"></source></source></picture></a></p>
+
+<p>I hope I gave you a good introduction to the EventLogger so that you can start experimenting with it yourself.</p>
+
+<p>Discuss: <a href="https://www.reddit.com/r/PLC/comments/l13vgp/tutorial_twincat_eventlogger_hmi_part/">reddit</a>.</p>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/twincat/2020/11/03/twincat-eventlogger-plc-part.html">❮ TwinCAT EventLogger: PLC part</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/twincat/2021/02/07/preventing-page-faults-from-references.html">Preventing page faults from references ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

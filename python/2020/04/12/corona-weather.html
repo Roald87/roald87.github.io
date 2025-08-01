@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>Corona effect on weather</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Corona effect on weather | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Corona effect on weather" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="During the first Corona wave in March-April 2020, I noticed that there was very little cloud cover in Switzerland and the Netherlands. Then, I remembered this article where they saw similar effects after 9/11. So, I collected weather data and crunched the numbers to see if it was just me or if it really was sunnier than usual." />
+<meta property="og:description" content="During the first Corona wave in March-April 2020, I noticed that there was very little cloud cover in Switzerland and the Netherlands. Then, I remembered this article where they saw similar effects after 9/11. So, I collected weather data and crunched the numbers to see if it was just me or if it really was sunnier than usual." />
+<link rel="canonical" href="https://cookncode.com/python/2020/04/12/corona-weather.html" />
+<meta property="og:url" content="https://cookncode.com/python/2020/04/12/corona-weather.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-12T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Corona effect on weather" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2020-04-12T00:00:00+00:00","description":"During the first Corona wave in March-April 2020, I noticed that there was very little cloud cover in Switzerland and the Netherlands. Then, I remembered this article where they saw similar effects after 9/11. So, I collected weather data and crunched the numbers to see if it was just me or if it really was sunnier than usual.","headline":"Corona effect on weather","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/python/2020/04/12/corona-weather.html"},"url":"https://cookncode.com/python/2020/04/12/corona-weather.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>Corona effect on weather</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Apr 12, 2020. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>python</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><p>During the first Corona wave in March-April 2020, I noticed that there was very little cloud cover in Switzerland and the Netherlands. Then, I remembered this <a href="https://www.nature.com/articles/418601a">article</a> where they saw similar effects after 9/11. So, I collected weather data and crunched the numbers to see if it was just me or if it really was sunnier than usual.</p>
+
+<ul>
+  <li><a href="https://github.com/Roald87/CoronaWeather/">All code</a></li>
+  <li><a href="https://colab.research.google.com/github/Roald87/CoronaWeather/blob/master/CoronaWeather_NL.ipynb#">Colab weather analyses 🇳🇱</a></li>
+  <li><a href="https://colab.research.google.com/github/Roald87/CoronaWeather/blob/master/CoronaWeather_CH.ipynb#">Colab weather analyses 🇨🇭</a></li>
+</ul>
+
+<h2 id="netherlands">Netherlands</h2>
+
+<p>I analyzed data from the Netherlands and didn’t really find a large effect for the temperature differences as they did in the article. However, I did find that it was awfully sunny! Look at the peak at the end of March. It was never as sunny before.</p>
+
+<p><a href="/assets/2020-04-12-corona-weather/sunhours_nl.png"><picture><source srcset="/generated/2020-04-12-corona-weather/sunhours_nl-300-bd19031ac.webp 300w, /generated/2020-04-12-corona-weather/sunhours_nl-500-bd19031ac.webp 500w, /generated/2020-04-12-corona-weather/sunhours_nl-720-bd19031ac.webp 720w" type="image/webp"><source srcset="/generated/2020-04-12-corona-weather/sunhours_nl-300-246eddbca.png 300w, /generated/2020-04-12-corona-weather/sunhours_nl-500-246eddbca.png 500w, /generated/2020-04-12-corona-weather/sunhours_nl-720-246eddbca.png 720w" type="image/png"><img src="/generated/2020-04-12-corona-weather/sunhours_nl-800-246eddbca.png" width="1028" height="364"></picture></a>
+Source: <a href="https://www.knmi.nl/kennis-en-datacentrum/achtergrond/data-ophalen-vanuit-een-script">KNMI</a>.</p>
+
+<h2 id="switzerland">Switzerland</h2>
+
+<p>I also analyzed the data for Switzerland. Here, I didn’t find such a large peak above normal, although you can see it was quite sunny in early April!</p>
+
+<p><a href="/assets/2020-04-12-corona-weather/sunhours_ch.png"><picture><source srcset="/generated/2020-04-12-corona-weather/sunhours_ch-300-414fa0dd4.webp 300w, /generated/2020-04-12-corona-weather/sunhours_ch-500-414fa0dd4.webp 500w, /generated/2020-04-12-corona-weather/sunhours_ch-720-414fa0dd4.webp 720w" type="image/webp"><source srcset="/generated/2020-04-12-corona-weather/sunhours_ch-300-c3f75418c.png 300w, /generated/2020-04-12-corona-weather/sunhours_ch-500-c3f75418c.png 500w, /generated/2020-04-12-corona-weather/sunhours_ch-720-c3f75418c.png 720w" type="image/png"><img src="/generated/2020-04-12-corona-weather/sunhours_ch-800-c3f75418c.png" width="993" height="364"></picture></a>
+Sources: <a href="https://data.geo.admin.ch/ch.meteoschweiz.klima/nbcn-tageswerte/nbcn-tageswerte-1864-2018.zip">Meteo Schweiz historical data</a>, <a href="https://data.geo.admin.ch/ch.meteoschweiz.klima/nbcn-tageswerte/VQEA34.csv">2020 data</a></p>
+
+<h2 id="analysis-details">Analysis Details</h2>
+
+<p>For more details see the Jupyter notebooks for <a href="CoronaWeather_NL.ipynb">🇳🇱 NL</a> and <a href="CoronaWeather_CH.ipynb">🇨🇭 CH</a> or rerun the notebook in Colab (<a href="https://colab.research.google.com/github/Roald87/CoronaWeather/blob/master/CoronaWeather_NL.ipynb#">🇳🇱 NL</a> and <a href="https://colab.research.google.com/github/Roald87/CoronaWeather/blob/master/CoronaWeather_CH.ipynb#">🇨🇭 CH</a>) to see the latest data.</p>
+
+<p>Note: The Swiss Colab notebook sometimes skips cells. To fix this, just run the cells one by one or rerun the ones starting from the one which was skipped. For the Dutch Colab, the plots are often not shown correctly on the first run. Just rerun the plot cells to render them.</p>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/python/2019/04/07/ev-market-share-forecast.html">❮ Forecasting the market share of battery electrical vehicles</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/python/2022/01/07/aoc-times.html">A visual journey of Advent of Code times ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

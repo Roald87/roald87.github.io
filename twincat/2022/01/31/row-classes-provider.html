@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>How to work with the RowClassesProvider?</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>How to work with the RowClassesProvider? | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="How to work with the RowClassesProvider?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Recently a user on the LinkedIn TwinCAT forum shared and example how to use the RowClassesProvider. When I tried the example and went looking for the documentation, there was none to be found! On the whole internet, there is one (1!) example which sort of shows the function. In this post I will show what the RowClassesProvider does and how you can use it to dynamically color data grids." />
+<meta property="og:description" content="Recently a user on the LinkedIn TwinCAT forum shared and example how to use the RowClassesProvider. When I tried the example and went looking for the documentation, there was none to be found! On the whole internet, there is one (1!) example which sort of shows the function. In this post I will show what the RowClassesProvider does and how you can use it to dynamically color data grids." />
+<link rel="canonical" href="https://cookncode.com/twincat/2022/01/31/row-classes-provider.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2022/01/31/row-classes-provider.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-01-31T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How to work with the RowClassesProvider?" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2022-01-31T00:00:00+00:00","description":"Recently a user on the LinkedIn TwinCAT forum shared and example how to use the RowClassesProvider. When I tried the example and went looking for the documentation, there was none to be found! On the whole internet, there is one (1!) example which sort of shows the function. In this post I will show what the RowClassesProvider does and how you can use it to dynamically color data grids.","headline":"How to work with the RowClassesProvider?","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2022/01/31/row-classes-provider.html"},"url":"https://cookncode.com/twincat/2022/01/31/row-classes-provider.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>How to work with the RowClassesProvider?</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Jan 31, 2022. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#result">Result</a></li>
+<li class="toc-entry toc-h2"><a href="#setup">Setup</a></li>
+<li class="toc-entry toc-h2"><a href="#exploring-rowclassesproviders-functionality">Exploring RowClassesProvider’s functionality</a></li>
+<li class="toc-entry toc-h2"><a href="#seeing-it-in-action">Seeing it in action</a></li>
+<li class="toc-entry toc-h2"><a href="#applying-css-styles-to-the-datagrid">Applying CSS styles to the Datagrid</a></li>
+<li class="toc-entry toc-h2"><a href="#result-1">Result</a></li>
+<li class="toc-entry toc-h2"><a href="#final-tip-inspiration-and-default-styles">Final tip: inspiration and default styles</a></li>
+</ul><p>Recently a user on the <a href="https://www.linkedin.com/groups/1860933/">LinkedIn TwinCAT forum</a> shared and example how to use the RowClassesProvider. When I tried the example and went looking for the documentation, there was none to be found! On the whole internet, there is <a href="https://gist.github.com/benhar-dev/2216bf3001aa49097037f759087667e8">one (1!) example</a> which sort of shows the function. In this post I will show what the RowClassesProvider does and how you can use it to dynamically color data grids.</p>
+
+<ul>
+  <li>Example code for TcHMI v1.10: <a href="https://github.com/Roald87/TwincatTutorials/tree/main/Datagrid/Datagrid">GitHub repo</a>, <a href="https://downgit.github.io/#/home?url=https://github.com/Roald87/TwincatTutorials/tree/main/Datagrid/Datagrid">direct download</a>.</li>
+</ul>
+
+<h2 id="result">
+<a class="anchor" href="#result" aria-hidden="true"><span class="octicon octicon-link"></span></a>Result</h2>
+
+<p>Before diving in, this will be the result:</p>
+
+<p><img src="/assets/2022-01-31-row-classes-provider/all_effects_datagrid.gif" alt="all different styles showcased"></p>
+
+<h2 id="setup">
+<a class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h2>
+
+<p>In order to explore what RowClassesProvider does let’s make a small sample project.</p>
+
+<ol>
+  <li>Create a new HMI project in Visual Studio by going to <strong>File &gt; New &gt; Project</strong> and select <strong>TwinCAT HMI &gt; TwinCAT HMI Project</strong>. Give it an appropriate name and select <strong>OK</strong>.</li>
+  <li>Open the Desktop.view by double clicking on it.</li>
+  <li>From the tool bar, drag a Datagrid into the Desktop.view.
+<img src="/assets/2022-01-31-row-classes-provider/drag_datagrid.gif" alt="data grid being dragged into the desktop.view">
+</li>
+  <li>Add a new JavaScript function by right clicking on your HMI project and select <strong>Add &gt; New Item</strong>.
+<a href="/assets/2022-01-31-row-classes-provider/add_new_item.png"><picture><source srcset="/generated/2022-01-31-row-classes-provider/add_new_item-300-fbf3a529d.webp 300w, /generated/2022-01-31-row-classes-provider/add_new_item-500-fbf3a529d.webp 500w, /generated/2022-01-31-row-classes-provider/add_new_item-611-fbf3a529d.webp 611w" type="image/webp"><source srcset="/generated/2022-01-31-row-classes-provider/add_new_item-300-379115591.png 300w, /generated/2022-01-31-row-classes-provider/add_new_item-500-379115591.png 500w, /generated/2022-01-31-row-classes-provider/add_new_item-611-379115591.png 611w" type="image/png"><img src="/generated/2022-01-31-row-classes-provider/add_new_item-611-379115591.png" alt="add new item to HMI project" width="611" height="272"></source></source></picture></a>
+</li>
+  <li>Then select Function (JavaScript) and give it an appropriate name and select <strong>OK</strong>.
+<a href="/assets/2022-01-31-row-classes-provider/add_javascript_function.png"><picture><source srcset="/generated/2022-01-31-row-classes-provider/add_javascript_function-300-14c2cf4ae.webp 300w, /generated/2022-01-31-row-classes-provider/add_javascript_function-500-14c2cf4ae.webp 500w, /generated/2022-01-31-row-classes-provider/add_javascript_function-720-14c2cf4ae.webp 720w" type="image/webp"><source srcset="/generated/2022-01-31-row-classes-provider/add_javascript_function-300-6b471373a.png 300w, /generated/2022-01-31-row-classes-provider/add_javascript_function-500-6b471373a.png 500w, /generated/2022-01-31-row-classes-provider/add_javascript_function-720-6b471373a.png 720w" type="image/png"><img src="/generated/2022-01-31-row-classes-provider/add_javascript_function-786-6b471373a.png" alt="select JavaScript function" width="786" height="480"></source></source></picture></a>
+</li>
+</ol>
+
+<h2 id="exploring-rowclassesproviders-functionality">
+<a class="anchor" href="#exploring-rowclassesproviders-functionality" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exploring RowClassesProvider’s functionality</h2>
+
+<p>Now we have a sample project it is time to explore what the RowClassesProvider does.</p>
+
+<ol>
+  <li>Open the <code class="language-plaintext highlighter-rouge">RowClassesProvider.function.json</code> file of the JavaScript function we just created, with a double click.</li>
+  <li>
+    <p>In the new window change/add the following things:</p>
+
+    <ul>
+      <li>Change the return type to <code class="language-plaintext highlighter-rouge">Array</code>. Later we fill this array to return the styles which should be applied to the Datagrid.</li>
+      <li>Change the DisplayName of the first variable to <code class="language-plaintext highlighter-rouge">rowData</code> and select for the Datatype <code class="language-plaintext highlighter-rouge">Any</code>.</li>
+      <li>Add a new row and change the DisplayName to <code class="language-plaintext highlighter-rouge">rowIndex</code> and for the Datatype select <code class="language-plaintext highlighter-rouge">Integer</code>.</li>
+      <li>Add another new row and change the DisplayName to <code class="language-plaintext highlighter-rouge">rowNumber</code> and for the Datatype select <code class="language-plaintext highlighter-rouge">Integer</code>.</li>
+    </ul>
+
+    <p>In the end it should look as shown here:</p>
+
+    <p><a href="/assets/2022-01-31-row-classes-provider/function_io.png"><picture><source srcset="/generated/2022-01-31-row-classes-provider/function_io-300-dfa36844d.webp 300w, /generated/2022-01-31-row-classes-provider/function_io-500-dfa36844d.webp 500w, /generated/2022-01-31-row-classes-provider/function_io-720-dfa36844d.webp 720w" type="image/webp"><source srcset="/generated/2022-01-31-row-classes-provider/function_io-300-41a2b6894.png 300w, /generated/2022-01-31-row-classes-provider/function_io-500-41a2b6894.png 500w, /generated/2022-01-31-row-classes-provider/function_io-720-41a2b6894.png 720w" type="image/png"><img src="/generated/2022-01-31-row-classes-provider/function_io-800-41a2b6894.png" alt="menu after applying all changes" width="917" height="393"></source></source></picture></a></p>
+  </li>
+  <li>Confirm your changes by selecting <strong>OK</strong> and confirm your changes in the additional pop-up.</li>
+  <li>
+    <p>In case you had the <code class="language-plaintext highlighter-rouge">RowClassesProvider.js</code> file open, you will get a pop-up. The pop-up is caused by the changes you just made. Select <strong>Yes</strong> to reload the file.</p>
+
+    <p><a href="/assets/2022-01-31-row-classes-provider/confirm_reload.png"><picture><source srcset="/generated/2022-01-31-row-classes-provider/confirm_reload-300-762b5b16c.webp 300w, /generated/2022-01-31-row-classes-provider/confirm_reload-500-762b5b16c.webp 500w, /generated/2022-01-31-row-classes-provider/confirm_reload-615-762b5b16c.webp 615w" type="image/webp"><source srcset="/generated/2022-01-31-row-classes-provider/confirm_reload-300-16386cd27.png 300w, /generated/2022-01-31-row-classes-provider/confirm_reload-500-16386cd27.png 500w, /generated/2022-01-31-row-classes-provider/confirm_reload-615-16386cd27.png 615w" type="image/png"><img src="/generated/2022-01-31-row-classes-provider/confirm_reload-615-16386cd27.png" width="615" height="229"></source></source></picture></a></p>
+  </li>
+</ol>
+
+<p>If all went <strong>OK</strong> your code in <code class="language-plaintext highlighter-rouge">RowClassesProvider.js</code> should look as follows (ignoring the <code class="language-plaintext highlighter-rouge">&lt;reference path ...</code> lines):</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">TcHmi</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">RowClassesProvider</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">rowData</span><span class="p">,</span> <span class="nx">rowIndex</span><span class="p">,</span> <span class="nx">rowNumber</span><span class="p">)</span> <span class="p">{};</span>
+
+  <span class="nx">TcHmi</span><span class="p">.</span><span class="nx">Functions</span><span class="p">.</span><span class="nx">registerFunction</span><span class="p">(</span><span class="dl">"</span><span class="s2">RowClassesProvider</span><span class="dl">"</span><span class="p">,</span> <span class="nx">RowClassesProvider</span><span class="p">);</span>
+<span class="p">})(</span><span class="nx">TcHmi</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This function takes three inputs: <code class="language-plaintext highlighter-rouge">rowData</code>, <code class="language-plaintext highlighter-rouge">rowIndex</code> and <code class="language-plaintext highlighter-rouge">rowNumber</code>. The inputs contain information about the selected row of a data grid. To see what this function does, add some logging code to the function:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">TcHmi</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">RowClassesProvider</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">rowData</span><span class="p">,</span> <span class="nx">rowIndex</span><span class="p">,</span> <span class="nx">rowNumber</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Data: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">rowData</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Index: </span><span class="p">${</span><span class="nx">rowIndex</span><span class="p">}</span><span class="s2">\nNumber: </span><span class="p">${</span><span class="nx">rowNumber</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="nx">TcHmi</span><span class="p">.</span><span class="nx">Functions</span><span class="p">.</span><span class="nx">registerFunction</span><span class="p">(</span><span class="dl">"</span><span class="s2">RowClassesProvider</span><span class="dl">"</span><span class="p">,</span> <span class="nx">RowClassesProvider</span><span class="p">);</span>
+<span class="p">})(</span><span class="nx">TcHmi</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Now every time this function is called, it will print in the console with which parameters the function was called.</p>
+
+<p>Save the function. After changing the function the designer shows a prompt that it needs to be reloaded. Click on the yellow ribbon to reload the designer.</p>
+
+<p><a href="/assets/2022-01-31-row-classes-provider/designer_reload_prompt.png"><picture><source srcset="/generated/2022-01-31-row-classes-provider/designer_reload_prompt-300-459e81575.webp 300w, /generated/2022-01-31-row-classes-provider/designer_reload_prompt-491-459e81575.webp 491w" type="image/webp"><source srcset="/generated/2022-01-31-row-classes-provider/designer_reload_prompt-300-19e9dd469.png 300w, /generated/2022-01-31-row-classes-provider/designer_reload_prompt-491-19e9dd469.png 491w" type="image/png"><img src="/generated/2022-01-31-row-classes-provider/designer_reload_prompt-491-19e9dd469.png" alt="designer reload prompt" width="491" height="60"></source></source></picture></a></p>
+
+<p>Next we link this function to our Datagrid. Open the Desktop.view and</p>
+
+<ol>
+  <li>Select the TcHmiDataGrid.</li>
+  <li>In the Properties window under <strong>Data &gt; RowClassesProvider</strong> press the <code class="language-plaintext highlighter-rouge">...</code> button.</li>
+  <li>
+    <p>Then find the function we just created and drag it into the right window titled <strong>Functions</strong>.</p>
+
+    <p><a href="/assets/2022-01-31-row-classes-provider/link_function.png"><picture><source srcset="/generated/2022-01-31-row-classes-provider/link_function-300-7db3ac63d.webp 300w, /generated/2022-01-31-row-classes-provider/link_function-500-7db3ac63d.webp 500w, /generated/2022-01-31-row-classes-provider/link_function-720-7db3ac63d.webp 720w" type="image/webp"><source srcset="/generated/2022-01-31-row-classes-provider/link_function-300-c59d64ae9.png 300w, /generated/2022-01-31-row-classes-provider/link_function-500-c59d64ae9.png 500w, /generated/2022-01-31-row-classes-provider/link_function-720-c59d64ae9.png 720w" type="image/png"><img src="/generated/2022-01-31-row-classes-provider/link_function-800-c59d64ae9.png" alt="link row classes provider to data grid" width="902" height="420"></source></source></picture></a></p>
+  </li>
+  <li>Select <strong>OK</strong> to confirm your changes.</li>
+</ol>
+
+<h2 id="seeing-it-in-action">
+<a class="anchor" href="#seeing-it-in-action" aria-hidden="true"><span class="octicon octicon-link"></span></a>Seeing it in action</h2>
+
+<ol>
+  <li>Open the Live-View window from <strong>TwinCAT HMI &gt; Windows &gt; TwinCAT HMI Live-View</strong>.</li>
+  <li>Open the developer tools, by clicking on the gear icon on the top.
+<a href="/assets/2022-01-31-row-classes-provider/live-view_datagrid_log.png"><picture><source srcset="/generated/2022-01-31-row-classes-provider/live-view_datagrid_log-300-866ba0125.webp 300w, /generated/2022-01-31-row-classes-provider/live-view_datagrid_log-500-866ba0125.webp 500w, /generated/2022-01-31-row-classes-provider/live-view_datagrid_log-523-866ba0125.webp 523w" type="image/webp"><source srcset="/generated/2022-01-31-row-classes-provider/live-view_datagrid_log-300-b0c2528a4.png 300w, /generated/2022-01-31-row-classes-provider/live-view_datagrid_log-500-b0c2528a4.png 500w, /generated/2022-01-31-row-classes-provider/live-view_datagrid_log-523-b0c2528a4.png 523w" type="image/png"><img src="/generated/2022-01-31-row-classes-provider/live-view_datagrid_log-523-b0c2528a4.png" alt="log" width="523" height="656"></source></source></picture></a>
+</li>
+</ol>
+
+<p>In the developer tools you see the results of the <code class="language-plaintext highlighter-rouge">console.log</code> calls in our function. The <code class="language-plaintext highlighter-rouge">rowData</code> variable contains all the column data of a single row. The <code class="language-plaintext highlighter-rouge">rowIndex</code> and <code class="language-plaintext highlighter-rouge">rowNumber</code> both contain the number of the row. I’m not sure why there are two variables containing the same information.</p>
+
+<p>On the initial load of the Desktop.view, all rows were called, However, if later we select a row and make a change, only that row will show up in the log. Here I changed the editable data on the second row to <strong>cookncode</strong>.</p>
+
+<p><a href="/assets/2022-01-31-row-classes-provider/change_editable_data.png"><picture><source srcset="/generated/2022-01-31-row-classes-provider/change_editable_data-300-d11b264fe.webp 300w, /generated/2022-01-31-row-classes-provider/change_editable_data-489-d11b264fe.webp 489w" type="image/webp"><source srcset="/generated/2022-01-31-row-classes-provider/change_editable_data-300-b96561924.png 300w, /generated/2022-01-31-row-classes-provider/change_editable_data-489-b96561924.png 489w" type="image/png"><img src="/generated/2022-01-31-row-classes-provider/change_editable_data-489-b96561924.png" alt="log" width="489" height="580"></source></source></picture></a></p>
+
+<p>From this example you might start to see how we can use the RowClassesProvider. Basically we can take actions based on any of the received input parameters. Be it any of the <code class="language-plaintext highlighter-rouge">rowData</code> columns, or the index of the row.</p>
+
+<h2 id="applying-css-styles-to-the-datagrid">
+<a class="anchor" href="#applying-css-styles-to-the-datagrid" aria-hidden="true"><span class="octicon octicon-link"></span></a>Applying CSS styles to the Datagrid</h2>
+
+<p>You may recall that when we defined the <code class="language-plaintext highlighter-rouge">RowClassesProvider</code> function, we also specified it returned an <code class="language-plaintext highlighter-rouge">Array</code>. In this section I will fill this array with CSS styles, such that that the datagrid can dynamically change its formatting.</p>
+
+<p>First we will define a custom style in a CSS file. To add a CSS file, right click on the HMI project and select <strong>Add &gt; New Item</strong> and select <strong>Cascading Style Sheet (CSS)</strong> and click on <strong>Add</strong>.</p>
+
+<p>For example we can change the color of a table cell when no data is present. In order to do this we first define a new style by adding the following lines to the <code class="language-plaintext highlighter-rouge">.css</code> file:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* Change the first column's background to orange */</span>
+<span class="nf">#TcHmiDatagrid</span> <span class="nt">tr</span><span class="nc">.missing-input</span> <span class="nt">td</span><span class="o">[</span><span class="nt">data-column-name</span><span class="o">=</span><span class="s1">"Test1"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#f76d16</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">#TcHmiDatagrid</code> means the style is for a TwinCAT HMI datagrid.</li>
+  <li>
+<a href="https://www.w3schools.com/tags/tag_tr.asp"><code class="language-plaintext highlighter-rouge">tr</code></a> denotes a row in a table.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">.missing-input</code> is the name of the style.</li>
+  <li>
+<a href="https://www.w3schools.com/tags/tag_td.asp"><code class="language-plaintext highlighter-rouge">td</code></a> denotes a table data cell.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">data-column-name="Test1"</code> means we apply the style only to a specific column with the name <code class="language-plaintext highlighter-rouge">"Test1"</code>. I will show in a minute where you can find the column name.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">background-color: #F76D16;</code> is the newly applied background color.</li>
+</ul>
+
+<p>In order to apply the style under certain conditions we change the <code class="language-plaintext highlighter-rouge">RowClassesProvider</code> function as follows:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">TcHmi</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">RowClassesProvider</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">rowData</span><span class="p">,</span> <span class="nx">rowIndex</span><span class="p">,</span> <span class="nx">rowNumber</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cssStyles</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// Collected CSS styles which will be returned at the end</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">rowData</span><span class="p">.</span><span class="nx">Test1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// If the first column (Test1) is empty</span>
+      <span class="nx">cssStyles</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">missing-input</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// add the missing-input style to the array</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">cssStyles</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="nx">TcHmi</span><span class="p">.</span><span class="nx">Functions</span><span class="p">.</span><span class="nx">registerFunction</span><span class="p">(</span><span class="dl">"</span><span class="s2">RowClassesProvider</span><span class="dl">"</span><span class="p">,</span> <span class="nx">RowClassesProvider</span><span class="p">);</span>
+<span class="p">})(</span><span class="nx">TcHmi</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Now the <code class="language-plaintext highlighter-rouge">RowClassesProvider</code> returns an array with the style names which should be applied. For now the <code class="language-plaintext highlighter-rouge">missing-input</code> style is added in case the input of the first column is empty.</p>
+
+<p>Before we see it in action, we first need to add another row to our Datagrid, since currently all columns contain data. Open the Desktop.view and select the <code class="language-plaintext highlighter-rouge">...</code> of the <strong>SrcData</strong> in the Properties window.</p>
+
+<p><a href="/assets/2022-01-31-row-classes-provider/source_data.png"><picture><source srcset="/generated/2022-01-31-row-classes-provider/source_data-300-48b48e131.webp 300w, /generated/2022-01-31-row-classes-provider/source_data-500-48b48e131.webp 500w, /generated/2022-01-31-row-classes-provider/source_data-704-48b48e131.webp 704w" type="image/webp"><source srcset="/generated/2022-01-31-row-classes-provider/source_data-300-678fa283a.png 300w, /generated/2022-01-31-row-classes-provider/source_data-500-678fa283a.png 500w, /generated/2022-01-31-row-classes-provider/source_data-704-678fa283a.png 704w" type="image/png"><img src="/generated/2022-01-31-row-classes-provider/source_data-704-678fa283a.png" alt="edit source data for data grid" width="704" height="493"></source></source></picture></a></p>
+
+<p>Add four new columns, where Test1 is just an empty string. Note that here you can see the names of each of the columns. You can also give them more descriptive names for your application. It is also possible to link the source data to a struct in your PLC project, but this is outside of the scope of this tutorial. After you’ve made the changes click <strong>OK</strong> and open the live view.</p>
+
+<p>If all went well, the first column of the third row should be orange.</p>
+
+<p><a href="/assets/2022-01-31-row-classes-provider/column1_missing_data.png"><picture><source srcset="/generated/2022-01-31-row-classes-provider/column1_missing_data-300-a31efc332.webp 300w, /generated/2022-01-31-row-classes-provider/column1_missing_data-387-a31efc332.webp 387w" type="image/webp"><source srcset="/generated/2022-01-31-row-classes-provider/column1_missing_data-300-2c2f7309c.png 300w, /generated/2022-01-31-row-classes-provider/column1_missing_data-387-2c2f7309c.png 387w" type="image/png"><img src="/generated/2022-01-31-row-classes-provider/column1_missing_data-387-2c2f7309c.png" width="387" height="135"></source></source></picture></a></p>
+
+<p>Styles can also be applied dynamically after for example toggling a checkbox, based on the value of a text field or the style of a whole row can be changed based on the state of a single column. To do so, change the <code class="language-plaintext highlighter-rouge">.css</code> file as follows:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/*Change the background color of the first column to orange*/</span>
+<span class="nf">#TcHmiDatagrid</span> <span class="nt">tr</span><span class="nc">.missing-input</span> <span class="nt">td</span><span class="o">[</span><span class="nt">data-column-name</span><span class="o">=</span><span class="s1">"Test1"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#f76d16</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/*Change the second column's background to orange*/</span>
+<span class="nf">#TcHmiDatagrid</span> <span class="nt">tr</span><span class="nc">.below-zero</span> <span class="nt">td</span><span class="o">[</span><span class="nt">data-column-name</span><span class="o">=</span><span class="s1">"Test2"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#f76d16</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/*A default background color for the second column*/</span>
+<span class="nf">#TcHmiDatagrid</span> <span class="nt">tr</span> <span class="nt">td</span><span class="o">[</span><span class="nt">data-column-name</span><span class="o">=</span><span class="s1">"Test2"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#a0d5e8</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/*Change the background color of an entire row if a check box' state is changed*/</span>
+<span class="nf">#TcHmiDatagrid</span> <span class="nt">tr</span><span class="nc">.not-checked</span> <span class="nt">td</span><span class="nd">::after</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">right</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">10000px</span><span class="p">;</span>
+  <span class="nl">pointer-events</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">z-index</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">215</span><span class="p">,</span> <span class="m">249</span><span class="p">,</span> <span class="m">251</span><span class="p">,</span> <span class="m">0.5</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c">/*Make the text in the fourth column bold and change the color*/</span>
+<span class="nf">#TcHmiDatagrid</span> <span class="nt">tr</span><span class="nc">.bold</span> <span class="nt">td</span><span class="o">[</span><span class="nt">data-column-name</span><span class="o">=</span><span class="s1">"Test4"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#f76d16</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>and change <code class="language-plaintext highlighter-rouge">RowClassesProvider</code> into</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">TcHmi</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">RowClassesProvider</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">rowData</span><span class="p">,</span> <span class="nx">rowIndex</span><span class="p">,</span> <span class="nx">rowNumber</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cssStyles</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// Collected CSS styles which will be returned at the end</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">rowData</span><span class="p">.</span><span class="nx">Test1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// If the first column (Test1) is empty</span>
+      <span class="nx">cssStyles</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">missing-input</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// add the missing-input style to the array</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">rowData</span><span class="p">.</span><span class="nx">Test2</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// If the value of the second column is negative</span>
+      <span class="nx">cssStyles</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">below-zero</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// add the below-zero style</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">rowData</span><span class="p">.</span><span class="nx">Test3</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// If the checkbox in the third column is not checked</span>
+      <span class="nx">cssStyles</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">not-checked</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">rowData</span><span class="p">.</span><span class="nx">Test4</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">cookncode</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// if the text in the fourth column is cookncode</span>
+      <span class="nx">cssStyles</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">bold</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">cssStyles</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="nx">TcHmi</span><span class="p">.</span><span class="nx">Functions</span><span class="p">.</span><span class="nx">registerFunction</span><span class="p">(</span><span class="dl">"</span><span class="s2">RowClassesProvider</span><span class="dl">"</span><span class="p">,</span> <span class="nx">RowClassesProvider</span><span class="p">);</span>
+<span class="p">})(</span><span class="nx">TcHmi</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="result-1">
+<a class="anchor" href="#result-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Result</h2>
+
+<p><img src="/assets/2022-01-31-row-classes-provider/all_effects_datagrid.gif" alt="all different styles showcased"></p>
+
+<h2 id="final-tip-inspiration-and-default-styles">
+<a class="anchor" href="#final-tip-inspiration-and-default-styles" aria-hidden="true"><span class="octicon octicon-link"></span></a>Final tip: inspiration and default styles</h2>
+
+<p>If you’re looking for inspiration what you can change or what the default styles of Beckhoff’s controls are, you can find these if you open the developer console. Then go to the Sources tab and navigate to a folder. Here I show the Base theme style for the Datagrid.</p>
+
+<p><a href="/assets/2022-01-31-row-classes-provider/inspiration.png"><picture><source srcset="/generated/2022-01-31-row-classes-provider/inspiration-300-8c474de41.webp 300w, /generated/2022-01-31-row-classes-provider/inspiration-500-8c474de41.webp 500w, /generated/2022-01-31-row-classes-provider/inspiration-720-8c474de41.webp 720w" type="image/webp"><source srcset="/generated/2022-01-31-row-classes-provider/inspiration-300-02704629d.png 300w, /generated/2022-01-31-row-classes-provider/inspiration-500-02704629d.png 500w, /generated/2022-01-31-row-classes-provider/inspiration-720-02704629d.png 720w" type="image/png"><img src="/generated/2022-01-31-row-classes-provider/inspiration-786-02704629d.png" alt="beckhoff's default styles" width="786" height="688"></source></source></picture></a></p>
+</div><!-- prettier-ignore
+
+-->
+
+
+<div class="article_previous_next">
+  <a href="/twincat/2022/01/09/tc-quicktips.html">❮ Tips and tricks for TwinCAT</a>
+</div>
+ 
+<div class="article_next">
+  <a href="/twincat/2022/04/14/pre-commit.html">No more formatting fights with pre-commits for TwinCAT ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>

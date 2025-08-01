@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script
+  src="https://beamanalytics.b-cdn.net/beam.min.js"
+  data-token="cb146bf2-0a6b-412a-93fe-f1b766a68e80"
+  async
+></script>
+<link
+  href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+<title>Stand-alone PLC projects</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Stand-alone PLC projects | Cook &amp; Code</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Stand-alone PLC projects" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In this article, I want to highlight a useful and fairly new TwinCAT feature: Stand-alone PLC projects. As usual, Beckhoff’s InfoSys provides a good explanation of how to set up and run such a project from scratch. However, there is little information on why the separation might be a good idea, how to separate an existing project, and some of the pitfalls you might encounter." />
+<meta property="og:description" content="In this article, I want to highlight a useful and fairly new TwinCAT feature: Stand-alone PLC projects. As usual, Beckhoff’s InfoSys provides a good explanation of how to set up and run such a project from scratch. However, there is little information on why the separation might be a good idea, how to separate an existing project, and some of the pitfalls you might encounter." />
+<link rel="canonical" href="https://cookncode.com/twincat/2020/01/29/standalone-plc-projects.html" />
+<meta property="og:url" content="https://cookncode.com/twincat/2020/01/29/standalone-plc-projects.html" />
+<meta property="og:site_name" content="Cook &amp; Code" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-01-29T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Stand-alone PLC projects" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-01T14:25:53+00:00","datePublished":"2020-01-29T00:00:00+00:00","description":"In this article, I want to highlight a useful and fairly new TwinCAT feature: Stand-alone PLC projects. As usual, Beckhoff’s InfoSys provides a good explanation of how to set up and run such a project from scratch. However, there is little information on why the separation might be a good idea, how to separate an existing project, and some of the pitfalls you might encounter.","headline":"Stand-alone PLC projects","mainEntityOfPage":{"@type":"WebPage","@id":"https://cookncode.com/twincat/2020/01/29/standalone-plc-projects.html"},"url":"https://cookncode.com/twincat/2020/01/29/standalone-plc-projects.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+  <body>
+    <header class="texture-black">
+      <div class="container"><div class="navbar">
+	<ul>
+		
+		<a href="/"><li  >Home</li></a>
+		
+		<a href="/about"><li  >About</li></a>
+		
+		<a href="/archive"><li  >Archive</li></a>
+		
+		<a href="/twincat"><li  >TwinCAT</li></a>
+		
+		<a href="/cooking"><li  >Cooking</li></a>
+		
+	</ul>
+</div></div><div class="container">
+  <h1>Stand-alone PLC projects</h1>
+  <div class="post-date" style="margin-top: 20px">
+    Published on Jan 29, 2020. Last updated on Aug 1, 2025.
+  </div>
+  <ul class="post-tags"><li>twincat</li></ul>
+</div>
+</header>
+    <main>
+      <div class="container">
+        <div class="post-container"><ul id="toc" class="section-nav">
+</ul><p>In this article, I want to highlight a useful and fairly new TwinCAT feature: Stand-alone PLC projects. As usual, Beckhoff’s InfoSys provides a good explanation of how to set up and run such a project from scratch. However, there is little information on why the separation might be a good idea, how to separate an existing project, and some of the pitfalls you might encounter.</p>
+
+<p><em>This article was first <a href="https://alltwincat.com/2020/01/29/standalone-plc-projects/">published</a> on the AllTwinCAT blog.</em></p>
+
+<p>A stand-alone PLC project “<a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/4702071179.html?id=135948604315208321">makes it possible to separate system, motion and I/O configuration from PLC development at project level</a>”. In other words, the separation can prevent the configuration of one machine from influencing the other. For example, one issue we faced was that on our production machine, we divided tasks over several cores, whereas in our development environments, we often ran all tasks on a single core. It happened a few times that the development environment’s configuration was (partially) uploaded on the production machine, where it caused several issues, as you can imagine.</p>
+
+<p>The problems of the example above were probably caused by an incorrect merge of the combined project. Because the .tsproj file of the combined project contains so much information, which also changes when you, for example, change your target system, it is difficult to avoid mistakes when merging the .tsproj files from different systems.</p>
+
+<p>That’s why separating the projects is a good idea. Creating a separate PLC project from scratch is fairly straightforward but possible only from version 4022.0. First, you create a <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/4278074763.html">stand-alone PLC project</a>. Then you create a separate TwinCAT project, where you <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/9007203968704139.html">import the TMC file</a> from the stand-alone project. After that, you can <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/4713966219.html?id=2085931447876199423">assign the tasks</a> you created in the stand-alone PLC project to the system tasks in the TwinCAT project. Then, you <a href="https://infosys.beckhoff.com/content/1033/tc3_plc_intro/4702258059.html?id=4785525580931834985">activate your configuration</a> in the TwinCAT project, and you can log into the PLC from the stand-alone project.</p>
+
+<p>Separating an existing TwinCAT 3 project that includes the PLC project is also possible. To do that, you first create a stand-alone project, much like above. You go to File &gt; New Project &gt; TwinCAT PLC Project and select an appropriate name for your project and save location and click OK.</p>
+
+<p><a href="/assets/2020-01-29-standalone-plc-projects/Create_new_project.PNG"><picture><source srcset="/generated/2020-01-29-standalone-plc-projects/Create_new_project-300-4dbacf9e0.webp 300w, /generated/2020-01-29-standalone-plc-projects/Create_new_project-500-4dbacf9e0.webp 500w, /generated/2020-01-29-standalone-plc-projects/Create_new_project-720-4dbacf9e0.webp 720w" type="image/webp"><source srcset="/generated/2020-01-29-standalone-plc-projects/Create_new_project-300-f1a6b3a5e.png 300w, /generated/2020-01-29-standalone-plc-projects/Create_new_project-500-f1a6b3a5e.png 500w, /generated/2020-01-29-standalone-plc-projects/Create_new_project-720-f1a6b3a5e.png 720w" type="image/png"><img src="/generated/2020-01-29-standalone-plc-projects/Create_new_project-800-f1a6b3a5e.png" width="941" height="653"></source></source></picture></a></p>
+
+<p>Then select “Empty PLC project” in the following screen. The name doesn’t matter because this project will be replaced by an existing one in the next step. Click OK.</p>
+
+<p><a href="/assets/2020-01-29-standalone-plc-projects/empty_plc_project.png"><picture><source srcset="/generated/2020-01-29-standalone-plc-projects/empty_plc_project-300-04736f25e.webp 300w, /generated/2020-01-29-standalone-plc-projects/empty_plc_project-500-04736f25e.webp 500w, /generated/2020-01-29-standalone-plc-projects/empty_plc_project-720-04736f25e.webp 720w" type="image/webp"><source srcset="/generated/2020-01-29-standalone-plc-projects/empty_plc_project-300-0282c1dd7.png 300w, /generated/2020-01-29-standalone-plc-projects/empty_plc_project-500-0282c1dd7.png 500w, /generated/2020-01-29-standalone-plc-projects/empty_plc_project-720-0282c1dd7.png 720w" type="image/png"><img src="/generated/2020-01-29-standalone-plc-projects/empty_plc_project-800-0282c1dd7.png" width="941" height="653"></source></source></picture></a></p>
+
+<p>Then right-click on the PLC project and select “Change Project…”. Select the .plcproj file of the PLC project that you want to import.</p>
+
+<p><a href="/assets/2020-01-29-standalone-plc-projects/change_project.PNG"><picture><source srcset="/generated/2020-01-29-standalone-plc-projects/change_project-300-20c8d6640.webp 300w, /generated/2020-01-29-standalone-plc-projects/change_project-463-20c8d6640.webp 463w" type="image/webp"><source srcset="/generated/2020-01-29-standalone-plc-projects/change_project-300-22555357e.png 300w, /generated/2020-01-29-standalone-plc-projects/change_project-463-22555357e.png 463w" type="image/png"><img src="/generated/2020-01-29-standalone-plc-projects/change_project-463-22555357e.png" width="463" height="476"></source></source></picture></a></p>
+
+<p>Then select the appropriate option for what to do with the PLC project files. After clicking on OK, all the files of the selected PLC project should show up in your stand-alone project.</p>
+
+<p><a href="/assets/2020-01-29-standalone-plc-projects/move_plc_files.PNG"><picture><source srcset="/generated/2020-01-29-standalone-plc-projects/move_plc_files-300-ccb0e3c4e.webp 300w, /generated/2020-01-29-standalone-plc-projects/move_plc_files-358-ccb0e3c4e.webp 358w" type="image/webp"><source srcset="/generated/2020-01-29-standalone-plc-projects/move_plc_files-300-50a7b4033.png 300w, /generated/2020-01-29-standalone-plc-projects/move_plc_files-358-50a7b4033.png 358w" type="image/png"><img src="/generated/2020-01-29-standalone-plc-projects/move_plc_files-358-50a7b4033.png" width="358" height="185"></source></source></picture></a></p>
+
+<p>There is one thing that is not copied, and those are custom events. Custom events in a combined project are stored in the .tsproj file and can be found under SYSTEM &gt; Type System &gt; tab Event Classes. I’m not sure what the appropriate way is to get them in the new stand-alone project, but it can be done by copying the events from the combined project’s .tsproj file into the .tsproj file of the stand-alone PLC project.</p>
+
+<p>At this point, I wanted to discuss some problems you might encounter with the creation of a stand-alone project. However, I couldn’t recreate issues I had with a previously combined project, which was later split into a stand-alone PLC and a TwinCAT 3 project. For those who are also experiencing issues, I’ll briefly go into them here.</p>
+
+<p>The issues we faced had to do with custom events. Somehow, whenever we added a custom event to our stand-alone PLC project, they were not added to the .tsproj file but only in the .tmc file (after building, of course). So, whereas .tmc files can typically be <a href="https://alltwincat.com/2019/12/02/gitignore-for-twincat/">added to the .gitignore file</a>, this was not the case for this project.</p>
+
+<p>Related to this issue is that whenever this problematic stand-alone PLC solution file was opened, the custom event classes were not loaded automatically. Only after manually reloading the project file, the event classes would show up.</p>
+
+<p>Perhaps these issues were caused by the fact that the original combined project was created with an older TwinCAT version? Anyway, maybe you’ve experienced similar issues or have some experience with setting up stand-alone projects.</p>
+
+<p>If you have encountered similar issues or have experience with setting up stand-alone projects, please share your insights in the comments below. Your input can help others who are working with stand-alone PLC projects and facing challenges during the process.</p>
+
+<p>Discuss <a href="https://alltwincat.com/2020/01/29/standalone-plc-projects#comments">AllTwinCAT</a></p>
+</div><!-- prettier-ignore
+
+-->
+
+ 
+<div class="article_next">
+  <a href="/twincat/2020/11/03/twincat-eventlogger-plc-part.html">TwinCAT EventLogger: PLC part ❯</a>
+</div>
+
+<div style="margin-bottom: 25px">
+          Like my work?
+          <a href="https://ko-fi.com/roald87">Consider a donation!</a>
+        </div>
+        <div id="disqus_thread" style="margin-top: 25px">
+          <script
+            src="https://utteranc.es/client.js"
+            repo="Roald87/roald87.github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="boxy-light"
+            crossorigin="anonymous"
+            async
+          ></script>
+        </div>
+      </div>
+    </main></body>
+</html>
