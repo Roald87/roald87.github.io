@@ -1,0 +1,302 @@
+---
+layout: post
+title: "How to structure a story"
+category: writing
+toc: false
+---
+
+I often visualize a story structure by two vertical lines. The top is the start of the story and the bottom the end. The distance between the lines reflects how detailed the story is at that moment. Visualizing it like this helps me remember the various structures. Here I'll discuss the following ones: the hourglass, the Klein bottle and the Minto pyramid.
+
+## The hourglass
+
+The hour glass structure starts wide to capture a broad audience. Then as the story continues it becomes more and more detailed by drilling into the details. Towards the end the lines widen again as the storyteller is trying to make broader statements and put the story into a larger context.
+
+A typical example where this story structure is used are academic publications or presentations. Publications even have a double hourglass structure: one for the abstract and one for the main text.
+
+<svg viewBox="60 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <g
+     inkscape:label="abstract_main"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <g
+       id="g72034">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 136.525,19.05 c 0,6.377238 13.27524,9.565857 13.27524,19.131714 0,9.565857 -13.27524,12.754476 -13.27524,19.131714"
+         id="hourglass_left"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 168.35672,19.131714 c 0,6.381196 -12.52443,9.571795 -12.52443,19.143589 0,9.571794 12.52443,12.762393 12.52443,19.143589"
+         id="hourglass_right"
+         sodipodi:nodetypes="ccc" />
+    </g>
+    <g
+       id="g72030">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 136.525,3.2294843 c 0,2.125147 10.627,3.187721 10.627,6.3754367 0,3.18772 -10.627,4.2503 -10.627,6.37545"
+         id="path859-6"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 168.35672,3.2567143 c 0,2.126466 -10.02597,3.1897 -10.02597,6.3793967 0,3.1897 10.02597,4.25293 10.02597,6.3794"
+         id="hourglass__right-7"
+         sodipodi:nodetypes="ccc" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.58611px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="130.25539"
+       y="12.819619"
+       id="text4113"><tspan
+         sodipodi:role="line"
+         id="tspan4111"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.25539"
+         y="12.819619">abstract</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.58611px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="129.61864"
+       y="37.987865"
+       id="text4113-8"><tspan
+         sodipodi:role="line"
+         id="tspan4111-5"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="129.61864"
+         y="37.987865">main text</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="63.5"
+       y="107.95"
+       id="text19714"><tspan
+         sodipodi:role="line"
+         id="tspan19712"
+         style="stroke-width:0.264583"
+         x="63.5"
+         y="107.95"></tspan></text>
+  </g>
+  </svg>
+
+For the abstract this is beautifully portrayed by this [template abstract by Fabrizio Gilardi from the ETH in Zürich](https://www.fabriziogilardi.org/resources/papers/good-abstracts.pdf):
+
+> Everyone agrees that this issue is really important. But we do not know much about this specific question, although it matters a great deal, for these reasons. We approach the problem from this perspective. Our research design focuses on these cases and relies on these data, which we analyze using this method. Results show what we have learned about the question. They have these broader implications.
+
+<svg viewBox="10 110 200 50" xmlns="http://www.w3.org/2000/svg">
+<g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="abstract"
+     style="display:inline">
+    <g
+       id="g72042"
+       transform="translate(-3.13579,-0.84177)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 139.66079,111.96677 c 0,6.37721 13.27525,9.56583 13.27525,19.13168 0,9.56586 -13.27525,12.75447 -13.27525,19.1317"
+         id="hourglass_left-8-2"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 171.49252,112.04847 c 0,6.38119 -12.52443,9.57177 -12.52443,19.14357 0,9.57179 12.52443,12.76238 12.52443,19.14358"
+         id="hourglass_right-0-9"
+         sodipodi:nodetypes="ccc" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.58611px;line-height:1.55;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="131.76546"
+       y="114.63779"
+       id="text11950-7"><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="131.76546"
+         y="114.63779"
+         id="tspan14006-3">Everyone agrees this issue is important.</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="131.76546"
+         y="121.74625"
+         id="tspan19996">There are many unknowns, but they are vital.</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="131.76546"
+         y="128.85472"
+         id="tspan19998">We approach the problem from this angle.</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="131.76546"
+         y="135.9632"
+         id="tspan20000">We uses these data, analyzed with this method.</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="131.76546"
+         y="143.07167"
+         id="tspan20002">Results show what we learned.</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="131.76546"
+         y="150.18015"
+         id="tspan20004">They have broader implications.</tspan></text>
+  </g>
+</svg>
+
+Similarly the structure of the main article follows the hour glass structure with an introduction, methods, results, discussion, conclusion.
+
+<svg viewBox="60 60 200 50" xmlns="http://www.w3.org/2000/svg">
+<g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="main"
+     style="display:inline">
+    <g
+       id="g72038">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 136.525,63.499998 c 0,6.377212 13.27524,9.565829 13.27524,19.131683 0,9.565857 -13.27524,12.754474 -13.27524,19.131699"
+         id="hourglass_left-8"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 168.35672,63.581705 c 0,6.381185 -12.52443,9.571772 -12.52443,19.143566 0,9.571787 12.52443,12.762384 12.52443,19.143579"
+         id="hourglass_right-0"
+         sodipodi:nodetypes="ccc" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.58611px;line-height:1.75;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="130.12216"
+       y="68.473434"
+       id="text11950"><tspan
+         sodipodi:role="line"
+         id="tspan11948"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.12216"
+         y="68.473434">introduction</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.12216"
+         y="76.49913"
+         id="tspan14000">methods</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.12216"
+         y="84.524818"
+         id="tspan14002">results</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.12216"
+         y="92.550514"
+         id="tspan14004">discussion</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.12216"
+         y="100.5762"
+         id="tspan14006">conclusions</tspan></text>
+  </g>
+  </svg>
+
+## The Klein bottle
+
+The klein bottle is a curious shape that only has a single surface.
+
+{% picture 2025-story-structure/klein-bottle.png width="250" style="display:block; margin:auto;" %}
+
+_By <a href="//commons.wikimedia.org/wiki/User:Tttrung" title="User:Tttrung">Tttrung</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=960446">Link</a>_
+
+A Klein bottle story starts wide, capturing a large audience and often contains some anecdote or trivia. Then the story goes more and more into detail. At the end of the story the communicator refers back to the anecdote that was mentioned at the start.
+
+<svg viewBox="30 225 200 45" xmlns="http://www.w3.org/2000/svg">
+<g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="klein"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.58611px;line-height:3.5;font-family:sans-serif;text-align:end;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="130.03532"
+       y="232.70222"
+       id="text11950-3-7"><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.03532"
+         y="232.70222"
+         id="tspan57063">introduction with anecdote</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.03532"
+         y="248.75362"
+         id="tspan58648">going into more detail</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.03532"
+         y="264.80499"
+         id="tspan58650">coming back to the anecdote</tspan></text>
+    <g
+       id="g72049"
+       transform="translate(-3.28094,-1.05452)">
+      <path
+         id="path54429"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 168.275,228.6 c 0,9.525 -12.7,28.575 -9.42989,31.83076 3.09386,3.08027 15.5785,-6.43064 15.67566,-12.55749 0.10423,-6.57327 -7.72733,-11.86875 -7.72733,-11.86875 M 139.7,228.6 c 0,12.7 12.76645,38.06931 19.05,38.1 6.41729,0 19.05,-12.7 19.05,-19.05 0,-6.35 -4.86382,-10.36813 -10.15549,-14.60146"
+         sodipodi:nodetypes="csscccsc" />
+    </g>
+  </g>
+  </svg>
+
+## The Minto pyramid
+
+This structure was thought up by [Barbara Minto](https://en.wikipedia.org/wiki/Barbara_Minto) and is therefore called the Minto Pyramid. This structure starts with the main point, conclusion or answer. Afterwards the main point is backed-up by the supporting arguments and finally the supporting data and facts.
+
+<svg viewBox="30 165 200 50" xmlns="http://www.w3.org/2000/svg">
+<g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="minto"
+     style="display:inline">
+    <g
+       id="g72046"
+       transform="translate(-3.175)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 158.75,171.45 -19.05,38.1 h 38.1 z"
+         id="path45900" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path46206"
+         cx="158.60944"
+         cy="171.22211"
+         r="3.175" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.58611px;line-height:3.5;font-family:sans-serif;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="130.06161"
+       y="174.10516"
+       id="text11950-3"><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.06161"
+         y="174.10516"
+         id="tspan14006-2">main point</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.06161"
+         y="190.15656"
+         id="tspan46507">supporting arguments</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.06161"
+         y="206.20793"
+         id="tspan48509">supporting data and facts</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.58611px;text-align:end;text-anchor:end;stroke-width:0.264583"
+         x="130.06161"
+         y="222.25932"
+         id="tspan46509" /></text>
+  </g>
+</svg>
