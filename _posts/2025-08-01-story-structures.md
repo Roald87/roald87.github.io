@@ -5,13 +5,13 @@ category: writing
 toc: false
 ---
 
-I often visualize a story structure by two vertical lines. The top is the start of the story and the bottom the end. The distance between the lines reflects how detailed the story is at that moment. Visualizing it like this helps me remember the various structures. Here I'll discuss the following ones: the hourglass, the Klein bottle and the Minto pyramid.
+I often visualize story structure with two vertical lines. The top is the beginning, and the bottom is the end. The distance between the lines reflects how detailed the story is at that point. Visualizing it this way helps me remember different structures. Here, I'll discuss the following: the hourglass, the Klein bottle, and the Minto pyramid.
 
 ## The hourglass
 
-The hour glass structure starts wide to capture a broad audience. Then as the story continues it becomes more and more detailed by drilling into the details. Towards the end the lines widen again as the storyteller is trying to make broader statements and put the story into a larger context.
+The hourglass structure starts wide to capture a broad audience. As the story continues, it becomes increasingly detailed. Toward the end, the lines widen again as the storyteller makes broader statements and places the story in a larger context.
 
-A typical example where this story structure is used are academic publications or presentations. Publications even have a double hourglass structure: one for the abstract and one for the main text.
+A typical example of this structure is in academic publications or presentations. Publications often have a double hourglass structure: one for the abstract and one for the main text.
 
 <svg viewBox="60 0 200 60" xmlns="http://www.w3.org/2000/svg">
   <g
@@ -81,7 +81,7 @@ A typical example where this story structure is used are academic publications o
   </g>
   </svg>
 
-For the abstract this is beautifully portrayed by this [template abstract by Fabrizio Gilardi from the ETH in Zürich](https://www.fabriziogilardi.org/resources/papers/good-abstracts.pdf):
+For the abstract, this is beautifully illustrated by this [template abstract by Fabrizio Gilardi from ETH Zürich](https://www.fabriziogilardi.org/resources/papers/good-abstracts.pdf):
 
 > Everyone agrees that this issue is really important. But we do not know much about this specific question, although it matters a great deal, for these reasons. We approach the problem from this perspective. Our research design focuses on these cases and relies on these data, which we analyze using this method. Results show what we have learned about the question. They have these broader implications.
 
@@ -144,7 +144,7 @@ For the abstract this is beautifully portrayed by this [template abstract by Fab
   </g>
 </svg>
 
-Similarly the structure of the main article follows the hour glass structure with an introduction, methods, results, discussion, conclusion.
+Similarly, the structure of the main article follows the hourglass structure: introduction, methods, results, discussion, conclusion.
 
 <svg viewBox="60 60 200 50" xmlns="http://www.w3.org/2000/svg">
 <g
@@ -201,13 +201,13 @@ Similarly the structure of the main article follows the hour glass structure wit
 
 ## The Klein bottle
 
-The klein bottle is a curious shape that only has a single surface.
+The Klein bottle is a curious shape that has only a single surface.
 
 {% picture 2025-story-structure/klein-bottle.png width="250" style="display:block; margin:auto;" %}
 
 _By <a href="//commons.wikimedia.org/wiki/User:Tttrung" title="User:Tttrung">Tttrung</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=960446">Link</a>_
 
-A Klein bottle story starts wide, capturing a large audience and often contains some anecdote or trivia. Then the story goes more and more into detail. At the end of the story the communicator refers back to the anecdote that was mentioned at the start.
+A Klein bottle story starts wide, often with an anecdote or trivia, to capture a large audience. Then, it goes into increasing detail. At the end, the storyteller returns to the opening anecdote.
 
 <svg viewBox="30 225 200 45" xmlns="http://www.w3.org/2000/svg">
 <g
@@ -250,7 +250,7 @@ A Klein bottle story starts wide, capturing a large audience and often contains 
 
 ## The Minto pyramid
 
-This structure was thought up by [Barbara Minto](https://en.wikipedia.org/wiki/Barbara_Minto) and is therefore called the Minto Pyramid. This structure starts with the main point, conclusion or answer. Afterwards the main point is backed-up by the supporting arguments and finally the supporting data and facts.
+This structure was developed by [Barbara Minto](https://en.wikipedia.org/wiki/Barbara_Minto), hence the name. It starts with the main point, conclusion, or answer. The main point is then supported by arguments, and finally by data and facts.
 
 <svg viewBox="30 165 200 50" xmlns="http://www.w3.org/2000/svg">
 <g
