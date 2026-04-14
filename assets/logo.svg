@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="53mm"
+   height="53mm"
+   viewBox="0 0 53 53"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="238.53959"
+     inkscape:cy="54.55766"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-text-baseline="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1026"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     fit-margin-top="1"
+     fit-margin-left="1"
+     fit-margin-right="1"
+     fit-margin-bottom="1"
+     inkscape:pagecheckerboard="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid815"
+       originx="-80.13871"
+       originy="-164.80542" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-80.138717,-79.194574)">
+    <g
+       id="g1082"
+       transform="translate(0.28855983,-5.7572336)"
+       style="fill:#ffffff;fill-opacity:1">
+      <path
+         sodipodi:nodetypes="scsccsssscccccccccccccccccscsscsccscsscscscscs"
+         inkscape:connector-curvature="0"
+         id="rect819"
+         transform="scale(0.26458333)"
+         d="m 324.88086,431.49805 c -3.66222,0 -6.48936,1.42118 -8.48047,4.26562 -1.99111,2.84445 -2.98633,7.14821 -2.98633,12.90821 0,2.72495 0.22333,5.10891 0.65039,7.18164 -2.8636,0 -4.43908,-10e-6 -7.39843,0 v 26.66601 c 0,7.38667 17.44376,13.33399 39.11132,13.33399 h 68.44532 c 21.66754,0 39.11132,-5.94732 39.11132,-13.33399 v -4.97656 -9.49219 l 43.90671,-19.68439 -4.21484,-10.53321 -39.74069,18.02034 c -20.52768,-2e-5 -42.33671,0 -61.5918,0 v -20.41407 h -4.48047 c -0.64,0.71111 -1.40408,1.40453 -2.29297,2.08008 -0.88889,0.67556 -1.83061,1.31548 -2.82617,1.91992 -0.99556,0.60445 -1.99077,1.15652 -2.98633,1.6543 -0.99555,0.49778 -1.9201,0.90656 -2.77344,1.22656 l 2.13282,5.43946 c 0.88889,-0.32 1.9739,-0.74597 3.2539,-1.2793 1.28,-0.56889 2.41656,-1.20881 3.41211,-1.91992 v 11.29297 c -15.55082,-10e-6 -31.88222,-10e-6 -49.43359,0 0.42704,-2.07271 0.64844,-4.45673 0.64844,-7.18164 0,-5.79556 -0.97804,-10.09932 -2.9336,-12.90821 -1.95555,-2.84444 -4.79987,-4.26562 -8.5332,-4.26562 z m 0,5.59961 c 1.81333,0 3.18298,0.99521 4.10742,2.98632 0.96,1.95556 1.43945,4.81901 1.43945,8.5879 0,2.93609 -0.28954,5.32557 -0.86132,7.18164 -3.40394,0 -5.83724,-10e-6 -9.3711,0 -0.57178,-1.85607 -0.86133,-4.24555 -0.86133,-7.18164 0,-3.76889 0.47946,-6.63234 1.43946,-8.5879 0.96,-1.99111 2.32964,-2.98632 4.10742,-2.98632 z m 0.0527,7.46679 c -0.92444,0 -1.65221,0.3553 -2.18554,1.06641 -0.53334,0.71111 -0.80078,1.54781 -0.80078,2.50781 0,0.96 0.26744,1.79475 0.80078,2.50586 0.53333,0.67556 1.2611,1.01367 2.18554,1.01367 0.85334,0 1.54675,-0.33811 2.08008,-1.01367 0.56889,-0.71111 0.85352,-1.54586 0.85352,-2.50586 0,-0.96 -0.28463,-1.7967 -0.85352,-2.50781 -0.53333,-0.71111 -1.22674,-1.06641 -2.08008,-1.06641 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.48548913;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      <text
+         id="text828-5"
+         y="113.79134"
+         x="95.427643"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.11111069px;line-height:1.25;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono Bold';stroke-width:0.26458332;fill:#ffffff;fill-opacity:1"
+           y="113.79134"
+           x="95.427643"
+           id="tspan826-6"
+           sodipodi:role="line">0</tspan></text>
+      <text
+         id="text828-1"
+         y="118.09892"
+         x="110.40448"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.11111069px;line-height:1.25;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono Bold';stroke-width:0.26458332;fill:#ffffff;fill-opacity:1"
+           y="118.09892"
+           x="110.40448"
+           id="tspan826-5"
+           sodipodi:role="line">0</tspan></text>
+      <text
+         id="text828-9"
+         y="100.64137"
+         x="98.855133"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.11111069px;line-height:1.25;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono Bold';stroke-width:0.26458332;fill:#ffffff;fill-opacity:1"
+           y="100.64137"
+           x="98.855133"
+           id="tspan826-8"
+           sodipodi:role="line">0</tspan></text>
+      <text
+         id="text866-4"
+         y="104.42878"
+         x="109.47367"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.11111069px;line-height:1.25;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono Bold';stroke-width:0.26458332;fill:#ffffff;fill-opacity:1"
+           y="104.42878"
+           x="109.47367"
+           id="tspan864-8"
+           sodipodi:role="line">1</tspan></text>
+      <text
+         id="text866-1"
+         y="106.72649"
+         x="86.058365"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.11111069px;line-height:1.25;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono Bold';stroke-width:0.26458332;fill:#ffffff;fill-opacity:1"
+           y="106.72649"
+           x="86.058365"
+           id="tspan864-0"
+           sodipodi:role="line">1</tspan></text>
+    </g>
+  </g>
+</svg>
