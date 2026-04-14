@@ -6,6 +6,8 @@ permalink: /tclinks/
 
 ## Blogs
 
+[Find them in a single list](https://rssrdr.com/shuffle?rss=www.plccoder.com/feed/&rss=alltwincat.com/feed/&rss=stefanhenneken.net/category/iec-61131-3-english/feed/&rss=www.contactandcoil.com/feed/&rss=www.redrockcontrols.co.uk/?feed=rss2&rss=kassymdorsel.com/feed.xml&rss=tkucic.github.io/feed.xml&rss=http://joukeaalvanger.nl/feed.xml&rss=hopperpop.github.io/feed.xml), or check the links below.
+
 - [PlcCoder](https://www.plccoder.com/): Regularly updated with concise tips and tricks and some object oriented programming basics.
 - [AllTwinCAT](https://alltwincat.com/): Regularly updated with various in-depth articles about everything related to TwinCAT development.
 - [Stefan Henneken](https://stefanhenneken.wordpress.com/): A lot of information on different object oriented design patterns in both German and English.
@@ -13,7 +15,7 @@ permalink: /tclinks/
 - [Contact and Coil](https://www.contactandcoil.com/twincat-3-tutorial/): An excellent beginners tutorial for newcomers.
 - [Red Rock Controls](https://www.redrockcontrols.co.uk/?tag=twincat): A few posts on design patterns in TwinCAT.
 - [Kassym Dorsel](https://kassymdorsel.com/blog): Various articles and a series on TwinCAT Vision.
-- [WJB Automation Blog](https://dronefactory.co.uk/): Combining TwinCAT with Unity, a 3D graphics development platform.
+- ~~[WJB Automation Blog](https://dronefactory.co.uk/): Combining TwinCAT with Unity, a 3D graphics development platform.~~ Offline
 - [Toni Kucic](https://tkucic.github.io/): Various articles and speed tests for CODESYS.
 - [Jouke Aalvanger](https://joukeaalvanger.nl/): Blog focussed on software development in the industrial automation world.
 - [Automate to live](https://hopperpop.github.io/): Beautiful blog by Bram Gurdebeke who shared his automation knowledge.
